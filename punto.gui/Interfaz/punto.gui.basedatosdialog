@@ -1,0 +1,12 @@
+using System;
+namespace punto.gui
+{
+	public partial class punto : Gtk.Dialog
+	{
+		public punto()
+		{
+			this.Build();
+		}
+	}
+}
+

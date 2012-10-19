@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "punto.code", "punto.code\punto.code.csproj", "{073ACCF2-E430-4357-BFFD-2727E0A37417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "punto.gui", "punto.gui\punto.gui.csproj", "{8A5901FC-9C38-45B5-B628-9FBE64649F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pto", "pto\pto.csproj", "{13D69262-2705-477F-A461-EFF14642BB16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{073ACCF2-E430-4357-BFFD-2727E0A37417}.Debug|x86.ActiveCfg = Debug|x86
+		{073ACCF2-E430-4357-BFFD-2727E0A37417}.Debug|x86.Build.0 = Debug|x86
+		{073ACCF2-E430-4357-BFFD-2727E0A37417}.Release|x86.ActiveCfg = Release|x86
+		{073ACCF2-E430-4357-BFFD-2727E0A37417}.Release|x86.Build.0 = Release|x86
+		{13D69262-2705-477F-A461-EFF14642BB16}.Debug|x86.ActiveCfg = Debug|x86
+		{13D69262-2705-477F-A461-EFF14642BB16}.Debug|x86.Build.0 = Debug|x86
+		{13D69262-2705-477F-A461-EFF14642BB16}.Release|x86.ActiveCfg = Release|x86
+		{13D69262-2705-477F-A461-EFF14642BB16}.Release|x86.Build.0 = Release|x86
+		{8A5901FC-9C38-45B5-B628-9FBE64649F43}.Debug|x86.ActiveCfg = Debug|x86
+		{8A5901FC-9C38-45B5-B628-9FBE64649F43}.Debug|x86.Build.0 = Debug|x86
+		{8A5901FC-9C38-45B5-B628-9FBE64649F43}.Release|x86.ActiveCfg = Release|x86
+		{8A5901FC-9C38-45B5-B628-9FBE64649F43}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = pto\pto.csproj
+	EndGlobalSection
+EndGlobal
