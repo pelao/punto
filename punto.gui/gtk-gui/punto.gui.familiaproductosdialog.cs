@@ -21,8 +21,8 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.familiaproductosdialog
 			this.Name = "punto.gui.familiaproductosdialog";
-			this.Title = "";
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString ("Agregar Familias de Productos");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.familiaproductosdialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";

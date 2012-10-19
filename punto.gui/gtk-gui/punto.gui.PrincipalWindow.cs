@@ -33,14 +33,14 @@ namespace punto.gui
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "punto.gui.PrincipalWindow";
-			this.Title = global::Mono.Unix.Catalog.GetString ("PrincipalWindow");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString ("MiniMarket \"El Coke\"");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child punto.gui.PrincipalWindow.Gtk.Container+ContainerChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
 			this.vbox2.Spacing = 6;
 			// Container child vbox2.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'/><menu name='ProductosAction' action='ProductosAction'><menuitem name='FamiliaDeProductosAction' action='FamiliaDeProductosAction'/><menuitem name='IngresarModificarProductosAction' action='IngresarModificarProductosAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'/><menu name='ProductosAction' action='ProductosAction'><menuitem name='FamiliaDeProductosAction' action='FamiliaDeProductosAction'/><menuitem name='IngresarModificarProductosAction' action='IngresarModificarProductosAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox2.Add (this.menubar1);

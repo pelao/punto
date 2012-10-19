@@ -10,8 +10,8 @@
   </import>
   <widget class="Gtk.Dialog" id="punto.gui.basedatosdialog" design-size="400 300">
     <property name="MemberName" />
-    <property name="Title" translatable="yes" />
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Conectar a Base de Datos</property>
+    <property name="WindowPosition">Center</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">
@@ -312,8 +312,8 @@
   </widget>
   <widget class="Gtk.Dialog" id="punto.gui.familiaproductosdialog" design-size="400 300">
     <property name="MemberName" />
-    <property name="Title" translatable="yes" />
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Agregar Familias de Productos</property>
+    <property name="WindowPosition">Center</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">
@@ -528,8 +528,8 @@
       </action>
     </action-group>
     <property name="MemberName" />
-    <property name="Title" translatable="yes">PrincipalWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">MiniMarket "El Coke"</property>
+    <property name="WindowPosition">Center</property>
     <child>
       <widget class="Gtk.VBox" id="vbox2">
         <property name="MemberName" />
@@ -756,7 +756,8 @@
   </widget>
   <widget class="Gtk.Dialog" id="punto.gui.IngresarProductosDialog" design-size="400 437">
     <property name="MemberName" />
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="Title" translatable="yes">Ingresar / Modificar Productos</property>
+    <property name="WindowPosition">Center</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">

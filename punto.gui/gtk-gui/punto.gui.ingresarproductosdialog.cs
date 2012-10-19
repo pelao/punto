@@ -45,7 +45,8 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.IngresarProductosDialog
 			this.Name = "punto.gui.IngresarProductosDialog";
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString ("Ingresar / Modificar Productos");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.IngresarProductosDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";

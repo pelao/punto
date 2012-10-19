@@ -24,8 +24,8 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.basedatosdialog
 			this.Name = "punto.gui.basedatosdialog";
-			this.Title = "";
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString ("Conectar a Base de Datos");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.basedatosdialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";
