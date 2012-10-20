@@ -41,7 +41,7 @@ namespace punto.gui
 			this.db = new ControladorBaseDatos ();
 			bool correcta = false;
 			try {
-				correcta = this.db.ConfiguracionCorrecta;
+				correcta = this.db.ConfiguracionCorrectaBd;
 			} catch (Exception ex) {
 				correcta = false;
 			}
@@ -55,7 +55,7 @@ namespace punto.gui
 				correcta = false;
 				
 				try {
-					correcta = this.db.ConfiguracionCorrecta;
+					correcta = this.db.ConfiguracionCorrectaBd;
 				} catch (Exception ex) {
 					correcta = false;
 				}
@@ -78,7 +78,7 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 	bool correcta = false;
 	
 	try {
-		correcta = this.db.ConfiguracionCorrecta;
+		correcta = this.db.ConfiguracionCorrectaBd;
 	}
 	catch (Exception ex)
 	{

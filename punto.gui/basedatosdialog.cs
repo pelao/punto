@@ -23,7 +23,7 @@ namespace punto.gui
 			this.entry4.Text = this.db.Password;
 			
 			try {
-				this.era_correcta = this.db.ConfiguracionCorrecta;
+				this.era_correcta = this.db.ConfiguracionCorrectaBd;
 			}
 			catch (Exception ex)
 			{
@@ -66,7 +66,7 @@ namespace punto.gui
 			bool correcta = false;
 			
 			try {
-				correcta = this.db.ConfiguracionCorrecta;
+				correcta = this.db.ConfiguracionCorrectaBd;
 			}
 			catch (Exception ex)
 			{
@@ -90,7 +90,7 @@ namespace punto.gui
 			this.db.User = this.entry3.Text;
 			this.db.Password = this.entry4.Text;
 			
-			this.db.GuardarConfiguracion();
+			this.db.GuardarConfiguracionBd();
 			this.Destroy();
 		}
 		public void Destroy ()

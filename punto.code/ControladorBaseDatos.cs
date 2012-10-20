@@ -25,11 +25,11 @@ namespace punto.code
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
 
 		}
-		public bool AgregarProductos (Producto registro)
+		public bool AgregarProductosBd (Producto registro)
 		{
 		
 				
-				IDbConnection dbcon = this.Conectar();
+				IDbConnection dbcon = this.ConectarBd();
 				
 				IDbCommand dbcmd = dbcon.CreateCommand();
 				string sql =
@@ -43,15 +43,15 @@ namespace punto.code
 				dbcmd.Dispose();
 				dbcmd = null;
 				
-				this.Desconectar(dbcon);
+				this.DesconectarBd(dbcon);
 	
 			
 			return false;
 		}
 
-		public bool ExisteRegistroProductos (Producto registro, bool buscar_id)
+		public bool ExisteRegistroProductosBd (Producto registro, bool buscar_id)
 		{
-			IDbConnection dbcon = this.Conectar ();
+			IDbConnection dbcon = this.ConectarBd ();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand ();
 			string sql;
@@ -72,14 +72,14 @@ namespace punto.code
 			dbcmd.Dispose();
 			dbcmd = null;
 			
-			this.Desconectar(dbcon);
+			this.DesconectarBd(dbcon);
 			
 			return existe;
 		}
 
-		public List<FamiliaProducto> ObtenerFamilias ()
+		public List<FamiliaProducto> ObtenerFamiliasBd ()
 		{
-			IDbConnection dbcon = this.Conectar();
+			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
@@ -97,16 +97,16 @@ namespace punto.code
 			dbcmd.Dispose();
 			dbcmd = null;
 			
-			this.Desconectar(dbcon);
+			this.DesconectarBd(dbcon);
 			
 			return familias;
 		}
 
-		public bool AgregarFamilia (FamiliaProducto familia)
+		public bool AgregarFamiliaBd (FamiliaProducto familia)
 		{
-			if (!this.ExisteFamilia(familia))
+			if (!this.ExisteFamiliaBd(familia))
 			{
-				IDbConnection dbcon = this.Conectar();
+				IDbConnection dbcon = this.ConectarBd();
 				
 				IDbCommand dbcmd = dbcon.CreateCommand();
 				string sql =
@@ -119,15 +119,15 @@ namespace punto.code
 				dbcmd.Dispose();
 				dbcmd = null;
 				
-				this.Desconectar(dbcon);
+				this.DesconectarBd(dbcon);
 				
 				return true;
 			}
 			return false;
 		}
-		public bool ExisteFamilia (FamiliaProducto Familia)
+		public bool ExisteFamiliaBd (FamiliaProducto Familia)
 		{
-			IDbConnection dbcon = this.Conectar();
+			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
@@ -143,23 +143,23 @@ namespace punto.code
 			dbcmd.Dispose();
 			dbcmd = null;
 			
-			this.Desconectar(dbcon);
+			this.DesconectarBd(dbcon);
 			
 			return existe;
 		}
-		public bool ConfiguracionCorrecta
+		public bool ConfiguracionCorrectaBd
 		{
 			get {
 				bool conectado = true;
 				
 				try{
-					IDbConnection dbcon = this.Conectar();
+					IDbConnection dbcon = this.ConectarBd();
 					if (dbcon.State != ConnectionState.Open)
 					{
 						//"Incorrect server name, user name or password"
 						conectado = false;
 					}
-					this.Desconectar(dbcon);
+					this.DesconectarBd(dbcon);
 				}
 				catch(Exception e)
 				{
@@ -170,7 +170,7 @@ namespace punto.code
 			}
 		}
 		
-		public void GuardarConfiguracion ()
+		public void GuardarConfiguracionBd ()
 		{	
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 			config.AppSettings.Settings["BdServer"].Value = this.Server;
@@ -179,7 +179,7 @@ namespace punto.code
 			config.AppSettings.Settings["BdPassword"].Value = this.Password;
 			config.Save(ConfigurationSaveMode.Modified);
 		}
-		private IDbConnection Conectar ()
+		private IDbConnection ConectarBd ()
 		{
 			string connectionString =
 				"Server="+this.Server+";" +
@@ -194,7 +194,7 @@ namespace punto.code
 			return dbcon;
 			
 		}
-		private bool Desconectar (IDbConnection dbcon)
+		private bool DesconectarBd (IDbConnection dbcon)
 		{
 			if (dbcon == null)
 			{

@@ -25,7 +25,7 @@ namespace punto.gui
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			try {
-				correcta = this.db.ConfiguracionCorrecta;
+				correcta = this.db.ConfiguracionCorrectaBd;
 			}
 			catch (Exception ex)
 			{
@@ -42,7 +42,7 @@ namespace punto.gui
 				correcta = false;
 				
 				try {
-					correcta = this.db.ConfiguracionCorrecta;
+					correcta = this.db.ConfiguracionCorrectaBd;
 				}
 				catch (Exception ex)
 				{
@@ -115,7 +115,7 @@ namespace punto.gui
 
 		public void CargarFamilias()
 		{
-			this.familias = this.db.ObtenerFamilias();
+			this.familias = this.db.ObtenerFamiliasBd();
 			this.bodegasmodel = new Gtk.ListStore(typeof(string));
 			foreach (FamiliaProducto bod in this.familias)
 			{
@@ -148,7 +148,7 @@ namespace punto.gui
 			FamiliaProducto bod = new FamiliaProducto(this.entry.Text.Trim());
 //			familiap bod = new familiap("leña");
 
-			if (this.db.ExisteFamilia(bod))
+			if (this.db.ExisteFamiliaBd(bod))
 			{
 				Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
@@ -165,7 +165,7 @@ namespace punto.gui
 			}
 			else
 			{
-				if (this.db.AgregarFamilia(bod))
+				if (this.db.AgregarFamiliaBd(bod))
 				{
 					this.familias.Add(bod);
 					this.bodegasmodel.AppendValues(bod.Nombre);

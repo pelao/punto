@@ -31,7 +31,7 @@ namespace punto.gui
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			try {
-				correcta = this.db.ConfiguracionCorrecta;
+				correcta = this.db.ConfiguracionCorrectaBd;
 			}
 			catch (Exception ex)
 			{
@@ -48,7 +48,7 @@ namespace punto.gui
 				correcta = false;
 				
 				try {
-					correcta = this.db.ConfiguracionCorrecta;
+					correcta = this.db.ConfiguracionCorrectaBd;
 				}
 				catch (Exception ex)
 				{
@@ -106,7 +106,7 @@ namespace punto.gui
 			{
 				texto_activo = this.tiposplantasmodel.GetValue(iter,0).ToString();
 			}*/ 
-			List<FamiliaProducto> tipos = this.db.ObtenerFamilias();
+			List<FamiliaProducto> tipos = this.db.ObtenerFamiliasBd();
 			combobox4.Clear();
 			CellRendererText cell = new CellRendererText();
 			combobox4.PackStart(cell, false);
@@ -130,7 +130,7 @@ namespace punto.gui
 			Producto bod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
 
 		
-		if (this.db.ExisteRegistroProductos(bod,true))
+		if (this.db.ExisteRegistroProductosBd(bod,true))
 		{
 				Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
@@ -147,7 +147,7 @@ namespace punto.gui
 		}
 		else
 		{
-			if (this.db.AgregarProductos(bod))
+			if (this.db.AgregarProductosBd(bod))
 			{
 		//		this.productos.Add(bod);
 				this.productosmodel.AppendValues(bod.Nombre);
