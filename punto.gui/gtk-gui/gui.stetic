@@ -509,9 +509,9 @@
         <property name="Label" translatable="yes">Productos</property>
         <property name="ShortLabel" translatable="yes">Productos</property>
       </action>
-      <action id="FamiliaDeProductosAction">
+      <action id="AgregarFamiliaAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Familia de productos</property>
+        <property name="Label" translatable="yes">Agregar Familia</property>
         <property name="ShortLabel" translatable="yes">Familia de productos</property>
         <signal name="Activated" handler="OnFamiliaDeProductosActionActivated" />
       </action>
@@ -520,11 +520,16 @@
         <property name="Label" translatable="yes">Sesion</property>
         <property name="ShortLabel" translatable="yes">Sesion</property>
       </action>
-      <action id="IngresarModificarProductosAction">
+      <action id="RegistrarModificarAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Ingresar/Modificar Productos</property>
-        <property name="ShortLabel" translatable="yes">Ingresar/Modificar Productos</property>
+        <property name="Label" translatable="yes">Registrar/Modificar</property>
+        <property name="ShortLabel" translatable="yes">Ingresar/Modificar</property>
         <signal name="Activated" handler="OnIngresarModificarProductosActionActivated" />
+      </action>
+      <action id="CerrarAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Cerrar</property>
+        <property name="ShortLabel" translatable="yes">Cerrar</property>
       </action>
     </action-group>
     <property name="MemberName" />
@@ -538,10 +543,12 @@
           <widget class="Gtk.MenuBar" id="menubar1">
             <property name="MemberName" />
             <node name="menubar1" type="Menubar">
-              <node type="Menu" action="SesionAction" />
+              <node type="Menu" action="SesionAction">
+                <node type="Menuitem" action="CerrarAction" />
+              </node>
               <node type="Menu" action="ProductosAction">
-                <node type="Menuitem" action="FamiliaDeProductosAction" />
-                <node type="Menuitem" action="IngresarModificarProductosAction" />
+                <node type="Menuitem" action="AgregarFamiliaAction" />
+                <node type="Menuitem" action="RegistrarModificarAction" />
               </node>
             </node>
           </widget>
@@ -756,7 +763,7 @@
   </widget>
   <widget class="Gtk.Dialog" id="punto.gui.IngresarProductosDialog" design-size="400 437">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">Ingresar / Modificar Productos</property>
+    <property name="Title" translatable="yes">Registrar / Modificar Producto</property>
     <property name="WindowPosition">Center</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
