@@ -2,7 +2,7 @@ using System;
 
 namespace punto.code
 {
-	public class producto
+	public class Producto
 	{
 		private int _codigobarra;//>0
 		private string _nombre;//<200
@@ -12,7 +12,7 @@ namespace punto.code
 		private string _familia;//<36
 
 	
-		public producto (int codigobarra, string nombre, int precioventa, string familia,bool pesable,bool vigente)
+		public Producto (int codigobarra, string nombre, int precioventa, string familia,bool pesable,bool vigente)
 		{
 			this.Codigobarra = codigobarra;
 			this.Nombre = nombre;

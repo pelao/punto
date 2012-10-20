@@ -7,14 +7,14 @@ using MySql.Data.MySqlClient;
 
 namespace punto.code
 {
-	public class basedatos
+	public class ControladorBaseDatos
 	{
 		private string _server;
 		private string _database;
 		private string _user;
 		private string _password;
 
-		public basedatos ()
+		public ControladorBaseDatos ()
 		{
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 			//Modificar para leerlo desde un archivo xml
@@ -25,7 +25,7 @@ namespace punto.code
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
 
 		}
-		public bool AgregarProductos (producto registro)
+		public bool AgregarProductos (Producto registro)
 		{
 		
 				
@@ -49,7 +49,7 @@ namespace punto.code
 			return false;
 		}
 
-		public bool ExisteRegistroProductos (producto registro, bool buscar_id)
+		public bool ExisteRegistroProductos (Producto registro, bool buscar_id)
 		{
 			IDbConnection dbcon = this.Conectar ();
 			
@@ -77,7 +77,7 @@ namespace punto.code
 			return existe;
 		}
 
-		public List<familiap> ObtenerFamilias ()
+		public List<FamiliaProducto> ObtenerFamilias ()
 		{
 			IDbConnection dbcon = this.Conectar();
 			
@@ -88,9 +88,9 @@ namespace punto.code
 					"ORDER BY nombre ASC";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
-			List<familiap> familias = new List<familiap>();
+			List<FamiliaProducto> familias = new List<FamiliaProducto>();
 			while(reader.Read()) {
-				familias.Add(new familiap( (string) reader["nombre"]));
+				familias.Add(new FamiliaProducto( (string) reader["nombre"]));
 			}
 			reader.Close();
 			reader = null;
@@ -102,7 +102,7 @@ namespace punto.code
 			return familias;
 		}
 
-		public bool AgregarFamilia (familiap familia)
+		public bool AgregarFamilia (FamiliaProducto familia)
 		{
 			if (!this.ExisteFamilia(familia))
 			{
@@ -125,7 +125,7 @@ namespace punto.code
 			}
 			return false;
 		}
-		public bool ExisteFamilia (familiap Familia)
+		public bool ExisteFamilia (FamiliaProducto Familia)
 		{
 			IDbConnection dbcon = this.Conectar();
 			

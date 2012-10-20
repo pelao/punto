@@ -44,11 +44,11 @@
     <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="basedatos.cs" />
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="gtk-gui\punto.code.familia.cs" />
-    <Compile Include="familiap.cs" />
-    <Compile Include="producto.cs" />
+    <Compile Include="FamiliaProducto.cs" />
+    <Compile Include="ControladorBaseDatos.cs" />
+    <Compile Include="Producto.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

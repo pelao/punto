@@ -28,7 +28,7 @@ namespace punto.gui
 	}
 	public partial class PrincipalWindow : Gtk.Window
 	{
-		private basedatos db;
+		private ControladorBaseDatos db;
 		
 		public PrincipalWindow () : base(Gtk.WindowType.Toplevel)
 		{
@@ -38,7 +38,7 @@ namespace punto.gui
 			//this.bodegasentrycompletion.
 			
 			this.Build ();
-			this.db = new basedatos ();
+			this.db = new ControladorBaseDatos ();
 			bool correcta = false;
 			try {
 				correcta = this.db.ConfiguracionCorrecta;
@@ -50,7 +50,7 @@ namespace punto.gui
 				basedatosdialog bdd = new basedatosdialog (this);
 				bdd.Run ();
 				this.db = null;
-				this.db = new basedatos ();
+				this.db = new ControladorBaseDatos ();
 				
 				correcta = false;
 				
@@ -73,7 +73,7 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 	bdd.Run();
 	bdd.Destroy();
 	this.db = null;
-			this.db = new basedatos();
+			this.db = new ControladorBaseDatos();
 	
 	bool correcta = false;
 	
@@ -90,7 +90,8 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 		Gtk.Application.Quit();
 	}
 	
-}
+}
+
 
 		protected void OnIngresarModificarProductosActionActivated (object sender, EventArgs e)
 		{

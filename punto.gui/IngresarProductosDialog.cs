@@ -7,13 +7,13 @@ namespace punto.gui
 {
 	public partial class IngresarProductosDialog : Gtk.Dialog
 	{
-		private basedatos db;
+		private ControladorBaseDatos db;
 
 		private bool checkbox=false;
 
 		private bool checkbox2=false;
 
-		public List<familiap> productos = new List<familiap>();
+		public List<FamiliaProducto> productos = new List<FamiliaProducto>();
 		
 		private Gtk.ListStore productosmodel;
 
@@ -28,7 +28,7 @@ namespace punto.gui
 		{
 			this.Build ();
 			//this.CargarTiposFamiliaCombobox();
-			this.db = new basedatos();
+			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			try {
 				correcta = this.db.ConfiguracionCorrecta;
@@ -43,7 +43,7 @@ namespace punto.gui
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
-				this.db = new basedatos();
+				this.db = new ControladorBaseDatos();
 				
 				correcta = false;
 				
@@ -106,7 +106,7 @@ namespace punto.gui
 			{
 				texto_activo = this.tiposplantasmodel.GetValue(iter,0).ToString();
 			}*/ 
-			List<familiap> tipos = this.db.ObtenerFamilias();
+			List<FamiliaProducto> tipos = this.db.ObtenerFamilias();
 			combobox4.Clear();
 			CellRendererText cell = new CellRendererText();
 			combobox4.PackStart(cell, false);
@@ -114,7 +114,7 @@ namespace punto.gui
 			this.productosmodel = new Gtk.ListStore(typeof (string));
 			combobox4.Model = productosmodel;
 			
-			foreach (familiap tp in tipos)
+			foreach (FamiliaProducto tp in tipos)
 			{
 				this.productosmodel.AppendValues(tp.Nombre);
 				
@@ -127,7 +127,7 @@ namespace punto.gui
 
 
 		protected void OnBotonAgregarPClicked (object sender, EventArgs e){
-			producto bod = new producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
+			Producto bod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
 
 		
 		if (this.db.ExisteRegistroProductos(bod,true))

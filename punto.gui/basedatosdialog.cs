@@ -10,12 +10,12 @@ namespace punto.gui
 	
 	public partial class basedatosdialog : Gtk.Dialog
 	{
-		private basedatos db;
+		private ControladorBaseDatos db;
 		private bool era_correcta = true;
 		
 		public basedatosdialog (Gtk.Window parent) : base ("Configuración de Conexión a Base de Datos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
-			this.db = new basedatos();
+			this.db = new ControladorBaseDatos();
 			this.Build ();
 			this.entry1.Text = this.db.Server;
 			this.entry2.Text = this.db.Database;

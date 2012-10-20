@@ -7,9 +7,9 @@ namespace punto.gui
 	public partial class familiaproductosdialog : Gtk.Dialog
 	{
 
-		private basedatos db;
+		private ControladorBaseDatos db;
 		
-		public List<familiap> familias = new List<familiap>();
+		public List<FamiliaProducto> familias = new List<FamiliaProducto>();
 		
 		private Gtk.ListStore bodegasmodel;
 		
@@ -22,7 +22,7 @@ namespace punto.gui
 		{
 			this.Build ();
 			
-			this.db = new basedatos();
+			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			try {
 				correcta = this.db.ConfiguracionCorrecta;
@@ -37,7 +37,7 @@ namespace punto.gui
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
-				this.db = new basedatos();
+				this.db = new ControladorBaseDatos();
 				
 				correcta = false;
 				
@@ -117,7 +117,7 @@ namespace punto.gui
 		{
 			this.familias = this.db.ObtenerFamilias();
 			this.bodegasmodel = new Gtk.ListStore(typeof(string));
-			foreach (familiap bod in this.familias)
+			foreach (FamiliaProducto bod in this.familias)
 			{
 				this.bodegasmodel.AppendValues( bod.Nombre);
 			}
@@ -145,7 +145,7 @@ namespace punto.gui
 
 		protected virtual void OnAgregarButtonClicked (object sender, System.EventArgs e)
 		{
-			familiap bod = new familiap(this.entry.Text.Trim());
+			FamiliaProducto bod = new FamiliaProducto(this.entry.Text.Trim());
 //			familiap bod = new familiap("leña");
 
 			if (this.db.ExisteFamilia(bod))
