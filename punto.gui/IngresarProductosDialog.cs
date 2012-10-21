@@ -27,7 +27,7 @@ namespace punto.gui
 		public IngresarProductosDialog(Gtk.Window parent) : base ("Ingresar Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.Build ();
-			//this.CargarTiposFamiliaCombobox();
+
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			try {
@@ -67,7 +67,6 @@ namespace punto.gui
 		
 		public void  Run () 
 		{
-			//this.CargarProducciones(0,0,true);
 	
 			this.CargarTiposFamiliaCombobox();
 
@@ -94,18 +93,12 @@ namespace punto.gui
 				dialog.Run ();
 				dialog.Destroy ();
 				
-				//this.Destroy();
+		
 			
 		}
 		public void CargarTiposFamiliaCombobox()
 		{
-			/*Gtk.TreeIter iter;
-			this.combobox3.GetActiveIter(out iter);
-			string texto_activo = "";
-			if (this.tiposplantasmodel != null) 
-			{
-				texto_activo = this.tiposplantasmodel.GetValue(iter,0).ToString();
-			}*/ 
+
 			List<FamiliaProducto> tipos = this.db.ObtenerFamiliasBd();
 			combobox4.Clear();
 			CellRendererText cell = new CellRendererText();
@@ -126,42 +119,38 @@ namespace punto.gui
 		}
 
 
-		protected void OnBotonAgregarPClicked (object sender, EventArgs e){
-			Producto bod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
+		protected void OnBotonAgregarPClicked (object sender, EventArgs e)
+		{
+			Producto prod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
 
 		
-		if (this.db.ExisteRegistroProductosBd(bod,true))
+			if (this.db.ExisteRegistroProductosBd(prod,true))
 		{
-				Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+				Dialog dialog = new Dialog("PRODUCTO YA EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "No se pudo agregar la bodega porque ya existe una con el mismo código.\nIntente agregar uno diferente.";
+				etiqueta.Markup = "El Producto que intenta agregar ya existe en la Base de Datos";
 				dialog.BorderWidth = 8;
 				dialog.VBox.BorderWidth = 8;
 				dialog.VBox.PackStart(etiqueta, false, false, 0);
 				dialog.AddButton ("Cerrar", ResponseType.Close);
-			//dialog.ShowAll;		
-			//	dialog.Run ();
-			//	dialog.Destroy ();
+			    dialog.ShowAll();		
+			 	dialog.Run ();
+				dialog.Destroy ();
 		}
 		else
 		{
-			if (this.db.AgregarProductosBd(bod))
-			{
-		//		this.productos.Add(bod);
-				this.productosmodel.AppendValues(bod.Nombre);
-				
-				
-				this.cambiado = true;
-			}
-			else
-			{
-				Dialog dialog = new Dialog("Ok", this, Gtk.DialogFlags.DestroyWithParent);
+				this.db.AgregarProductosBd(prod);
+				//this.productosmodel.AppendValues(prod.Nombre);
+				//this.cambiado = true;
+				Console.WriteLine("agrego producto");
+
+				Dialog dialog = new Dialog("PRODUCTO INGRESADO", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "se agrego con exito";
+				etiqueta.Markup = "El Producto ha sido ingresado a la Base de Datos";
 				dialog.BorderWidth = 8;
 				dialog.VBox.BorderWidth = 8;
 				dialog.VBox.PackStart(etiqueta, false, false, 0);
@@ -170,7 +159,7 @@ namespace punto.gui
 				dialog.Run ();
 				dialog.Destroy ();
 				
-			}
+			
 		}
 		
 	}
@@ -179,12 +168,12 @@ namespace punto.gui
 		{
 			if(checkbutton7.Active)
 			{
-				//checkbutton7.Sensitive = true;
+			
 				checkbox=true;
 			}
 			else
 			{
-				//checkbutton7.Sensitive = false;
+			
 				checkbox=false;
 
 			}		}
@@ -192,13 +181,13 @@ namespace punto.gui
 		{
 			if(checkbutton8.Active)
 			{
-				//checkbutton7.Sensitive = true;
-				checkbox=true;
+		
+				checkbox2=true;
 			}
 			else
 			{
-				//checkbutton7.Sensitive = false;
-				checkbox=false;
+		
+				checkbox2=false;
 				
 			}		}
 }

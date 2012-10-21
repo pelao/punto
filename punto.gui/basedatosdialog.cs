@@ -44,7 +44,7 @@ namespace punto.gui
 			dialog.Modal = true;
 			dialog.Resizable = false;
 			Gtk.Label etiqueta = new Gtk.Label();
-			etiqueta.Markup = "Ha ocurrido un error en la comunicación con el servidor de base de datos.";
+			etiqueta.Markup = "Error en la comunicación con el servidor de base de datos.";
 			dialog.BorderWidth = 8;
 			dialog.VBox.BorderWidth = 8;
 			dialog.VBox.PackStart(etiqueta, false, false, 0);
@@ -99,8 +99,7 @@ namespace punto.gui
 			Console.WriteLine("Destroy");
 #endif
 			GLib.ExceptionManager.UnhandledException -= ExcepcionDesconocida;
-			//EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
-			//this.OnEdicionDialogChanged(args);
+
 			base.Destroy();
 		}
 

@@ -35,7 +35,7 @@ namespace punto.gui
 #if DEBUG
 			Console.WriteLine ("En debug");
 #endif
-			//this.bodegasentrycompletion.
+
 			
 			this.Build ();
 			this.db = new ControladorBaseDatos ();

@@ -17,7 +17,6 @@ namespace punto.code
 		public ControladorBaseDatos ()
 		{
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-			//Modificar para leerlo desde un archivo xml
 
 			this.Server = config.AppSettings.Settings["BdServer"].Value;
 			this.Database = config.AppSettings.Settings["BdDatabase"].Value;
@@ -39,7 +38,7 @@ namespace punto.code
 				dbcmd.CommandText = sql;
 				IDataReader reader = dbcmd.ExecuteReader();
 			
-				// clean up
+	
 				dbcmd.Dispose();
 				dbcmd = null;
 				
@@ -66,7 +65,7 @@ namespace punto.code
 
 			IDataReader reader = dbcmd.ExecuteReader();
 			bool existe = reader.Read();
-			// clean up
+	
 			reader.Close();
 			reader = null;
 			dbcmd.Dispose();
@@ -115,7 +114,7 @@ namespace punto.code
 				dbcmd.CommandText = sql;
 				int res = dbcmd.ExecuteNonQuery();
 				
-				// clean up
+			
 				dbcmd.Dispose();
 				dbcmd = null;
 				
@@ -137,7 +136,7 @@ namespace punto.code
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			bool existe = reader.Read();
-			// clean up
+
 			reader.Close();
 			reader = null;
 			dbcmd.Dispose();
@@ -156,7 +155,7 @@ namespace punto.code
 					IDbConnection dbcon = this.ConectarBd();
 					if (dbcon.State != ConnectionState.Open)
 					{
-						//"Incorrect server name, user name or password"
+						//nombre servidor, usuario o contraseña incorrecta
 						conectado = false;
 					}
 					this.DesconectarBd(dbcon);

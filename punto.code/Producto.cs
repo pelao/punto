@@ -4,12 +4,12 @@ namespace punto.code
 {
 	public class Producto
 	{
-		private int _codigobarra;//>0
-		private string _nombre;//<200
-		private int _precioventa;//>0
+		private int _codigobarra;
+		private string _nombre;
+		private int _precioventa;
 		private bool _pesable;
 		private bool _vigente;
-		private string _familia;//<36
+		private string _familia;
 
 	
 		public Producto (int codigobarra, string nombre, int precioventa, string familia,bool pesable,bool vigente)

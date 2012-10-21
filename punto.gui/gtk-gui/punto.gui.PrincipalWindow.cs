@@ -56,8 +56,8 @@ namespace punto.gui
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 465;
-			this.DefaultHeight = 300;
+			this.DefaultWidth = 731;
+			this.DefaultHeight = 479;
 			this.Show ();
 			this.AgregarFamiliaAction.Activated += new global::System.EventHandler (this.OnFamiliaDeProductosActionActivated);
 			this.RegistrarModificarAction.Activated += new global::System.EventHandler (this.OnIngresarModificarProductosActionActivated);

@@ -7,13 +7,13 @@ namespace punto.code
 	public class FamiliaProducto
 		{
 
-		private string _nombre;//27
-			//private int _codigo_destino;
+		private string _nombre;
+
 			
 		public FamiliaProducto ( string nombre)
 			{
 				this.Nombre = nombre;
-				//this.CodigoDestino = codigo_destino;
+
 			}
 			
 	
@@ -28,15 +28,5 @@ namespace punto.code
 				}
 			}
 			
-			//		public int CodigoDestino
-			//		{
-			//			get {return this._codigo_destino;}
-			//			set {
-			//				if (value >= 0)
-			//				{
-			//					this._codigo_destino = value;
-			//				}
-			//			}
-			//		}
 		}
 	}

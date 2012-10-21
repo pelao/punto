@@ -13,8 +13,7 @@ namespace punto.gui
 		
 		private Gtk.ListStore bodegasmodel;
 		
-		// The event. Note that by using the generic EventHandler<T> event type
-		// we do not need to declare a separate delegate type.
+
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 		
@@ -65,9 +64,7 @@ namespace punto.gui
 			nombre_column.AddAttribute(nombre_cell, "text", 0);
 			
 			this.familiaplantastreeview.Selection.Changed += OnFamiliasTreeViewSelectionChanged;
-			
-			//cargar emsefor desde la base de datos
-			//this.CargarEmsefor();
+
 			
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
@@ -80,7 +77,7 @@ namespace punto.gui
 #endif
 			GLib.ExceptionManager.UnhandledException -= ExcepcionDesconocida;
 			EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
-			//this.OnEdicionDialogChanged(args);
+		
 			base.Destroy();
 		}
 		
@@ -103,7 +100,7 @@ namespace punto.gui
 			dialog.Run ();
 			dialog.Destroy ();
 			
-			//this.Destroy();
+		
 		}
 		public void  Run () 
 		{
@@ -117,14 +114,13 @@ namespace punto.gui
 		{
 			this.familias = this.db.ObtenerFamiliasBd();
 			this.bodegasmodel = new Gtk.ListStore(typeof(string));
-			foreach (FamiliaProducto bod in this.familias)
+			foreach (FamiliaProducto prod in this.familias)
 			{
-				this.bodegasmodel.AppendValues( bod.Nombre);
+				this.bodegasmodel.AppendValues( prod.Nombre);
 			}
 			familiaplantastreeview.Model = this.bodegasmodel;
 			
-			//desactivar botones
-			//desactivar botones
+
 			actualizar_button.Sensitive = true;
 		}
 		protected void OnFamiliasTreeViewSelectionChanged (object sender, EventArgs args)
@@ -145,46 +141,46 @@ namespace punto.gui
 
 		protected virtual void OnAgregarButtonClicked (object sender, System.EventArgs e)
 		{
-			FamiliaProducto bod = new FamiliaProducto(this.entry.Text.Trim());
-//			familiap bod = new familiap("leña");
+			FamiliaProducto prod = new FamiliaProducto(this.entry.Text.Trim());
 
-			if (this.db.ExisteFamiliaBd(bod))
+
+			if (this.db.ExisteFamiliaBd(prod))
 			{
-				Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+				Dialog dialog = new Dialog("FAMILIA YA EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "No se pudo agregar la bodega porque ya existe una con el mismo código.\nIntente agregar uno diferente.";
+				etiqueta.Markup = "La Familia que intenta agregar ya existe en la Base de Datos";
 				dialog.BorderWidth = 8;
 				dialog.VBox.BorderWidth = 8;
 				dialog.VBox.PackStart(etiqueta, false, false, 0);
 				dialog.AddButton ("Cerrar", ResponseType.Close);
-				//dialog.ShowAll;		
-			//	dialog.Run ();
-			//	dialog.Destroy ();
+				dialog.ShowAll();		
+			    dialog.Run ();
+				dialog.Destroy ();
 			}
 			else
 			{
-				if (this.db.AgregarFamiliaBd(bod))
+				if (this.db.AgregarFamiliaBd(prod))
 				{
-					this.familias.Add(bod);
-					this.bodegasmodel.AppendValues(bod.Nombre);
+					this.familias.Add(prod);
+					this.bodegasmodel.AppendValues(prod.Nombre);
 					
 					this.entry.Text = "";
 					this.familiaplantastreeview.Selection.UnselectAll();
 					this.agregar_button.Sensitive = false;
-					//Console.WriteLine("Agregado");
+				
 					agregar_button.Sensitive = true;
 
 					this.cambiado = true;
 				}
 				else
 				{
-					Dialog dialog = new Dialog("No se pudo agregar la bodega", this, Gtk.DialogFlags.DestroyWithParent);
+					Dialog dialog = new Dialog("ERROR AL AGREGAR FAMILIA", this, Gtk.DialogFlags.DestroyWithParent);
 					dialog.Modal = true;
 					dialog.Resizable = false;
 					Gtk.Label etiqueta = new Gtk.Label();
-					etiqueta.Markup = "No se pudo agregar la bodega, ha ocurrido un error al agregarla a la base de datos.";
+					etiqueta.Markup = "Ha ocurrido un error al agregar la Familia a la Base de Datos";
 					dialog.BorderWidth = 8;
 					dialog.VBox.BorderWidth = 8;
 					dialog.VBox.PackStart(etiqueta, false, false, 0);
