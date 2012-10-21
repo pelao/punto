@@ -106,7 +106,6 @@ namespace punto.gui
 			combobox4.AddAttribute(cell, "text", 0);
 			this.productosmodel = new Gtk.ListStore(typeof (string));
 			combobox4.Model = productosmodel;
-			
 			foreach (FamiliaProducto tp in tipos)
 			{
 				this.productosmodel.AppendValues(tp.Nombre);

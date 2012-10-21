@@ -57,7 +57,7 @@ namespace punto.gui
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 1;
+			this.notebook1.CurrentPage = 0;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
@@ -103,6 +103,7 @@ namespace punto.gui
 			this.checkbutton8.CanFocus = true;
 			this.checkbutton8.Name = "checkbutton8";
 			this.checkbutton8.Label = global::Mono.Unix.Catalog.GetString ("Vigente");
+			this.checkbutton8.Active = true;
 			this.checkbutton8.DrawIndicator = true;
 			this.checkbutton8.UseUnderline = true;
 			this.table1.Add (this.checkbutton8);

@@ -769,7 +769,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">1</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.VBox" id="vbox3">
                 <property name="MemberName" />
@@ -838,6 +838,7 @@
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="Label" translatable="yes">Vigente</property>
+                                <property name="Active">True</property>
                                 <property name="DrawIndicator">True</property>
                                 <property name="HasLabel">True</property>
                                 <property name="UseUnderline">True</property>
