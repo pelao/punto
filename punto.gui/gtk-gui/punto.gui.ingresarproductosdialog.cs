@@ -439,6 +439,7 @@ namespace punto.gui
 			this.checkbutton7.Toggled += new global::System.EventHandler (this.OnCheckbutton7Toggled);
 			this.BotonAgregarP.Clicked += new global::System.EventHandler (this.OnBotonAgregarPClicked);
 			this.checkbutton9.Toggled += new global::System.EventHandler (this.OnCheckbutton8Toggled);
+			this.button65.Clicked += new global::System.EventHandler (this.OnButton65Clicked);
 			this.BotonAgregarP1.Clicked += new global::System.EventHandler (this.OnBotonAgregarPClicked);
 		}
 	}

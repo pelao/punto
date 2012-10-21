@@ -24,6 +24,7 @@ namespace punto.code
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
 
 		}
+
 		public bool AgregarProductosBd (Producto registro)
 		{
 		
@@ -48,20 +49,19 @@ namespace punto.code
 			return false;
 		}
 
-		public bool ExisteRegistroProductosBd (Producto registro, bool buscar_id)
+		public bool ExisteRegistroProductosBd (int codigob)
 		{
 			IDbConnection dbcon = this.ConectarBd ();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand ();
 			string sql;
-			if (buscar_id) {	
 				sql =
 					"SELECT codigobarra " +
 					"FROM productos " +
-					"WHERE codigobarra=" + registro.Codigobarra + ";";
+					"WHERE codigobarra='"+ codigob + "';";
 				dbcmd.CommandText = sql;
 
-			}
+
 
 			IDataReader reader = dbcmd.ExecuteReader();
 			bool existe = reader.Read();
@@ -75,6 +75,31 @@ namespace punto.code
 			
 			return existe;
 		}
+		public List<Producto> ObtenerProductosBd (int codigoB)
+		{
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT codigobarra,nombre,precio_venta,nombre_familia,pesable,vigente " +
+					"FROM productos " +
+					"WHERE codigobarra='"+codigoB+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			List<Producto> product = new List<Producto>();
+			while(reader.Read()) {
+				product.Add(new Producto( ((int) reader["codigobarra"]),((string) reader["nombre"]),((int) reader["precio_venta"]),((string) reader["nombre_familia"]),((bool) reader["pesable"]),((bool) reader["vigente"])));
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return product;
+		}
+
 
 		public List<FamiliaProducto> ObtenerFamiliasBd ()
 		{

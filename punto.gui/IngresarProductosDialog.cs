@@ -11,7 +11,7 @@ namespace punto.gui
 
 		private bool checkbox=false;
 
-		private bool checkbox2=false;
+		private bool checkbox2=true;
 
 		public List<FamiliaProducto> productos = new List<FamiliaProducto>();
 		
@@ -69,10 +69,22 @@ namespace punto.gui
 		{
 	
 			this.CargarTiposFamiliaCombobox();
+//			this.CargarProductos();
 
 			base.Run();
 			
 		}
+		
+	/*	public void CargarProductos()
+		{
+			this.productos = this.db.ObtenerProductosBd();
+			this.productosmodel = new Gtk.ListStore(typeof(string));
+			foreach (Producto prod in this.productos)
+			{
+				this.productosmodel.AppendValues( prod.Nombre);
+			}
+		}*/
+
 		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
 		{
 
@@ -120,11 +132,9 @@ namespace punto.gui
 
 		protected void OnBotonAgregarPClicked (object sender, EventArgs e)
 		{
-			Producto prod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
+			bool existe= this.db.ExisteRegistroProductosBd(Int32.Parse(entry12.Text.Trim()));
 
-		
-			if (this.db.ExisteRegistroProductosBd(prod,true))
-		{
+			if (existe)	{
 				Dialog dialog = new Dialog("PRODUCTO YA EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
@@ -140,9 +150,13 @@ namespace punto.gui
 		}
 		else
 		{
+				Producto prod = new Producto(Int32.Parse(entry12.Text.Trim()),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
+
 				this.db.AgregarProductosBd(prod);
+				
 				//this.productosmodel.AppendValues(prod.Nombre);
 				//this.cambiado = true;
+
 				Console.WriteLine("agrego producto");
 
 				Dialog dialog = new Dialog("PRODUCTO INGRESADO", this, Gtk.DialogFlags.DestroyWithParent);
@@ -158,8 +172,8 @@ namespace punto.gui
 				dialog.Run ();
 				dialog.Destroy ();
 				
-			
-		}
+				}
+		
 		
 	}
 	
@@ -187,8 +201,37 @@ namespace punto.gui
 			{
 		
 				checkbox2=false;
-				
+
 			}		}
+		protected void OnButton65Clicked (object sender, EventArgs e)
+		{
+
+/*			productos = this.db.ObtenerProductosBd(Int32.Parse(entry1.Text.Trim()));
+			productosmodel = new Gtk.ListStore(typeof(int),typeof(string),typeof(int),typeof(string),typeof(bool),typeof(bool));
+			foreach (Producto prod in this.productos)
+			{
+				this.productosmodel.AppendValues( prod.Codigobarra,prod.Nombre,prod.Precioventa,prod.Familia,prod.Pesable,prod.Vigente);
+			}
+
+			Gtk.TreeIter iter;
+#if DEBUG					
+			Console.WriteLine("kldao");
+#endif
+
+			Producto registro_viejo = new Producto(Int32.Parse(this.productosmodel.GetValue(iter,0).ToString()),
+			                                        this.productosmodel.GetValue(iter,1).ToString(),
+			                                       Int32.Parse(this.productosmodel.GetValue(iter,3).ToString()),
+			                                        this.productosmodel.GetValue(iter,4).ToString(),
+			                                                                           false,false);
+			
+
+			Producto registro_nuevo = new Producto(Int32.Parse(this.productosmodel.GetValue(iter,0).ToString()),
+			                                       this.productosmodel.GetValue(iter,1).ToString(),
+			                                       this.entry18.Text.Trim(),
+			                                       this.productosmodel.GetValue(iter,4).ToString(),
+													true,        false);
+*/
+		}
 }
 	}
 
