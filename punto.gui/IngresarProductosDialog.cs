@@ -206,6 +206,11 @@ namespace punto.gui
 		protected void OnButton65Clicked (object sender, EventArgs e)
 		{
 
+			ControladorBaseDatos bd = new ControladorBaseDatos();
+
+
+			Console.WriteLine("precio: "+bd.ObtenerProductosBd(Int32.Parse(entry1.Text)));
+
 /*			productos = this.db.ObtenerProductosBd(Int32.Parse(entry1.Text.Trim()));
 			productosmodel = new Gtk.ListStore(typeof(int),typeof(string),typeof(int),typeof(string),typeof(bool),typeof(bool));
 			foreach (Producto prod in this.productos)

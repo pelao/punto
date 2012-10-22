@@ -75,7 +75,7 @@ namespace punto.code
 			
 			return existe;
 		}
-		public List<Producto> ObtenerProductosBd (int codigoB)
+	/*	public List<Producto> ObtenerProductosBd (int codigoB)
 		{
 			IDbConnection dbcon = this.ConectarBd();
 			
@@ -99,7 +99,34 @@ namespace punto.code
 			
 			return product;
 		}
+  */   
+		public String ObtenerProductosBd (int codigoB)
+		{
+			String precio = "";
 
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT precio_venta,vigente " +
+					"FROM productos " +
+					"WHERE codigobarra='"+codigoB+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+		
+			while(reader.Read()) {
+				precio =  (String) reader["precio_venta"];
+				//bool vig = reader["vigente"];
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return precio;
+		}
 
 		public List<FamiliaProducto> ObtenerFamiliasBd ()
 		{
