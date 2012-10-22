@@ -190,53 +190,67 @@ namespace punto.gui
 				checkbox=false;
 
 			}		}
-		protected void OnCheckbutton8Toggled (object sender, EventArgs e)
+		protected void OnCheckbutton9Toggled (object sender, EventArgs e)
 		{
-			if(checkbutton8.Active)
+			if(checkbutton9.Active)
 			{
 		
-				checkbox2=true;
+				vigente="True";
 			}
 			else
 			{
 		
-				checkbox2=false;
+				vigente="False";
 
 			}		}
 		protected void OnButton65Clicked (object sender, EventArgs e)
 		{
 
-			ControladorBaseDatos bd = new ControladorBaseDatos();
+			ControladorBaseDatos bd = new ControladorBaseDatos ();
 
 
-			Console.WriteLine("precio: "+bd.ObtenerProductosBd(Int32.Parse(entry1.Text)));
+			//Console.WriteLine("precio: "+bd.ObtenerProductosBd(Int32.Parse(entry1.Text)));
+			string[] preciovigente = new string[1];
+			preciovigente = bd.ObtenerProductosBd (Int32.Parse (entry1.Text));
+			Console.WriteLine ("precio: " + preciovigente [1]);
+			entry18.Text = preciovigente [0];
+			if (preciovigente [1] == "True") {
+				checkbutton9.Visible = true;
+				checkbutton9.Sensitive = true;
+				checkbutton9.Active = true;
+			} else {
+				checkbutton9.Active = false;
 
-/*			productos = this.db.ObtenerProductosBd(Int32.Parse(entry1.Text.Trim()));
-			productosmodel = new Gtk.ListStore(typeof(int),typeof(string),typeof(int),typeof(string),typeof(bool),typeof(bool));
-			foreach (Producto prod in this.productos)
-			{
-				this.productosmodel.AppendValues( prod.Codigobarra,prod.Nombre,prod.Precioventa,prod.Familia,prod.Pesable,prod.Vigente);
 			}
+			//Console.WriteLine("vigente: "+preciovigente[1]);
+	//		entry18.Text=bd.ObtenerProductosBd(Int32.Parse(entry1.Text));
 
-			Gtk.TreeIter iter;
-#if DEBUG					
-			Console.WriteLine("kldao");
-#endif
-
-			Producto registro_viejo = new Producto(Int32.Parse(this.productosmodel.GetValue(iter,0).ToString()),
-			                                        this.productosmodel.GetValue(iter,1).ToString(),
-			                                       Int32.Parse(this.productosmodel.GetValue(iter,3).ToString()),
-			                                        this.productosmodel.GetValue(iter,4).ToString(),
-			                                                                           false,false);
-			
-
-			Producto registro_nuevo = new Producto(Int32.Parse(this.productosmodel.GetValue(iter,0).ToString()),
-			                                       this.productosmodel.GetValue(iter,1).ToString(),
-			                                       this.entry18.Text.Trim(),
-			                                       this.productosmodel.GetValue(iter,4).ToString(),
-													true,        false);
-*/
 		}
+
+		protected void OnBotonAgregarP1Clicked (object sender, EventArgs e)
+		{
+		
+			ControladorBaseDatos bd = new ControladorBaseDatos ();
+			
+			
+			bd.ActualizarProductoBd (Int32.Parse (entry1.Text),Int32.Parse (entry18.Text),vigente);
+		
+		}
+		string vigente;
+
+		protected void OnCheckbutton8Toggled (object sender, EventArgs e)
+		{
+			if(checkbutton8.Active)
+			{
+				
+				checkbox2=true;
+			}
+			else
+			{
+				
+				checkbox2=false;
+				
+			}		}
 }
 	}
 

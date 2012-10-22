@@ -100,9 +100,31 @@ namespace punto.code
 			return product;
 		}
   */   
-		public String ObtenerProductosBd (int codigoB)
+		public bool ActualizarProductoBd (int CodigoB,int PrecioV, string Vigente)
 		{
-			String precio = "";
+						
+			IDbConnection dbcon = this.ConectarBd();
+				
+				IDbCommand dbcmd = dbcon.CreateCommand();
+				string sql =
+					"UPDATE productos " +
+						"SET precio_venta='"+PrecioV+"'," +
+					"vigente='"+Vigente+"'" +
+					"WHERE codigobarra="+CodigoB+";";
+
+				dbcmd.CommandText = sql;
+				int res = dbcmd.ExecuteNonQuery();
+				// clean up
+				dbcmd.Dispose();
+				dbcmd = null;
+				
+				this.DesconectarBd(dbcon);
+				
+			return true;
+		}
+		public string[] ObtenerProductosBd (int codigoB)
+		{
+			string[] precio = new string[2];
 
 			IDbConnection dbcon = this.ConectarBd();
 			
@@ -115,7 +137,9 @@ namespace punto.code
 			IDataReader reader = dbcmd.ExecuteReader();
 		
 			while(reader.Read()) {
-				precio =  (String) reader["precio_venta"];
+				precio[0] =  (string) reader["precio_venta"];
+				precio[1] =  (string) reader["vigente"];
+
 				//bool vig = reader["vigente"];
 			}
 			reader.Close();
