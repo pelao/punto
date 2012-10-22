@@ -222,6 +222,22 @@ namespace punto.gui
 				checkbutton9.Active = false;
 
 			}
+			if(!(bd.ExisteRegistroProductosBd(Int32.Parse(entry1.Text.Trim())))){
+
+				Dialog dialog = new Dialog("PRODUCTO NO EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "No existe este producto en la Base de Datos";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+		
+			}
 			//Console.WriteLine("vigente: "+preciovigente[1]);
 	//		entry18.Text=bd.ObtenerProductosBd(Int32.Parse(entry1.Text));
 
@@ -234,6 +250,19 @@ namespace punto.gui
 			
 			
 			bd.ActualizarProductoBd (Int32.Parse (entry1.Text),Int32.Parse (entry18.Text),vigente);
+
+			Dialog dialog = new Dialog("PRODUCTO ACTUALIZADO", this, Gtk.DialogFlags.DestroyWithParent);
+			dialog.Modal = true;
+			dialog.Resizable = false;
+			Gtk.Label etiqueta = new Gtk.Label();
+			etiqueta.Markup = "Se han guardado correctamente los cambios";
+			dialog.BorderWidth = 8;
+			dialog.VBox.BorderWidth = 8;
+			dialog.VBox.PackStart(etiqueta, false, false, 0);
+			dialog.AddButton ("Cerrar", ResponseType.Close);
+			dialog.ShowAll();
+			dialog.Run ();
+			dialog.Destroy ();
 		
 		}
 		string vigente;
