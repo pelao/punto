@@ -26,7 +26,7 @@ namespace punto.gui
 		private global::Gtk.HPaned hpaned16;
 		private global::Gtk.VBox vbox12;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-		private global::Gtk.TextView textview5;
+		private global::Gtk.TreeView treeview1;
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.VBox vbox13;
 		private global::Gtk.VBox vbox14;
@@ -159,10 +159,10 @@ namespace punto.gui
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.textview5 = new global::Gtk.TextView ();
-			this.textview5.CanFocus = true;
-			this.textview5.Name = "textview5";
-			this.GtkScrolledWindow.Add (this.textview5);
+			this.treeview1 = new global::Gtk.TreeView ();
+			this.treeview1.CanFocus = true;
+			this.treeview1.Name = "treeview1";
+			this.GtkScrolledWindow.Add (this.treeview1);
 			this.vbox12.Add (this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox12 [this.GtkScrolledWindow]));
 			w11.Position = 0;
