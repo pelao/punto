@@ -2,12 +2,12 @@ using System;
 
 namespace punto.code
 {
-	public class VentaProducto
+	public class VentaDetalle
 	{
 		private string  _nombre;
 		private int _precio;
 
-		public VentaProducto ( string nombre, int precio)
+		public VentaDetalle ( string nombre, int precio)
 		{
 			this.Nombre = nombre;
 			this.Precio = precio;

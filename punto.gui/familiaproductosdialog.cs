@@ -121,7 +121,6 @@ namespace punto.gui
 			familiaplantastreeview.Model = this.bodegasmodel;
 			
 
-			actualizar_button.Sensitive = true;
 		}
 		protected void OnFamiliasTreeViewSelectionChanged (object sender, EventArgs args)
 		{	
