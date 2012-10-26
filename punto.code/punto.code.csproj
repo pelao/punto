@@ -49,6 +49,7 @@
     <Compile Include="FamiliaProducto.cs" />
     <Compile Include="ControladorBaseDatos.cs" />
     <Compile Include="Producto.cs" />
+    <Compile Include="VentaDetalle" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

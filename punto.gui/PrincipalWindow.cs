@@ -15,7 +15,10 @@ namespace punto.gui
 	public class EdicionDialogChangedEventArgs : EventArgs
 	{
 		private bool cambiado;
-		
+		public List<VentaDetalle> familias = new List<VentaDetalle>();
+		private Gtk.ListStore venta;
+
+
 		public EdicionDialogChangedEventArgs(bool cam)
 		{
 			this.cambiado = cam;
