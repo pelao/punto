@@ -16,7 +16,8 @@ namespace punto.gui
 	{
 		private bool cambiado;
 
-		public List<VentaDetalle> familias = new List<VentaDetalle>();
+
+		public List<DetalleVenta> productoventa = new List<DetalleVenta>();
 		private Gtk.ListStore ventamodel;
 
 
@@ -68,7 +69,12 @@ namespace punto.gui
 					Gtk.Application.Quit ();
 				}
 			}
+
+
+
 		}
+	
+
 
 protected virtual void OnConexionBaseDatosActivated (object sender, System.EventArgs e)
 {
@@ -126,9 +132,28 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 			{
 				rcd.Destroy();
 #if DEBUG
+
+		
 				Console.WriteLine(ex.Message);
 #endif
 			}
 		}
+		protected void OnButton27Clicked (object sender, EventArgs e)
+		{
+			VenderProductosDialog rcd = new VenderProductosDialog(this);
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				
+				
+				Console.WriteLine(ex.Message);
+#endif
+			}		}
 	}
 	}

@@ -152,6 +152,32 @@ namespace punto.code
 			return precio;
 		}
 
+		public List<Produc> ObtenerProductosVenta (int codigoB)
+		{
+
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT nombre,precio_venta " +
+					"FROM productos " +
+					"WHERE codigobarra='"+codigoB+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			List<Produc> productos = new List<Produc>();
+			while(reader.Read()) {
+				productos.Add(new Produc( (string) reader["nombre"],(int) reader["precio_venta"]));
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return productos;
+		}
+
 		public List<FamiliaProducto> ObtenerFamiliasBd ()
 		{
 			IDbConnection dbcon = this.ConectarBd();

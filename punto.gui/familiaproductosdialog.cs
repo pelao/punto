@@ -127,7 +127,6 @@ namespace punto.gui
 			Gtk.TreeIter iter;
 			if (this.familiaplantastreeview.Selection.GetSelected(out iter))
 			{
-				this.entry.Text = this.bodegasmodel.GetValue(iter, 0).ToString();
 				agregar_button.Sensitive = true;
 
 				this.actualizar_button.Sensitive = true;

@@ -2,37 +2,32 @@ using System;
 
 namespace punto.code
 {
-	public class VentaDetalle
+	public class DetalleVenta
 	{
-		private string  _nombre;
-		private int _precio;
-
-		public VentaDetalle ( string nombre, int precio)
+		private int var_codigoVenta;
+		private int var_codigoProducto;
+		private decimal var_cantidad;
+		
+		public DetalleVenta(int codigoVenta ,int codigoProducto ,decimal cantidad)
 		{
-			this.Nombre = nombre;
-			this.Precio = precio;
+			this.CODIGOVENTA=codigoVenta;
+			this.CODIGOPRODUCTO=codigoProducto;
+			this.CANTIDAD=cantidad;
 		}
-
-		public string Nombre
+		public int CODIGOVENTA
 		{
-			get {return this._nombre;}
-			set {
-				if (value.Trim().Length <= 27)
-				{
-					this._nombre = value.Trim();
-				}
-			}
+			get { return var_codigoVenta; }
+			set { var_codigoVenta = value; }
 		}
-
-		public int Precio
+		public int CODIGOPRODUCTO
 		{
-			get {return this._precio;}
-			set {
-				if (value >= 0)
-				{
-					this._precio = value;
-				}
-			}
+			get { return var_codigoProducto; }
+			set { var_codigoProducto = value; }
+		}
+		public decimal CANTIDAD
+		{
+			get { return var_cantidad; }
+			set { var_cantidad = value; }
 		}
 	}
 }

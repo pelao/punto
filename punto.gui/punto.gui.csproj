@@ -78,6 +78,8 @@
     <Compile Include="gtk-gui\punto.gui.PrincipalWindow.cs" />
     <Compile Include="IngresarProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.ingresarproductosdialog.cs" />
+    <Compile Include="VenderProductosDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
