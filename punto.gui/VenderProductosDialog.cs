@@ -11,12 +11,15 @@ namespace punto.gui
 		
 		public List<Produc> productoventa = new List<Produc>();
 		private Gtk.ListStore ventamodel;
+
 		
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
+			this.ventamodel = new Gtk.ListStore (typeof (string), typeof (string));
+
 			this.Build ();
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
@@ -108,19 +111,17 @@ namespace punto.gui
 		public void CargarProductos ()
 		{
 
-			this.productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entry1.Text.Trim()));
-			this.ventamodel = new Gtk.ListStore(typeof(string), typeof(int));
-			Console.WriteLine("antesdelfor");
+			productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entry1.Text.Trim()));
+	
+			treeview2.Model = this.ventamodel;
+
 			foreach (Produc bod in this.productoventa)
 			{
-				this.ventamodel.AppendValues(bod.NOMBRES, bod.PRECIO);
-				Console.WriteLine(bod.NOMBRES);
-				Console.WriteLine("ene elfor");
+				ventamodel.AppendValues(bod.Nombre, bod.Precio);
 
 			}
 			this.treeview2.Selection.UnselectAll();
 
-			treeview2.Model = this.ventamodel;
 	
 		}
 
@@ -130,6 +131,7 @@ namespace punto.gui
 			if (this.treeview2.Selection.GetSelected(out iter))
 			{
 				this.entry1.Text = this.ventamodel.GetValue(iter, 0).ToString();
+				this.entry1.Text = this.ventamodel.GetValue(iter, 1).ToString();
 
 			}
 			else
@@ -149,13 +151,20 @@ namespace punto.gui
 			}
 		}
 
-
+		public void  Run () 
+		{
+			base.Run();
+			
+		}
 		protected void OnButton81Clicked (object sender, EventArgs e)
 		{
-			Console.WriteLine("boton");
 
-				this.CargarProductos();
-				
+			CargarProductos();
+			cambiado=true;
+
+
+		
+
 					}
 	}
 }

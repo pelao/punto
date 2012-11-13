@@ -166,7 +166,7 @@ namespace punto.code
 			IDataReader reader = dbcmd.ExecuteReader();
 			List<Produc> productos = new List<Produc>();
 			while(reader.Read()) {
-				productos.Add(new Produc( (string) reader["nombre"],(int) reader["precio_venta"]));
+				productos.Add(new Produc( (string) reader["nombre"],(string) reader["precio_venta"]));
 			}
 			reader.Close();
 			reader = null;
