@@ -1,12 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
+using System.Globalization;
+using System.Diagnostics;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
+
 using Gtk;
 using punto.code;
 
 namespace punto.gui
 {
+
 	public partial class VenderProductosDialog : Gtk.Dialog
 	{
+		public event EventHandler TimeChanged;
+		public int CurrentTime;
+		
+	
+
 		private ControladorBaseDatos db;
 		
 		public List<Produc> productoventa = new List<Produc>();
@@ -21,7 +36,8 @@ namespace punto.gui
 
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
-			this.ventamodel = new Gtk.ListStore (typeof (string), typeof (string));
+
+			this.ventamodel = new Gtk.ListStore (typeof (int),typeof (string), typeof (string));
 
 			this.Build ();
 			this.db = new ControladorBaseDatos();
@@ -54,9 +70,14 @@ namespace punto.gui
 				
 				if(!correcta)
 				{
-					Application.Quit();
+					//Application.Quit();
 				}
 			}
+			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn();
+			cantidad_column.Title = "Cantidad";
+			Gtk.CellRendererText cantidad_cell = new Gtk.CellRendererText();
+			cantidad_column.PackStart(cantidad_cell, true);
+
 			Gtk.TreeViewColumn precio_column = new Gtk.TreeViewColumn();
 			precio_column.Title = "Precio";
 			Gtk.CellRendererText precio_cell = new Gtk.CellRendererText();
@@ -67,10 +88,12 @@ namespace punto.gui
 			Gtk.CellRendererText nombre_cell = new Gtk.CellRendererText();
 			nombre_column.PackStart(nombre_cell, true);
 
+			this.treeview2.AppendColumn(cantidad_column);
+			cantidad_column.AddAttribute(cantidad_cell, "text", 0);
 			this.treeview2.AppendColumn(nombre_column);
-			nombre_column.AddAttribute(nombre_cell, "text", 0);
+			nombre_column.AddAttribute(nombre_cell, "text", 1);
 			this.treeview2.AppendColumn(precio_column);
-			precio_column.AddAttribute(precio_cell, "text", 1);
+			precio_column.AddAttribute(precio_cell, "text", 2);
 		
 
 			this.treeview2.Selection.Changed += TreeView2SelectionChanged;
@@ -111,6 +134,7 @@ namespace punto.gui
 			
 			
 		}
+
 		public void CargarProductos ()
 		{
 
@@ -118,7 +142,7 @@ namespace punto.gui
 			treeview2.Model = this.ventamodel;
 			foreach (Produc bod in this.productoventa)
 			{
-				ventamodel.AppendValues(bod.Nombre, bod.Precio);
+				ventamodel.AppendValues(1,bod.Nombre, bod.Precio);
 				preciototal=preciototal+Int32.Parse(bod.Precio);
 				Console.WriteLine(preciototal);
 				label6.Text=preciototal.ToString();
@@ -131,13 +155,18 @@ namespace punto.gui
 	
 		}
 
+
+
 		protected void TreeView2SelectionChanged (object sender, EventArgs args)
 		{	
 			Gtk.TreeIter iter;
-			if (this.treeview2.Selection.GetSelected(out iter))
+			TreeModel model;
+			if (this.treeview2.Selection.GetSelected(out model, out iter))
 			{
-				this.entry1.Text = this.ventamodel.GetValue(iter, 0).ToString();
-				this.entry1.Text = this.ventamodel.GetValue(iter, 1).ToString();
+				//model.SetValue(iter, 0, 1);
+				//model.SetValue(iter, 1, "New Value");
+
+				//this.entry1.Text = this.ventamodel.GetValue(iter, 0).ToString();
 
 			}
 			else
@@ -157,15 +186,8 @@ namespace punto.gui
 				handler(this, e);
 			}
 		}
-		private void displayTime ()
-		{
-				label8.TooltipText = DateTime.Now.ToString();
-
-		}
 		public void  Run ()
 		{
-				displayTime();
-
 			base.Run();
 			
 		}
@@ -174,19 +196,12 @@ namespace punto.gui
 
 			CargarProductos();
 			cambiado=true;
-
-
-		
-
 					}
 
 		protected void OnEntry1TextInserted (object o, TextInsertedArgs args)
 		{
-
-
 			CargarProductos();
 			cambiado=true;
-
 
 		}
 

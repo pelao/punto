@@ -618,7 +618,10 @@
                   <placeholder />
                 </child>
                 <child>
-                  <placeholder />
+                  <widget class="Gtk.Label" id="label1">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">label1</property>
+                  </widget>
                 </child>
               </widget>
               <packing>
@@ -1631,6 +1634,7 @@
                       <widget class="Gtk.VPaned" id="vpaned3">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
+                        <property name="Position">10</property>
                         <child>
                           <placeholder />
                         </child>
