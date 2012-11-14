@@ -16,27 +16,8 @@ namespace punto.gui
 		private global::Gtk.VPaned vpaned2;
 		private global::Gtk.HPaned hpaned14;
 		private global::Gtk.VBox vbox4;
-		private global::Gtk.VBox vbox5;
-		private global::Gtk.Label label1;
-		private global::Gtk.Alignment alignment2;
-		private global::Gtk.Entry entry1;
-		private global::Gtk.HPaned hpaned15;
-		private global::Gtk.Frame frame6;
-		private global::Gtk.Alignment GtkAlignment;
-		private global::Gtk.HPaned hpaned16;
-		private global::Gtk.VBox vbox12;
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-		private global::Gtk.TreeView treeview1;
-		private global::Gtk.HBox hbox4;
-		private global::Gtk.VBox vbox13;
-		private global::Gtk.VBox vbox14;
-		private global::Gtk.HBox hbox2;
-		private global::Gtk.Alignment alignment1;
-		private global::Gtk.VBox vbox2;
-		private global::Gtk.Alignment alignment3;
 		private global::Gtk.Button button27;
-		private global::Gtk.Alignment alignment4;
-		private global::Gtk.Label GtkLabel3;
+		private global::Gtk.HPaned hpaned15;
 		
 		protected virtual void Build ()
 		{
@@ -96,157 +77,32 @@ namespace punto.gui
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.vbox5 = new global::Gtk.VBox ();
-			this.vbox5.Name = "vbox5";
-			this.vbox5.Spacing = 6;
-			// Container child vbox5.Gtk.Box+BoxChild
-			this.label1 = new global::Gtk.Label ();
-			this.label1.Name = "label1";
-			this.label1.Xalign = 0F;
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("    Código Barra:");
-			this.vbox5.Add (this.label1);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.label1]));
-			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
-			// Container child vbox5.Gtk.Box+BoxChild
-			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment2.Name = "alignment2";
-			// Container child alignment2.Gtk.Container+ContainerChild
-			this.entry1 = new global::Gtk.Entry ();
-			this.entry1.CanFocus = true;
-			this.entry1.Name = "entry1";
-			this.entry1.IsEditable = true;
-			this.entry1.InvisibleChar = '●';
-			this.alignment2.Add (this.entry1);
-			this.vbox5.Add (this.alignment2);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.alignment2]));
-			w5.Position = 1;
-			w5.Expand = false;
-			w5.Fill = false;
-			this.vbox4.Add (this.vbox5);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vbox5]));
-			w6.Position = 1;
-			this.hpaned14.Add (this.vbox4);
-			this.vpaned2.Add (this.hpaned14);
-			this.hbox3.Add (this.vpaned2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
-			w9.Position = 0;
-			// Container child hbox3.Gtk.Box+BoxChild
-			this.hpaned15 = new global::Gtk.HPaned ();
-			this.hpaned15.CanFocus = true;
-			this.hpaned15.Name = "hpaned15";
-			this.hpaned15.Position = 10;
-			// Container child hpaned15.Gtk.Paned+PanedChild
-			this.frame6 = new global::Gtk.Frame ();
-			this.frame6.Name = "frame6";
-			this.frame6.ShadowType = ((global::Gtk.ShadowType)(0));
-			// Container child frame6.Gtk.Container+ContainerChild
-			this.GtkAlignment = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
-			this.GtkAlignment.Name = "GtkAlignment";
-			this.GtkAlignment.LeftPadding = ((uint)(12));
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			this.hpaned16 = new global::Gtk.HPaned ();
-			this.hpaned16.CanFocus = true;
-			this.hpaned16.Name = "hpaned16";
-			this.hpaned16.Position = 10;
-			// Container child hpaned16.Gtk.Paned+PanedChild
-			this.vbox12 = new global::Gtk.VBox ();
-			this.vbox12.Name = "vbox12";
-			this.vbox12.Spacing = 6;
-			// Container child vbox12.Gtk.Box+BoxChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.treeview1 = new global::Gtk.TreeView ();
-			this.treeview1.CanFocus = true;
-			this.treeview1.Name = "treeview1";
-			this.GtkScrolledWindow.Add (this.treeview1);
-			this.vbox12.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox12 [this.GtkScrolledWindow]));
-			w11.Position = 0;
-			// Container child vbox12.Gtk.Box+BoxChild
-			this.hbox4 = new global::Gtk.HBox ();
-			this.hbox4.Name = "hbox4";
-			this.hbox4.Spacing = 6;
-			// Container child hbox4.Gtk.Box+BoxChild
-			this.vbox13 = new global::Gtk.VBox ();
-			this.vbox13.Name = "vbox13";
-			this.vbox13.Spacing = 6;
-			// Container child vbox13.Gtk.Box+BoxChild
-			this.vbox14 = new global::Gtk.VBox ();
-			this.vbox14.Name = "vbox14";
-			this.vbox14.Spacing = 6;
-			// Container child vbox14.Gtk.Box+BoxChild
-			this.hbox2 = new global::Gtk.HBox ();
-			this.hbox2.Name = "hbox2";
-			this.hbox2.Spacing = 6;
-			// Container child hbox2.Gtk.Box+BoxChild
-			this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment1.Name = "alignment1";
-			this.hbox2.Add (this.alignment1);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.alignment1]));
-			w12.Position = 0;
-			// Container child hbox2.Gtk.Box+BoxChild
-			this.vbox2 = new global::Gtk.VBox ();
-			this.vbox2.Name = "vbox2";
-			this.vbox2.Spacing = 6;
-			// Container child vbox2.Gtk.Box+BoxChild
-			this.alignment3 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment3.Name = "alignment3";
-			this.vbox2.Add (this.alignment3);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.alignment3]));
-			w13.Position = 0;
-			// Container child vbox2.Gtk.Box+BoxChild
 			this.button27 = new global::Gtk.Button ();
 			this.button27.CanFocus = true;
 			this.button27.Name = "button27";
 			this.button27.UseUnderline = true;
 			this.button27.Label = global::Mono.Unix.Catalog.GetString ("VENDER");
-			this.vbox2.Add (this.button27);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button27]));
-			w14.Position = 1;
-			w14.Expand = false;
-			w14.Fill = false;
-			// Container child vbox2.Gtk.Box+BoxChild
-			this.alignment4 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment4.Name = "alignment4";
-			this.vbox2.Add (this.alignment4);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.alignment4]));
-			w15.Position = 2;
-			this.hbox2.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.vbox2]));
-			w16.Position = 2;
-			w16.Expand = false;
-			w16.Fill = false;
-			this.vbox14.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox14 [this.hbox2]));
-			w17.Position = 0;
-			this.vbox13.Add (this.vbox14);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vbox13 [this.vbox14]));
-			w18.Position = 0;
-			this.hbox4.Add (this.vbox13);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.vbox13]));
-			w19.Position = 0;
-			this.vbox12.Add (this.hbox4);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.vbox12 [this.hbox4]));
-			w20.Position = 1;
-			this.hpaned16.Add (this.vbox12);
-			this.GtkAlignment.Add (this.hpaned16);
-			this.frame6.Add (this.GtkAlignment);
-			this.GtkLabel3 = new global::Gtk.Label ();
-			this.GtkLabel3.Name = "GtkLabel3";
-			this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Lista Productos</b>");
-			this.GtkLabel3.UseMarkup = true;
-			this.frame6.LabelWidget = this.GtkLabel3;
-			this.hpaned15.Add (this.frame6);
+			this.vbox4.Add (this.button27);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.button27]));
+			w3.Position = 0;
+			w3.Expand = false;
+			w3.Fill = false;
+			this.hpaned14.Add (this.vbox4);
+			this.vpaned2.Add (this.hpaned14);
+			this.hbox3.Add (this.vpaned2);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
+			w6.Position = 0;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.hpaned15 = new global::Gtk.HPaned ();
+			this.hpaned15.CanFocus = true;
+			this.hpaned15.Name = "hpaned15";
+			this.hpaned15.Position = 1;
 			this.hbox3.Add (this.hpaned15);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
-			w25.Position = 1;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
+			w7.Position = 1;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
-			w26.Position = 1;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			w8.Position = 1;
 			this.Add (this.vbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

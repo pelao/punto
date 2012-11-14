@@ -15,6 +15,8 @@ namespace punto.gui
 		
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
+		private	int preciototal=0;
+
 
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
@@ -23,6 +25,7 @@ namespace punto.gui
 			this.Build ();
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
+
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
 			}
@@ -112,16 +115,19 @@ namespace punto.gui
 		{
 
 			productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entry1.Text.Trim()));
-	
 			treeview2.Model = this.ventamodel;
-
 			foreach (Produc bod in this.productoventa)
 			{
 				ventamodel.AppendValues(bod.Nombre, bod.Precio);
+				entry1.DeleteText(0, entry1.Text.Length);
+				preciototal=preciototal+Int32.Parse(bod.Precio);
+				Console.WriteLine(preciototal);
+				label6.Text=preciototal.ToString();
+			}				
 
-			}
+
 			this.treeview2.Selection.UnselectAll();
-
+			
 	
 		}
 
@@ -147,6 +153,7 @@ namespace punto.gui
 			EventHandler<EdicionDialogChangedEventArgs> handler = EdicionDialogChanged;
 			if (handler != null)
 			{
+
 				handler(this, e);
 			}
 		}
@@ -166,6 +173,17 @@ namespace punto.gui
 		
 
 					}
+
+		protected void OnEntry1TextInserted (object o, TextInsertedArgs args)
+		{
+
+
+			CargarProductos();
+			cambiado=true;
+
+
+		}
+
 	}
 }
 

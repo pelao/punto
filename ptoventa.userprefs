@@ -4,7 +4,7 @@
     <Files>
       <File FileName="punto.gui\IngresarProductosDialog.cs" Line="135" Column="83" />
       <File FileName="punto.gui\familiaproductosdialog.cs" Line="142" Column="69" />
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="110" Column="48" />
+      <File FileName="punto.gui\VenderProductosDialog.cs" Line="122" Column="1" />
       <File FileName="punto.code\ControladorBaseDatos.cs" Line="69" Column="19" />
     </Files>
     <Pads>
