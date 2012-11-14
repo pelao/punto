@@ -1,20 +1,19 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\fechahora.cs">
     <Files>
       <File FileName="punto.gui\IngresarProductosDialog.cs" Line="135" Column="83" />
       <File FileName="punto.gui\familiaproductosdialog.cs" Line="142" Column="69" />
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="122" Column="1" />
+      <File FileName="punto.gui\VenderProductosDialog.cs" Line="1" Column="1" />
       <File FileName="punto.code\ControladorBaseDatos.cs" Line="69" Column="19" />
+      <File FileName="punto.gui\fechahora.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="pto" expanded="True" />
           <Node name="punto.code" expanded="True" />
-          <Node name="punto.gui" expanded="True">
-            <Node name="VenderProductosDialog.cs" selected="True" />
-          </Node>
+          <Node name="punto.gui" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

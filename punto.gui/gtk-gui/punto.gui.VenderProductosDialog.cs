@@ -15,8 +15,8 @@ namespace punto.gui
 		private global::Gtk.Label label1;
 		private global::Gtk.Entry entry2;
 		private global::Gtk.VBox vbox4;
-		private global::Gtk.VPaned vpaned1;
-		private global::Gtk.VPaned vpaned2;
+		private global::Gtk.Label label8;
+		private global::Gtk.VPaned vpaned3;
 		private global::Gtk.HBox hbox2;
 		private global::Gtk.Label label5;
 		private global::Gtk.Label label6;
@@ -115,18 +115,19 @@ namespace punto.gui
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.vpaned1 = new global::Gtk.VPaned ();
-			this.vpaned1.CanFocus = true;
-			this.vpaned1.Name = "vpaned1";
-			this.vbox4.Add (this.vpaned1);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned1]));
+			this.label8 = new global::Gtk.Label ();
+			this.label8.Name = "label8";
+			this.vbox4.Add (this.label8);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.label8]));
 			w10.Position = 0;
+			w10.Expand = false;
+			w10.Fill = false;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.vpaned2 = new global::Gtk.VPaned ();
-			this.vpaned2.CanFocus = true;
-			this.vpaned2.Name = "vpaned2";
-			this.vbox4.Add (this.vpaned2);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned2]));
+			this.vpaned3 = new global::Gtk.VPaned ();
+			this.vpaned3.CanFocus = true;
+			this.vpaned3.Name = "vpaned3";
+			this.vbox4.Add (this.vpaned3);
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned3]));
 			w11.Position = 1;
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.hbox2 = new global::Gtk.HBox ();

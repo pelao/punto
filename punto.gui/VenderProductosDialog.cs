@@ -18,6 +18,7 @@ namespace punto.gui
 		private	int preciototal=0;
 
 
+
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.ventamodel = new Gtk.ListStore (typeof (string), typeof (string));
@@ -76,7 +77,6 @@ namespace punto.gui
 
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
-
 		}
 		
 		public void Destroy ()
@@ -119,11 +119,11 @@ namespace punto.gui
 			foreach (Produc bod in this.productoventa)
 			{
 				ventamodel.AppendValues(bod.Nombre, bod.Precio);
-				entry1.DeleteText(0, entry1.Text.Length);
 				preciototal=preciototal+Int32.Parse(bod.Precio);
 				Console.WriteLine(preciototal);
 				label6.Text=preciototal.ToString();
 			}				
+			entry1.DeleteText(0, entry1.Text.Length);
 
 
 			this.treeview2.Selection.UnselectAll();
@@ -157,9 +157,15 @@ namespace punto.gui
 				handler(this, e);
 			}
 		}
-
-		public void  Run () 
+		private void displayTime ()
 		{
+				label8.TooltipText = DateTime.Now.ToString();
+
+		}
+		public void  Run ()
+		{
+				displayTime();
+
 			base.Run();
 			
 		}

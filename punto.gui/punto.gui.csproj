@@ -80,6 +80,7 @@
     <Compile Include="gtk-gui\punto.gui.ingresarproductosdialog.cs" />
     <Compile Include="VenderProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.fechahora.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
