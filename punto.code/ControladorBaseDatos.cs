@@ -177,6 +177,29 @@ namespace punto.code
 			
 			return productos;
 		}
+		public String[] ObtenerUsuarioContraseñaBd (String usuario) 
+		{
+			string[] usuarioContraseña = new string[2];
+
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+
+			string sql =
+				"SELECT userlogin, userpass " +
+					"FROM usuarios "+
+					"WHERE userlogin='"+usuario+"'";;
+
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+
+			while(reader.Read()) {
+				usuarioContraseña[0] =  (string) usuarioContraseña["userlogin"];
+				usuarioContraseña[1] =  (string) usuarioContraseña["userpass"];
+
+			}
+		
+		}
 
 		public List<FamiliaProducto> ObtenerFamiliasBd ()
 		{
@@ -202,6 +225,7 @@ namespace punto.code
 			
 			return familias;
 		}
+
 
 		public bool AgregarFamiliaBd (FamiliaProducto familia)
 		{
