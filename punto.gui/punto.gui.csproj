@@ -79,7 +79,6 @@
     <Compile Include="VenderProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.fechahora.cs" />
-    <Compile Include="IniciarSesion.cs" />
     <Compile Include="gtk-gui\punto.gui.IniciarSesion.cs" />
     <Compile Include="gtk-gui\punto.gui.pagar_compra.cs" />
     <Compile Include="Pagar.cs" />
