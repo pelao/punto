@@ -16,7 +16,6 @@ namespace punto.gui
 	{
 		private bool cambiado;
 
-
 		public List<DetalleVenta> productoventa = new List<DetalleVenta>();
 		private Gtk.ListStore ventamodel;
 
@@ -150,8 +149,6 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 			{
 				rcd.Destroy();
 #if DEBUG
-				
-				
 				Console.WriteLine(ex.Message);
 #endif
 			}		

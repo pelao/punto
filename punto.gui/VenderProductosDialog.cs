@@ -27,10 +27,13 @@ namespace punto.gui
 		public List<Produc> productoventa = new List<Produc>();
 		private Gtk.ListStore ventamodel;
 
+		public List<Produc> listapago = new List<Produc>();
+		private Gtk.ListStore listaventa;
+
 		
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
-		private	int preciototal=0;
+		public	int preciototal=0;
 		private string boleta;
 
 
@@ -236,16 +239,10 @@ namespace punto.gui
 		{
 			//que hace si apreta guardar boleta
 			boleta=entry2.Text;
-		
 		}
-
 		protected void OnEntry1EditingDone (object sender, EventArgs e)
 		{
 //ventana verder
-			
-
-
-
 		}
 	}
 }

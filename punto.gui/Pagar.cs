@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using Gtk;
 using punto.code;
 
+
 namespace punto.gui
 {
 	public partial class Pagar : Gtk.Dialog
 	{
 		private ControladorBaseDatos db;
-		
+
 		public Pagar(Gtk.Window parent) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			
@@ -50,6 +51,7 @@ namespace punto.gui
 			}
 			alignment3.Show();
 			hbox3.Hide();
+
 			this.Deletable = true;
 		}
 		
