@@ -179,6 +179,36 @@ namespace punto.code
 			return precio;
 		}
 
+		public string[] ObtenerUsuarioContraseñaBd (string usuario) 
+		{
+			string[] usuarioContraseña = new string[2];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			
+			string sql =
+				"SELECT userlogin, userpass " +
+					"FROM usuarios "+
+					"WHERE userlogin='"+usuario+"'";;
+			
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				usuarioContraseña[0] = (string) reader["userlogin"];
+				usuarioContraseña[1] = (string) reader["userpass"];
+				
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			return usuarioContraseña;
+		}
+
 		public List<Produc> ObtenerProductosVenta (int codigoB)
 		{
 
