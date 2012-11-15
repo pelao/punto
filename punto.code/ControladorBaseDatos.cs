@@ -122,6 +122,33 @@ namespace punto.code
 				
 			return true;
 		}
+		public int ObtenerBoleta ()
+		{
+			int precio=0;
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT idventa_detalle " +
+					"FROM venta_detalle " +
+					"order by idventa_detalle DESC limit 1";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				precio =   (int)reader["idventa_detalle"];
+
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return precio;
+		}
 		public string[] ObtenerProductosBd (int codigoB)
 		{
 			string[] precio = new string[2];

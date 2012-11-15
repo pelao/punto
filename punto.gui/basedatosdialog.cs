@@ -40,18 +40,18 @@ namespace punto.gui
 #if DEBUG
 			Console.WriteLine(e.ToString());
 #endif
-			Dialog dialog = new Dialog("Ha ocurrido un error", this, Gtk.DialogFlags.DestroyWithParent);
-			dialog.Modal = true;
-			dialog.Resizable = false;
+			Dialog dialo = new Dialog("Ha ocurrido un error", this, Gtk.DialogFlags.DestroyWithParent);
+			dialo.Modal = true;
+			dialo.Resizable = false;
 			Gtk.Label etiqueta = new Gtk.Label();
 			etiqueta.Markup = "Error en la comunicación con el servidor de base de datos.";
-			dialog.BorderWidth = 8;
-			dialog.VBox.BorderWidth = 8;
-			dialog.VBox.PackStart(etiqueta, false, false, 0);
-			dialog.AddButton ("Cerrar", ResponseType.Close);
-			dialog.ShowAll();
-			dialog.Run ();
-			dialog.Destroy ();
+			dialo.BorderWidth = 8;
+			dialo.VBox.BorderWidth = 8;
+			dialo.VBox.PackStart(etiqueta, false, false, 0);
+			dialo.AddButton ("Cerrar", ResponseType.Close);
+			dialo.ShowAll();
+			dialo.Run ();
+			dialo.Destroy ();
 			
 			this.Destroy();
 		}

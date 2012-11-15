@@ -154,6 +154,10 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 				
 				Console.WriteLine(ex.Message);
 #endif
-			}		}
+			}		
+		
+		}
+
+
 	}
 	}

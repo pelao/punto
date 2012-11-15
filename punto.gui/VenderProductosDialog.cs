@@ -31,7 +31,7 @@ namespace punto.gui
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 		private	int preciototal=0;
-
+		private string boleta;
 
 
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
@@ -94,8 +94,14 @@ namespace punto.gui
 			nombre_column.AddAttribute(nombre_cell, "text", 1);
 			this.treeview2.AppendColumn(precio_column);
 			precio_column.AddAttribute(precio_cell, "text", 2);
-		
+#if DEBUG
 
+			Console.WriteLine(this.db.ObtenerBoleta());
+#endif	
+				
+			int temp=this.db.ObtenerBoleta();
+			boleta=temp.ToString();
+			entry2.Text=boleta;
 			this.treeview2.Selection.Changed += TreeView2SelectionChanged;
 
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
@@ -193,9 +199,25 @@ namespace punto.gui
 		}
 		protected void OnButton81Clicked (object sender, EventArgs e)
 		{
+			
+			Pagar rcd = new Pagar(this);
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				
+				
+				Console.WriteLine(ex.Message);
+#endif
+			}		
 
-			CargarProductos();
-			cambiado=true;
+
+		
 					}
 
 		protected void OnEntry1TextInserted (object o, TextInsertedArgs args)
@@ -205,6 +227,26 @@ namespace punto.gui
 
 		}
 
+		protected void OnButton85Clicked (object sender, EventArgs e)
+		{
+			entry2.IsEditable=true;
+			}
+
+		protected void OnEntry2TextInserted (object o, TextInsertedArgs args)
+		{
+			//que hace si apreta guardar boleta
+			boleta=entry2.Text;
+		
+		}
+
+		protected void OnEntry1EditingDone (object sender, EventArgs e)
+		{
+//ventana verder
+			
+
+
+
+		}
 	}
 }
 
