@@ -1,22 +1,18 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\Pagar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/gtk-gui/punto.gui.PrincipalWindow.cs">
     <Files>
-      <File FileName="punto.gui\IngresarProductosDialog.cs" Line="91" Column="1" />
-      <File FileName="punto.gui\PrincipalWindow.cs" Line="154" Column="7" />
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="33" Column="25" />
-      <File FileName="c:\Users\jose\Documents\punto\punto\punto.gui\gtk-gui\punto.gui.fechahora.cs" Line="5" Column="2" />
-      <File FileName="punto.gui\Pagar.cs" Line="62" Column="4" />
-      <File FileName="c:\Users\jose\Documents\punto\punto\punto.gui\basedatosdialog.cs" Line="33" Column="1" />
-      <File FileName="c:\Users\jose\Documents\Projects\avance\git5\punto.gui\basedatosdialog.cs" Line="43" Column="19" />
+      <File FileName="punto.gui/PrincipalWindow.cs" Line="162" Column="5" />
+      <File FileName="punto.gui/gtk-gui/punto.gui.PrincipalWindow.cs" Line="119" Column="5" />
+      <File FileName="punto.gui/IniciarSesionDialog.cs" Line="40" Column="8" />
+      <File FileName="punto.gui/basedatosdialog.cs" Line="21" Column="20" />
+      <File FileName="punto.gui/IngresarProductosDialog.cs" Line="227" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="punto.gui" expanded="True">
-            <Node name="UserInterface" expanded="True" />
-            <Node name="Pagar.cs" selected="True" />
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="punto.code" expanded="True" />
+          <Node name="punto.gui" expanded="True" />
         </State>
       </Pad>
     </Pads>
