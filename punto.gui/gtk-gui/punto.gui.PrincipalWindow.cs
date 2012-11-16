@@ -122,7 +122,7 @@ namespace punto.gui
 			this.Show ();
 			this.AgregarFamiliaAction.Activated += new global::System.EventHandler (this.OnFamiliaDeProductosActionActivated);
 			this.RegistrarModificarAction.Activated += new global::System.EventHandler (this.OnIngresarModificarProductosActionActivated);
-			this.InicioSesionAction.Activated += new global::System.EventHandler (this.OnInicioSesionActionActivated);
+			this.InicioSesionAction.Activated += new global::System.EventHandler (this.OnIniciarSesionActionActivated);
 			this.button27.Clicked += new global::System.EventHandler (this.OnButton27Clicked);
 		}
 	}

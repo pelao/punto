@@ -155,9 +155,9 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 		
 		}
 
-		protected void OnInicioSesionActionActivated (object sender, EventArgs e)
+		protected void OnIniciarSesionActionActivated (object sender, EventArgs e)
 		{
-			InicioSesionDialog rcd = new InicioSesionDialog();
+		    IniciarSesionDialog rcd = new IniciarSesionDialog();
 			try 
 			{
 				rcd.Run();
@@ -170,7 +170,9 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 				Console.WriteLine(ex.Message);
 #endif
 			}
-		}
+		} 
+
+
 
 	}
-	}
+}
