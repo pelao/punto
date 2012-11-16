@@ -211,6 +211,7 @@ namespace punto.gui
 			this.entry4.CanFocus = true;
 			this.entry4.Name = "entry4";
 			this.entry4.IsEditable = true;
+			this.entry4.Visibility = false;
 			this.entry4.InvisibleChar = '●';
 			this.table2.Add (this.entry4);
 			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table2 [this.entry4]));
