@@ -224,6 +224,7 @@ namespace punto.gui
 			this.Show ();
 			this.entry1.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry1TextInserted);
 			this.entry1.EditingDone += new global::System.EventHandler (this.OnEntry1EditingDone);
+			this.entry1.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry1KeyPressEvent);
 			this.button81.Clicked += new global::System.EventHandler (this.OnButton81Clicked);
 			this.entry2.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry2TextInserted);
 			this.button85.Clicked += new global::System.EventHandler (this.OnButton85Clicked);

@@ -48,6 +48,28 @@ namespace punto.code
 			
 			return false;
 		}
+		public bool AgregarVentaDetalle (DetalleVenta registro)
+		{
+			
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"INSERT INTO venta_detalle(idventa_detalle,cantidad,precio_venta,fecha_hora) " +
+					"VALUES ("+registro.CODIGOVENTA+",'"+registro.CANTIDAD+"','"+registro.PRECIOVENTA+"','"+registro.FECHA+"');";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			
+			return false;
+		}
 
 		public bool ExisteRegistroProductosBd (int codigob)
 		{

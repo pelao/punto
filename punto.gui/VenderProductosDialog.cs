@@ -102,9 +102,16 @@ namespace punto.gui
 			Console.WriteLine(this.db.ObtenerBoleta());
 #endif	
 				
-			int temp=this.db.ObtenerBoleta();
+			double temp=Convert.ToDouble( this.db.ObtenerBoleta());
+			temp=temp+1;
+			Console.WriteLine("temp");
+			Console.WriteLine(temp);
 			boleta=temp.ToString();
+			Console.WriteLine(boleta);
+			
 			entry2.Text=boleta;
+			Console.WriteLine(entry2.Text);
+
 			this.treeview2.Selection.Changed += TreeView2SelectionChanged;
 
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
@@ -202,6 +209,9 @@ namespace punto.gui
 		}
 		protected void OnButton81Clicked (object sender, EventArgs e)
 		{
+			DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()+1),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
+			Console.WriteLine(DateTime.Now);
+			this.db.AgregarVentaDetalle(pago);
 			
 			Pagar rcd = new Pagar(this);
 			try 
@@ -218,10 +228,11 @@ namespace punto.gui
 				Console.WriteLine(ex.Message);
 #endif
 			}		
-
-
+			
+			
+			
+		}
 		
-					}
 
 		protected void OnEntry1TextInserted (object o, TextInsertedArgs args)
 		{
@@ -239,6 +250,35 @@ namespace punto.gui
 		{
 			//que hace si apreta guardar boleta
 			boleta=entry2.Text;
+		}
+		protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
+		{
+			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
+			
+			if (args.Event.Key == Gdk.Key.F2)
+			{
+				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
+				
+				DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
+				Console.WriteLine(DateTime.Now);
+				this.db.AgregarVentaDetalle(pago);
+				
+				
+				Pagar rcd = new Pagar(this);
+				try 
+				{
+					rcd.Run();
+					rcd.Destroy();
+				}
+				catch (MySql.Data.MySqlClient.MySqlException ex)
+				{
+					rcd.Destroy();
+#if DEBUG
+					
+					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
+#endif
+				}
+			}
 		}
 		protected void OnEntry1EditingDone (object sender, EventArgs e)
 		{

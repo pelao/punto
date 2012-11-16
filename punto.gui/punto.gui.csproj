@@ -82,6 +82,7 @@
     <Compile Include="gtk-gui\punto.gui.Pagar.cs" />
     <Compile Include="IniciarSesionDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.IniciarSesionDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
