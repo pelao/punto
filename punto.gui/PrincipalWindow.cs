@@ -155,6 +155,22 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 		
 		}
 
+		protected void OnInicioSesionActionActivated (object sender, EventArgs e)
+		{
+			InicioSesionDialog rcd = new InicioSesionDialog();
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				Console.WriteLine(ex.Message);
+#endif
+			}
+		}
 
 	}
 	}

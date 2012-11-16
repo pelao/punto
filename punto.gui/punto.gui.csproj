@@ -78,10 +78,10 @@
     <Compile Include="gtk-gui\punto.gui.ingresarproductosdialog.cs" />
     <Compile Include="VenderProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
-    <Compile Include="gtk-gui\punto.gui.IniciarSesion.cs" />
-    <Compile Include="gtk-gui\punto.gui.pagar_compra.cs" />
     <Compile Include="Pagar.cs" />
     <Compile Include="gtk-gui\punto.gui.Pagar.cs" />
+    <Compile Include="InicioSesionDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
