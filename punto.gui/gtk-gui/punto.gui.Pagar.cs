@@ -189,6 +189,7 @@ namespace punto.gui
 			this.button1392.CanFocus = true;
 			this.button1392.Name = "button1392";
 			this.button1392.UseUnderline = true;
+			this.button1392.BorderWidth = ((uint)(3));
 			this.button1392.Label = global::Mono.Unix.Catalog.GetString ("Pago Efectivo \n   (teclear 1)");
 			this.hpaned1.Add (this.button1392);
 			this.vbox3.Add (this.hpaned1);
@@ -308,6 +309,8 @@ namespace punto.gui
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 347;
 			this.Show ();
+			this.entry7.TextDeleted += new global::Gtk.TextDeletedHandler (this.OnEntry7TextDeleted);
+			this.entry7.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry7TextInserted);
 			this.button1392.Clicked += new global::System.EventHandler (this.OnButton1392Clicked);
 		}
 	}

@@ -349,7 +349,33 @@ namespace punto.code
 				return conectado;
 			}
 		}
-		
+		public int ObtenerPrecioVenta ()
+		{
+			int valor=0;
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT precio_venta " +
+					"FROM venta_detalle " +
+					"order by idventa_detalle DESC limit 1";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				valor =   (int)reader["precio_venta"];
+				
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return valor;
+		}
+
 		public void GuardarConfiguracionBd ()
 		{	
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);

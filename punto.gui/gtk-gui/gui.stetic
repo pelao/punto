@@ -1894,6 +1894,8 @@
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
                                 <property name="InvisibleChar">●</property>
+                                <signal name="TextDeleted" handler="OnEntry7TextDeleted" />
+                                <signal name="TextInserted" handler="OnEntry7TextInserted" />
                               </widget>
                             </child>
                           </widget>
@@ -1976,6 +1978,7 @@
                                             <property name="Label" translatable="yes">Pago Efectivo 
    (teclear 1)</property>
                                             <property name="UseUnderline">True</property>
+                                            <property name="BorderWidth">3</property>
                                             <signal name="Clicked" handler="OnButton1392Clicked" />
                                           </widget>
                                         </child>

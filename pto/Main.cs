@@ -10,7 +10,8 @@ namespace pto
 		public static void Main (string[] args)
 		{
 			Application.Init ();
-			PrincipalWindow pri = new PrincipalWindow();
+			//		PrincipalWindow pri = new PrincipalWindow();
+			IniciarSesionDialog pri = new IniciarSesionDialog();
 			try 
 			{
 				pri.Show();
