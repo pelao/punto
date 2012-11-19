@@ -15,11 +15,11 @@ namespace punto.gui
 	public class EdicionDialogChangedEventArgs : EventArgs
 	{
 		private bool cambiado;
-
+		
 		public List<DetalleVenta> productoventa = new List<DetalleVenta>();
 		private Gtk.ListStore ventamodel;
-
-
+		
+		
 		public EdicionDialogChangedEventArgs(bool cam)
 		{
 			this.cambiado = cam;
@@ -39,7 +39,7 @@ namespace punto.gui
 #if DEBUG
 			Console.WriteLine ("En debug");
 #endif
-
+			
 			
 			this.Build ();
 			this.db = new ControladorBaseDatos ();
@@ -68,40 +68,40 @@ namespace punto.gui
 					Gtk.Application.Quit ();
 				}
 			}
-
-
-
+			
+			
+			
 		}
-	
-
-
-protected virtual void OnConexionBaseDatosActivated (object sender, System.EventArgs e)
-{
-	//mostrar dialog configuracion
-	basedatosdialog bdd = new basedatosdialog(this);
-	bdd.Run();
-	bdd.Destroy();
-	this.db = null;
+		
+		
+		
+		protected virtual void OnConexionBaseDatosActivated (object sender, System.EventArgs e)
+		{
+			//mostrar dialog configuracion
+			basedatosdialog bdd = new basedatosdialog(this);
+			bdd.Run();
+			bdd.Destroy();
+			this.db = null;
 			this.db = new ControladorBaseDatos();
-	
-	bool correcta = false;
-	
-	try {
-		correcta = this.db.ConfiguracionCorrectaBd;
-	}
-	catch (Exception ex)
-	{
-		correcta = false;
-	}
-	
-	if(!correcta)
-	{
-		Gtk.Application.Quit();
-	}
-	
-}
-
-
+			
+			bool correcta = false;
+			
+			try {
+				correcta = this.db.ConfiguracionCorrectaBd;
+			}
+			catch (Exception ex)
+			{
+				correcta = false;
+			}
+			
+			if(!correcta)
+			{
+				Gtk.Application.Quit();
+			}
+			
+		}
+		
+		
 		protected void OnIngresarModificarProductosActionActivated (object sender, EventArgs e)
 		{
 			IngresarProductosDialog rcd = new IngresarProductosDialog(this);
@@ -118,7 +118,7 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 #endif
 			}
 		}
-
+		
 		protected void OnFamiliaDeProductosActionActivated (object sender, EventArgs e)
 		{
 			familiaproductosdialog rcd = new familiaproductosdialog(this);
@@ -131,8 +131,8 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 			{
 				rcd.Destroy();
 #if DEBUG
-
-		
+				
+				
 				Console.WriteLine(ex.Message);
 #endif
 			}
@@ -152,12 +152,13 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 				Console.WriteLine(ex.Message);
 #endif
 			}		
-		
+			
 		}
-
+		
 		protected void OnIniciarSesionActionActivated (object sender, EventArgs e)
 		{
-		    IniciarSesionDialog rcd = new IniciarSesionDialog();
+			IniciarSesionDialog rcd = new IniciarSesionDialog();
+			
 			try 
 			{
 				rcd.Run();
@@ -170,9 +171,21 @@ protected virtual void OnConexionBaseDatosActivated (object sender, System.Event
 				Console.WriteLine(ex.Message);
 #endif
 			}
+			/*try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				Console.WriteLine(ex.Message);
+#endif
+			}*/
 		} 
-
-
-
+		
+		
+		
 	}
 }

@@ -1,4 +1,9 @@
 
+using GLib;
+
+using punto.gui;
+
+
 using System.Collections.Generic;
 using Gtk;
 using System;
@@ -12,19 +17,39 @@ namespace punto.gui
 		{
 			this.Build ();
 		}
-
+		
+		
 		protected void OnButton505Clicked (object sender, EventArgs e)
 		{
-
+			
 			ControladorBaseDatos Bd = new ControladorBaseDatos();
-
+			
 			string[] usuarioClave = new string[2];
-
+			
 			usuarioClave = Bd.ObtenerUsuarioContraseñaBd(entry3.Text);
-
+			
 			if(usuarioClave[0]==entry3.Text & usuarioClave[1]==entry4.Text)
 			{
-				Dialog dialog = new Dialog("Iniciar Sesion", this, Gtk.DialogFlags.DestroyWithParent);
+				PrincipalWindow rcd = new PrincipalWindow();
+				
+				//				try 
+				//				{
+				base.Destroy();
+				rcd.Show();
+				
+				//				}
+				//				catch (MySql.Data.MySqlClient.MySqlException e)
+				//				{
+				//					rcd.Destroy();
+				//#if DEBUG
+				//					Console.WriteLine(e.Message);
+				//#endif
+			}
+			
+			
+			
+			
+			/*				Dialog dialog = new Dialog("Iniciar Sesion", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
@@ -51,8 +76,9 @@ namespace punto.gui
 				dialog.ShowAll();
 				dialog.Run ();
 				dialog.Destroy ();
-			}
-	
+
+			}*/
+			
 		}
 	}
 }
