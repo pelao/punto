@@ -289,6 +289,7 @@ namespace punto.gui
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
 			this.Show ();
+			this.entry4.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
 			this.button505.Clicked += new global::System.EventHandler (this.OnButton505Clicked);
 		}
 	}

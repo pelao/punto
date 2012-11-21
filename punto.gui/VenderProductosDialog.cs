@@ -209,7 +209,7 @@ namespace punto.gui
 		}
 		protected void OnButton81Clicked (object sender, EventArgs e)
 		{
-			DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()+1),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
+			DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
 			Console.WriteLine(DateTime.Now);
 			this.db.AgregarVentaDetalle(pago);
 			
@@ -251,11 +251,12 @@ namespace punto.gui
 			//que hace si apreta guardar boleta
 			boleta=entry2.Text;
 		}
+		[GLib.ConnectBefore ()] 
 		protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
 		{
 			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
 			
-			if (args.Event.Key == Gdk.Key.F2)
+			if (args.Event.Key == Gdk.Key.Return)
 			{
 				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
 				

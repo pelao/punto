@@ -19,7 +19,7 @@ namespace punto.gui
 		private global::Gtk.HPaned hpaned5;
 		private global::Gtk.Label label5;
 		private global::Gtk.Alignment alignment40;
-		private global::Gtk.Entry entry7;
+		private global::Gtk.Entry entryPagoEfectivo;
 		private global::Gtk.HPaned hpaned9;
 		private global::Gtk.Label label10;
 		private global::Gtk.Alignment alignment3;
@@ -132,13 +132,13 @@ namespace punto.gui
 			this.alignment40 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment40.Name = "alignment40";
 			// Container child alignment40.Gtk.Container+ContainerChild
-			this.entry7 = new global::Gtk.Entry ();
-			this.entry7.WidthRequest = 20;
-			this.entry7.CanFocus = true;
-			this.entry7.Name = "entry7";
-			this.entry7.IsEditable = true;
-			this.entry7.InvisibleChar = '●';
-			this.alignment40.Add (this.entry7);
+			this.entryPagoEfectivo = new global::Gtk.Entry ();
+			this.entryPagoEfectivo.WidthRequest = 20;
+			this.entryPagoEfectivo.CanFocus = true;
+			this.entryPagoEfectivo.Name = "entryPagoEfectivo";
+			this.entryPagoEfectivo.IsEditable = true;
+			this.entryPagoEfectivo.InvisibleChar = '●';
+			this.alignment40.Add (this.entryPagoEfectivo);
 			this.vbox6.Add (this.alignment40);
 			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.alignment40]));
 			w13.Position = 1;
@@ -309,9 +309,8 @@ namespace punto.gui
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 347;
 			this.Show ();
-			this.entry7.TextDeleted += new global::Gtk.TextDeletedHandler (this.OnEntry7TextDeleted);
-			this.entry7.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry7TextInserted);
-			this.button1392.Clicked += new global::System.EventHandler (this.OnButton1392Clicked);
+			this.entryPagoEfectivo.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryPagoEfectivoKeyPressEvent);
+			this.button1392.Clicked += new global::System.EventHandler (this.OnPagoEnEfectivo);
 		}
 	}
 }

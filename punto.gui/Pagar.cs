@@ -53,74 +53,59 @@ namespace punto.gui
 			}
 			alignment3.Show();
 			hbox3.Hide();
-			
+			this.button1392.IsFocus=true;
+
 			this.Deletable = true;
 		}
-		
-		protected void OnButton1392Clicked (object sender, EventArgs e)
+		protected void OnPagoEnEfectivo (object sender, EventArgs e)
 		{
 			label5.Text=this.db.ObtenerPrecioVenta().ToString();
 			Console.WriteLine(this.db.ObtenerPrecioVenta());
 			alignment3.Hide ();
 			hbox3.Show();
-			
-			
+			this.entryPagoEfectivo.IsFocus=true;
+		
 		}
-		
-		
-		
-		protected void OnEntry7KeyPressEvent (object o, KeyPressEventArgs args)
+
+
+
+		/*
+
+		protected void OnEntryPagoEfectivoTextInserted (object o, TextInsertedArgs args)
 		{
-			if (args.Event.Key == Gdk.Key.Return) {
-				
-				
-				vuelto = Int32.Parse (entry7.Text.Trim ());
-				label10.Text = (Int32.Parse (label5.Text) - vuelto).ToString ();
+
+				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
+				label10.Text = (vuelto - Int32.Parse (label5.Text)).ToString ();
 				Console.WriteLine (vuelto);
 				Console.WriteLine (label10.Text);
-			}
-		}
-		
-		
-		protected void OnButton424Clicked (object sender, EventArgs e)
+
+		}*/
+
+		/*
+
+		protected void OnEntryPagoEfectivoTextDeleted (object o, TextDeletedArgs args)
 		{
-			vuelto=Int32.Parse( entry7.Text.Trim ());
-			label10.Text=(vuelto-Int32.Parse( label5.Text)).ToString();
-			Console.WriteLine(vuelto);
-			Console.WriteLine(label10.Text);	
-		}
-		
-		protected void OnEntry7TextInserted (object o, TextInsertedArgs args)
-		{
-			vuelto=Int32.Parse( entry7.Text.Trim ());
+			vuelto=Int32.Parse( entryPagoEfectivo.Text.Trim ());
 			label10.Text=(vuelto-Int32.Parse( label5.Text)).ToString();
 			Console.WriteLine(vuelto);
 			Console.WriteLine(label10.Text);
-		}
+		}*/
+
 		
-		protected void OnEntry7TextDeleted (object o, TextDeletedArgs args)
+		[GLib.ConnectBefore ()] 
+
+		protected void OnEntryPagoEfectivoKeyPressEvent (object o, KeyPressEventArgs args)
 		{
-			vuelto=Int32.Parse( entry7.Text.Trim ());
-			label10.Text=(vuelto-Int32.Parse( label5.Text)).ToString();
-			Console.WriteLine(vuelto);
-			Console.WriteLine(label10.Text);
-		}
-		
-		
-		
-		
-		
-		protected void OnDialog1VBoxKeyPressEvent (object o, KeyPressEventArgs args)
-		{
-			label5.Text=this.db.ObtenerPrecioVenta().ToString();
-			Console.WriteLine(this.db.ObtenerPrecioVenta());
-			alignment3.Hide ();
-			hbox3.Show();
-			vuelto = Int32.Parse (entry7.Text.Trim ());
-			label10.Text = (vuelto-Int32.Parse (label5.Text)).ToString ();
-			Console.WriteLine (vuelto);
-			Console.WriteLine (label10.Text);
-		}
+			if (args.Event.Key==Gdk.Key.Return) {
+				
+				
+				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
+				label10.Text = (vuelto - Int32.Parse (label5.Text)).ToString ();
+				Console.WriteLine (vuelto);
+				Console.WriteLine (label10.Text);
+				
+				Console.WriteLine ("label10.Textdffffffffffffffff");
+			}		}
 	}
 }
 

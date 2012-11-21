@@ -154,9 +154,10 @@ namespace punto.gui
 			}		
 			
 		}
-		
+		 
 		protected void OnIniciarSesionActionActivated (object sender, EventArgs e)
 		{
+
 			IniciarSesionDialog rcd = new IniciarSesionDialog();
 			
 			try 

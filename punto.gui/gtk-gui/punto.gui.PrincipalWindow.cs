@@ -19,7 +19,6 @@ namespace punto.gui
 		private global::Gtk.VBox vbox4;
 		private global::Gtk.Button button27;
 		private global::Gtk.HPaned hpaned15;
-		private global::Gtk.Label label1;
 		
 		protected virtual void Build ()
 		{
@@ -55,7 +54,7 @@ namespace punto.gui
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='InicioSesionAction' action='InicioSesionAction'/><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='InicioSesionAction' action='InicioSesionAction'/><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox3.Add (this.menubar1);
@@ -102,17 +101,12 @@ namespace punto.gui
 			this.hpaned15.CanFocus = true;
 			this.hpaned15.Name = "hpaned15";
 			this.hpaned15.Position = 1;
-			// Container child hpaned15.Gtk.Paned+PanedChild
-			this.label1 = new global::Gtk.Label ();
-			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
-			this.hpaned15.Add (this.label1);
 			this.hbox3.Add (this.hpaned15);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
-			w8.Position = 1;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
+			w7.Position = 1;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
-			w9.Position = 1;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			w8.Position = 1;
 			this.Add (this.vbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
