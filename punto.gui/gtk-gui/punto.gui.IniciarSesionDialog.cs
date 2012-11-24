@@ -28,8 +28,7 @@ namespace punto.gui
 		private global::Gtk.Entry entry4;
 		private global::Gtk.Label label3;
 		private global::Gtk.Label label4;
-		private global::Gtk.Button buttonCancel;
-		private global::Gtk.Button buttonOk;
+		private global::Gtk.Button button1218;
 		
 		protected virtual void Build ()
 		{
@@ -254,40 +253,23 @@ namespace punto.gui
 			w25.Position = 0;
 			// Internal child punto.gui.IniciarSesionDialog.ActionArea
 			global::Gtk.HButtonBox w26 = this.ActionArea;
-			w26.Name = "dialog1_ActionArea";
-			w26.Spacing = 10;
-			w26.BorderWidth = ((uint)(5));
-			w26.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonCancel = new global::Gtk.Button ();
-			this.buttonCancel.CanDefault = true;
-			this.buttonCancel.CanFocus = true;
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.UseStock = true;
-			this.buttonCancel.UseUnderline = true;
-			this.buttonCancel.Label = "gtk-cancel";
-			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w26 [this.buttonCancel]));
+			w26.Name = "__gtksharp_70_Stetic_TopLevelDialog_ActionArea";
+			// Container child __gtksharp_70_Stetic_TopLevelDialog_ActionArea.Gtk.ButtonBox+ButtonBoxChild
+			this.button1218 = new global::Gtk.Button ();
+			this.button1218.CanFocus = true;
+			this.button1218.Name = "button1218";
+			this.button1218.UseUnderline = true;
+			this.button1218.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
+			this.AddActionWidget (this.button1218, 0);
+			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w26 [this.button1218]));
 			w27.Expand = false;
 			w27.Fill = false;
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonOk = new global::Gtk.Button ();
-			this.buttonOk.CanDefault = true;
-			this.buttonOk.CanFocus = true;
-			this.buttonOk.Name = "buttonOk";
-			this.buttonOk.UseStock = true;
-			this.buttonOk.UseUnderline = true;
-			this.buttonOk.Label = "gtk-ok";
-			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w28 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w26 [this.buttonOk]));
-			w28.Position = 1;
-			w28.Expand = false;
-			w28.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
+			w26.Hide ();
 			this.Show ();
 			this.entry4.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
 			this.button505.Clicked += new global::System.EventHandler (this.OnButton505Clicked);

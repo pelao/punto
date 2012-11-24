@@ -152,14 +152,13 @@ namespace punto.code
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"SELECT idventa_detalle " +
-					"FROM venta_detalle " +
-					"order by idventa_detalle DESC limit 1";
+				"SELECT max(idventa_detalle) " +
+					"FROM venta_detalle";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			
 			while(reader.Read()) {
-				precio =   (int)reader["idventa_detalle"];
+				precio =   (int)reader["max(idventa_detalle)"];
 
 			}
 			reader.Close();
