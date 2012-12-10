@@ -53,7 +53,7 @@ namespace punto.gui
 			}
 			alignment3.Show();
 			hbox3.Hide();
-			this.button1392.IsFocus=true;
+			this.buttonPagoEfectivo.IsFocus=true;
 
 			this.Deletable = true;
 		}

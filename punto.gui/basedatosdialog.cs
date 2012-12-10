@@ -17,10 +17,10 @@ namespace punto.gui
 		{
 			this.db = new ControladorBaseDatos();
 			this.Build ();
-			this.entry1.Text = this.db.Server;
-			this.entry2.Text = this.db.Database;
-			this.entry3.Text = this.db.User;
-			this.entry4.Text = this.db.Password;
+			this.entryServidor.Text = this.db.Server;
+			this.entryBaseDatos.Text = this.db.Database;
+			this.entryUsuario.Text = this.db.User;
+			this.entryContraseña.Text = this.db.Password;
 			
 			try {
 				this.era_correcta = this.db.ConfiguracionCorrectaBd;
@@ -58,10 +58,10 @@ namespace punto.gui
 		
 		protected virtual void OnProbarConexionClicked (object sender, System.EventArgs e)
 		{
-			this.db.Server = this.entry1.Text;
-			this.db.Database = this.entry2.Text;
-			this.db.User = this.entry3.Text;
-			this.db.Password = this.entry4.Text;
+			this.db.Server = this.entryServidor.Text;
+			this.db.Database = this.entryBaseDatos.Text;
+			this.db.User = this.entryUsuario.Text;
+			this.db.Password = this.entryContraseña.Text;
 			
 			bool correcta = false;
 			
@@ -75,20 +75,20 @@ namespace punto.gui
 			
 			if (correcta)
 			{
-				this.label5.Text = "Conexión realizada exitosamente";
+				this.labelProbarConexion.Text = "Conexión realizada exitosamente";
 			}
 			else
 			{
-				this.label5.Text = "Falló la prueba de la conexión";
+				this.labelProbarConexion.Text = "Falló la prueba de la conexión";
 			}
 		}
 		
 		protected virtual void OnGuardarClicked (object sender, System.EventArgs e)
 		{
-			this.db.Server = this.entry1.Text;
-			this.db.Database = this.entry2.Text;
-			this.db.User = this.entry3.Text;
-			this.db.Password = this.entry4.Text;
+			this.db.Server = this.entryServidor.Text;
+			this.db.Database = this.entryBaseDatos.Text;
+			this.db.User = this.entryUsuario.Text;
+			this.db.Password = this.entryContraseña.Text;
 			
 			this.db.GuardarConfiguracionBd();
 			this.Destroy();

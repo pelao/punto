@@ -14,12 +14,12 @@ namespace punto.gui
 		private global::Gtk.Action UsuariosAction;
 		private global::Gtk.Action RegistrarModificarAction1;
 		private global::Gtk.VBox vbox3;
-		private global::Gtk.MenuBar menubar1;
+		private global::Gtk.MenuBar BarraMenu;
 		private global::Gtk.HBox hbox3;
 		private global::Gtk.VPaned vpaned2;
 		private global::Gtk.HPaned hpaned14;
 		private global::Gtk.VBox vbox4;
-		private global::Gtk.Button button27;
+		private global::Gtk.Button buttonVender;
 		private global::Gtk.HPaned hpaned15;
 		
 		protected virtual void Build ()
@@ -62,11 +62,11 @@ namespace punto.gui
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='InicioSesionAction' action='InicioSesionAction'/><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
-			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
-			this.menubar1.Name = "menubar1";
-			this.vbox3.Add (this.menubar1);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.menubar1]));
+			this.UIManager.AddUiFromString ("<ui><menubar name='BarraMenu'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
+			this.BarraMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/BarraMenu")));
+			this.BarraMenu.Name = "BarraMenu";
+			this.vbox3.Add (this.BarraMenu);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.BarraMenu]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
@@ -89,13 +89,13 @@ namespace punto.gui
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.button27 = new global::Gtk.Button ();
-			this.button27.CanFocus = true;
-			this.button27.Name = "button27";
-			this.button27.UseUnderline = true;
-			this.button27.Label = global::Mono.Unix.Catalog.GetString ("VENDER");
-			this.vbox4.Add (this.button27);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.button27]));
+			this.buttonVender = new global::Gtk.Button ();
+			this.buttonVender.CanFocus = true;
+			this.buttonVender.Name = "buttonVender";
+			this.buttonVender.UseUnderline = true;
+			this.buttonVender.Label = global::Mono.Unix.Catalog.GetString ("VENDER");
+			this.vbox4.Add (this.buttonVender);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.buttonVender]));
 			w3.Position = 0;
 			w3.Expand = false;
 			w3.Fill = false;
@@ -127,7 +127,7 @@ namespace punto.gui
 			this.CerrarAction.Activated += new global::System.EventHandler (this.OnCerrarActionActivated);
 			this.InicioSesionAction.Activated += new global::System.EventHandler (this.OnIniciarSesionActionActivated);
 			this.RegistrarModificarAction1.Activated += new global::System.EventHandler (this.OnRegistrarModificarUsuarioActionActivated);
-			this.button27.Clicked += new global::System.EventHandler (this.OnButton27Clicked);
+			this.buttonVender.Clicked += new global::System.EventHandler (this.OnButton27Clicked);
 		}
 	}
 }

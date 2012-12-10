@@ -95,7 +95,7 @@ namespace punto.gui
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "Se ha cargado con exito.";
+			etiqueta.Markup = "Se ha producido un error.";
 				dialog.BorderWidth = 8;
 				dialog.VBox.BorderWidth = 8;
 				dialog.VBox.PackStart(etiqueta, false, false, 0);
@@ -112,12 +112,12 @@ namespace punto.gui
 		{
 
 			List<FamiliaProducto> tipos = this.db.ObtenerFamiliasBd();
-			combobox4.Clear();
+			comboboxFamiliaProd.Clear();
 			CellRendererText cell = new CellRendererText();
-			combobox4.PackStart(cell, false);
-			combobox4.AddAttribute(cell, "text", 0);
+			comboboxFamiliaProd.PackStart(cell, false);
+			comboboxFamiliaProd.AddAttribute(cell, "text", 0);
 			this.productosmodel = new Gtk.ListStore(typeof (string));
-			combobox4.Model = productosmodel;
+			comboboxFamiliaProd.Model = productosmodel;
 			foreach (FamiliaProducto tp in tipos)
 			{
 				this.productosmodel.AppendValues(tp.Nombre);
@@ -125,14 +125,14 @@ namespace punto.gui
 			}
 			if (tipos.Count != 0)
 			{
-				this.combobox4.Active = 0;
+				this.comboboxFamiliaProd.Active = 0;
 			}
 		}
 
 
 		protected void OnBotonAgregarPClicked (object sender, EventArgs e)
 		{
-			bool existe= this.db.ExisteRegistroProductosBd(entry12.Text.Trim());
+			bool existe= this.db.ExisteRegistroProductosBd(entryCodigoBarra.Text.Trim());
 
 			if (existe)	{
 				Dialog dialog = new Dialog("PRODUCTO YA EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
@@ -150,7 +150,7 @@ namespace punto.gui
 		}
 		else
 		{
-				Producto prod = new Producto(entry12.Text.Trim(),entry16.Text.Trim(),Int32.Parse(entry13.Text.Trim()),combobox4.ActiveText, checkbox,checkbox2);
+				Producto prod = new Producto(entryCodigoBarra.Text.Trim(),entryNombre.Text.Trim(),Int32.Parse(entryPrecioVenta.Text.Trim()),comboboxFamiliaProd.ActiveText, checkbox,checkbox2);
 
 				this.db.AgregarProductosBd(prod);
 				
@@ -179,7 +179,7 @@ namespace punto.gui
 	
 		protected void OnCheckbutton7Toggled (object sender, EventArgs e)
 		{
-			if(checkbutton7.Active)
+			if(checkbuttonPesable.Active)
 			{
 			
 				checkbox=true;
@@ -192,7 +192,7 @@ namespace punto.gui
 			}		}
 		protected void OnCheckbutton9Toggled (object sender, EventArgs e)
 		{
-			if(checkbutton9.Active)
+			if(checkbuttonVigenteMod.Active)
 			{
 		
 				vigente="True";
@@ -211,18 +211,18 @@ namespace punto.gui
 
 			//Console.WriteLine("precio: "+bd.ObtenerProductosBd(Int32.Parse(entry1.Text)));
 			string[] preciovigente = new string[1];
-			preciovigente = bd.ObtenerProductosBd (entry1.Text);
+			preciovigente = bd.ObtenerProductosBd (entryCodigoBarraMod.Text);
 			Console.WriteLine ("precio: " + preciovigente [1]);
-			entry18.Text = preciovigente [0];
+			entryPrecioVentaMod.Text = preciovigente [0];
 			if (preciovigente [1] == "True") {
-				checkbutton9.Visible = true;
-				checkbutton9.Sensitive = true;
-				checkbutton9.Active = true;
+				checkbuttonVigenteMod.Visible = true;
+				checkbuttonVigenteMod.Sensitive = true;
+				checkbuttonVigenteMod.Active = true;
 			} else {
-				checkbutton9.Active = false;
+				checkbuttonVigenteMod.Active = false;
 
 			}
-			if(!(bd.ExisteRegistroProductosBd(entry1.Text.Trim()))){
+			if(!(bd.ExisteRegistroProductosBd(entryCodigoBarraMod.Text.Trim()))){
 
 				Dialog dialog = new Dialog("PRODUCTO NO EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
@@ -249,7 +249,7 @@ namespace punto.gui
 			ControladorBaseDatos bd = new ControladorBaseDatos ();
 			
 			
-			bd.ActualizarProductoBd (entry1.Text,Int32.Parse (entry18.Text),vigente);
+			bd.ActualizarProductoBd (entryCodigoBarraMod.Text,Int32.Parse (entryPrecioVentaMod.Text),vigente);
 
 			Dialog dialog = new Dialog("PRODUCTO ACTUALIZADO", this, Gtk.DialogFlags.DestroyWithParent);
 			dialog.Modal = true;
@@ -269,7 +269,7 @@ namespace punto.gui
 
 		protected void OnCheckbutton8Toggled (object sender, EventArgs e)
 		{
-			if(checkbutton8.Active)
+			if(checkbuttonVigente.Active)
 			{
 				
 				checkbox2=true;

@@ -91,11 +91,11 @@ namespace punto.gui
 			Gtk.CellRendererText nombre_cell = new Gtk.CellRendererText();
 			nombre_column.PackStart(nombre_cell, true);
 
-			this.treeview2.AppendColumn(cantidad_column);
+			this.treeviewListaProductos.AppendColumn(cantidad_column);
 			cantidad_column.AddAttribute(cantidad_cell, "text", 0);
-			this.treeview2.AppendColumn(nombre_column);
+			this.treeviewListaProductos.AppendColumn(nombre_column);
 			nombre_column.AddAttribute(nombre_cell, "text", 1);
-			this.treeview2.AppendColumn(precio_column);
+			this.treeviewListaProductos.AppendColumn(precio_column);
 			precio_column.AddAttribute(precio_cell, "text", 2);
 #if DEBUG
 
@@ -109,10 +109,10 @@ namespace punto.gui
 			boleta=temp.ToString();
 			Console.WriteLine(boleta);
 			
-			entry2.Text=boleta;
-			Console.WriteLine(entry2.Text);
+			entryNumBoleta.Text=boleta;
+			Console.WriteLine(entryNumBoleta.Text);
 
-			this.treeview2.Selection.Changed += TreeView2SelectionChanged;
+			this.treeviewListaProductos.Selection.Changed += TreeView2SelectionChanged;
 
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
@@ -154,19 +154,19 @@ namespace punto.gui
 		public void CargarProductos ()
 		{
 
-			productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entry1.Text.Trim()));
-			treeview2.Model = this.ventamodel;
+			productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entryCodigoBarra.Text.Trim()));
+			treeviewListaProductos.Model = this.ventamodel;
 			foreach (Produc bod in this.productoventa)
 			{
 				ventamodel.AppendValues(1,bod.Nombre, bod.Precio);
 				preciototal=preciototal+Int32.Parse(bod.Precio);
 				Console.WriteLine(preciototal);
-				label6.Text=preciototal.ToString();
+				labelTotalVenta.Text=preciototal.ToString();
 			}				
-			entry1.DeleteText(0, entry1.Text.Length);
+			entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
 
-			this.treeview2.Selection.UnselectAll();
+			this.treeviewListaProductos.Selection.UnselectAll();
 			
 	
 		}
@@ -177,7 +177,7 @@ namespace punto.gui
 		{	
 			Gtk.TreeIter iter;
 			TreeModel model;
-			if (this.treeview2.Selection.GetSelected(out model, out iter))
+			if (this.treeviewListaProductos.Selection.GetSelected(out model, out iter))
 			{
 				//model.SetValue(iter, 0, 1);
 				//model.SetValue(iter, 1, "New Value");
@@ -209,7 +209,7 @@ namespace punto.gui
 		}
 		protected void OnButton81Clicked (object sender, EventArgs e)
 		{
-			DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
+			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
 			Console.WriteLine(DateTime.Now);
 			this.db.AgregarVentaDetalle(pago);
 			
@@ -243,13 +243,13 @@ namespace punto.gui
 
 		protected void OnButton85Clicked (object sender, EventArgs e)
 		{
-			entry2.IsEditable=true;
+			entryNumBoleta.IsEditable=true;
 			}
 
 		protected void OnEntry2TextInserted (object o, TextInsertedArgs args)
 		{
 			//que hace si apreta guardar boleta
-			boleta=entry2.Text;
+			boleta=entryNumBoleta.Text;
 		}
 		[GLib.ConnectBefore ()] 
 		protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
@@ -260,7 +260,7 @@ namespace punto.gui
 			{
 				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
 				
-				DetalleVenta pago = new DetalleVenta(Int32.Parse(entry2.Text.Trim()),1,Int32.Parse(label6.Text.Trim()),DateTime.Now);
+				DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
 				Console.WriteLine(DateTime.Now);
 				this.db.AgregarVentaDetalle(pago);
 				

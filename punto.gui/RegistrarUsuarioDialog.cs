@@ -23,12 +23,14 @@ namespace punto.gui
 			CellRendererText cell = new CellRendererText();
 			comboboxTipoUsuario.PackStart(cell, false);
 			comboboxTipoUsuario.AddAttribute(cell, "text", 0);
-			ListStore store = new ListStore(typeof (string));
-			comboboxTipoUsuario.Model = store;
+
+			ListStore ListaCombobox = new ListStore(typeof (string));
+
+			comboboxTipoUsuario.Model = ListaCombobox;
 			
-			store.AppendValues ("SuperUsuario");
-			store.AppendValues ("Cajero");
-			store.AppendValues ("Empleado");
+			ListaCombobox.AppendValues ("SuperUsuario");
+			ListaCombobox.AppendValues ("Cajero");
+			ListaCombobox.AppendValues ("Empleado");
 
 
 		}
@@ -88,6 +90,31 @@ namespace punto.gui
 			
 			
 		}
+
+		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
+		{
+			
+#if DEBUG
+			Console.WriteLine(e.ToString());
+#endif
+			Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+			dialog.Modal = true;
+			dialog.Resizable = false;
+			Gtk.Label etiqueta = new Gtk.Label();
+			etiqueta.Markup = "Se ha producido un error.";
+			dialog.BorderWidth = 8;
+			dialog.VBox.BorderWidth = 8;
+			dialog.VBox.PackStart(etiqueta, false, false, 0);
+			dialog.AddButton ("Cerrar", ResponseType.Close);
+			dialog.ShowAll();
+			
+			dialog.Run ();
+			dialog.Destroy ();
+			
+			
+			
+		}
+
 	}
 }
 

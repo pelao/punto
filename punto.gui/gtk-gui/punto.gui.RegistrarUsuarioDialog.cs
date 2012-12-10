@@ -49,7 +49,7 @@ namespace punto.gui
 		private global::Gtk.Label LabelUsuarioMod;
 		private global::Gtk.HBox hbox2;
 		private global::Gtk.Button BotonModificar;
-		private global::Gtk.Button BotonCancelar1;
+		private global::Gtk.Button BotonCancelarMod;
 		private global::Gtk.Label LabelModificarUsuario;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
@@ -69,7 +69,7 @@ namespace punto.gui
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
@@ -230,6 +230,7 @@ namespace punto.gui
 			this.LabelNombreUsuario.Name = "LabelNombreUsuario";
 			this.LabelNombreUsuario.Xalign = 0F;
 			this.LabelNombreUsuario.LabelProp = global::Mono.Unix.Catalog.GetString ("     Nombre de Usuario: ");
+			this.LabelNombreUsuario.Ellipsize = ((global::Pango.EllipsizeMode)(1));
 			this.table1.Add (this.LabelNombreUsuario);
 			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table1 [this.LabelNombreUsuario]));
 			w13.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -531,13 +532,13 @@ namespace punto.gui
 			w42.Expand = false;
 			w42.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.BotonCancelar1 = new global::Gtk.Button ();
-			this.BotonCancelar1.CanFocus = true;
-			this.BotonCancelar1.Name = "BotonCancelar1";
-			this.BotonCancelar1.UseUnderline = true;
-			this.BotonCancelar1.Label = global::Mono.Unix.Catalog.GetString ("Cancelar");
-			this.hbox2.Add (this.BotonCancelar1);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonCancelar1]));
+			this.BotonCancelarMod = new global::Gtk.Button ();
+			this.BotonCancelarMod.CanFocus = true;
+			this.BotonCancelarMod.Name = "BotonCancelarMod";
+			this.BotonCancelarMod.UseUnderline = true;
+			this.BotonCancelarMod.Label = global::Mono.Unix.Catalog.GetString ("Cancelar");
+			this.hbox2.Add (this.BotonCancelarMod);
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonCancelarMod]));
 			w43.Position = 2;
 			w43.Expand = false;
 			w43.Fill = false;

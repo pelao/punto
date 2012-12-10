@@ -5,12 +5,12 @@ namespace punto.gui
 	public partial class familiaproductosdialog
 	{
 		private global::Gtk.Table table1;
-		private global::Gtk.Button agregar_button;
+		private global::Gtk.Button añadir_button;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-		private global::Gtk.TreeView familiaplantastreeview;
+		private global::Gtk.TreeView FamiliaProductosTreeview;
 		private global::Gtk.HBox hbox4;
-		private global::Gtk.Label label4;
-		private global::Gtk.Entry entry;
+		private global::Gtk.Label labelFamilia;
+		private global::Gtk.Entry entryFamilia;
 		private global::Gtk.VButtonBox vbuttonbox1;
 		private global::Gtk.Button actualizar_button;
 		private global::Gtk.Button buttonCancel;
@@ -33,13 +33,13 @@ namespace punto.gui
 			this.table1.RowSpacing = ((uint)(6));
 			this.table1.ColumnSpacing = ((uint)(6));
 			// Container child table1.Gtk.Table+TableChild
-			this.agregar_button = new global::Gtk.Button ();
-			this.agregar_button.CanFocus = true;
-			this.agregar_button.Name = "agregar_button";
-			this.agregar_button.UseUnderline = true;
-			this.agregar_button.Label = global::Mono.Unix.Catalog.GetString ("_Añadir");
-			this.table1.Add (this.agregar_button);
-			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.agregar_button]));
+			this.añadir_button = new global::Gtk.Button ();
+			this.añadir_button.CanFocus = true;
+			this.añadir_button.Name = "añadir_button";
+			this.añadir_button.UseUnderline = true;
+			this.añadir_button.Label = global::Mono.Unix.Catalog.GetString ("_Añadir");
+			this.table1.Add (this.añadir_button);
+			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.añadir_button]));
 			w2.LeftAttach = ((uint)(1));
 			w2.RightAttach = ((uint)(2));
 			w2.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -49,10 +49,10 @@ namespace punto.gui
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.familiaplantastreeview = new global::Gtk.TreeView ();
-			this.familiaplantastreeview.CanFocus = true;
-			this.familiaplantastreeview.Name = "familiaplantastreeview";
-			this.GtkScrolledWindow.Add (this.familiaplantastreeview);
+			this.FamiliaProductosTreeview = new global::Gtk.TreeView ();
+			this.FamiliaProductosTreeview.CanFocus = true;
+			this.FamiliaProductosTreeview.Name = "FamiliaProductosTreeview";
+			this.GtkScrolledWindow.Add (this.FamiliaProductosTreeview);
 			this.table1.Add (this.GtkScrolledWindow);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.GtkScrolledWindow]));
 			w4.TopAttach = ((uint)(1));
@@ -62,23 +62,23 @@ namespace punto.gui
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.label4 = new global::Gtk.Label ();
-			this.label4.Name = "label4";
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("Familia");
-			this.hbox4.Add (this.label4);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label4]));
+			this.labelFamilia = new global::Gtk.Label ();
+			this.labelFamilia.Name = "labelFamilia";
+			this.labelFamilia.LabelProp = global::Mono.Unix.Catalog.GetString ("Familia");
+			this.hbox4.Add (this.labelFamilia);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.labelFamilia]));
 			w5.Position = 0;
 			w5.Expand = false;
 			w5.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.entry = new global::Gtk.Entry ();
-			this.entry.CanFocus = true;
-			this.entry.Name = "entry";
-			this.entry.IsEditable = true;
-			this.entry.MaxLength = 100;
-			this.entry.InvisibleChar = '●';
-			this.hbox4.Add (this.entry);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.entry]));
+			this.entryFamilia = new global::Gtk.Entry ();
+			this.entryFamilia.CanFocus = true;
+			this.entryFamilia.Name = "entryFamilia";
+			this.entryFamilia.IsEditable = true;
+			this.entryFamilia.MaxLength = 100;
+			this.entryFamilia.InvisibleChar = '●';
+			this.hbox4.Add (this.entryFamilia);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.entryFamilia]));
 			w6.Position = 1;
 			this.table1.Add (this.hbox4);
 			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1 [this.hbox4]));
@@ -146,7 +146,7 @@ namespace punto.gui
 			this.DefaultHeight = 300;
 			this.Show ();
 			this.actualizar_button.Clicked += new global::System.EventHandler (this.OnActualizarButtonClicked);
-			this.agregar_button.Clicked += new global::System.EventHandler (this.OnAgregarButtonClicked);
+			this.añadir_button.Clicked += new global::System.EventHandler (this.OnAgregarButtonClicked);
 		}
 	}
 }

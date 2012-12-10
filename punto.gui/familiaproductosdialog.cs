@@ -60,10 +60,10 @@ namespace punto.gui
 			nombre_column.Title = "Nombre";
 			Gtk.CellRendererText nombre_cell = new Gtk.CellRendererText();
 			nombre_column.PackStart(nombre_cell, true);
-			this.familiaplantastreeview.AppendColumn(nombre_column);
+			this.FamiliaProductosTreeview.AppendColumn(nombre_column);
 			nombre_column.AddAttribute(nombre_cell, "text", 0);
 			
-			this.familiaplantastreeview.Selection.Changed += OnFamiliasTreeViewSelectionChanged;
+			this.FamiliaProductosTreeview.Selection.Changed += OnFamiliasTreeViewSelectionChanged;
 
 			
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
@@ -118,16 +118,16 @@ namespace punto.gui
 			{
 				this.bodegasmodel.AppendValues( prod.Nombre);
 			}
-			familiaplantastreeview.Model = this.bodegasmodel;
+			FamiliaProductosTreeview.Model = this.bodegasmodel;
 			
 
 		}
 		protected void OnFamiliasTreeViewSelectionChanged (object sender, EventArgs args)
 		{	
 			Gtk.TreeIter iter;
-			if (this.familiaplantastreeview.Selection.GetSelected(out iter))
+			if (this.FamiliaProductosTreeview.Selection.GetSelected(out iter))
 			{
-				agregar_button.Sensitive = true;
+				añadir_button.Sensitive = true;
 
 				this.actualizar_button.Sensitive = true;
 			}
@@ -139,7 +139,7 @@ namespace punto.gui
 
 		protected virtual void OnAgregarButtonClicked (object sender, System.EventArgs e)
 		{
-			FamiliaProducto prod = new FamiliaProducto(this.entry.Text.Trim());
+			FamiliaProducto prod = new FamiliaProducto(this.entryFamilia.Text.Trim());
 
 
 			if (this.db.ExisteFamiliaBd(prod))
@@ -164,11 +164,11 @@ namespace punto.gui
 					this.familias.Add(prod);
 					this.bodegasmodel.AppendValues(prod.Nombre);
 					
-					this.entry.Text = "";
-					this.familiaplantastreeview.Selection.UnselectAll();
-					this.agregar_button.Sensitive = false;
+					this.entryFamilia.Text = "";
+					this.FamiliaProductosTreeview.Selection.UnselectAll();
+					this.añadir_button.Sensitive = false;
 				
-					agregar_button.Sensitive = true;
+					añadir_button.Sensitive = true;
 
 					this.cambiado = true;
 				}
@@ -186,7 +186,7 @@ namespace punto.gui
 					dialog.ShowAll();
 					dialog.Run ();
 					dialog.Destroy ();
-					agregar_button.Sensitive = true;
+					añadir_button.Sensitive = true;
 
 				}
 			}
