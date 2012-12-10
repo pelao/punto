@@ -1532,6 +1532,7 @@
               <widget class="Gtk.HPaned" id="hpaned12">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
+                <property name="Position">10</property>
                 <child>
                   <placeholder />
                 </child>
@@ -2250,7 +2251,7 @@
   </widget>
   <widget class="Gtk.Dialog" id="punto.gui.IniciarSesionDialog" design-size="400 300">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">INICIIO SESION</property>
+    <property name="Title" translatable="yes">INICIO SESION</property>
     <property name="WindowPosition">Center</property>
     <property name="Buttons">1</property>
     <property name="HelpButton">False</property>
@@ -2373,13 +2374,13 @@
                           <widget class="Gtk.Alignment" id="alignment66">
                             <property name="MemberName" />
                             <child>
-                              <widget class="Gtk.Button" id="button505">
+                              <widget class="Gtk.Button" id="buttonIngresar">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Ingresar</property>
                                 <property name="UseUnderline">True</property>
-                                <signal name="Clicked" handler="OnButton505Clicked" />
+                                <signal name="Clicked" handler="OnButtonIngresarClicked" />
                               </widget>
                             </child>
                           </widget>
@@ -2580,30 +2581,7 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Entry" id="entry3">
-                    <property name="MemberName" />
-                    <property name="CanFocus">True</property>
-                    <property name="IsEditable">True</property>
-                    <property name="InvisibleChar">●</property>
-                  </widget>
-                  <packing>
-                    <property name="TopAttach">1</property>
-                    <property name="BottomAttach">2</property>
-                    <property name="LeftAttach">2</property>
-                    <property name="RightAttach">3</property>
-                    <property name="AutoSize">True</property>
-                    <property name="XOptions">Fill</property>
-                    <property name="YOptions">Fill</property>
-                    <property name="XExpand">False</property>
-                    <property name="XFill">True</property>
-                    <property name="XShrink">False</property>
-                    <property name="YExpand">False</property>
-                    <property name="YFill">True</property>
-                    <property name="YShrink">False</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Entry" id="entry4">
+                  <widget class="Gtk.Entry" id="entryClave">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
@@ -2628,13 +2606,37 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Label" id="label3">
+                  <widget class="Gtk.Entry" id="entryUsuario">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Usuario:</property>
+                    <property name="CanFocus">True</property>
+                    <property name="IsEditable">True</property>
+                    <property name="InvisibleChar">●</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
                     <property name="BottomAttach">2</property>
+                    <property name="LeftAttach">2</property>
+                    <property name="RightAttach">3</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="labelClave">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Clave:</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">2</property>
+                    <property name="BottomAttach">3</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
@@ -2649,14 +2651,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Label" id="label4">
+                  <widget class="Gtk.Label" id="labelUsuario">
                     <property name="MemberName" />
-                    <property name="Xalign">0</property>
-                    <property name="LabelProp" translatable="yes">Clave:</property>
+                    <property name="LabelProp" translatable="yes">Usuario:</property>
                   </widget>
                   <packing>
-                    <property name="TopAttach">2</property>
-                    <property name="BottomAttach">3</property>
+                    <property name="TopAttach">1</property>
+                    <property name="BottomAttach">2</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>

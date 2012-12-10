@@ -14,7 +14,7 @@ namespace punto.gui
 		private global::Gtk.Alignment alignment62;
 		private global::Gtk.HBox hbox2;
 		private global::Gtk.Alignment alignment66;
-		private global::Gtk.Button button505;
+		private global::Gtk.Button buttonIngresar;
 		private global::Gtk.Alignment alignment67;
 		private global::Gtk.Button BotonSalir;
 		private global::Gtk.Alignment alignment63;
@@ -24,10 +24,10 @@ namespace punto.gui
 		private global::Gtk.Alignment alignment69;
 		private global::Gtk.Alignment alignment70;
 		private global::Gtk.Alignment alignment71;
-		private global::Gtk.Entry entry3;
-		private global::Gtk.Entry entry4;
-		private global::Gtk.Label label3;
-		private global::Gtk.Label label4;
+		private global::Gtk.Entry entryClave;
+		private global::Gtk.Entry entryUsuario;
+		private global::Gtk.Label labelClave;
+		private global::Gtk.Label labelUsuario;
 		private global::Gtk.Button button1218;
 		
 		protected virtual void Build ()
@@ -35,7 +35,7 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.IniciarSesionDialog
 			this.Name = "punto.gui.IniciarSesionDialog";
-			this.Title = global::Mono.Unix.Catalog.GetString ("INICIIO SESION");
+			this.Title = global::Mono.Unix.Catalog.GetString ("INICIO SESION");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.IniciarSesionDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
@@ -92,12 +92,12 @@ namespace punto.gui
 			this.alignment66 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment66.Name = "alignment66";
 			// Container child alignment66.Gtk.Container+ContainerChild
-			this.button505 = new global::Gtk.Button ();
-			this.button505.CanFocus = true;
-			this.button505.Name = "button505";
-			this.button505.UseUnderline = true;
-			this.button505.Label = global::Mono.Unix.Catalog.GetString ("Ingresar");
-			this.alignment66.Add (this.button505);
+			this.buttonIngresar = new global::Gtk.Button ();
+			this.buttonIngresar.CanFocus = true;
+			this.buttonIngresar.Name = "buttonIngresar";
+			this.buttonIngresar.UseUnderline = true;
+			this.buttonIngresar.Label = global::Mono.Unix.Catalog.GetString ("Ingresar");
+			this.alignment66.Add (this.buttonIngresar);
 			this.hbox2.Add (this.alignment66);
 			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.alignment66]));
 			w8.Position = 0;
@@ -193,55 +193,55 @@ namespace punto.gui
 			w19.LeftAttach = ((uint)(3));
 			w19.RightAttach = ((uint)(4));
 			// Container child table2.Gtk.Table+TableChild
-			this.entry3 = new global::Gtk.Entry ();
-			this.entry3.CanFocus = true;
-			this.entry3.Name = "entry3";
-			this.entry3.IsEditable = true;
-			this.entry3.InvisibleChar = '●';
-			this.table2.Add (this.entry3);
-			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table2 [this.entry3]));
-			w20.TopAttach = ((uint)(1));
-			w20.BottomAttach = ((uint)(2));
+			this.entryClave = new global::Gtk.Entry ();
+			this.entryClave.CanFocus = true;
+			this.entryClave.Name = "entryClave";
+			this.entryClave.IsEditable = true;
+			this.entryClave.Visibility = false;
+			this.entryClave.InvisibleChar = '●';
+			this.table2.Add (this.entryClave);
+			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table2 [this.entryClave]));
+			w20.TopAttach = ((uint)(2));
+			w20.BottomAttach = ((uint)(3));
 			w20.LeftAttach = ((uint)(2));
 			w20.RightAttach = ((uint)(3));
 			w20.XOptions = ((global::Gtk.AttachOptions)(4));
 			w20.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table2.Gtk.Table+TableChild
-			this.entry4 = new global::Gtk.Entry ();
-			this.entry4.CanFocus = true;
-			this.entry4.Name = "entry4";
-			this.entry4.IsEditable = true;
-			this.entry4.Visibility = false;
-			this.entry4.InvisibleChar = '●';
-			this.table2.Add (this.entry4);
-			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table2 [this.entry4]));
-			w21.TopAttach = ((uint)(2));
-			w21.BottomAttach = ((uint)(3));
+			this.entryUsuario = new global::Gtk.Entry ();
+			this.entryUsuario.CanFocus = true;
+			this.entryUsuario.Name = "entryUsuario";
+			this.entryUsuario.IsEditable = true;
+			this.entryUsuario.InvisibleChar = '●';
+			this.table2.Add (this.entryUsuario);
+			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table2 [this.entryUsuario]));
+			w21.TopAttach = ((uint)(1));
+			w21.BottomAttach = ((uint)(2));
 			w21.LeftAttach = ((uint)(2));
 			w21.RightAttach = ((uint)(3));
 			w21.XOptions = ((global::Gtk.AttachOptions)(4));
 			w21.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table2.Gtk.Table+TableChild
-			this.label3 = new global::Gtk.Label ();
-			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Usuario:");
-			this.table2.Add (this.label3);
-			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table2 [this.label3]));
-			w22.TopAttach = ((uint)(1));
-			w22.BottomAttach = ((uint)(2));
+			this.labelClave = new global::Gtk.Label ();
+			this.labelClave.Name = "labelClave";
+			this.labelClave.Xalign = 0F;
+			this.labelClave.LabelProp = global::Mono.Unix.Catalog.GetString ("Clave:");
+			this.table2.Add (this.labelClave);
+			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelClave]));
+			w22.TopAttach = ((uint)(2));
+			w22.BottomAttach = ((uint)(3));
 			w22.LeftAttach = ((uint)(1));
 			w22.RightAttach = ((uint)(2));
 			w22.XOptions = ((global::Gtk.AttachOptions)(4));
 			w22.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table2.Gtk.Table+TableChild
-			this.label4 = new global::Gtk.Label ();
-			this.label4.Name = "label4";
-			this.label4.Xalign = 0F;
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("Clave:");
-			this.table2.Add (this.label4);
-			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table2 [this.label4]));
-			w23.TopAttach = ((uint)(2));
-			w23.BottomAttach = ((uint)(3));
+			this.labelUsuario = new global::Gtk.Label ();
+			this.labelUsuario.Name = "labelUsuario";
+			this.labelUsuario.LabelProp = global::Mono.Unix.Catalog.GetString ("Usuario:");
+			this.table2.Add (this.labelUsuario);
+			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelUsuario]));
+			w23.TopAttach = ((uint)(1));
+			w23.BottomAttach = ((uint)(2));
 			w23.LeftAttach = ((uint)(1));
 			w23.RightAttach = ((uint)(2));
 			w23.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -272,8 +272,8 @@ namespace punto.gui
 			this.DefaultHeight = 300;
 			w26.Hide ();
 			this.Show ();
-			this.entry4.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
-			this.button505.Clicked += new global::System.EventHandler (this.OnButton505Clicked);
+			this.entryClave.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
+			this.buttonIngresar.Clicked += new global::System.EventHandler (this.OnButtonIngresarClicked);
 			this.BotonSalir.Clicked += new global::System.EventHandler (this.OnBotonSalirClicked);
 		}
 	}
