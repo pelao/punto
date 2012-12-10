@@ -272,7 +272,6 @@ namespace punto.gui
 			this.DefaultHeight = 300;
 			w26.Hide ();
 			this.Show ();
-			this.entryClave.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
 			this.buttonIngresar.Clicked += new global::System.EventHandler (this.OnButtonIngresarClicked);
 			this.BotonSalir.Clicked += new global::System.EventHandler (this.OnBotonSalirClicked);
 		}

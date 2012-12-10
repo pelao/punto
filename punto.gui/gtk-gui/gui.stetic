@@ -2587,7 +2587,6 @@
                     <property name="IsEditable">True</property>
                     <property name="Visibility">False</property>
                     <property name="InvisibleChar">●</property>
-                    <signal name="KeyPressEvent" handler="OnEntry4KeyPressEvent" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
