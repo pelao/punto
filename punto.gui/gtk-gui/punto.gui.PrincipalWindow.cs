@@ -11,6 +11,8 @@ namespace punto.gui
 		private global::Gtk.Action RegistrarModificarAction;
 		private global::Gtk.Action CerrarAction;
 		private global::Gtk.Action InicioSesionAction;
+		private global::Gtk.Action UsuariosAction;
+		private global::Gtk.Action RegistrarModificarAction1;
 		private global::Gtk.VBox vbox3;
 		private global::Gtk.MenuBar menubar1;
 		private global::Gtk.HBox hbox3;
@@ -44,6 +46,12 @@ namespace punto.gui
 			this.InicioSesionAction = new global::Gtk.Action ("InicioSesionAction", global::Mono.Unix.Catalog.GetString ("Inicio Sesion"), null, null);
 			this.InicioSesionAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Inicio Sesion");
 			w1.Add (this.InicioSesionAction, null);
+			this.UsuariosAction = new global::Gtk.Action ("UsuariosAction", global::Mono.Unix.Catalog.GetString ("Usuarios"), null, null);
+			this.UsuariosAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Usuarios");
+			w1.Add (this.UsuariosAction, null);
+			this.RegistrarModificarAction1 = new global::Gtk.Action ("RegistrarModificarAction1", global::Mono.Unix.Catalog.GetString ("Registrar/Modificar"), null, null);
+			this.RegistrarModificarAction1.ShortLabel = global::Mono.Unix.Catalog.GetString ("Registrar/Modificar");
+			w1.Add (this.RegistrarModificarAction1, null);
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "punto.gui.PrincipalWindow";
@@ -54,7 +62,7 @@ namespace punto.gui
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='InicioSesionAction' action='InicioSesionAction'/><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='InicioSesionAction' action='InicioSesionAction'/><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox3.Add (this.menubar1);
@@ -116,7 +124,9 @@ namespace punto.gui
 			this.Show ();
 			this.AgregarFamiliaAction.Activated += new global::System.EventHandler (this.OnFamiliaDeProductosActionActivated);
 			this.RegistrarModificarAction.Activated += new global::System.EventHandler (this.OnIngresarModificarProductosActionActivated);
+			this.CerrarAction.Activated += new global::System.EventHandler (this.OnCerrarActionActivated);
 			this.InicioSesionAction.Activated += new global::System.EventHandler (this.OnIniciarSesionActionActivated);
+			this.RegistrarModificarAction1.Activated += new global::System.EventHandler (this.OnRegistrarModificarUsuarioActionActivated);
 			this.button27.Clicked += new global::System.EventHandler (this.OnButton27Clicked);
 		}
 	}

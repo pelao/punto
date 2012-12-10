@@ -16,7 +16,7 @@ namespace punto.gui
 		private global::Gtk.Alignment alignment66;
 		private global::Gtk.Button button505;
 		private global::Gtk.Alignment alignment67;
-		private global::Gtk.Button button590;
+		private global::Gtk.Button BotonSalir;
 		private global::Gtk.Alignment alignment63;
 		private global::Gtk.Alignment alignment64;
 		private global::Gtk.Alignment alignment65;
@@ -35,6 +35,7 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.IniciarSesionDialog
 			this.Name = "punto.gui.IniciarSesionDialog";
+			this.Title = global::Mono.Unix.Catalog.GetString ("INICIIO SESION");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.IniciarSesionDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
@@ -106,12 +107,12 @@ namespace punto.gui
 			this.alignment67 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment67.Name = "alignment67";
 			// Container child alignment67.Gtk.Container+ContainerChild
-			this.button590 = new global::Gtk.Button ();
-			this.button590.CanFocus = true;
-			this.button590.Name = "button590";
-			this.button590.UseUnderline = true;
-			this.button590.Label = global::Mono.Unix.Catalog.GetString ("   Salir   ");
-			this.alignment67.Add (this.button590);
+			this.BotonSalir = new global::Gtk.Button ();
+			this.BotonSalir.CanFocus = true;
+			this.BotonSalir.Name = "BotonSalir";
+			this.BotonSalir.UseUnderline = true;
+			this.BotonSalir.Label = global::Mono.Unix.Catalog.GetString ("   Salir   ");
+			this.alignment67.Add (this.BotonSalir);
 			this.hbox2.Add (this.alignment67);
 			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.alignment67]));
 			w10.Position = 1;
@@ -273,6 +274,7 @@ namespace punto.gui
 			this.Show ();
 			this.entry4.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry4KeyPressEvent);
 			this.button505.Clicked += new global::System.EventHandler (this.OnButton505Clicked);
+			this.BotonSalir.Clicked += new global::System.EventHandler (this.OnBotonSalirClicked);
 		}
 	}
 }

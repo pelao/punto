@@ -2,4 +2,5 @@
 <stetic-interface>
   <action-group name="punto.code.familia" />
   <action-group name="punto.code.ProductosVender" />
+  <action-group name="punto.code.Usuario" />
 </stetic-interface>

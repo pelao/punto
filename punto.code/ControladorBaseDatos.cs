@@ -48,20 +48,20 @@ namespace punto.code
 			
 			return false;
 		}
-		public bool AgregarVentaDetalle (DetalleVenta registro)
+
+		public bool AgregarUsuarioBd (Usuario dato)
 		{
-			
-			
 			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"INSERT INTO venta_detalle(idventa_detalle,cantidad,precio_venta,fecha_hora) " +
-					"VALUES ("+registro.CODIGOVENTA+",'"+registro.CANTIDAD+"','"+registro.PRECIOVENTA+"','"+registro.FECHA+"');";
+			
+
+			"INSERT INTO usuarios (userlogin,userpass,nombre,apellidos,telefono,rut,nivel_user) " +
+				"VALUES ("+dato.Userlogin+",'"+dato.Userpass+"','"+dato.Nombre+"','"+dato.Apellidos+"','"+dato.Telefono+"','"+dato.Rut+"','"+dato.Nivel_user+"');";
+
+
 			dbcmd.CommandText = sql;
-			IDataReader reader = dbcmd.ExecuteReader();
-			
-			
 			dbcmd.Dispose();
 			dbcmd = null;
 			
@@ -71,7 +71,27 @@ namespace punto.code
 			return false;
 		}
 
-		public bool ExisteRegistroProductosBd (int codigob)
+		public bool AgregarVentaDetalle (DetalleVenta registro)
+		{
+			
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+
+			string sql =
+				"INSERT INTO venta_detalle(idventa_detalle,cantidad,precio_venta,fecha_hora) " +
+					"VALUES ("+registro.CODIGOVENTA+",'"+registro.CANTIDAD+"','"+registro.PRECIOVENTA+"','"+registro.FECHA+"');";
+
+			dbcmd.CommandText = sql;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			return false;
+		}
+
+		public bool ExisteRegistroProductosBd (string codigob)
 		{
 			IDbConnection dbcon = this.ConectarBd ();
 			
@@ -97,6 +117,34 @@ namespace punto.code
 			
 			return existe;
 		}
+
+		public bool ExisteUsuarioBd (string usuario)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+			sql =
+				"SELECT userlogin " +
+					"FROM usuarios " +
+					"WHERE userlogin='"+ usuario + "';";
+			dbcmd.CommandText = sql;
+			
+			
+			
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+			
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
+
 	/*	public List<Producto> ObtenerProductosBd (int codigoB)
 		{
 			IDbConnection dbcon = this.ConectarBd();
@@ -122,7 +170,7 @@ namespace punto.code
 			return product;
 		}
   */   
-		public bool ActualizarProductoBd (int CodigoB,int PrecioV, string Vigente)
+		public bool ActualizarProductoBd (string CodigoB,int PrecioV, string Vigente)
 		{
 						
 			IDbConnection dbcon = this.ConectarBd();
@@ -135,8 +183,6 @@ namespace punto.code
 					"WHERE codigobarra="+CodigoB+";";
 
 				dbcmd.CommandText = sql;
-				int res = dbcmd.ExecuteNonQuery();
-				// clean up
 				dbcmd.Dispose();
 				dbcmd = null;
 				
@@ -170,7 +216,7 @@ namespace punto.code
 			
 			return precio;
 		}
-		public string[] ObtenerProductosBd (int codigoB)
+		public string[] ObtenerProductosBd (string codigoB)
 		{
 			string[] precio = new string[2];
 
@@ -288,13 +334,12 @@ namespace punto.code
 				IDbConnection dbcon = this.ConectarBd();
 				
 				IDbCommand dbcmd = dbcon.CreateCommand();
+
 				string sql =
 					"INSERT INTO familia_prod (nombre)" +
 						"VALUES ('"+familia.Nombre+"')";
+
 				dbcmd.CommandText = sql;
-				int res = dbcmd.ExecuteNonQuery();
-				
-			
 				dbcmd.Dispose();
 				dbcmd = null;
 				

@@ -53,6 +53,8 @@
     <Compile Include="VentaDetalle.cs" />
     <Compile Include="gtk-gui\punto.code.ProductosVender.cs" />
     <Compile Include="Produc.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="gtk-gui\punto.code.Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

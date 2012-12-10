@@ -168,10 +168,27 @@ namespace punto.gui
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
 				rcd.Destroy();
-#if DEBUG
-				Console.WriteLine(ex.Message);
-#endif
+
+
 			}
+		}
+
+		protected void OnRegistrarModificarUsuarioActionActivated (object sender, EventArgs e)
+		{
+			RegistrarUsuarioDialog rcd = new RegistrarUsuarioDialog();
+			
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+				
+				
+			}
+		}
 			/*try 
 			{
 				rcd.Run();
@@ -184,9 +201,29 @@ namespace punto.gui
 				Console.WriteLine(ex.Message);
 #endif
 			}*/
-		} 
+		 
 		
 		
 		
+		protected void OnCerrarActionActivated (object sender, EventArgs e)
+		{
+			this.Destroy();
+
+			IniciarSesionDialog rcd = new IniciarSesionDialog();
+			
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+				
+				
+			}
+
+		}
+	
 	}
 }

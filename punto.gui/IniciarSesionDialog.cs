@@ -144,6 +144,11 @@ namespace punto.gui
 			}
 
 			}
+
+		protected void OnBotonSalirClicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
 		}
 	}
 

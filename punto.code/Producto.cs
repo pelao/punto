@@ -4,7 +4,7 @@ namespace punto.code
 {
 	public class Producto
 	{
-		private int _codigobarra;
+		private string _codigobarra;
 		private string _nombre;
 		private int _precioventa;
 		private bool _pesable;
@@ -12,7 +12,7 @@ namespace punto.code
 		private string _familia;
 
 	
-		public Producto (int codigobarra, string nombre, int precioventa, string familia,bool pesable,bool vigente)
+		public Producto (string codigobarra, string nombre, int precioventa, string familia,bool pesable,bool vigente)
 		{
 			this.Codigobarra = codigobarra;
 			this.Nombre = nombre;
@@ -22,11 +22,11 @@ namespace punto.code
 			this.Familia = familia;
 
 		}
-		public int Codigobarra
+		public string Codigobarra
 		{
 			get {return this._codigobarra;}
 			set {
-				if (value >= 0)
+				if (value.Trim().Length <=20)
 				{
 					this._codigobarra = value;
 				}
