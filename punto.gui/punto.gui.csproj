@@ -85,6 +85,8 @@
     <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
     <Compile Include="RegistrarUsuarioDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.RegistrarUsuarioDialog.cs" />
+    <Compile Include="EditarProductoDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.EditarProductoDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

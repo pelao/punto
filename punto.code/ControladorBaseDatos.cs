@@ -90,7 +90,29 @@ namespace punto.code
 			this.DesconectarBd(dbcon);
 			return false;
 		}
-
+		public List<Produc> ObtenerProductosBd ()
+		{
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT nombre,precio_venta " +
+					"FROM productos " ;
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			List<Produc> product = new List<Produc>();
+			while(reader.Read()) {
+				product.Add(new Produc( ((string) reader["nombre"]),((string) reader["precio_venta"])));
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return product;
+		}
 		public bool ExisteRegistroProductosBd (string codigob)
 		{
 			IDbConnection dbcon = this.ConectarBd ();
@@ -170,19 +192,20 @@ namespace punto.code
 			return product;
 		}
   */   
-		public bool ActualizarProductoBd (string CodigoB,int PrecioV, string Vigente)
+		public bool ActualizarProductoBd (string NombreV,string PrecioV)
 		{
 						
 			IDbConnection dbcon = this.ConectarBd();
 				
 				IDbCommand dbcmd = dbcon.CreateCommand();
 				string sql =
-					"UPDATE productos " +
-						"SET precio_venta='"+PrecioV+"'," +
-					"vigente='"+Vigente+"'" +
-					"WHERE codigobarra="+CodigoB+";";
+				"UPDATE productos " +
+					"SET precio_venta='"+PrecioV+"'" +
+					"WHERE nombre='"+NombreV+"'";
+			dbcmd.CommandText = sql;
 
-				dbcmd.CommandText = sql;
+			int res = dbcmd.ExecuteNonQuery();
+
 				dbcmd.Dispose();
 				dbcmd = null;
 				

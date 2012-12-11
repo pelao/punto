@@ -25,19 +25,15 @@ namespace punto.gui
 		private global::Gtk.Button BotonAgregarProd;
 		private global::Gtk.Label label6;
 		private global::Gtk.Label labelRegistrarProducto;
+		private global::Gtk.Frame frame4;
+		private global::Gtk.Alignment GtkAlignment2;
 		private global::Gtk.VBox vbox4;
-		private global::Gtk.Label labelTituloModificarProd;
-		private global::Gtk.Alignment alignment4;
-		private global::Gtk.VBox vbox7;
-		private global::Gtk.Table table2;
-		private global::Gtk.Button BotonAgregarCambios;
-		private global::Gtk.Button buttonBuscar;
-		private global::Gtk.CheckButton checkbuttonVigenteMod;
-		private global::Gtk.Entry entryCodigoBarraMod;
-		private global::Gtk.Entry entryPrecioVentaMod;
-		private global::Gtk.Label labelCodigoBarraMod;
-		private global::Gtk.Label labelPrecioVentaMod;
-		private global::Gtk.HBox hbox2;
+		private global::Gtk.HBox hbox5;
+		private global::Gtk.Button BotonEditar;
+		private global::Gtk.HBox hbox6;
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+		private global::Gtk.TreeView treeview1;
+		private global::Gtk.Label GtkLabel4;
 		private global::Gtk.Label labelModificarProducto;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
@@ -261,149 +257,81 @@ namespace punto.gui
 			this.notebook1.SetTabLabel (this.vbox3, this.labelRegistrarProducto);
 			this.labelRegistrarProducto.ShowAll ();
 			// Container child notebook1.Gtk.Notebook+NotebookChild
+			this.frame4 = new global::Gtk.Frame ();
+			this.frame4.Name = "frame4";
+			this.frame4.ShadowType = ((global::Gtk.ShadowType)(0));
+			// Container child frame4.Gtk.Container+ContainerChild
+			this.GtkAlignment2 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment2.Name = "GtkAlignment2";
+			this.GtkAlignment2.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment2.Gtk.Container+ContainerChild
 			this.vbox4 = new global::Gtk.VBox ();
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.labelTituloModificarProd = new global::Gtk.Label ();
-			this.labelTituloModificarProd.Name = "labelTituloModificarProd";
-			this.labelTituloModificarProd.Ypad = 10;
-			this.labelTituloModificarProd.LabelProp = global::Mono.Unix.Catalog.GetString ("Modificar productos de la Base de Datos");
-			this.vbox4.Add (this.labelTituloModificarProd);
-			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.labelTituloModificarProd]));
-			w21.Position = 0;
+			this.hbox5 = new global::Gtk.HBox ();
+			this.hbox5.Name = "hbox5";
+			this.hbox5.Spacing = 6;
+			// Container child hbox5.Gtk.Box+BoxChild
+			this.BotonEditar = new global::Gtk.Button ();
+			this.BotonEditar.CanFocus = true;
+			this.BotonEditar.Name = "BotonEditar";
+			this.BotonEditar.UseUnderline = true;
+			this.BotonEditar.Label = global::Mono.Unix.Catalog.GetString ("Editar");
+			this.hbox5.Add (this.BotonEditar);
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.BotonEditar]));
+			w21.Position = 1;
+			w21.Expand = false;
 			w21.Fill = false;
+			this.vbox4.Add (this.hbox5);
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox5]));
+			w22.Position = 0;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.alignment4 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment4.Name = "alignment4";
-			// Container child alignment4.Gtk.Container+ContainerChild
-			this.vbox7 = new global::Gtk.VBox ();
-			this.vbox7.Name = "vbox7";
-			this.vbox7.Spacing = 6;
-			// Container child vbox7.Gtk.Box+BoxChild
-			this.table2 = new global::Gtk.Table (((uint)(6)), ((uint)(2)), true);
-			this.table2.Name = "table2";
-			this.table2.RowSpacing = ((uint)(6));
-			this.table2.ColumnSpacing = ((uint)(6));
-			this.table2.BorderWidth = ((uint)(7));
-			// Container child table2.Gtk.Table+TableChild
-			this.BotonAgregarCambios = new global::Gtk.Button ();
-			this.BotonAgregarCambios.CanFocus = true;
-			this.BotonAgregarCambios.Name = "BotonAgregarCambios";
-			this.BotonAgregarCambios.UseUnderline = true;
-			this.BotonAgregarCambios.Label = global::Mono.Unix.Catalog.GetString ("Guardar Cambios");
-			this.table2.Add (this.BotonAgregarCambios);
-			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table2 [this.BotonAgregarCambios]));
-			w22.TopAttach = ((uint)(5));
-			w22.BottomAttach = ((uint)(6));
-			w22.LeftAttach = ((uint)(1));
-			w22.RightAttach = ((uint)(2));
-			w22.XOptions = ((global::Gtk.AttachOptions)(0));
-			w22.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table2.Gtk.Table+TableChild
-			this.buttonBuscar = new global::Gtk.Button ();
-			this.buttonBuscar.CanFocus = true;
-			this.buttonBuscar.Name = "buttonBuscar";
-			this.buttonBuscar.UseUnderline = true;
-			this.buttonBuscar.Label = global::Mono.Unix.Catalog.GetString ("Buscar");
-			this.table2.Add (this.buttonBuscar);
-			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table2 [this.buttonBuscar]));
-			w23.TopAttach = ((uint)(1));
-			w23.BottomAttach = ((uint)(2));
-			w23.LeftAttach = ((uint)(1));
-			w23.RightAttach = ((uint)(2));
-			w23.XOptions = ((global::Gtk.AttachOptions)(1));
-			// Container child table2.Gtk.Table+TableChild
-			this.checkbuttonVigenteMod = new global::Gtk.CheckButton ();
-			this.checkbuttonVigenteMod.CanFocus = true;
-			this.checkbuttonVigenteMod.Name = "checkbuttonVigenteMod";
-			this.checkbuttonVigenteMod.Label = global::Mono.Unix.Catalog.GetString ("Vigente");
-			this.checkbuttonVigenteMod.DrawIndicator = true;
-			this.checkbuttonVigenteMod.UseUnderline = true;
-			this.table2.Add (this.checkbuttonVigenteMod);
-			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table2 [this.checkbuttonVigenteMod]));
-			w24.TopAttach = ((uint)(4));
-			w24.BottomAttach = ((uint)(5));
-			w24.LeftAttach = ((uint)(1));
-			w24.RightAttach = ((uint)(2));
-			w24.XOptions = ((global::Gtk.AttachOptions)(4));
-			w24.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table2.Gtk.Table+TableChild
-			this.entryCodigoBarraMod = new global::Gtk.Entry ();
-			this.entryCodigoBarraMod.CanFocus = true;
-			this.entryCodigoBarraMod.Name = "entryCodigoBarraMod";
-			this.entryCodigoBarraMod.IsEditable = true;
-			this.entryCodigoBarraMod.InvisibleChar = '●';
-			this.table2.Add (this.entryCodigoBarraMod);
-			global::Gtk.Table.TableChild w25 = ((global::Gtk.Table.TableChild)(this.table2 [this.entryCodigoBarraMod]));
-			w25.LeftAttach = ((uint)(1));
-			w25.RightAttach = ((uint)(2));
-			w25.XOptions = ((global::Gtk.AttachOptions)(4));
-			w25.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table2.Gtk.Table+TableChild
-			this.entryPrecioVentaMod = new global::Gtk.Entry ();
-			this.entryPrecioVentaMod.CanFocus = true;
-			this.entryPrecioVentaMod.Name = "entryPrecioVentaMod";
-			this.entryPrecioVentaMod.IsEditable = true;
-			this.entryPrecioVentaMod.InvisibleChar = '●';
-			this.table2.Add (this.entryPrecioVentaMod);
-			global::Gtk.Table.TableChild w26 = ((global::Gtk.Table.TableChild)(this.table2 [this.entryPrecioVentaMod]));
-			w26.TopAttach = ((uint)(3));
-			w26.BottomAttach = ((uint)(4));
-			w26.LeftAttach = ((uint)(1));
-			w26.RightAttach = ((uint)(2));
-			w26.XOptions = ((global::Gtk.AttachOptions)(4));
-			w26.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table2.Gtk.Table+TableChild
-			this.labelCodigoBarraMod = new global::Gtk.Label ();
-			this.labelCodigoBarraMod.Name = "labelCodigoBarraMod";
-			this.labelCodigoBarraMod.LabelProp = global::Mono.Unix.Catalog.GetString ("Código Barra:");
-			this.table2.Add (this.labelCodigoBarraMod);
-			global::Gtk.Table.TableChild w27 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelCodigoBarraMod]));
-			w27.XOptions = ((global::Gtk.AttachOptions)(4));
-			w27.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table2.Gtk.Table+TableChild
-			this.labelPrecioVentaMod = new global::Gtk.Label ();
-			this.labelPrecioVentaMod.Name = "labelPrecioVentaMod";
-			this.labelPrecioVentaMod.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio Venta:");
-			this.table2.Add (this.labelPrecioVentaMod);
-			global::Gtk.Table.TableChild w28 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelPrecioVentaMod]));
-			w28.TopAttach = ((uint)(3));
-			w28.BottomAttach = ((uint)(4));
-			w28.XOptions = ((global::Gtk.AttachOptions)(1));
-			w28.YOptions = ((global::Gtk.AttachOptions)(4));
-			this.vbox7.Add (this.table2);
-			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.vbox7 [this.table2]));
-			w29.Position = 0;
-			this.alignment4.Add (this.vbox7);
-			this.vbox4.Add (this.alignment4);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.alignment4]));
-			w31.Position = 1;
-			// Container child vbox4.Gtk.Box+BoxChild
-			this.hbox2 = new global::Gtk.HBox ();
-			this.hbox2.Name = "hbox2";
-			this.hbox2.Spacing = 6;
-			this.vbox4.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox2]));
-			w32.Position = 2;
-			this.notebook1.Add (this.vbox4);
-			global::Gtk.Notebook.NotebookChild w33 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox4]));
-			w33.Position = 1;
+			this.hbox6 = new global::Gtk.HBox ();
+			this.hbox6.Name = "hbox6";
+			this.hbox6.Spacing = 6;
+			// Container child hbox6.Gtk.Box+BoxChild
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow ();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.treeview1 = new global::Gtk.TreeView ();
+			this.treeview1.CanFocus = true;
+			this.treeview1.Name = "treeview1";
+			this.GtkScrolledWindow.Add (this.treeview1);
+			this.hbox6.Add (this.GtkScrolledWindow);
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.GtkScrolledWindow]));
+			w24.Position = 0;
+			this.vbox4.Add (this.hbox6);
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox6]));
+			w25.Position = 1;
+			this.GtkAlignment2.Add (this.vbox4);
+			this.frame4.Add (this.GtkAlignment2);
+			this.GtkLabel4 = new global::Gtk.Label ();
+			this.GtkLabel4.Name = "GtkLabel4";
+			this.GtkLabel4.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>GtkFrame</b>");
+			this.GtkLabel4.UseMarkup = true;
+			this.frame4.LabelWidget = this.GtkLabel4;
+			this.notebook1.Add (this.frame4);
+			global::Gtk.Notebook.NotebookChild w28 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.frame4]));
+			w28.Position = 1;
 			// Notebook tab
 			this.labelModificarProducto = new global::Gtk.Label ();
 			this.labelModificarProducto.Name = "labelModificarProducto";
 			this.labelModificarProducto.LabelProp = global::Mono.Unix.Catalog.GetString ("Modificar Producto");
-			this.notebook1.SetTabLabel (this.vbox4, this.labelModificarProducto);
+			this.notebook1.SetTabLabel (this.frame4, this.labelModificarProducto);
 			this.labelModificarProducto.ShowAll ();
 			w1.Add (this.notebook1);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(w1 [this.notebook1]));
-			w34.Position = 0;
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(w1 [this.notebook1]));
+			w29.Position = 0;
 			// Internal child punto.gui.IngresarProductosDialog.ActionArea
-			global::Gtk.HButtonBox w35 = this.ActionArea;
-			w35.Name = "dialog1_ActionArea";
-			w35.Spacing = 10;
-			w35.BorderWidth = ((uint)(5));
-			w35.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w30 = this.ActionArea;
+			w30.Name = "dialog1_ActionArea";
+			w30.Spacing = 10;
+			w30.BorderWidth = ((uint)(5));
+			w30.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button ();
 			this.buttonCancel.CanDefault = true;
@@ -413,9 +341,9 @@ namespace punto.gui
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w36 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w35 [this.buttonCancel]));
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w31 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w30 [this.buttonCancel]));
+			w31.Expand = false;
+			w31.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
@@ -425,10 +353,10 @@ namespace punto.gui
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w37 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w35 [this.buttonOk]));
-			w37.Position = 1;
-			w37.Expand = false;
-			w37.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w32 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w30 [this.buttonOk]));
+			w32.Position = 1;
+			w32.Expand = false;
+			w32.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
@@ -438,9 +366,8 @@ namespace punto.gui
 			this.checkbuttonVigente.Toggled += new global::System.EventHandler (this.OnCheckbutton8Toggled);
 			this.checkbuttonPesable.Toggled += new global::System.EventHandler (this.OnCheckbutton7Toggled);
 			this.BotonAgregarProd.Clicked += new global::System.EventHandler (this.OnBotonAgregarPClicked);
-			this.checkbuttonVigenteMod.Toggled += new global::System.EventHandler (this.OnCheckbutton9Toggled);
-			this.buttonBuscar.Clicked += new global::System.EventHandler (this.OnButton65Clicked);
-			this.BotonAgregarCambios.Clicked += new global::System.EventHandler (this.OnBotonAgregarP1Clicked);
+			this.BotonEditar.Clicked += new global::System.EventHandler (this.OnBotonEditarClicked);
+			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
 }

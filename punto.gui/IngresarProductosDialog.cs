@@ -13,7 +13,7 @@ namespace punto.gui
 
 		private bool checkbox2=true;
 
-		public List<FamiliaProducto> productos = new List<FamiliaProducto>();
+		public List<Produc> productos = new List<Produc>();
 		
 		private Gtk.ListStore productosmodel;
 
@@ -62,6 +62,22 @@ namespace punto.gui
 			}
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
+			Gtk.TreeViewColumn nombre_column = new Gtk.TreeViewColumn();
+			nombre_column.Title = "Nombre";
+			Gtk.CellRendererText nombre_cell = new Gtk.CellRendererText();
+			nombre_column.PackStart(nombre_cell, true);
+			
+			Gtk.TreeViewColumn precio_column = new Gtk.TreeViewColumn();
+			precio_column.Title = "Precio";
+			Gtk.CellRendererText precio_cell = new Gtk.CellRendererText();
+			precio_column.PackStart(precio_cell, true);
+			
+
+			this.treeview1.AppendColumn(nombre_column);
+			nombre_column.AddAttribute(nombre_cell, "text", 0);
+			this.treeview1.AppendColumn(precio_column);
+			precio_column.AddAttribute(precio_cell, "text", 1);
+
 
 		}
 		
@@ -69,12 +85,23 @@ namespace punto.gui
 		{
 	
 			this.CargarTiposFamiliaCombobox();
-//			this.CargarProductos();
+			this.CargarProductos();
 
 			base.Run();
 			
 		}
-		
+		public void CargarProductos ()
+		{
+			this.productos = this.db.ObtenerProductosBd ();
+			this.productosmodel = new Gtk.ListStore (typeof(string), typeof(string));
+			foreach (Produc bod in this.productos) {
+				this.productosmodel.AppendValues (bod.Nombre, bod.Precio);
+#if DEBUG
+#endif
+			}
+			treeview1.Model = this.productosmodel;
+			
+		}
 	/*	public void CargarProductos()
 		{
 			this.productos = this.db.ObtenerProductosBd();
@@ -190,82 +217,7 @@ namespace punto.gui
 				checkbox=false;
 
 			}		}
-		protected void OnCheckbutton9Toggled (object sender, EventArgs e)
-		{
-			if(checkbuttonVigenteMod.Active)
-			{
-		
-				vigente="True";
-			}
-			else
-			{
-		
-				vigente="False";
-
-			}		}
-		protected void OnButton65Clicked (object sender, EventArgs e)
-		{
-
-			ControladorBaseDatos bd = new ControladorBaseDatos ();
-
-
-			//Console.WriteLine("precio: "+bd.ObtenerProductosBd(Int32.Parse(entry1.Text)));
-			string[] preciovigente = new string[1];
-			preciovigente = bd.ObtenerProductosBd (entryCodigoBarraMod.Text);
-			Console.WriteLine ("precio: " + preciovigente [1]);
-			entryPrecioVentaMod.Text = preciovigente [0];
-			if (preciovigente [1] == "True") {
-				checkbuttonVigenteMod.Visible = true;
-				checkbuttonVigenteMod.Sensitive = true;
-				checkbuttonVigenteMod.Active = true;
-			} else {
-				checkbuttonVigenteMod.Active = false;
-
-			}
-			if(!(bd.ExisteRegistroProductosBd(entryCodigoBarraMod.Text.Trim()))){
-
-				Dialog dialog = new Dialog("PRODUCTO NO EXISTE", this, Gtk.DialogFlags.DestroyWithParent);
-				dialog.Modal = true;
-				dialog.Resizable = false;
-				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "No existe este producto en la Base de Datos";
-				dialog.BorderWidth = 8;
-				dialog.VBox.BorderWidth = 8;
-				dialog.VBox.PackStart(etiqueta, false, false, 0);
-				dialog.AddButton ("Cerrar", ResponseType.Close);
-				dialog.ShowAll();
-				dialog.Run ();
-				dialog.Destroy ();
-		
-			}
-			//Console.WriteLine("vigente: "+preciovigente[1]);
-	//		entry18.Text=bd.ObtenerProductosBd(Int32.Parse(entry1.Text));
-
-		}
-
-		protected void OnBotonAgregarP1Clicked (object sender, EventArgs e)
-		{
-		
-			ControladorBaseDatos bd = new ControladorBaseDatos ();
-			
-			
-			bd.ActualizarProductoBd (entryCodigoBarraMod.Text,Int32.Parse (entryPrecioVentaMod.Text),vigente);
-
-			Dialog dialog = new Dialog("PRODUCTO ACTUALIZADO", this, Gtk.DialogFlags.DestroyWithParent);
-			dialog.Modal = true;
-			dialog.Resizable = false;
-			Gtk.Label etiqueta = new Gtk.Label();
-			etiqueta.Markup = "Se han guardado correctamente los cambios";
-			dialog.BorderWidth = 8;
-			dialog.VBox.BorderWidth = 8;
-			dialog.VBox.PackStart(etiqueta, false, false, 0);
-			dialog.AddButton ("Cerrar", ResponseType.Close);
-			dialog.ShowAll();
-			dialog.Run ();
-			dialog.Destroy ();
-		
-		}
-		string vigente;
+	
 
 		protected void OnCheckbutton8Toggled (object sender, EventArgs e)
 		{
@@ -280,6 +232,51 @@ namespace punto.gui
 				checkbox2=false;
 				
 			}		}
+
+
+		protected void OnEditarEspecificacion ()
+		{
+#if DEBUG
+			Console.WriteLine("Editar fila");
+#endif
+			Gtk.TreeIter iter;
+			if (treeview1.Selection.GetSelected(out iter))
+			{
+				string nombre, precio;
+				nombre = productosmodel.GetValue(iter, 0).ToString();
+				precio = productosmodel.GetValue(iter, 1).ToString();
+
+				//mostrar dialog de edicion
+				EditarProductoDialog esp = new EditarProductoDialog(this, nombre, precio);
+				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
+				esp.Run();
+			
+			}
+		}
+		protected void OnEditarEspecificacionDialogOldChanged (object sender, EditarProductoDialogChangedEventArgs args)
+		{
+			Gtk.TreeIter iter;
+			if (treeview1.Selection.GetSelected(out iter))
+			{
+				productosmodel.SetValue(iter, 0, args.Nombre);
+				productosmodel.SetValue(iter, 1, args.Precio);
+				this.db.ActualizarProductoBd(args.Nombre,args.Precio);
+
+			
+
+			}
+		}
+
+		protected void OnBotonEditarClicked (object sender, EventArgs e)
+		{
+			this.OnEditarEspecificacion();
+		}
+
+		protected void OnButtonOkClicked (object sender, EventArgs e)
+		{
+
+		
+		}
 }
 	}
 
