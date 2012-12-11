@@ -97,7 +97,8 @@ namespace punto.code
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
 				"SELECT nombre,precio_venta " +
-					"FROM productos " ;
+					"FROM productos "+
+					"ORDER BY nombre ASC";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			List<Produc> product = new List<Produc>();
@@ -308,7 +309,8 @@ namespace punto.code
 			string sql =
 				"SELECT nombre,precio_venta " +
 					"FROM productos " +
-					"WHERE codigobarra='"+codigoB+"'";
+					"WHERE codigobarra='"+codigoB+"'"+
+					"ORDER BY nombre ASC";;
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			List<Produc> productos = new List<Produc>();
