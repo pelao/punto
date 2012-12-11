@@ -47,7 +47,7 @@ namespace punto.gui
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.label3 = new global::Gtk.Label ();
 			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("label3");
+			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Nombre: ");
 			this.hbox3.Add (this.label3);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label3]));
 			w2.Position = 0;
@@ -85,7 +85,7 @@ namespace punto.gui
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.label4 = new global::Gtk.Label ();
 			this.label4.Name = "label4";
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("label4");
+			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio: ");
 			this.hbox4.Add (this.label4);
 			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label4]));
 			w6.Position = 0;

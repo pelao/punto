@@ -55,7 +55,23 @@ namespace punto.gui
 			this.Build ();
 			
 			this.Title = "Editar Especificación";
-			
+
+			if (nombre.Trim().Length == 0)
+			{
+				entry4.Sensitive = false;
+			}
+			else
+			{
+				entry4.Text = nombre.Trim();
+			}
+			if (precio.Trim().Length == 0)
+			{
+				entry5.Sensitive = false;
+			}
+			else
+			{
+				entry5.Text = precio.Trim();
+			}
 		}
 		protected virtual void OnEditarProductoDialogChanged(EditarProductoDialogChangedEventArgs e)
 		{
