@@ -36,7 +36,6 @@ namespace punto.gui
 			this.dialog1_VBox1.BorderWidth = ((uint)(2));
 			// Container child dialog1_VBox1.Gtk.Box+BoxChild
 			this.table1 = new global::Gtk.Table (((uint)(6)), ((uint)(2)), false);
-			this.table1.Name = "table1";
 			this.table1.RowSpacing = ((uint)(6));
 			this.table1.ColumnSpacing = ((uint)(6));
 			// Container child table1.Gtk.Table+TableChild

@@ -277,6 +277,12 @@ namespace punto.gui
 
 		
 		}
+
+		protected void BotonCancelar (object sender, EventArgs e)
+		{
+			this.Hide();
+		
+		}
 }
 	}
 
