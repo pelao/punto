@@ -64,30 +64,7 @@ namespace punto.gui
 				dialog.Run ();
 				dialog.Destroy ();
 			}
-			else
-			{
-			Usuario NuevoUsuario = new Usuario(entryNombreUsuario.Text.Trim(),entryContraseña.Text.Trim(),
-				                              entryNombre.Text.Trim(),entryApellidos.Text.Trim(),
-				                              entryTelefono.Text.Trim(),entryRut.Text.Trim(),
-				                              comboboxTipoUsuario.ActiveText);
-	//			this.db.AgregarUsuarioBd(NuevoUsuario);
 
-				
-				Dialog dialog = new Dialog("USUARIO INGRESADO", this, Gtk.DialogFlags.DestroyWithParent);
-				dialog.Modal = true;
-				dialog.Resizable = false;
-				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "El Usuario ha sido ingresado a la Base de Datos";
-				dialog.BorderWidth = 8;
-				dialog.VBox.BorderWidth = 8;
-				dialog.VBox.PackStart(etiqueta, false, false, 0);
-				dialog.AddButton ("Cerrar", ResponseType.Close);
-				dialog.ShowAll();
-				dialog.Run ();
-				dialog.Destroy ();
-				
-			}
-			
 			
 		}
 

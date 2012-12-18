@@ -19,6 +19,12 @@ namespace punto.gui
 		private global::Gtk.VPaned vpaned2;
 		private global::Gtk.HPaned hpaned14;
 		private global::Gtk.VBox vbox4;
+		private global::Gtk.Table table2;
+		private global::Gtk.Alignment alignment7;
+		private global::Gtk.Alignment alignment8;
+		private global::Gtk.Alignment alignment9;
+		private global::Gtk.HPaned hpaned7;
+		private global::Gtk.VPaned vpaned10;
 		private global::Gtk.Button buttonVender;
 		private global::Gtk.HPaned hpaned15;
 		
@@ -89,32 +95,67 @@ namespace punto.gui
 			this.vbox4.Name = "vbox4";
 			this.vbox4.Spacing = 6;
 			// Container child vbox4.Gtk.Box+BoxChild
+			this.table2 = new global::Gtk.Table (((uint)(3)), ((uint)(3)), false);
+			this.table2.Name = "table2";
+			this.table2.RowSpacing = ((uint)(6));
+			this.table2.ColumnSpacing = ((uint)(6));
+			// Container child table2.Gtk.Table+TableChild
+			this.alignment7 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment7.Name = "alignment7";
+			this.table2.Add (this.alignment7);
+			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table2 [this.alignment7]));
+			w3.TopAttach = ((uint)(1));
+			w3.BottomAttach = ((uint)(2));
+			// Container child table2.Gtk.Table+TableChild
+			this.alignment8 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment8.Name = "alignment8";
+			this.table2.Add (this.alignment8);
+			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table2 [this.alignment8]));
+			w4.TopAttach = ((uint)(2));
+			w4.BottomAttach = ((uint)(3));
+			// Container child table2.Gtk.Table+TableChild
+			this.alignment9 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment9.Name = "alignment9";
+			this.table2.Add (this.alignment9);
+			global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table2 [this.alignment9]));
+			w5.LeftAttach = ((uint)(1));
+			w5.RightAttach = ((uint)(2));
+			// Container child table2.Gtk.Table+TableChild
+			this.hpaned7 = new global::Gtk.HPaned ();
+			this.hpaned7.CanFocus = true;
+			this.hpaned7.Name = "hpaned7";
+			// Container child hpaned7.Gtk.Paned+PanedChild
+			this.vpaned10 = new global::Gtk.VPaned ();
+			this.vpaned10.CanFocus = true;
+			this.vpaned10.Name = "vpaned10";
+			// Container child vpaned10.Gtk.Paned+PanedChild
 			this.buttonVender = new global::Gtk.Button ();
 			this.buttonVender.CanFocus = true;
 			this.buttonVender.Name = "buttonVender";
 			this.buttonVender.UseUnderline = true;
 			this.buttonVender.Label = global::Mono.Unix.Catalog.GetString ("VENDER");
-			this.vbox4.Add (this.buttonVender);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.buttonVender]));
-			w3.Position = 0;
-			w3.Expand = false;
-			w3.Fill = false;
+			this.vpaned10.Add (this.buttonVender);
+			this.hpaned7.Add (this.vpaned10);
+			this.table2.Add (this.hpaned7);
+			this.vbox4.Add (this.table2);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.table2]));
+			w9.Position = 0;
 			this.hpaned14.Add (this.vbox4);
 			this.vpaned2.Add (this.hpaned14);
 			this.hbox3.Add (this.vpaned2);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
-			w6.Position = 0;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
+			w12.Position = 0;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.hpaned15 = new global::Gtk.HPaned ();
 			this.hpaned15.CanFocus = true;
 			this.hpaned15.Name = "hpaned15";
 			this.hpaned15.Position = 1;
 			this.hbox3.Add (this.hpaned15);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
-			w7.Position = 1;
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
+			w13.Position = 1;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
-			w8.Position = 1;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			w14.Position = 1;
 			this.Add (this.vbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();

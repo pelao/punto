@@ -218,7 +218,7 @@ namespace punto.gui
 			this.buttonPagoTransBank.CanFocus = true;
 			this.buttonPagoTransBank.Name = "buttonPagoTransBank";
 			this.buttonPagoTransBank.UseUnderline = true;
-			this.buttonPagoTransBank.Label = global::Mono.Unix.Catalog.GetString ("Pago TransBank\n     (teclear 2)");
+			this.buttonPagoTransBank.Label = global::Mono.Unix.Catalog.GetString ("Pago Tarjeta\n  (teclear 2)");
 			this.hpaned2.Add (this.buttonPagoTransBank);
 			this.vbox4.Add (this.hpaned2);
 			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hpaned2]));
@@ -240,7 +240,7 @@ namespace punto.gui
 			this.buttonOtro.CanFocus = true;
 			this.buttonOtro.Name = "buttonOtro";
 			this.buttonOtro.UseUnderline = true;
-			this.buttonOtro.Label = global::Mono.Unix.Catalog.GetString ("Otro\n(teclear 3)");
+			this.buttonOtro.Label = global::Mono.Unix.Catalog.GetString ("Pago Cheque\n  (teclear 3)");
 			this.hpaned3.Add (this.buttonOtro);
 			this.vbox5.Add (this.hpaned3);
 			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.hpaned3]));

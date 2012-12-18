@@ -90,20 +90,20 @@ namespace punto.code
 			this.DesconectarBd(dbcon);
 			return false;
 		}
-		public List<Produc> ObtenerProductosBd ()
+		public List<ModificarProducto> ObtenerProductosBd ()
 		{
 			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"SELECT nombre,precio_venta " +
+				"SELECT nombre,precio_venta,nombre_familia,vigente " +
 					"FROM productos "+
 					"ORDER BY nombre ASC";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
-			List<Produc> product = new List<Produc>();
+			List<ModificarProducto> product = new List<ModificarProducto>();
 			while(reader.Read()) {
-				product.Add(new Produc( ((string) reader["nombre"]),((string) reader["precio_venta"])));
+				product.Add(new ModificarProducto( ((string) reader["nombre"]),((string) reader["precio_venta"]),((string) reader["nombre_familia"]),((string) reader["vigente"])));
 			}
 			reader.Close();
 			reader = null;
@@ -148,9 +148,9 @@ namespace punto.code
 			IDbCommand dbcmd = dbcon.CreateCommand ();
 			string sql;
 			sql =
-				"SELECT userlogin " +
-					"FROM usuarios " +
-					"WHERE userlogin='"+ usuario + "';";
+				"SELECT nombre " +
+					"FROM productos " +
+					"WHERE nombre='"+ usuario + "';";
 			dbcmd.CommandText = sql;
 			
 			

@@ -1,19 +1,23 @@
-	using System;
+using System;
 
 namespace punto.code
 {
-	
-	
-	public class Produc
+	public class ModificarProducto
 	{
 		private string _precio;//200
 		private string _nombre;//27
+		private string _familia;//27
+		private string _vigente;//27
+
 		//private int _precio_destino;
 		
-		public Produc (string nombre, string precio)
+		public ModificarProducto (string nombre, string precio, string familia, string vigente)
 		{
 			this.Precio = precio;
 			this.Nombre = nombre;
+			this.Familia = familia;
+			this.Vigente = vigente;
+
 			//this.CodigoDestino = codigo_destino;
 		}
 		
@@ -23,6 +27,17 @@ namespace punto.code
 			set {this._precio = value;}
 		}
 		
+		public string Familia
+		{
+			get {return this._familia;}
+			set {this._familia = value;}
+		}
+		public string Vigente
+		{
+			get {return this._vigente;}
+			set {this._vigente = value;}
+		}
+
 		public string Nombre
 		{
 			get {return this._nombre;}

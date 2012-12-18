@@ -13,7 +13,7 @@ namespace punto.gui
 
 		private bool checkbox2=true;
 
-		public List<Produc> productos = new List<Produc>();
+		public List<ModificarProducto> productos = new List<ModificarProducto>();
 		
 		private Gtk.ListStore productosmodel;
 
@@ -72,11 +72,27 @@ namespace punto.gui
 			Gtk.CellRendererText precio_cell = new Gtk.CellRendererText();
 			precio_column.PackStart(precio_cell, true);
 			
+				
 
+			Gtk.TreeViewColumn familia_column = new Gtk.TreeViewColumn();
+			familia_column.Title = "Familia";
+			Gtk.CellRendererText familia_cell = new Gtk.CellRendererText();
+			familia_column.PackStart(familia_cell, true);
+		
+
+			Gtk.TreeViewColumn vigente_column = new Gtk.TreeViewColumn();
+			vigente_column.Title = "Vigente";
+			Gtk.CellRendererText vigente_cell = new Gtk.CellRendererText();
+			vigente_column.PackStart(vigente_cell, true);
+			
 			this.treeview1.AppendColumn(nombre_column);
 			nombre_column.AddAttribute(nombre_cell, "text", 0);
 			this.treeview1.AppendColumn(precio_column);
 			precio_column.AddAttribute(precio_cell, "text", 1);
+			this.treeview1.AppendColumn(familia_column);
+			familia_column.AddAttribute(familia_cell, "text", 2);
+			this.treeview1.AppendColumn(vigente_column);
+			vigente_column.AddAttribute(vigente_cell, "text", 3);
 
 
 		}
@@ -93,9 +109,9 @@ namespace punto.gui
 		public void CargarProductos ()
 		{
 			this.productos = this.db.ObtenerProductosBd ();
-			this.productosmodel = new Gtk.ListStore (typeof(string), typeof(string));
-			foreach (Produc bod in this.productos) {
-				this.productosmodel.AppendValues (bod.Nombre, bod.Precio);
+			this.productosmodel = new Gtk.ListStore (typeof(string), typeof(string), typeof(string), typeof(string));
+			foreach (ModificarProducto bod in this.productos) {
+				this.productosmodel.AppendValues (bod.Nombre, bod.Precio,bod.Familia,bod.Vigente);
 #if DEBUG
 #endif
 			}
@@ -242,12 +258,14 @@ namespace punto.gui
 			Gtk.TreeIter iter;
 			if (treeview1.Selection.GetSelected(out iter))
 			{
-				string nombre, precio;
+				string nombre, precio,familia,vigente;
 				nombre = productosmodel.GetValue(iter, 0).ToString();
 				precio = productosmodel.GetValue(iter, 1).ToString();
+				familia = productosmodel.GetValue(iter, 2).ToString();
+				vigente = productosmodel.GetValue(iter, 3).ToString();
 
 				//mostrar dialog de edicion
-				EditarProductoDialog esp = new EditarProductoDialog(this, nombre, precio);
+				EditarProductoDialog esp = new EditarProductoDialog(this, nombre, precio, familia,vigente);
 				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
 				esp.Run();
 			
@@ -260,6 +278,8 @@ namespace punto.gui
 			{
 				productosmodel.SetValue(iter, 0, args.Nombre);
 				productosmodel.SetValue(iter, 1, args.Precio);
+				productosmodel.SetValue(iter, 2, args.Familia);
+				productosmodel.SetValue(iter, 3, args.Vigente);
 				this.db.ActualizarProductoBd(args.Nombre,args.Precio);
 
 			
@@ -281,6 +301,7 @@ namespace punto.gui
 		protected void BotonCancelar (object sender, EventArgs e)
 		{
 			this.Hide();
+			this.Dispose();
 		
 		}
 }
