@@ -125,7 +125,42 @@ namespace punto.gui
 
 			}
 
+		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
+		{
+			PagoTargetaDialog rcd = new PagoTargetaDialog();
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				Console.WriteLine(ex.Message);
+#endif
+			}
+		}
+
+		protected void OnButtonPagoChequeClicked (object sender, EventArgs e)
+		{
+			PagoChequeDialog rcd = new PagoChequeDialog();
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+				
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				Console.WriteLine(ex.Message);
+#endif
+			}
 		}
 	}
+}
 
 

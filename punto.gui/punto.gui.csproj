@@ -87,6 +87,10 @@
     <Compile Include="gtk-gui\punto.gui.RegistrarUsuarioDialog.cs" />
     <Compile Include="EditarProductoDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.EditarProductoDialog.cs" />
+    <Compile Include="PagoTargetaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.PagoTargetaDialog.cs" />
+    <Compile Include="PagoChequeDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.PagoChequeDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

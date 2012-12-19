@@ -61,14 +61,14 @@ namespace punto.gui
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "punto.gui.PrincipalWindow";
-			this.Title = global::Mono.Unix.Catalog.GetString ("MiniMarket \"El Coke\"");
+			this.Title = global::Mono.Unix.Catalog.GetString ("MiniMarket El Coke - Principal");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Container child punto.gui.PrincipalWindow.Gtk.Container+ContainerChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='BarraMenu'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='BarraMenu'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
 			this.BarraMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/BarraMenu")));
 			this.BarraMenu.Name = "BarraMenu";
 			this.vbox3.Add (this.BarraMenu);
@@ -124,10 +124,12 @@ namespace punto.gui
 			this.hpaned7 = new global::Gtk.HPaned ();
 			this.hpaned7.CanFocus = true;
 			this.hpaned7.Name = "hpaned7";
+			this.hpaned7.Position = 10;
 			// Container child hpaned7.Gtk.Paned+PanedChild
 			this.vpaned10 = new global::Gtk.VPaned ();
 			this.vpaned10.CanFocus = true;
 			this.vpaned10.Name = "vpaned10";
+			this.vpaned10.Position = 10;
 			// Container child vpaned10.Gtk.Paned+PanedChild
 			this.buttonVender = new global::Gtk.Button ();
 			this.buttonVender.CanFocus = true;

@@ -30,10 +30,10 @@ namespace punto.gui
 		private global::Gtk.Button buttonPagoEfectivo;
 		private global::Gtk.VBox vbox4;
 		private global::Gtk.HPaned hpaned2;
-		private global::Gtk.Button buttonPagoTransBank;
+		private global::Gtk.Button buttonPagoTarjeta;
 		private global::Gtk.VBox vbox5;
 		private global::Gtk.HPaned hpaned3;
-		private global::Gtk.Button buttonOtro;
+		private global::Gtk.Button buttonPagoCheque;
 		private global::Gtk.Label GtkLabel5;
 		private global::Gtk.Alignment alignment41;
 		private global::Gtk.Fixed fixed7;
@@ -66,7 +66,6 @@ namespace punto.gui
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.label11 = new global::Gtk.Label ();
 			this.label11.Name = "label11";
-			this.label11.LabelProp = "";
 			this.hbox3.Add (this.label11);
 			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label11]));
 			w2.Position = 0;
@@ -92,7 +91,6 @@ namespace punto.gui
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.labeltotalcompra = new global::Gtk.Label ();
 			this.labeltotalcompra.Name = "labeltotalcompra";
-			this.labeltotalcompra.LabelProp = "";
 			this.hbox4.Add (this.labeltotalcompra);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.labeltotalcompra]));
 			w4.Position = 1;
@@ -155,7 +153,6 @@ namespace punto.gui
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.labelvueltopago = new global::Gtk.Label ();
 			this.labelvueltopago.Name = "labelvueltopago";
-			this.labelvueltopago.LabelProp = "";
 			this.hbox6.Add (this.labelvueltopago);
 			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.labelvueltopago]));
 			w12.Position = 1;
@@ -228,12 +225,12 @@ namespace punto.gui
 			this.hpaned2.Name = "hpaned2";
 			this.hpaned2.Position = 10;
 			// Container child hpaned2.Gtk.Paned+PanedChild
-			this.buttonPagoTransBank = new global::Gtk.Button ();
-			this.buttonPagoTransBank.CanFocus = true;
-			this.buttonPagoTransBank.Name = "buttonPagoTransBank";
-			this.buttonPagoTransBank.UseUnderline = true;
-			this.buttonPagoTransBank.Label = global::Mono.Unix.Catalog.GetString ("Pago Tarjeta\n  (teclear 2)");
-			this.hpaned2.Add (this.buttonPagoTransBank);
+			this.buttonPagoTarjeta = new global::Gtk.Button ();
+			this.buttonPagoTarjeta.CanFocus = true;
+			this.buttonPagoTarjeta.Name = "buttonPagoTarjeta";
+			this.buttonPagoTarjeta.UseUnderline = true;
+			this.buttonPagoTarjeta.Label = global::Mono.Unix.Catalog.GetString ("Pago Tarjeta\n  (teclear 2)");
+			this.hpaned2.Add (this.buttonPagoTarjeta);
 			this.vbox4.Add (this.hpaned2);
 			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hpaned2]));
 			w21.Position = 1;
@@ -250,12 +247,12 @@ namespace punto.gui
 			this.hpaned3.Name = "hpaned3";
 			this.hpaned3.Position = 10;
 			// Container child hpaned3.Gtk.Paned+PanedChild
-			this.buttonOtro = new global::Gtk.Button ();
-			this.buttonOtro.CanFocus = true;
-			this.buttonOtro.Name = "buttonOtro";
-			this.buttonOtro.UseUnderline = true;
-			this.buttonOtro.Label = global::Mono.Unix.Catalog.GetString ("Pago Cheque\n  (teclear 3)");
-			this.hpaned3.Add (this.buttonOtro);
+			this.buttonPagoCheque = new global::Gtk.Button ();
+			this.buttonPagoCheque.CanFocus = true;
+			this.buttonPagoCheque.Name = "buttonPagoCheque";
+			this.buttonPagoCheque.UseUnderline = true;
+			this.buttonPagoCheque.Label = global::Mono.Unix.Catalog.GetString ("Pago Cheque\n  (teclear 3)");
+			this.hpaned3.Add (this.buttonPagoCheque);
 			this.vbox5.Add (this.hpaned3);
 			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.vbox5 [this.hpaned3]));
 			w24.Position = 1;
@@ -333,6 +330,8 @@ namespace punto.gui
 			this.Show ();
 			this.entryPagoEfectivo.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryPagoEfectivoKeyPressEvent);
 			this.buttonPagoEfectivo.Clicked += new global::System.EventHandler (this.OnPagoEnEfectivo);
+			this.buttonPagoTarjeta.Clicked += new global::System.EventHandler (this.OnButtonPagoTarjetaClicked);
+			this.buttonPagoCheque.Clicked += new global::System.EventHandler (this.OnButtonPagoChequeClicked);
 			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
