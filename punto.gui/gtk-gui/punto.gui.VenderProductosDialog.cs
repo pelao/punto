@@ -280,7 +280,6 @@ namespace punto.gui
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.label8 = new global::Gtk.Label ();
 			this.label8.Name = "label8";
-			this.label8.LabelProp = "";
 			this.vbox4.Add (this.label8);
 			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.label8]));
 			w37.Position = 0;

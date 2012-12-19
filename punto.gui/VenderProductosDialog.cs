@@ -295,9 +295,7 @@ namespace punto.gui
 				Console.WriteLine(DateTime.Now);
 				Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
 
-				Usuario pagfgo = new Usuario("qwe","DataForma","AsdEventAr","erg","fvsft","dfswef","wefdc");
 
-				this.db.AgregarUsuarioBd(pagfgo);
 				this.db.AgregarVentaDetalle(pago);
 
 				
@@ -354,9 +352,7 @@ namespace punto.gui
 			Console.WriteLine(DateTime.Now);
 			Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
 			
-			Usuario pagfgo = new Usuario("qwe","DataForma","AsdEventAr","erg","fvsft","dfswef","wefdc");
-			
-			this.db.AgregarUsuarioBd(pagfgo);
+
 			this.db.AgregarVentaDetalle(pago);
 			
 			
