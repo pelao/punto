@@ -114,13 +114,11 @@ namespace punto.gui
 				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
-
 				this.buttonOk.IsFocus=true;
 
-				Console.WriteLine (vuelto);
 
-				Console.WriteLine ("label10.Textdffffffffffffffff");
-			}		}
+			}	
+		}
 
 		protected void OnButtonOkClicked (object sender, EventArgs e)
 		{
