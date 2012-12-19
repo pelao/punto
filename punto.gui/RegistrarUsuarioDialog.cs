@@ -46,8 +46,9 @@ namespace punto.gui
 			Console.WriteLine(entryContraseña.Text.Trim());
 			Console.WriteLine(comboboxTipoUsuario.ActiveText);
 
+			ControladorBaseDatos db = new ControladorBaseDatos();
 
-			bool existe = this.db.ExisteUsuarioBd(entryNombreUsuario.Text.Trim());
+			bool existe = db.ExisteUsuarioBd(entryNombreUsuario.Text.Trim());
 
 			
 			if (existe)	{
@@ -63,6 +64,28 @@ namespace punto.gui
 				dialog.ShowAll();		
 				dialog.Run ();
 				dialog.Destroy ();
+			}
+			else
+			{
+				Console.WriteLine(entryNombreUsuario.Text.Trim());
+				Console.WriteLine(entryNombre.Text.Trim());
+				Console.WriteLine(entryApellidos.Text.Trim());
+				Console.WriteLine(entryTelefono.Text.Trim());
+				Console.WriteLine(entryRut.Text.Trim());
+				Console.WriteLine(entryContraseña.Text.Trim());
+				Console.WriteLine(comboboxTipoUsuario.ActiveText);
+				
+				Usuario NuevoUsuario = new Usuario(entryNombreUsuario.Text.Trim(),
+				                                   entryContraseña.Text.Trim(),
+				                                   entryNombre.Text.Trim(),
+				                                   entryApellidos.Text.Trim(),
+				                                   entryTelefono.Text.Trim(),
+				                                   entryRut.Text.Trim(),
+				                                   comboboxTipoUsuario.ActiveText);
+				
+				
+				
+				db.AgregarUsuarioBd(NuevoUsuario);
 			}
 
 			

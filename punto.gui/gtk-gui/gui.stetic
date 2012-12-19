@@ -1862,7 +1862,6 @@
                     <child>
                       <widget class="Gtk.Label" id="label8">
                         <property name="MemberName" />
-                        <property name="LabelProp" translatable="yes" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>
@@ -1996,7 +1995,6 @@
                     <child>
                       <widget class="Gtk.Label" id="label11">
                         <property name="MemberName" />
-                        <property name="LabelProp" translatable="yes" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>
@@ -2028,7 +2026,6 @@
                             <child>
                               <widget class="Gtk.Label" id="labeltotalcompra">
                                 <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -2122,7 +2119,6 @@
                             <child>
                               <widget class="Gtk.Label" id="labelvueltopago">
                                 <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>

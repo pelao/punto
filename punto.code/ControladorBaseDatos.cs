@@ -83,10 +83,11 @@ namespace punto.code
 			
 
 			"INSERT INTO usuarios (userlogin,userpass,nombre,apellidos,telefono,rut,nivel_user) " +
-				"VALUES ("+dato.Userlogin+",'"+dato.Userpass+"','"+dato.Nombre+"','"+dato.Apellidos+"','"+dato.Telefono+"','"+dato.Rut+"','"+dato.Nivel_user+"');";
+				"VALUES ('"+dato.Userlogin+"','"+dato.Userpass+"','"+dato.Nombre+"','"+dato.Apellidos+"','"+dato.Telefono+"','"+dato.Rut+"','"+dato.Nivel_user+"');";
 
 
 			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
 			dbcmd.Dispose();
 			dbcmd = null;
 			
@@ -155,9 +156,9 @@ namespace punto.code
 			IDbCommand dbcmd = dbcon.CreateCommand ();
 			string sql;
 			sql =
-				"SELECT nombre " +
-					"FROM productos " +
-					"WHERE nombre='"+ usuario + "';";
+				"SELECT userlogin " +
+					"FROM usuarios " +
+					"WHERE userlogin='"+ usuario + "';";
 			dbcmd.CommandText = sql;
 			
 			
