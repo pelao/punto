@@ -1,13 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Globalization;
-using System.Diagnostics;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Runtime.InteropServices;
+
+
 
 using Gtk;
 using punto.code;
@@ -35,6 +29,7 @@ namespace punto.gui
 		private bool cambiado = false;
 		public	int preciototal=0;
 		private string boleta;
+		public int contador=0;
 
 
 		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
@@ -60,7 +55,7 @@ namespace punto.gui
 				bdd.Run();
 				this.db = null;
 				this.db = new ControladorBaseDatos();
-				
+
 				correcta = false;
 				
 				try {
@@ -116,6 +111,8 @@ namespace punto.gui
 
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
+			labelTotalVenta.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+
 		}
 		
 		public void Destroy ()
@@ -153,23 +150,66 @@ namespace punto.gui
 
 		public void CargarProductos ()
 		{
-
+			
 			productoventa= this.db.ObtenerProductosVenta(Int32.Parse(entryCodigoBarra.Text.Trim()));
 			treeviewListaProductos.Model = this.ventamodel;
+			int cantidad=0;
 			foreach (Produc bod in this.productoventa)
 			{
-				ventamodel.AppendValues(1,bod.Nombre, bod.Precio);
-				preciototal=preciototal+Int32.Parse(bod.Precio);
-				Console.WriteLine(preciototal);
-				labelTotalVenta.Text=preciototal.ToString();
-			}				
+				
+				TreeIter tmpIter = new TreeIter();
+				ventamodel.GetIterFirst(out tmpIter);
+				string item = (string) ventamodel.GetValue(tmpIter,1); // este es el primer elemento
+
+				if(item==null){
+					Console.WriteLine("ventamodelvacio");
+					ventamodel.AppendValues( 1,bod.Nombre, bod.Precio);
+					preciototal=preciototal+Int32.Parse(bod.Precio);
+					Console.WriteLine(preciototal);
+					labelTotalVenta.Text=preciototal.ToString();
+
+
+					cantidad=1;
+				}
+				else{
+					ventamodel.GetIterFirst(out tmpIter);
+					string itema = (string) ventamodel.GetValue(tmpIter,1); // este es el primer elemento
+					if (bod.Nombre==itema){
+						cantidad=cantidad+1;
+					}
+					ventamodel.AppendValues(cantidad,bod.Nombre,bod.Precio);
+					preciototal=preciototal+Int32.Parse(bod.Precio);
+					Console.WriteLine(preciototal);
+					labelTotalVenta.Text=preciototal.ToString();
+					while(ventamodel.IterNext(ref tmpIter)  ) {
+						TreeIter tmpIter1 = new TreeIter();
+						
+						item = (string) ventamodel.GetValue(tmpIter,1); // los demás elementos
+						
+						if(bod.Nombre==item){
+							
+							cantidad=cantidad+1;
+							ventamodel.SetValue(tmpIter,0,cantidad);
+
+							
+						}else{
+							Console.WriteLine("entra aqui");		
+							
+						}
+						
+					}
+				}
+				
+			}
 			entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
-
-
+			
+			
 			this.treeviewListaProductos.Selection.UnselectAll();
 			
-	
+			
 		}
+		
+
 
 
 
@@ -205,34 +245,11 @@ namespace punto.gui
 		public void  Run ()
 		{
 			base.Run();
-			
+			Console.WriteLine("entra aqui");
+
 		}
-		protected void OnButton81Clicked (object sender, EventArgs e)
-		{
-			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
-			Console.WriteLine(DateTime.Now);
-			this.db.AgregarVentaDetalle(pago);
-			
-			Pagar rcd = new Pagar(this);
-			try 
-			{
-				rcd.Run();
-				rcd.Destroy();
-			}
-			catch (MySql.Data.MySqlClient.MySqlException ex)
-			{
-				rcd.Destroy();
-#if DEBUG
-				
-				
-				Console.WriteLine(ex.Message);
-#endif
-			}		
-			
-			
-			
-		}
-		
+
+	
 
 		protected void OnEntry1TextInserted (object o, TextInsertedArgs args)
 		{
@@ -251,21 +268,40 @@ namespace punto.gui
 			//que hace si apreta guardar boleta
 			boleta=entryNumBoleta.Text;
 		}
+
 		[GLib.ConnectBefore ()] 
 		protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
-		{
+		{		
+
+
+		
+
 			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
-			
+
 			if (args.Event.Key == Gdk.Key.Return)
 			{
 				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
+				ventamodel.Clear();
+				double temp=Convert.ToDouble( this.db.ObtenerBoleta());
+				temp=temp+1;
+				Console.WriteLine("temp");
+				Console.WriteLine(temp);
+				boleta=temp.ToString();
+				Console.WriteLine(boleta);
 				
+				entryNumBoleta.Text=boleta;
+
 				DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
 				Console.WriteLine(DateTime.Now);
+				Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
+
+				Usuario pagfgo = new Usuario("qwe","DataForma","AsdEventAr","erg","fvsft","dfswef","wefdc");
+
+				this.db.AgregarUsuarioBd(pagfgo);
 				this.db.AgregarVentaDetalle(pago);
+
 				
-				
-				Pagar rcd = new Pagar(this);
+				Pagar rcd = new Pagar(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
 				try 
 				{
 					rcd.Run();
@@ -280,10 +316,66 @@ namespace punto.gui
 #endif
 				}
 			}
+			labelTotalVenta.Text="0";
+
+
 		}
-		protected void OnEntry1EditingDone (object sender, EventArgs e)
+		void ScrollToItem(TreeIter iter)
 		{
-//ventana verder
+			TreePath path = ventamodel.GetPath(iter);
+			if (path != null) {
+				treeviewListaProductos.ScrollToCell(path, null, false, 0, 0);
+			}
+		}
+
+
+		protected void OnButton1260Clicked (object sender, EventArgs e)
+		{
+			treeviewListaProductos.Data.Clear();
+			ventamodel.Clear();
+
+		
+		
+		}
+
+		protected void OnButtonVentaClicked (object sender, EventArgs e)
+		{
+			ventamodel.Clear();
+			double temp=Convert.ToDouble( this.db.ObtenerBoleta());
+			temp=temp+1;
+			Console.WriteLine("temp");
+			Console.WriteLine(temp);
+			boleta=temp.ToString();
+			Console.WriteLine(boleta);
+			
+			entryNumBoleta.Text=boleta;
+			Console.WriteLine(entryNumBoleta.Text);
+			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
+			Console.WriteLine(DateTime.Now);
+			Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
+			
+			Usuario pagfgo = new Usuario("qwe","DataForma","AsdEventAr","erg","fvsft","dfswef","wefdc");
+			
+			this.db.AgregarUsuarioBd(pagfgo);
+			this.db.AgregarVentaDetalle(pago);
+			
+			
+			Pagar rcd = new Pagar(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+#if DEBUG
+				
+				Console.WriteLine("entra al OnEntry1KeyPressEvent ");
+#endif
+			}
+
+		
 		}
 	}
 }

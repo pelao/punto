@@ -221,6 +221,7 @@ namespace punto.gui
 				familia = combobox2.ActiveText;
 			}
 			vigentecheckbutton.Active=true;
+		
 
 		//	if (vigentecheckbutton.Activate)
 		//	{

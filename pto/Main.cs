@@ -11,7 +11,7 @@ namespace pto
 		{
 			Application.Init ();
 			//PrincipalWindow pri = new PrincipalWindow();
-			IniciarSesionDialog pri = new IniciarSesionDialog();
+			PrincipalWindow pri = new PrincipalWindow();
 			try 
 			{
 				pri.Show();
