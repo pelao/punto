@@ -332,7 +332,6 @@ namespace punto.gui
 			this.buttonPagoEfectivo.Clicked += new global::System.EventHandler (this.OnPagoEnEfectivo);
 			this.buttonPagoTarjeta.Clicked += new global::System.EventHandler (this.OnButtonPagoTarjetaClicked);
 			this.buttonPagoCheque.Clicked += new global::System.EventHandler (this.OnButtonPagoChequeClicked);
-			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
 }

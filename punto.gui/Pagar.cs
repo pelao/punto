@@ -120,18 +120,14 @@ namespace punto.gui
 			}	
 		}
 
-		protected void OnButtonOkClicked (object sender, EventArgs e)
-		{
-
-			}
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
 		{
-			PagoTargetaDialog rcd = new PagoTargetaDialog();
+			PagoTargetaDialog rcd = new PagoTargetaDialog(this,pagototal);
 			try 
 			{
 				rcd.Run();
-				rcd.Destroy();
+				rcd.Destroy();	
 
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -141,11 +137,13 @@ namespace punto.gui
 				Console.WriteLine(ex.Message);
 #endif
 			}
+			this.buttonOk.IsFocus=true;
+
 		}
 
 		protected void OnButtonPagoChequeClicked (object sender, EventArgs e)
 		{
-			PagoChequeDialog rcd = new PagoChequeDialog();
+			PagoChequeDialog rcd = new PagoChequeDialog(this, pagototal);
 			try 
 			{
 				rcd.Run();
@@ -159,6 +157,8 @@ namespace punto.gui
 				Console.WriteLine(ex.Message);
 #endif
 			}
+			this.buttonOk.IsFocus=true;
+
 		}
 	}
 }

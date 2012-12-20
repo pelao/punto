@@ -265,13 +265,8 @@ namespace punto.gui
 			boleta=entryNumBoleta.Text;
 		}
 		
-		[GLib.ConnectBefore ()] 
-		protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
+	/*	protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
 		{		
-			
-			
-			
-			
 			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
 			
 			if (args.Event.Key == Gdk.Key.F2)
@@ -312,7 +307,7 @@ namespace punto.gui
 			}
 			
 			
-		}
+		}*/
 		void ScrollToItem(TreeIter iter)
 		{
 			TreePath path = ventamodel.GetPath(iter);
@@ -375,11 +370,10 @@ namespace punto.gui
 		
 		
 		
-		[GLib.ConnectBefore ()] 
-		
+
 		protected void OnEntryCodigoBarraKeyPressEvent (object o, KeyPressEventArgs args)
 		{
-			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
+			Console.WriteLine("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
 			
 			if (args.Event.Key == Gdk.Key.F2)
 			{
@@ -412,9 +406,6 @@ namespace punto.gui
 				{
 					rcd.Destroy();
 #if DEBUG
-
-		
-					
 					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
 #endif
 				}
@@ -432,5 +423,3 @@ namespace punto.gui
 	}
 	
 }
-
-

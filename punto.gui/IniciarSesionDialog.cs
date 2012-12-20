@@ -1,9 +1,6 @@
 
 using GLib;
-
 using punto.gui;
-
-
 using System.Collections.Generic;
 using Gtk;
 using System;

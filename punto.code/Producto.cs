@@ -80,11 +80,7 @@ namespace punto.code
 		public bool Pesable
 		{
 			get {return this._pesable;}
-			set {
-
-					this._pesable = value;
-
-			}
+			set {this._pesable = value;}
 		}
 
 	}

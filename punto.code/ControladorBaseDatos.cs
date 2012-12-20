@@ -24,7 +24,52 @@ namespace punto.code
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
 
 		}
-
+		public bool AgregarPagoCheque (PagoCheque registro)
+		{
+			
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"INSERT INTO cheque (nomBanco,nomPlaza,numSerie,monto,fechaHora) " +
+					"VALUES ('"+registro.NombreBanco+"','"+registro.NombrePlaza+"','"+registro.NumSerie+"','"+registro.Monto+"','"+registro.FECHA+"');";
+			
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			
+			return false;
+		}
+		public bool AgregarPagoTarjeta (PagoTarjeta registro)
+		{
+			
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"INSERT INTO tarjeta (tipoT,nroTran,monto, fechaHora) " +
+					"VALUES ('"+registro.Tarjeta+"','"+registro.Transaccion+"','"+registro.Monto+"','"+registro.FECHA+"');";
+			
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			
+			return false;
+		}
 		public bool AgregarProductosBd (Producto registro)
 		{
 		

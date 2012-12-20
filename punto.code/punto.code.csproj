@@ -56,6 +56,8 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="gtk-gui\punto.code.Usuario.cs" />
     <Compile Include="ModificarProducto.cs" />
+    <Compile Include="PagoTarjeta.cs" />
+    <Compile Include="PagoCheque.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
