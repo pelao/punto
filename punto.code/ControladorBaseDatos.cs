@@ -308,7 +308,7 @@ namespace punto.code
 			return usuarioContraseña;
 		}
 
-		public List<Produc> ObtenerProductosVenta (int codigoB)
+		public List<Produc> ObtenerProductosVenta (string codigoB)
 		{
 
 			IDbConnection dbcon = this.ConectarBd();

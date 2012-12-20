@@ -351,8 +351,8 @@ namespace punto.gui
 			this.DefaultHeight = 432;
 			w45.Hide ();
 			this.Hide ();
-			this.entryCodigoBarra.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry1TextInserted);
-			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntry1KeyPressEvent);
+			this.entryCodigoBarra.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntryCodigoBarraTextInserted);
+			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryCodigoBarraKeyPressEvent);
 			this.ButtonVenta.Clicked += new global::System.EventHandler (this.OnButtonVentaClicked);
 			this.entryNumBoleta.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry2TextInserted);
 			this.buttonEdit.Clicked += new global::System.EventHandler (this.OnButton85Clicked);
