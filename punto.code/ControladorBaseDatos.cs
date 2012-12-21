@@ -361,15 +361,15 @@ namespace punto.code
 			
 			return precio;
 		}
-		public string[] ObtenerProductosBd (string codigoB)
+		public string ObtenerProductosBd (string codigoB)
 		{
-			string[] precio = new string[2];
+			string[] precio = new string[1];
 
 			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"SELECT precio_venta,vigente " +
+				"SELECT precio_venta " +
 					"FROM productos " +
 					"WHERE codigobarra='"+codigoB+"'";
 			dbcmd.CommandText = sql;
@@ -377,7 +377,6 @@ namespace punto.code
 		
 			while(reader.Read()) {
 				precio[0] =  (string) reader["precio_venta"];
-				precio[1] =  (string) reader["vigente"];
 
 				//bool vig = reader["vigente"];
 			}
@@ -388,7 +387,7 @@ namespace punto.code
 			
 			this.DesconectarBd(dbcon);
 			
-			return precio;
+			return precio[0];
 		}
 
 		public string[] ObtenerUsuarioContraseñaBd (string usuario) 

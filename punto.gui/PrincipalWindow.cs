@@ -225,5 +225,23 @@ namespace punto.gui
 
 		}
 	
+		protected void OnButtonConsultaPrecioClicked (object sender, EventArgs e)
+		{
+
+			ConsultaPrecioDialog rcd = new ConsultaPrecioDialog();
+			
+			try 
+			{
+				rcd.Run();
+				rcd.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				rcd.Destroy();
+				
+				
+			}
+		
+		}
 	}
 }

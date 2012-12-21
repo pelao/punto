@@ -222,7 +222,6 @@ namespace punto.gui
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.hpaned2 = new global::Gtk.HPaned ();
 			this.hpaned2.CanFocus = true;
-			this.hpaned2.Name = "hpaned2";
 			this.hpaned2.Position = 10;
 			// Container child hpaned2.Gtk.Paned+PanedChild
 			this.buttonPagoTarjeta = new global::Gtk.Button ();

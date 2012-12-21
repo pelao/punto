@@ -91,6 +91,8 @@
     <Compile Include="gtk-gui\punto.gui.PagoTargetaDialog.cs" />
     <Compile Include="PagoChequeDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.PagoChequeDialog.cs" />
+    <Compile Include="ConsultaPrecioDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.ConsultaPrecioDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
