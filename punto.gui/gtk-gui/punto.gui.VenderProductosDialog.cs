@@ -202,20 +202,35 @@ namespace punto.gui
 			this.ButtonVenta.CanFocus = true;
 			this.ButtonVenta.Name = "ButtonVenta";
 			this.ButtonVenta.UseUnderline = true;
-			this.ButtonVenta.Label = global::Mono.Unix.Catalog.GetString ("Venta");
+			// Container child ButtonVenta.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w22 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w23 = new global::Gtk.HBox ();
+			w23.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w24 = new global::Gtk.Image ();
+			w24.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-index", global::Gtk.IconSize.Menu);
+			w23.Add (w24);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w26 = new global::Gtk.Label ();
+			w26.LabelProp = global::Mono.Unix.Catalog.GetString ("Venta");
+			w26.UseUnderline = true;
+			w23.Add (w26);
+			w22.Add (w23);
+			this.ButtonVenta.Add (w22);
 			this.hbox5.Add (this.ButtonVenta);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.ButtonVenta]));
-			w22.Position = 2;
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.ButtonVenta]));
+			w30.Position = 2;
+			w30.Expand = false;
+			w30.Fill = false;
 			this.vbox2.Add (this.hbox5);
-			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox5]));
-			w23.Position = 2;
-			w23.Expand = false;
-			w23.Fill = false;
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox5]));
+			w31.Position = 2;
+			w31.Expand = false;
+			w31.Fill = false;
 			this.hbox1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox2]));
-			w24.Position = 1;
+			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox2]));
+			w32.Position = 1;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
@@ -225,10 +240,10 @@ namespace punto.gui
 			this.labelNumBoleta.Name = "labelNumBoleta";
 			this.labelNumBoleta.LabelProp = global::Mono.Unix.Catalog.GetString ("Nº Boleta");
 			this.vbox3.Add (this.labelNumBoleta);
-			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.labelNumBoleta]));
-			w25.Position = 0;
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.labelNumBoleta]));
+			w33.Position = 0;
+			w33.Expand = false;
+			w33.Fill = false;
 			// Container child vbox3.Gtk.Box+BoxChild
 			this.hbox3 = new global::Gtk.HBox ();
 			this.hbox3.Name = "hbox3";
@@ -240,39 +255,39 @@ namespace punto.gui
 			this.entryNumBoleta.IsEditable = false;
 			this.entryNumBoleta.InvisibleChar = '●';
 			this.hbox3.Add (this.entryNumBoleta);
-			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.entryNumBoleta]));
-			w26.Position = 0;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.entryNumBoleta]));
+			w34.Position = 0;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.buttonEdit = new global::Gtk.Button ();
 			this.buttonEdit.CanFocus = true;
 			this.buttonEdit.Name = "buttonEdit";
 			this.buttonEdit.UseUnderline = true;
 			// Container child buttonEdit.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w27 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			global::Gtk.Alignment w35 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w28 = new global::Gtk.HBox ();
-			w28.Spacing = 2;
+			global::Gtk.HBox w36 = new global::Gtk.HBox ();
+			w36.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w29 = new global::Gtk.Image ();
-			w29.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
-			w28.Add (w29);
+			global::Gtk.Image w37 = new global::Gtk.Image ();
+			w37.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			w36.Add (w37);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w31 = new global::Gtk.Label ();
-			w31.LabelProp = global::Mono.Unix.Catalog.GetString ("Edit");
-			w31.UseUnderline = true;
-			w28.Add (w31);
-			w27.Add (w28);
-			this.buttonEdit.Add (w27);
+			global::Gtk.Label w39 = new global::Gtk.Label ();
+			w39.LabelProp = global::Mono.Unix.Catalog.GetString ("Edit");
+			w39.UseUnderline = true;
+			w36.Add (w39);
+			w35.Add (w36);
+			this.buttonEdit.Add (w35);
 			this.hbox3.Add (this.buttonEdit);
-			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.buttonEdit]));
-			w35.Position = 1;
-			w35.Expand = false;
-			w35.Fill = false;
+			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.buttonEdit]));
+			w43.Position = 1;
+			w43.Expand = false;
+			w43.Fill = false;
 			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
-			w36.Position = 1;
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			w44.Position = 1;
+			w44.Expand = false;
+			w44.Fill = false;
 			// Container child vbox3.Gtk.Box+BoxChild
 			this.vbox4 = new global::Gtk.VBox ();
 			this.vbox4.Name = "vbox4";
@@ -281,18 +296,18 @@ namespace punto.gui
 			this.label8 = new global::Gtk.Label ();
 			this.label8.Name = "label8";
 			this.vbox4.Add (this.label8);
-			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.label8]));
-			w37.Position = 0;
-			w37.Expand = false;
-			w37.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.label8]));
+			w45.Position = 0;
+			w45.Expand = false;
+			w45.Fill = false;
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.vpaned3 = new global::Gtk.VPaned ();
 			this.vpaned3.CanFocus = true;
 			this.vpaned3.Name = "vpaned3";
 			this.vpaned3.Position = 1;
 			this.vbox4.Add (this.vpaned3);
-			global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned3]));
-			w38.Position = 1;
+			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned3]));
+			w46.Position = 1;
 			// Container child vbox4.Gtk.Box+BoxChild
 			this.hbox2 = new global::Gtk.HBox ();
 			this.hbox2.Name = "hbox2";
@@ -302,38 +317,38 @@ namespace punto.gui
 			this.labelTotal.Name = "labelTotal";
 			this.labelTotal.LabelProp = global::Mono.Unix.Catalog.GetString ("Total:");
 			this.hbox2.Add (this.labelTotal);
-			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.labelTotal]));
-			w39.Position = 0;
-			w39.Expand = false;
-			w39.Fill = false;
+			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.labelTotal]));
+			w47.Position = 0;
+			w47.Expand = false;
+			w47.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.labelTotalVenta = new global::Gtk.Label ();
 			this.labelTotalVenta.Name = "labelTotalVenta";
 			this.labelTotalVenta.LabelProp = global::Mono.Unix.Catalog.GetString ("0");
 			this.hbox2.Add (this.labelTotalVenta);
-			global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.labelTotalVenta]));
-			w40.Position = 1;
-			w40.Expand = false;
-			w40.Fill = false;
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.labelTotalVenta]));
+			w48.Position = 1;
+			w48.Expand = false;
+			w48.Fill = false;
 			this.vbox4.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox2]));
-			w41.Position = 2;
-			w41.Expand = false;
-			w41.Fill = false;
+			global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox2]));
+			w49.Position = 2;
+			w49.Expand = false;
+			w49.Fill = false;
 			this.vbox3.Add (this.vbox4);
-			global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.vbox4]));
-			w42.Position = 2;
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.vbox4]));
+			w50.Position = 2;
 			this.hbox1.Add (this.vbox3);
-			global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox3]));
-			w43.Position = 2;
-			w43.Expand = false;
-			w43.Fill = false;
+			global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox3]));
+			w51.Position = 2;
+			w51.Expand = false;
+			w51.Fill = false;
 			w1.Add (this.hbox1);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox1]));
-			w44.Position = 0;
+			global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox1]));
+			w52.Position = 0;
 			// Internal child punto.gui.VenderProductosDialog.ActionArea
-			global::Gtk.HButtonBox w45 = this.ActionArea;
-			w45.Name = "__gtksharp_56_Stetic_TopLevelDialog_ActionArea";
+			global::Gtk.HButtonBox w53 = this.ActionArea;
+			w53.Name = "__gtksharp_56_Stetic_TopLevelDialog_ActionArea";
 			// Container child __gtksharp_56_Stetic_TopLevelDialog_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.button790 = new global::Gtk.Button ();
 			this.button790.CanFocus = true;
@@ -341,15 +356,15 @@ namespace punto.gui
 			this.button790.UseUnderline = true;
 			this.button790.Label = global::Mono.Unix.Catalog.GetString ("GtkButton");
 			this.AddActionWidget (this.button790, 0);
-			global::Gtk.ButtonBox.ButtonBoxChild w46 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w45 [this.button790]));
-			w46.Expand = false;
-			w46.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w54 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w53 [this.button790]));
+			w54.Expand = false;
+			w54.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 709;
 			this.DefaultHeight = 432;
-			w45.Hide ();
+			w53.Hide ();
 			this.Hide ();
 			this.entryCodigoBarra.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntryCodigoBarraTextInserted);
 			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryCodigoBarraKeyPressEvent);

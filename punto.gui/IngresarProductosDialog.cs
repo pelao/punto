@@ -249,7 +249,8 @@ namespace punto.gui
 				
 			}		}
 
-		string pre="";
+		string nomA="";
+		string fami="";
 		protected void OnEditarEspecificacion ()
 		{
 #if DEBUG
@@ -257,12 +258,15 @@ namespace punto.gui
 #endif
 			Gtk.TreeIter iter;
 			if (treeview1.Selection.GetSelected (out iter)) {
-				string nombre, precio;
+				string nombre, precio,familia;
 				nombre = productosmodel.GetValue (iter, 0).ToString ();
 				precio = productosmodel.GetValue (iter, 1).ToString ();
-				pre =nombre;
+				familia = productosmodel.GetValue (iter, 2).ToString ();
+
+				nomA =nombre;
+				fami=familia;
 				//mostrar dialog de edicion
-				EditarProductoDialog esp = new EditarProductoDialog (this, nombre, precio);
+				EditarProductoDialog esp = new EditarProductoDialog (this, nombre, precio,familia);
 				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
 				esp.Run ();
 			}
@@ -274,8 +278,9 @@ namespace punto.gui
 			{
 				productosmodel.SetValue(iter, 0, args.Nombre);
 				productosmodel.SetValue(iter, 1, args.Precio);
-				Console.WriteLine(pre);
-				this.db.ActualizarProductoBd(pre,args.Nombre,args.Precio);
+				productosmodel.SetValue(iter, 2, args.Familia);
+
+				this.db.ActualizarProductoBd(nomA,args.Nombre, args.Precio,args.Familia);
 				
 				
 				

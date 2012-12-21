@@ -314,7 +314,7 @@ namespace punto.code
 			return product;
 		}
   */   
-		public bool ActualizarProductoBd (string NombreA,string NombreV,string PrecioV)
+		public bool ActualizarProductoBd (string NombreA,string NombreV,string PrecioV,string FamiliaA)
 		{
 						
 			IDbConnection dbcon = this.ConectarBd();
@@ -322,7 +322,7 @@ namespace punto.code
 				IDbCommand dbcmd = dbcon.CreateCommand();
 				string sql =
 				"UPDATE productos " +
-					"SET nombre='"+NombreV+"', "+"precio_venta='"+PrecioV+"'" +
+					"SET nombre='"+NombreV+"', "+"precio_venta='"+PrecioV+"',"+"nombre_familia='"+FamiliaA+"'" +
 					"WHERE nombre='"+NombreA+"'";
 			dbcmd.CommandText = sql;
 

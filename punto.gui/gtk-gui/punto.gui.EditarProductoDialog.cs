@@ -146,20 +146,35 @@ namespace punto.gui
 			this.cambiarfamilabutton.CanFocus = true;
 			this.cambiarfamilabutton.Name = "cambiarfamilabutton";
 			this.cambiarfamilabutton.UseUnderline = true;
-			this.cambiarfamilabutton.Label = global::Mono.Unix.Catalog.GetString ("Cambiar Familia");
+			// Container child cambiarfamilabutton.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w11 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w12 = new global::Gtk.HBox ();
+			w12.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w13 = new global::Gtk.Image ();
+			w13.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-about", global::Gtk.IconSize.Menu);
+			w12.Add (w13);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w15 = new global::Gtk.Label ();
+			w15.LabelProp = global::Mono.Unix.Catalog.GetString ("Cambiar Familia");
+			w15.UseUnderline = true;
+			w12.Add (w15);
+			w11.Add (w12);
+			this.cambiarfamilabutton.Add (w11);
 			this.hbox15.Add (this.cambiarfamilabutton);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.cambiarfamilabutton]));
-			w11.Position = 2;
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.cambiarfamilabutton]));
+			w19.Position = 2;
+			w19.Expand = false;
+			w19.Fill = false;
 			this.hbox13.Add (this.hbox15);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox13 [this.hbox15]));
-			w12.Position = 1;
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox13 [this.hbox15]));
+			w20.Position = 1;
 			this.vbox2.Add (this.hbox13);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox13]));
-			w13.Position = 0;
-			w13.Expand = false;
-			w13.Fill = false;
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox13]));
+			w21.Position = 0;
+			w21.Expand = false;
+			w21.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox14 = new global::Gtk.HBox ();
 			this.hbox14.Name = "hbox14";
@@ -169,10 +184,10 @@ namespace punto.gui
 			this.label2.Name = "label2";
 			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Vigente: ");
 			this.hbox14.Add (this.label2);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.label2]));
-			w14.Position = 0;
-			w14.Expand = false;
-			w14.Fill = false;
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.label2]));
+			w22.Position = 0;
+			w22.Expand = false;
+			w22.Fill = false;
 			// Container child hbox14.Gtk.Box+BoxChild
 			this.vigentecheckbutton = new global::Gtk.CheckButton ();
 			this.vigentecheckbutton.CanFocus = true;
@@ -182,16 +197,16 @@ namespace punto.gui
 			this.vigentecheckbutton.DrawIndicator = true;
 			this.vigentecheckbutton.UseUnderline = true;
 			this.hbox14.Add (this.vigentecheckbutton);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.vigentecheckbutton]));
-			w15.Position = 1;
+			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.vigentecheckbutton]));
+			w23.Position = 1;
 			this.vbox2.Add (this.hbox14);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox14]));
-			w16.Position = 1;
-			w16.Expand = false;
-			w16.Fill = false;
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox14]));
+			w24.Position = 1;
+			w24.Expand = false;
+			w24.Fill = false;
 			this.vbox3.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.vbox2]));
-			w17.Position = 2;
+			global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.vbox2]));
+			w25.Position = 2;
 			this.GtkAlignment2.Add (this.vbox3);
 			this.frame3.Add (this.GtkAlignment2);
 			this.GtkLabel3 = new global::Gtk.Label ();
@@ -200,45 +215,74 @@ namespace punto.gui
 			this.GtkLabel3.UseMarkup = true;
 			this.frame3.LabelWidget = this.GtkLabel3;
 			w1.Add (this.frame3);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(w1 [this.frame3]));
-			w20.Position = 0;
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(w1 [this.frame3]));
+			w28.Position = 0;
 			// Internal child punto.gui.EditarProductoDialog.ActionArea
-			global::Gtk.HButtonBox w21 = this.ActionArea;
-			w21.Name = "dialog1_ActionArea";
-			w21.Spacing = 10;
-			w21.BorderWidth = ((uint)(5));
-			w21.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w29 = this.ActionArea;
+			w29.Name = "dialog1_ActionArea";
+			w29.Spacing = 10;
+			w29.BorderWidth = ((uint)(5));
+			w29.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button ();
 			this.buttonCancel.CanDefault = true;
 			this.buttonCancel.CanFocus = true;
 			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.UseStock = true;
 			this.buttonCancel.UseUnderline = true;
-			this.buttonCancel.Label = "gtk-cancel";
+			// Container child buttonCancel.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w30 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w31 = new global::Gtk.HBox ();
+			w31.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w32 = new global::Gtk.Image ();
+			w32.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			w31.Add (w32);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w34 = new global::Gtk.Label ();
+			w34.LabelProp = global::Mono.Unix.Catalog.GetString ("_Cancel");
+			w34.UseUnderline = true;
+			w31.Add (w34);
+			w30.Add (w31);
+			this.buttonCancel.Add (w30);
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w22 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w21 [this.buttonCancel]));
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w38 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w29 [this.buttonCancel]));
+			w38.Expand = false;
+			w38.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
 			this.buttonOk.CanFocus = true;
 			this.buttonOk.Name = "buttonOk";
-			this.buttonOk.UseStock = true;
 			this.buttonOk.UseUnderline = true;
-			this.buttonOk.Label = "gtk-ok";
+			// Container child buttonOk.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w39 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w40 = new global::Gtk.HBox ();
+			w40.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w41 = new global::Gtk.Image ();
+			w41.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
+			w40.Add (w41);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w43 = new global::Gtk.Label ();
+			w43.LabelProp = global::Mono.Unix.Catalog.GetString ("_OK");
+			w43.UseUnderline = true;
+			w40.Add (w43);
+			w39.Add (w40);
+			this.buttonOk.Add (w39);
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w23 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w21 [this.buttonOk]));
-			w23.Position = 1;
-			w23.Expand = false;
-			w23.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w47 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w29 [this.buttonOk]));
+			w47.Position = 1;
+			w47.Expand = false;
+			w47.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 292;
 			this.Show ();
+			this.cambiarfamilabutton.Clicked += new global::System.EventHandler (this.OnCambiarfamilabuttonClicked);
 			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}

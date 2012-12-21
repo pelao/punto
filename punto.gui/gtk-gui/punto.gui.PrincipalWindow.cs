@@ -68,7 +68,7 @@ namespace punto.gui
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='BarraMenu'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString (@"<ui><menubar name='BarraMenu'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='AgregarFamiliaAction' action='AgregarFamiliaAction'/><menuitem name='RegistrarModificarAction' action='RegistrarModificarAction'/></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='RegistrarModificarAction1' action='RegistrarModificarAction1'/></menu></menubar></ui>");
 			this.BarraMenu = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/BarraMenu")));
 			this.BarraMenu.Name = "BarraMenu";
 			this.vbox3.Add (this.BarraMenu);
