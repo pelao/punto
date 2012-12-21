@@ -109,9 +109,9 @@ namespace punto.gui
 		public void CargarProductos ()
 		{
 			this.productos = this.db.ObtenerProductosBd ();
-			this.productosmodel = new Gtk.ListStore (typeof(string), typeof(string), typeof(string), typeof(string));
+			this.productosmodel = new Gtk.ListStore ( typeof(string), typeof(string), typeof(string));
 			foreach (ModificarProducto bod in this.productos) {
-				this.productosmodel.AppendValues (bod.Nombre, bod.Precio,bod.Familia,bod.Vigente);
+				this.productosmodel.AppendValues (bod.Nombre, bod.Precio,bod.Familia);
 #if DEBUG
 #endif
 			}
@@ -249,26 +249,22 @@ namespace punto.gui
 				
 			}		}
 
-
+		string pre="";
 		protected void OnEditarEspecificacion ()
 		{
 #if DEBUG
-			Console.WriteLine("Editar fila");
+			Console.WriteLine ("Editar fila");
 #endif
 			Gtk.TreeIter iter;
-			if (treeview1.Selection.GetSelected(out iter))
-			{
-				string nombre, precio,familia,vigente;
-				nombre = productosmodel.GetValue(iter, 0).ToString();
-				precio = productosmodel.GetValue(iter, 1).ToString();
-				familia = productosmodel.GetValue(iter, 2).ToString();
-				vigente = productosmodel.GetValue(iter, 3).ToString();
-
+			if (treeview1.Selection.GetSelected (out iter)) {
+				string nombre, precio;
+				nombre = productosmodel.GetValue (iter, 0).ToString ();
+				precio = productosmodel.GetValue (iter, 1).ToString ();
+				pre =nombre;
 				//mostrar dialog de edicion
-				EditarProductoDialog esp = new EditarProductoDialog(this, nombre, precio, familia,vigente);
+				EditarProductoDialog esp = new EditarProductoDialog (this, nombre, precio);
 				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
-				esp.Run();
-			
+				esp.Run ();
 			}
 		}
 		protected void OnEditarEspecificacionDialogOldChanged (object sender, EditarProductoDialogChangedEventArgs args)
@@ -278,12 +274,11 @@ namespace punto.gui
 			{
 				productosmodel.SetValue(iter, 0, args.Nombre);
 				productosmodel.SetValue(iter, 1, args.Precio);
-				productosmodel.SetValue(iter, 2, args.Familia);
-				productosmodel.SetValue(iter, 3, args.Vigente);
-				this.db.ActualizarProductoBd(args.Nombre,args.Precio);
-
-			
-
+				Console.WriteLine(pre);
+				this.db.ActualizarProductoBd(pre,args.Nombre,args.Precio);
+				
+				
+				
 			}
 		}
 
@@ -292,17 +287,19 @@ namespace punto.gui
 			this.OnEditarEspecificacion();
 		}
 
-		protected void OnButtonOkClicked (object sender, EventArgs e)
-		{
-
-		
-		}
+	
 
 		protected void BotonCancelar (object sender, EventArgs e)
 		{
 			this.Hide();
 			this.Dispose();
 		
+		}
+
+		protected void OnButtonCancelClicked (object sender, EventArgs e)
+		{
+			this.Hide();
+			this.Dispose();
 		}
 }
 	}

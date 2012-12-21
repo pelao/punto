@@ -186,6 +186,31 @@ namespace punto.code
 			}
 			return false;
 		}
+		public bool ActualizarFamilia (FamiliaProducto familia_vieja, FamiliaProducto familia_nueva)
+		{
+			if ( this.ExisteFamiliaBd(familia_vieja) && 
+			    (!this.ExisteFamiliaBd(familia_nueva) || (this.ExisteFamiliaBd(familia_nueva) && familia_vieja.Nombre==familia_nueva.Nombre)))
+			{
+				IDbConnection dbcon = this.ConectarBd();
+				
+				IDbCommand dbcmd = dbcon.CreateCommand();
+				string sql =
+					"UPDATE familia_prod " +
+						"SET nombre='"+familia_nueva.Nombre+"' " +
+						"WHERE nombre='"+familia_vieja.Nombre+"' ";
+				dbcmd.CommandText = sql;
+				
+				int res = dbcmd.ExecuteNonQuery();
+				
+				dbcmd.Dispose();
+				dbcmd = null;
+				
+				this.DesconectarBd(dbcon);
+				
+				return true;
+			}
+			return false;
+		}
 		public List<ModificarProducto> ObtenerProductosBd ()
 		{
 			IDbConnection dbcon = this.ConectarBd();
@@ -289,7 +314,7 @@ namespace punto.code
 			return product;
 		}
   */   
-		public bool ActualizarProductoBd (string NombreV,string PrecioV)
+		public bool ActualizarProductoBd (string NombreA,string NombreV,string PrecioV)
 		{
 						
 			IDbConnection dbcon = this.ConectarBd();
@@ -297,8 +322,8 @@ namespace punto.code
 				IDbCommand dbcmd = dbcon.CreateCommand();
 				string sql =
 				"UPDATE productos " +
-					"SET precio_venta='"+PrecioV+"'" +
-					"WHERE nombre='"+NombreV+"'";
+					"SET nombre='"+NombreV+"', "+"precio_venta='"+PrecioV+"'" +
+					"WHERE nombre='"+NombreA+"'";
 			dbcmd.CommandText = sql;
 
 			int res = dbcmd.ExecuteNonQuery();

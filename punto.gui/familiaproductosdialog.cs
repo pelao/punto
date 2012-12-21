@@ -193,9 +193,63 @@ namespace punto.gui
 
 		}
 
-		protected void OnActualizarButtonClicked (object sender, EventArgs e)
+		protected virtual void OnActualizarButtonClicked (object sender, System.EventArgs e)
 		{
-			throw new System.NotImplementedException ();
+			Gtk.TreeIter iter;
+			this.FamiliaProductosTreeview.Selection.GetSelected(out iter);
+			
+			FamiliaProducto familia_vieja = new FamiliaProducto(this.familiaModel.GetValue(iter, 0).ToString());
+			FamiliaProducto familia_nueva = new FamiliaProducto(entryFamilia.Text.Trim());
+			
+			if (!this.db.ExisteFamiliaBd(familia_vieja))
+			{
+				Dialog dialog = new Dialog("No se pudo actualizar la familia", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "No se pudo actualizar la familia porque no existe una en la base de datos.\nIntente recargar la lista de familias.";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+			}
+
+			else
+			{
+				if (this.db.ActualizarFamilia(familia_vieja, familia_nueva))
+				{
+					this.familias.RemoveAt(this.familiaModel.GetPath(iter).Indices[0]);
+					this.familias.Insert(this.familiaModel.GetPath(iter).Indices[0], familia_nueva);
+					
+					this.familiaModel.SetValue(iter, 0, familia_nueva.Nombre);
+
+					this.entryFamilia.Text = "";
+					this.quitar_button.Sensitive = false;
+					this.actualizar_button.Sensitive = false;
+					this.FamiliaProductosTreeview.Selection.UnselectAll();
+					//Console.WriteLine("Actualizado");
+					
+					this.cambiado = true;
+				}
+				else
+				{
+					Dialog dialog = new Dialog("No se pudo actualizar la familia", this, Gtk.DialogFlags.DestroyWithParent);
+					dialog.Modal = true;
+					dialog.Resizable = false;
+					Gtk.Label etiqueta = new Gtk.Label();
+					etiqueta.Markup = "No se pudo actualizar la familia, ha ocurrido un error al actualizar en la base de datos.";
+					dialog.BorderWidth = 8;
+					dialog.VBox.BorderWidth = 8;
+					dialog.VBox.PackStart(etiqueta, false, false, 0);
+					dialog.AddButton ("Cerrar", ResponseType.Close);
+					dialog.ShowAll();
+					dialog.Run ();
+					dialog.Destroy ();
+				}
+			}
 		}
 
 		protected void OnQuitarButtonClicked (object sender, EventArgs e)

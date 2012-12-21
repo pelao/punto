@@ -239,9 +239,6 @@ namespace punto.gui
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 292;
 			this.Show ();
-			this.cambiarfamilabutton.Clicked += new global::System.EventHandler (this.OnCambiarfamilabuttonClicked);
-			this.vigentecheckbutton.Toggled += new global::System.EventHandler (this.OnVigentecheckbuttonToggled);
-			this.buttonCancel.Clicked += new global::System.EventHandler (this.OnButtonCancelClicked);
 			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);
 		}
 	}
