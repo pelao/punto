@@ -24,12 +24,33 @@ namespace punto.code
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
 
 		}
+		public bool AgregarFamiliaBd (FamiliaProducto familia)
+		{
+			if (!this.ExisteFamiliaBd(familia))
+			{
+				IDbConnection dbcon = this.ConectarBd();
+				
+				IDbCommand dbcmd = dbcon.CreateCommand();
+				
+				string sql =
+					"INSERT INTO familia_prod (nombre)" +
+						"VALUES ('"+familia.Nombre+"')";
+				
+				dbcmd.CommandText = sql;
+				IDataReader reader = dbcmd.ExecuteReader();
+
+				dbcmd.Dispose();
+				dbcmd = null;
+				
+				this.DesconectarBd(dbcon);
+				
+				return true;
+			}
+			return false;
+		}
 		public bool AgregarPagoCheque (PagoCheque registro)
 		{
-			
-			
 			IDbConnection dbcon = this.ConectarBd();
-			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
 				"INSERT INTO cheque (nomBanco,nomPlaza,numSerie,monto,fechaHora) " +
@@ -142,7 +163,29 @@ namespace punto.code
 			return false;
 		}
 
-
+		public bool QuitarFamilia (FamiliaProducto famili)
+		{
+			if (this.ExisteFamiliaBd(famili))
+			{
+				IDbConnection dbcon = this.ConectarBd();
+				
+				IDbCommand dbcmd = dbcon.CreateCommand();
+				string sql =
+					"DELETE FROM familia_prod "+
+						"WHERE nombre='"+famili.Nombre+"';";
+				dbcmd.CommandText = sql;
+				int res = dbcmd.ExecuteNonQuery();
+				
+				// clean up
+				dbcmd.Dispose();
+				dbcmd = null;
+				
+				this.DesconectarBd(dbcon);
+				
+				return true;
+			}
+			return false;
+		}
 		public List<ModificarProducto> ObtenerProductosBd ()
 		{
 			IDbConnection dbcon = this.ConectarBd();
@@ -405,28 +448,7 @@ namespace punto.code
 			return familias;
 		}
 
-		public bool AgregarFamiliaBd (FamiliaProducto familia)
-		{
-			if (!this.ExisteFamiliaBd(familia))
-			{
-				IDbConnection dbcon = this.ConectarBd();
-				
-				IDbCommand dbcmd = dbcon.CreateCommand();
 
-				string sql =
-					"INSERT INTO familia_prod (nombre)" +
-						"VALUES ('"+familia.Nombre+"')";
-
-				dbcmd.CommandText = sql;
-				dbcmd.Dispose();
-				dbcmd = null;
-				
-				this.DesconectarBd(dbcon);
-				
-				return true;
-			}
-			return false;
-		}
 		public bool ExisteFamiliaBd (FamiliaProducto Familia)
 		{
 			IDbConnection dbcon = this.ConectarBd();

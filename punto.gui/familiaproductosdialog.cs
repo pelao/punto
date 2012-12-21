@@ -11,7 +11,7 @@ namespace punto.gui
 		
 		public List<FamiliaProducto> familias = new List<FamiliaProducto>();
 		
-		private Gtk.ListStore bodegasmodel;
+		private Gtk.ListStore familiaModel;
 		
 
 		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
@@ -113,12 +113,12 @@ namespace punto.gui
 		public void CargarFamilias()
 		{
 			this.familias = this.db.ObtenerFamiliasBd();
-			this.bodegasmodel = new Gtk.ListStore(typeof(string));
+			this.familiaModel = new Gtk.ListStore(typeof(string));
 			foreach (FamiliaProducto prod in this.familias)
 			{
-				this.bodegasmodel.AppendValues( prod.Nombre);
+				this.familiaModel.AppendValues( prod.Nombre);
 			}
-			FamiliaProductosTreeview.Model = this.bodegasmodel;
+			FamiliaProductosTreeview.Model = this.familiaModel;
 			
 
 		}
@@ -162,7 +162,7 @@ namespace punto.gui
 				if (this.db.AgregarFamiliaBd(prod))
 				{
 					this.familias.Add(prod);
-					this.bodegasmodel.AppendValues(prod.Nombre);
+					this.familiaModel.AppendValues(prod.Nombre);
 					
 					this.entryFamilia.Text = "";
 					this.FamiliaProductosTreeview.Selection.UnselectAll();
@@ -196,6 +196,101 @@ namespace punto.gui
 		protected void OnActualizarButtonClicked (object sender, EventArgs e)
 		{
 			throw new System.NotImplementedException ();
+		}
+
+		protected void OnQuitarButtonClicked (object sender, EventArgs e)
+		{
+
+			Gtk.TreeIter iter;
+			if (this.FamiliaProductosTreeview.Selection.GetSelected(out iter))
+			{
+				//especificacionesmodel.GetValue(iter,0).ToString();
+				Dialog dialog = new Dialog("Quitar familia", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "Está intentando quitar la familia seleccionada de la lista.\n\n<b>¿Desea continuar con la eliminación de la familia?</b>\n";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Si", ResponseType.Accept);
+				dialog.AddButton ("No", ResponseType.Cancel);
+				dialog.Response += new ResponseHandler (OnQuitarFamiliaDialogResponse);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+			}
+			else
+			{
+				this.actualizar_button.Sensitive = false;
+			}
+		
+		}
+		private void OnQuitarFamiliaDialogResponse (object sender, ResponseArgs args)
+		{
+			switch (args.ResponseId)
+			{
+			case ResponseType.Accept:
+				Gtk.TreeIter iter;
+				this.FamiliaProductosTreeview.Selection.GetSelected(out iter);
+				
+				FamiliaProducto bod = new FamiliaProducto(this.familiaModel.GetValue(iter, 0).ToString());
+				
+				if (!this.db.ExisteFamiliaBd(bod))
+				{
+					Dialog dialog = new Dialog("No se pudo quitar la familia", this, Gtk.DialogFlags.DestroyWithParent);
+					dialog.Modal = true;
+					dialog.Resizable = false;
+					Gtk.Label etiqueta = new Gtk.Label();
+					etiqueta.Markup = "No se pudo quitar la familia porque no existe en la base de datos.\nIntente recargar la lista de familias.";
+					dialog.BorderWidth = 8;
+					dialog.VBox.BorderWidth = 8;
+					dialog.VBox.PackStart(etiqueta, false, false, 0);
+					dialog.AddButton ("Cerrar", ResponseType.Close);
+					dialog.ShowAll();
+					dialog.Run ();
+					dialog.Destroy ();
+				}
+				else
+				{
+					if (this.db.QuitarFamilia(bod))
+					{
+#if DEBUG
+						Console.WriteLine(this.familias.Count);	
+#endif
+						this.familias.RemoveAt(this.familiaModel.GetPath(iter).Indices[0]);
+#if DEBUG
+						Console.WriteLine(this.familias.Count);	
+#endif				
+						this.familiaModel.Remove(ref iter);
+						
+						this.actualizar_button.Sensitive = false;
+						this.FamiliaProductosTreeview.Selection.UnselectAll();
+						//Console.WriteLine("Quitado");
+						
+						this.cambiado = true;
+					}
+					else
+					{
+						Dialog dialog = new Dialog("No se pudo quitar la familia", this, Gtk.DialogFlags.DestroyWithParent);
+						dialog.Modal = true;
+						dialog.Resizable = false;
+						Gtk.Label etiqueta = new Gtk.Label();
+						etiqueta.Markup = "No se pudo quitar la familia, ha ocurrido un error al quitarla de la base de datos.";
+						dialog.BorderWidth = 8;
+						dialog.VBox.BorderWidth = 8;
+						dialog.VBox.PackStart(etiqueta, false, false, 0);
+						dialog.AddButton ("Cerrar", ResponseType.Close);
+						dialog.ShowAll();
+						dialog.Run ();
+						dialog.Destroy ();
+					}
+				}
+				break;
+			default:
+				//no hacer nada
+				break;
+			}
 		}
 }
 }

@@ -11,8 +11,9 @@ namespace punto.gui
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.Label labelFamilia;
 		private global::Gtk.Entry entryFamilia;
-		private global::Gtk.VButtonBox vbuttonbox1;
+		private global::Gtk.VBox vbox2;
 		private global::Gtk.Button actualizar_button;
+		private global::Gtk.Button quitar_button;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
 		
@@ -84,36 +85,47 @@ namespace punto.gui
 			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1 [this.hbox4]));
 			w7.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.vbuttonbox1 = new global::Gtk.VButtonBox ();
-			this.vbuttonbox1.Name = "vbuttonbox1";
-			this.vbuttonbox1.Spacing = 6;
-			this.vbuttonbox1.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(3));
-			// Container child vbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
+			this.vbox2 = new global::Gtk.VBox ();
+			this.vbox2.Name = "vbox2";
+			this.vbox2.Spacing = 6;
+			// Container child vbox2.Gtk.Box+BoxChild
 			this.actualizar_button = new global::Gtk.Button ();
 			this.actualizar_button.CanFocus = true;
 			this.actualizar_button.Name = "actualizar_button";
 			this.actualizar_button.UseUnderline = true;
 			this.actualizar_button.Label = global::Mono.Unix.Catalog.GetString ("_Actualizar");
-			this.vbuttonbox1.Add (this.actualizar_button);
-			global::Gtk.ButtonBox.ButtonBoxChild w8 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.vbuttonbox1 [this.actualizar_button]));
+			this.vbox2.Add (this.actualizar_button);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.actualizar_button]));
+			w8.Position = 0;
 			w8.Expand = false;
 			w8.Fill = false;
-			this.table1.Add (this.vbuttonbox1);
-			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1 [this.vbuttonbox1]));
-			w9.TopAttach = ((uint)(1));
-			w9.BottomAttach = ((uint)(2));
-			w9.LeftAttach = ((uint)(1));
-			w9.RightAttach = ((uint)(2));
-			w9.XOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child vbox2.Gtk.Box+BoxChild
+			this.quitar_button = new global::Gtk.Button ();
+			this.quitar_button.CanFocus = true;
+			this.quitar_button.Name = "quitar_button";
+			this.quitar_button.UseUnderline = true;
+			this.quitar_button.Label = global::Mono.Unix.Catalog.GetString ("_Quitar");
+			this.vbox2.Add (this.quitar_button);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.quitar_button]));
+			w9.Position = 1;
+			w9.Expand = false;
+			w9.Fill = false;
+			this.table1.Add (this.vbox2);
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table1 [this.vbox2]));
+			w10.TopAttach = ((uint)(1));
+			w10.BottomAttach = ((uint)(2));
+			w10.LeftAttach = ((uint)(1));
+			w10.RightAttach = ((uint)(2));
+			w10.XOptions = ((global::Gtk.AttachOptions)(4));
 			w1.Add (this.table1);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(w1 [this.table1]));
-			w10.Position = 0;
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(w1 [this.table1]));
+			w11.Position = 0;
 			// Internal child punto.gui.familiaproductosdialog.ActionArea
-			global::Gtk.HButtonBox w11 = this.ActionArea;
-			w11.Name = "dialog1_ActionArea";
-			w11.Spacing = 10;
-			w11.BorderWidth = ((uint)(5));
-			w11.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w12 = this.ActionArea;
+			w12.Name = "dialog1_ActionArea";
+			w12.Spacing = 10;
+			w12.BorderWidth = ((uint)(5));
+			w12.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button ();
 			this.buttonCancel.CanDefault = true;
@@ -123,9 +135,9 @@ namespace punto.gui
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w12 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w11 [this.buttonCancel]));
-			w12.Expand = false;
-			w12.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w13 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w12 [this.buttonCancel]));
+			w13.Expand = false;
+			w13.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
@@ -135,10 +147,10 @@ namespace punto.gui
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w13 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w11 [this.buttonOk]));
-			w13.Position = 1;
-			w13.Expand = false;
-			w13.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w14 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w12 [this.buttonOk]));
+			w14.Position = 1;
+			w14.Expand = false;
+			w14.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
@@ -146,6 +158,7 @@ namespace punto.gui
 			this.DefaultHeight = 300;
 			this.Show ();
 			this.actualizar_button.Clicked += new global::System.EventHandler (this.OnActualizarButtonClicked);
+			this.quitar_button.Clicked += new global::System.EventHandler (this.OnQuitarButtonClicked);
 			this.añadir_button.Clicked += new global::System.EventHandler (this.OnAgregarButtonClicked);
 		}
 	}

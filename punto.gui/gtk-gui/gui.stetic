@@ -416,11 +416,9 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.VButtonBox" id="vbuttonbox1">
+              <widget class="Gtk.VBox" id="vbox2">
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
-                <property name="Size">1</property>
-                <property name="LayoutStyle">Start</property>
                 <child>
                   <widget class="Gtk.Button" id="actualizar_button">
                     <property name="MemberName" />
@@ -431,9 +429,30 @@
                     <signal name="Clicked" handler="OnActualizarButtonClicked" />
                   </widget>
                   <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
                     <property name="Expand">False</property>
                     <property name="Fill">False</property>
                   </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="quitar_button">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">_Quitar</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="OnQuitarButtonClicked" />
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder />
                 </child>
               </widget>
               <packing>
@@ -971,7 +990,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">1</property>
+            <property name="CurrentPage">0</property>
             <child>
               <widget class="Gtk.VBox" id="vbox3">
                 <property name="MemberName" />
@@ -1285,7 +1304,7 @@
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.Fixed" id="fixed2">
+                          <widget class="Gtk.Fixed" id="fixed1">
                             <property name="MemberName" />
                             <property name="HasWindow">False</property>
                           </widget>
@@ -1295,7 +1314,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Fixed" id="fixed3">
+                          <widget class="Gtk.Fixed" id="fixed2">
                             <property name="MemberName" />
                             <property name="HasWindow">False</property>
                           </widget>
@@ -1305,9 +1324,63 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Fixed" id="fixed1">
+                          <widget class="Gtk.HBox" id="hbox1">
                             <property name="MemberName" />
-                            <property name="HasWindow">False</property>
+                            <property name="Spacing">6</property>
+                            <child>
+                              <widget class="Gtk.Fixed" id="fixed3">
+                                <property name="MemberName" />
+                                <property name="HasWindow">False</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Button" id="BotonAgregarProd">
+                                <property name="MemberName" />
+                                <property name="CanFocus">True</property>
+                                <property name="Type">TextOnly</property>
+                                <property name="Label" translatable="yes">Agregar</property>
+                                <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="OnBotonAgregarPClicked" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Button" id="button485">
+                                <property name="MemberName" />
+                                <property name="CanDefault">True</property>
+                                <property name="CanFocus">True</property>
+                                <property name="Type">TextOnly</property>
+                                <property name="Label" translatable="yes">_Cancelar</property>
+                                <property name="UseUnderline">True</property>
+                                <signal name="Clicked" handler="BotonCancelar" />
+                              </widget>
+                              <packing>
+                                <property name="Position">2</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Label" id="label6">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">                 </property>
+                              </widget>
+                              <packing>
+                                <property name="Position">3</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
                           </widget>
                           <packing>
                             <property name="Position">2</property>
@@ -1443,68 +1516,48 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.HBox" id="hbox1">
+          <widget class="Gtk.HButtonBox" id="dialog1_ActionArea">
             <property name="MemberName" />
-            <property name="Spacing">6</property>
+            <property name="Spacing">10</property>
+            <property name="BorderWidth">5</property>
+            <property name="Size">2</property>
+            <property name="LayoutStyle">End</property>
             <child>
-              <widget class="Gtk.Label" id="label5">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">              </property>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="BotonAgregarProd">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Agregar</property>
-                <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="OnBotonAgregarPClicked" />
-              </widget>
-              <packing>
-                <property name="Position">1</property>
-                <property name="AutoSize">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="button485">
+              <widget class="Gtk.Button" id="buttonCancel">
                 <property name="MemberName" />
                 <property name="CanDefault">True</property>
                 <property name="CanFocus">True</property>
-                <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">_Cancelar</property>
-                <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="BotonCancelar" />
+                <property name="UseStock">True</property>
+                <property name="Type">StockItem</property>
+                <property name="StockId">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
               </widget>
               <packing>
-                <property name="Position">2</property>
-                <property name="AutoSize">True</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Label" id="label6">
+              <widget class="Gtk.Button" id="buttonOk">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">                 </property>
+                <property name="CanDefault">True</property>
+                <property name="CanFocus">True</property>
+                <property name="UseStock">True</property>
+                <property name="Type">StockItem</property>
+                <property name="StockId">gtk-ok</property>
+                <signal name="Clicked" handler="OnButtonOkClicked" />
+                <property name="label">gtk-ok</property>
               </widget>
               <packing>
-                <property name="Position">3</property>
-                <property name="AutoSize">True</property>
+                <property name="Position">1</property>
                 <property name="Expand">False</property>
                 <property name="Fill">False</property>
               </packing>
             </child>
           </widget>
           <packing>
-            <property name="Position">1</property>
+            <property name="PackType">End</property>
+            <property name="Position">2</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -1513,11 +1566,11 @@
       </widget>
     </child>
     <child internal-child="ActionArea">
-      <widget class="Gtk.HButtonBox" id="__gtksharp_68_Stetic_TopLevelDialog_ActionArea">
+      <widget class="Gtk.HButtonBox" id="__gtksharp_58_Stetic_TopLevelDialog_ActionArea">
         <property name="MemberName" />
         <property name="Size">1</property>
         <child>
-          <widget class="Gtk.Button" id="button684">
+          <widget class="Gtk.Button" id="button3322">
             <property name="MemberName" />
             <property name="Visible">False</property>
             <property name="CanFocus">True</property>
