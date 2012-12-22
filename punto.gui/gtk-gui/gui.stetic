@@ -1810,6 +1810,7 @@
                                         <property name="ShowScrollbars">True</property>
                                         <property name="HeadersVisible">False</property>
                                         <property name="RulesHint">True</property>
+                                        <signal name="KeyPressEvent" handler="OnTreeviewListaProductosKeyPressEvent" />
                                       </widget>
                                     </child>
                                   </widget>
@@ -4813,7 +4814,7 @@
                 <child>
                   <widget class="Gtk.Label" id="labelConsulta">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Codigo de Barra</property>
+                    <property name="LabelProp" translatable="yes">Codigo de Barra: </property>
                   </widget>
                 </child>
               </widget>

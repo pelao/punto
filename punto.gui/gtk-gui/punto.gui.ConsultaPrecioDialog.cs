@@ -50,7 +50,7 @@ namespace punto.gui
 			// Container child hpaned4.Gtk.Paned+PanedChild
 			this.labelConsulta = new global::Gtk.Label ();
 			this.labelConsulta.Name = "labelConsulta";
-			this.labelConsulta.LabelProp = global::Mono.Unix.Catalog.GetString ("Codigo de Barra");
+			this.labelConsulta.LabelProp = global::Mono.Unix.Catalog.GetString ("Codigo de Barra: ");
 			this.hpaned4.Add (this.labelConsulta);
 			this.table2.Add (this.hpaned4);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table2 [this.hpaned4]));

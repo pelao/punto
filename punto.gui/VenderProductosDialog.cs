@@ -373,8 +373,8 @@ namespace punto.gui
 
 		protected void OnEntryCodigoBarraKeyPressEvent (object o, KeyPressEventArgs args)
 		{
-			Console.WriteLine("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
-			
+			Console.WriteLine ("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
+		
 			if (args.Event.Key == Gdk.Key.F2)
 			{
 				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
@@ -419,6 +419,55 @@ namespace punto.gui
 		{
 			CargarProductos();
 			cambiado=true;
+		}
+		private void OnQuitarProductoDialogResponse (object sender, ResponseArgs args)
+		{
+			switch (args.ResponseId)
+			{
+			case ResponseType.Accept:
+				Gtk.TreeIter iter;
+
+				this.treeviewListaProductos.Selection.GetSelected(out iter);
+				string precioIter =(ventamodel.GetValue(iter,2)).ToString();
+				int valorlabel= Int32.Parse(labelTotalVenta.Text);
+				string total= (valorlabel-Int32.Parse(precioIter)).ToString();
+				labelTotalVenta.Text=total;
+
+				ventamodel.Remove(ref iter);
+
+				break;
+			default:
+				//no hacer nada
+				break;
+			}
+		}
+
+		protected void OnTreeviewListaProductosKeyPressEvent (object o, KeyPressEventArgs args)
+		{
+			if (args.Event.Key == Gdk.Key.F12) {
+				Console.WriteLine("olijoselindo!xd");
+				Gtk.TreeIter iter;
+				if (this.treeviewListaProductos.Selection.GetSelected(out iter))
+				{
+					//especificacionesmodel.GetValue(iter,0).ToString();
+					Dialog dialog = new Dialog("Quitar Producto De la lista", this, Gtk.DialogFlags.DestroyWithParent);
+					dialog.Modal = true;
+					dialog.Resizable = false;
+					Gtk.Label etiqueta = new Gtk.Label();
+					etiqueta.Markup = "Está intentando quitar el producto seleccionado de la lista.\n\n<b>¿Desea continuar con la eliminación del producto?</b>\n";
+					dialog.BorderWidth = 8;
+					dialog.VBox.BorderWidth = 8;
+					dialog.VBox.PackStart(etiqueta, false, false, 0);
+					dialog.AddButton ("Si", ResponseType.Accept);
+					dialog.AddButton ("No", ResponseType.Cancel);
+					dialog.Response += new ResponseHandler (OnQuitarProductoDialogResponse);
+					dialog.ShowAll();
+					dialog.Run ();
+					dialog.Destroy ();
+				}
+	
+			}	
+				
 		}
 	}
 	

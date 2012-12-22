@@ -235,6 +235,32 @@ namespace punto.code
 			
 			return product;
 		}
+		public bool ExisteNombreRegistroProductosBd (string nombre)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+			sql =
+				"SELECT nombre " +
+					"FROM productos " +
+					"WHERE nombre='"+ nombre + "';";
+			dbcmd.CommandText = sql;
+			
+			
+			
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+			
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
 		public bool ExisteRegistroProductosBd (string codigob)
 		{
 			IDbConnection dbcon = this.ConectarBd ();
