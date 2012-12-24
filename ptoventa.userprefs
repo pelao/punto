@@ -1,22 +1,16 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/RegistrarUsuarioDialog.cs">
     <Files>
-      <File FileName="punto.code\ControladorBaseDatos.cs" Line="311" Column="44" />
-      <File FileName="punto.gui\RegistrarUsuarioDialog.cs" Line="1" Column="1" />
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="270" Column="2" />
-      <File FileName="c:\Users\jose\Documents\Projects\avance\git46\punto.code\gtk-gui\generated.cs" Line="7" Column="1" />
-      <File FileName="punto.code\ModificarProducto.cs" Line="1" Column="1" />
-      <File FileName="pto\pto.exe.config" Line="9" Column="17" />
+      <File FileName="punto.gui/RegistrarUsuarioDialog.cs" Line="166" Column="41" />
+      <File FileName="punto.code/ControladorBaseDatos.cs" Line="453" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="pto" expanded="True" />
           <Node name="punto.code" expanded="True" />
-          <Node name="punto.gui" expanded="True">
-            <Node name="VenderProductosDialog.cs" selected="True" />
-          </Node>
+          <Node name="punto.gui" expanded="True" />
         </State>
       </Pad>
     </Pads>

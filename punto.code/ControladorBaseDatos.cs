@@ -211,6 +211,28 @@ namespace punto.code
 			}
 			return false;
 		}
+		public bool ActualizarUsuarioBd (Usuario usuarioAntiguo, Usuario usuarioNuevo)
+		{
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"UPDATE usuarios " +
+					"SET userlogin='"+usuarioNuevo.Userlogin+"'," + "userpass='"+usuarioNuevo.Userpass+"'," + "nombre='"+usuarioNuevo.Nombre+"'," + "apellidos='"+usuarioNuevo.Apellidos+"'," + "telefono='"+usuarioNuevo.Telefono+"'," + "rut='"+usuarioNuevo.Rut+"'," + "nivel_user='"+usuarioNuevo.Nivel_user+"'"+ 
+					"WHERE userlogin='"+usuarioAntiguo.Userlogin+"'";
+			dbcmd.CommandText = sql;
+			
+			int res = dbcmd.ExecuteNonQuery();
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return true;
+		}
+
 		public List<ModificarProducto> ObtenerProductosBd ()
 		{
 			IDbConnection dbcon = this.ConectarBd();
@@ -387,6 +409,81 @@ namespace punto.code
 			
 			return precio;
 		}
+
+
+		public string[] ObtenerusuarioAntiguoBd (string userlogin)
+		{
+
+			string[] usuario = new string[7];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT userlogin,userpass,nombre,apellidos,telefono,rut,nivel_user " +
+					"FROM usuarios " +
+					"WHERE userlogin='"+userlogin+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				
+				usuario[0] = (string) reader["userlogin"];
+				usuario[1] = (string) reader["userpass"];
+				usuario[2] = (string) reader["nombre"];
+				usuario[3] = (string) reader["apellidos"];
+				usuario[4] = (string) reader["telefono"];
+				usuario[5] = (string) reader["rut"];
+				usuario[6] = (string) reader["nivel_user"];
+				
+			
+				
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return usuario;
+		}
+
+		public List<Usuario> ObtenerUsuariosBd ()
+		{
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT userlogin,userpass,nombre,apellidos,telefono,rut,nivel_user " +
+					"FROM usuarios " +
+					"ORDER BY userlogin ASC";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			List<Usuario> usuarios = new List<Usuario>();
+			
+			while(reader.Read()) {
+				
+				usuarios.Add(new Usuario( (string) reader["userlogin"], 
+				                         (string) reader["userpass"],
+				                         (string) reader["nombre"],
+				                         (string) reader["apellidos"],
+				                         (string) reader["telefono"],
+				                         (string) reader["rut"],
+				                         (string) reader["nivel_user"]));
+			}
+			
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return usuarios;
+		}
+
 		public string ObtenerProductosBd (string codigoB)
 		{
 			string[] precio = new string[1];
