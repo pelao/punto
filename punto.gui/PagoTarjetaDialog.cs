@@ -7,10 +7,10 @@ using punto.code;
 
 namespace punto.gui
 {
-	public partial class PagoTargetaDialog : Gtk.Dialog
+	public partial class PagoTarjetaDialog : Gtk.Dialog
 	{		private ControladorBaseDatos db;
 
-		public PagoTargetaDialog (Gtk.Window parent,string monto) : base ("Pago Con Tarjeta", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagoTarjetaDialog (Gtk.Window parent,string monto) : base ("Pago Con Tarjeta", parent, Gtk.DialogFlags.DestroyWithParent)
 
 		{
 

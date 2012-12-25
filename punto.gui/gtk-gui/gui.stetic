@@ -2069,11 +2069,12 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="punto.gui.Pagar" design-size="400 347">
+  <widget class="Gtk.Dialog" id="punto.gui.PagarDialog" design-size="400 347">
     <property name="MemberName" />
     <property name="WindowPosition">CenterOnParent</property>
     <property name="Buttons">2</property>
     <property name="HelpButton">False</property>
+    <signal name="KeyPressEvent" handler="OnKeyPressEvent" />
     <child internal-child="VBox">
       <widget class="Gtk.VBox" id="dialog1_VBox">
         <property name="MemberName" />
@@ -2288,7 +2289,7 @@
                                       <widget class="Gtk.HPaned" id="hpaned1">
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
-                                        <property name="Position">10</property>
+                                        <property name="Position">1</property>
                                         <child>
                                           <placeholder />
                                         </child>
@@ -2298,7 +2299,7 @@
                                             <property name="CanFocus">True</property>
                                             <property name="Type">TextOnly</property>
                                             <property name="Label" translatable="yes">Pago Efectivo 
-   (teclear 1)</property>
+   (teclear F2)</property>
                                             <property name="UseUnderline">True</property>
                                             <property name="BorderWidth">3</property>
                                             <signal name="Clicked" handler="OnPagoEnEfectivo" />
@@ -2330,7 +2331,7 @@
                                       <widget class="Gtk.HPaned" id="hpaned2">
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
-                                        <property name="Position">10</property>
+                                        <property name="Position">1</property>
                                         <child>
                                           <placeholder />
                                         </child>
@@ -2340,7 +2341,7 @@
                                             <property name="CanFocus">True</property>
                                             <property name="Type">TextOnly</property>
                                             <property name="Label" translatable="yes">Pago Tarjeta
-  (teclear 2)</property>
+  (teclear F3)</property>
                                             <property name="UseUnderline">True</property>
                                             <signal name="Clicked" handler="OnButtonPagoTarjetaClicked" />
                                           </widget>
@@ -2371,7 +2372,7 @@
                                       <widget class="Gtk.HPaned" id="hpaned3">
                                         <property name="MemberName" />
                                         <property name="CanFocus">True</property>
-                                        <property name="Position">10</property>
+                                        <property name="Position">1</property>
                                         <child>
                                           <placeholder />
                                         </child>
@@ -2381,7 +2382,7 @@
                                             <property name="CanFocus">True</property>
                                             <property name="Type">TextOnly</property>
                                             <property name="Label" translatable="yes">Pago Cheque
-  (teclear 3)</property>
+  (teclear F4)</property>
                                             <property name="UseUnderline">True</property>
                                             <signal name="Clicked" handler="OnButtonPagoChequeClicked" />
                                           </widget>
@@ -2408,7 +2409,7 @@
                         <child>
                           <widget class="Gtk.Label" id="GtkLabel5">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">&lt;b&gt;GtkFrame&lt;/b&gt;</property>
+                            <property name="LabelProp" translatable="yes">&lt;b&gt;Forma De Pago&lt;/b&gt;</property>
                             <property name="UseMarkup">True</property>
                           </widget>
                           <packing>
@@ -4289,7 +4290,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="punto.gui.PagoTargetaDialog" design-size="400 300">
+  <widget class="Gtk.Dialog" id="punto.gui.PagoTarjetaDialog" design-size="400 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Pago Tarjeta</property>
     <property name="WindowPosition">Center</property>

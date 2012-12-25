@@ -70,7 +70,6 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="basedatosdialog.cs" />
     <Compile Include="gtk-gui\punto.gui.basedatosdialog.cs" />
-    <Compile Include="familiaproductosdialog.cs" />
     <Compile Include="gtk-gui\punto.gui.familiaproductosdialog.cs" />
     <Compile Include="PrincipalWindow.cs" />
     <Compile Include="gtk-gui\punto.gui.PrincipalWindow.cs" />
@@ -78,8 +77,6 @@
     <Compile Include="gtk-gui\punto.gui.ingresarproductosdialog.cs" />
     <Compile Include="VenderProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
-    <Compile Include="Pagar.cs" />
-    <Compile Include="gtk-gui\punto.gui.Pagar.cs" />
     <Compile Include="IniciarSesionDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.IniciarSesionDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
@@ -87,12 +84,15 @@
     <Compile Include="gtk-gui\punto.gui.RegistrarUsuarioDialog.cs" />
     <Compile Include="EditarProductoDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.EditarProductoDialog.cs" />
-    <Compile Include="PagoTargetaDialog.cs" />
-    <Compile Include="gtk-gui\punto.gui.PagoTargetaDialog.cs" />
     <Compile Include="PagoChequeDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.PagoChequeDialog.cs" />
     <Compile Include="ConsultaPrecioDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.ConsultaPrecioDialog.cs" />
+    <Compile Include="PagarDialog.cs" />
+    <Compile Include="Familiaproductosdialog.cs" />
+    <Compile Include="PagoTarjetaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.PagarDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.PagoTarjetaDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

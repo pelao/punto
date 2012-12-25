@@ -11,7 +11,7 @@ namespace punto.gui
 
 
 
-	public partial class Pagar : Gtk.Dialog
+	public partial class PagarDialog : Gtk.Dialog
 	{
 		private ControladorBaseDatos db;
 		private int num;
@@ -19,7 +19,7 @@ namespace punto.gui
 		private VenderProductosDialog treviewventa;
 		private string pagototal;
 
-			public Pagar(Gtk.Window parent,string total,string boleta) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagarDialog(Gtk.Window parent,string total,string boleta) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.pagototal=total;
 			
@@ -118,12 +118,24 @@ namespace punto.gui
 
 
 			}	
+			if (args.Event.Key==Gdk.Key.F2) {
+				
+				labelVuelto.Show();
+				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
+				labelvueltopago.Text = (vuelto - Int32.Parse (labeltotalcompra.Text)).ToString ();
+				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
+				this.buttonOk.IsFocus=true;
+				
+				
+			}	
 		}
 
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
 		{
-			PagoTargetaDialog rcd = new PagoTargetaDialog(this,pagototal);
+			PagoTarjetaDialog rcd = new PagoTarjetaDialog(this,pagototal);
 			try 
 			{
 				rcd.Run();
@@ -154,13 +166,63 @@ namespace punto.gui
 			{
 				rcd.Destroy();
 #if DEBUG
+
+
 				Console.WriteLine(ex.Message);
 #endif
 			}
 			this.buttonOk.IsFocus=true;
 
 		}
+
+
+		protected void OnKeyPressEvent (object o, KeyPressEventArgs args)
+		{
+
+			if (args.Event.Key == Gdk.Key.F2) {
+				labeltotalcompra.Text = pagototal.Trim ();
+				Console.WriteLine (this.db.ObtenerPrecioVenta ());
+				alignment3.Hide ();
+				hbox3.Show ();
+				this.entryPagoEfectivo.IsFocus = true;
+				
+			}
+			if (args.Event.Key == Gdk.Key.F3) {
+				PagoTarjetaDialog rcd = new PagoTarjetaDialog (this, pagototal);
+				try {
+					rcd.Run ();
+					rcd.Destroy ();	
+					
+				} catch (MySql.Data.MySqlClient.MySqlException ex) {
+					rcd.Destroy ();
+#if DEBUG
+					Console.WriteLine (ex.Message);
+#endif
+				}
+				this.buttonOk.IsFocus = true;
+				;
+				
+			}
+			if (args.Event.Key == Gdk.Key.F4) {
+
+				PagoChequeDialog rcd = new PagoChequeDialog (this, pagototal);
+				try {
+					rcd.Run ();
+					rcd.Destroy ();
+				
+				} catch (MySql.Data.MySqlClient.MySqlException ex) {
+					rcd.Destroy ();
+#if DEBUG
+				
+				
+					Console.WriteLine (ex.Message);
+#endif
+				}
+				this.buttonOk.IsFocus = true;
+			}
+		}
 	}
+
 }
 
 

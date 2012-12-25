@@ -346,7 +346,7 @@ namespace punto.gui
 			this.db.AgregarVentaDetalle(pago);
 			
 			
-			Pagar rcd = new Pagar(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
+			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
 			try 
 			{
 				rcd.Run();
@@ -396,7 +396,7 @@ namespace punto.gui
 				this.db.AgregarVentaDetalle(pago);
 				
 				
-				Pagar rcd = new Pagar(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
+				PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
 				try 
 				{
 					rcd.Run();
