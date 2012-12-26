@@ -50,8 +50,10 @@ namespace punto.gui
 		private global::Gtk.Label LabelTipoUsuarioMod;
 		private global::Gtk.Label LabelUsuarioMod;
 		private global::Gtk.HBox hbox2;
+		private global::Gtk.Label label1;
 		private global::Gtk.Button BotonModificar;
 		private global::Gtk.Button BotonCancelarMod;
+		private global::Gtk.Label label2;
 		private global::Gtk.Label LabelModificarUsuario;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
@@ -548,16 +550,25 @@ namespace punto.gui
 			this.hbox2.Name = "hbox2";
 			this.hbox2.Spacing = 6;
 			// Container child hbox2.Gtk.Box+BoxChild
+			this.label1 = new global::Gtk.Label ();
+			this.label1.Name = "label1";
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("                             ");
+			this.hbox2.Add (this.label1);
+			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.label1]));
+			w44.Position = 0;
+			w44.Expand = false;
+			w44.Fill = false;
+			// Container child hbox2.Gtk.Box+BoxChild
 			this.BotonModificar = new global::Gtk.Button ();
 			this.BotonModificar.CanFocus = true;
 			this.BotonModificar.Name = "BotonModificar";
 			this.BotonModificar.UseUnderline = true;
 			this.BotonModificar.Label = global::Mono.Unix.Catalog.GetString ("Modificar");
 			this.hbox2.Add (this.BotonModificar);
-			global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonModificar]));
-			w44.Position = 1;
-			w44.Expand = false;
-			w44.Fill = false;
+			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonModificar]));
+			w45.Position = 1;
+			w45.Expand = false;
+			w45.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.BotonCancelarMod = new global::Gtk.Button ();
 			this.BotonCancelarMod.CanFocus = true;
@@ -565,18 +576,27 @@ namespace punto.gui
 			this.BotonCancelarMod.UseUnderline = true;
 			this.BotonCancelarMod.Label = global::Mono.Unix.Catalog.GetString ("Cancelar");
 			this.hbox2.Add (this.BotonCancelarMod);
-			global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonCancelarMod]));
-			w45.Position = 2;
-			w45.Expand = false;
-			w45.Fill = false;
-			this.vbox4.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox2]));
+			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.BotonCancelarMod]));
 			w46.Position = 2;
 			w46.Expand = false;
 			w46.Fill = false;
+			// Container child hbox2.Gtk.Box+BoxChild
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("    ");
+			this.hbox2.Add (this.label2);
+			global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.label2]));
+			w47.Position = 3;
+			w47.Expand = false;
+			w47.Fill = false;
+			this.vbox4.Add (this.hbox2);
+			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbox2]));
+			w48.Position = 2;
+			w48.Expand = false;
+			w48.Fill = false;
 			this.notebook1.Add (this.vbox4);
-			global::Gtk.Notebook.NotebookChild w47 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox4]));
-			w47.Position = 1;
+			global::Gtk.Notebook.NotebookChild w49 = ((global::Gtk.Notebook.NotebookChild)(this.notebook1 [this.vbox4]));
+			w49.Position = 1;
 			// Notebook tab
 			this.LabelModificarUsuario = new global::Gtk.Label ();
 			this.LabelModificarUsuario.Name = "LabelModificarUsuario";
@@ -584,14 +604,14 @@ namespace punto.gui
 			this.notebook1.SetTabLabel (this.vbox4, this.LabelModificarUsuario);
 			this.LabelModificarUsuario.ShowAll ();
 			w1.Add (this.notebook1);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(w1 [this.notebook1]));
-			w48.Position = 0;
+			global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(w1 [this.notebook1]));
+			w50.Position = 0;
 			// Internal child punto.gui.RegistrarUsuarioDialog.ActionArea
-			global::Gtk.HButtonBox w49 = this.ActionArea;
-			w49.Name = "dialog1_ActionArea";
-			w49.Spacing = 10;
-			w49.BorderWidth = ((uint)(5));
-			w49.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w51 = this.ActionArea;
+			w51.Name = "dialog1_ActionArea";
+			w51.Spacing = 10;
+			w51.BorderWidth = ((uint)(5));
+			w51.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button ();
 			this.buttonCancel.CanDefault = true;
@@ -601,9 +621,9 @@ namespace punto.gui
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w50 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w49 [this.buttonCancel]));
-			w50.Expand = false;
-			w50.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w52 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w51 [this.buttonCancel]));
+			w52.Expand = false;
+			w52.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
@@ -613,10 +633,10 @@ namespace punto.gui
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w51 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w49 [this.buttonOk]));
-			w51.Position = 1;
-			w51.Expand = false;
-			w51.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w53 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w51 [this.buttonOk]));
+			w53.Position = 1;
+			w53.Expand = false;
+			w53.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
@@ -624,8 +644,10 @@ namespace punto.gui
 			this.DefaultHeight = 432;
 			this.Show ();
 			this.BotonAgregar.Clicked += new global::System.EventHandler (this.OnBotonAgregarClicked);
+			this.BotonCancelar.Clicked += new global::System.EventHandler (this.OnBotonCancelarClicked);
 			this.comboboxUsuarioModificar.Changed += new global::System.EventHandler (this.OnComboboxUsuarioModificarChanged);
 			this.BotonModificar.Clicked += new global::System.EventHandler (this.OnBotonModificarClicked);
+			this.BotonCancelarMod.Clicked += new global::System.EventHandler (this.OnBotonCancelarModClicked);
 		}
 	}
 }

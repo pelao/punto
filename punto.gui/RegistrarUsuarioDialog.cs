@@ -19,7 +19,7 @@ namespace punto.gui
 			this.CargarComboboxTipoUsuario();
 			
 			this.CargarUsuariosModificarCombobox();
-			//	this.comboboxTipoUsuarioModUsuario();
+
 		}
 		
 		
@@ -65,14 +65,7 @@ namespace punto.gui
 		
 		protected void OnBotonAgregarClicked (object sender, EventArgs e)
 		{
-			Console.WriteLine(entryNombreUsuario.Text.Trim());
-			Console.WriteLine(entryNombre.Text.Trim());
-			Console.WriteLine(entryApellidos.Text.Trim());
-			Console.WriteLine(entryTelefono.Text.Trim());
-			Console.WriteLine(entryRut.Text.Trim());
-			Console.WriteLine(entryContraseña.Text.Trim());
-			Console.WriteLine(comboboxTipoUsuario.ActiveText);
-			
+						
 			ControladorBaseDatos db = new ControladorBaseDatos();
 			
 			bool existe = db.ExisteUsuarioBd(entryNombreUsuario.Text.Trim());
@@ -94,8 +87,6 @@ namespace punto.gui
 			}
 			else
 			{
-
-				
 				Usuario NuevoUsuario = new Usuario(entryNombreUsuario.Text.Trim(),
 				                                   entryContraseña.Text.Trim(),
 				                                   entryNombre.Text.Trim(),
@@ -105,9 +96,21 @@ namespace punto.gui
 				                                   comboboxTipoUsuario.ActiveText);
 
 				db.AgregarUsuarioBd(NuevoUsuario);
+
+
+				Dialog dialog = new Dialog("USUARIO AGREGADO", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "El Usuario se ha agregado correctamente";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();		
+				dialog.Run ();
+				dialog.Destroy ();
 			}
-			
-			
 		}
 		
 		
@@ -129,6 +132,7 @@ namespace punto.gui
 					this.usuariosModel.AppendValues(tp.Userlogin);
 					
 				}
+			
 				if (tipos.Count != 0)
 				{
 					this.comboboxUsuarioModificar.Active = 0;
@@ -138,21 +142,18 @@ namespace punto.gui
 			{
 				Console.WriteLine("Excepcion:"+ex);
 			}
-			
 		}
 		
 		protected void OnComboboxUsuarioModificarChanged (object sender, EventArgs e)
 		{
-			
-			Console.WriteLine("seleccionado: "+comboboxUsuarioModificar.ActiveText);
-			
+
 			ControladorBaseDatos db = new ControladorBaseDatos();
 			List<Usuario> tipos = db.ObtenerUsuariosBd();
 			
 			
 			for (int i = 0; i < tipos.Count; i++)
 			{
-				if(tipos[i].Userlogin == comboboxUsuarioModificar.ActiveText)
+				if(tipos[i].Userlogin.Equals(comboboxUsuarioModificar.ActiveText))
 				{
 					entryUsuarioEdit.Text = tipos[i].Userlogin;
 					entryNombreEdit.Text = tipos[i].Nombre;
@@ -190,25 +191,15 @@ namespace punto.gui
 						ListaCombobox.AppendValues ("Cajero");
 						
 					}
-					
-					
-					
-				}
-				
+				}		
 			}
-			
-			
 		}
 		
 		
 		protected void OnBotonModificarClicked (object sender, EventArgs e)
 		{
 			ControladorBaseDatos db = new ControladorBaseDatos();
-			
-			
-			
-			
-			
+
 			try {
 				string [] aux = db.ObtenerusuarioAntiguoBd(entryUsuarioEdit.Text.Trim());
 				
@@ -225,24 +216,32 @@ namespace punto.gui
 				                                   comboboxTipoUsuarioMod.ActiveText);
 				
 				db.ActualizarUsuarioBd(usuarioAntiguo,usuarioNuevo);
+
+				Dialog dialog = new Dialog("USUARIO ACTUALIZADO", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "Actualización correcta";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();		
+				dialog.Run ();
+				dialog.Destroy ();
+
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine("Excepcion:"+ex);
 			}
 		}
-		
-		
+
+
 		
 		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
 		{
-			
-#if DEBUG
-
-			
-			Console.WriteLine(e.ToString());
-#endif
-			Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+			Dialog dialog = new Dialog("Exception", this, Gtk.DialogFlags.DestroyWithParent);
 			dialog.Modal = true;
 			dialog.Resizable = false;
 			Gtk.Label etiqueta = new Gtk.Label();
@@ -251,14 +250,19 @@ namespace punto.gui
 			dialog.VBox.BorderWidth = 8;
 			dialog.VBox.PackStart(etiqueta, false, false, 0);
 			dialog.AddButton ("Cerrar", ResponseType.Close);
-			dialog.ShowAll();
-			
+			dialog.ShowAll();	
 			dialog.Run ();
 			dialog.Destroy ();
-			
-			
-			
 		}
 		
+		protected void OnBotonCancelarModClicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
+
+		protected void OnBotonCancelarClicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
 	}
 }

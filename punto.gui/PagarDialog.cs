@@ -1,5 +1,4 @@
 
-
 using System;
 using System.Collections.Generic;
 using Gtk;
@@ -8,9 +7,6 @@ using punto.code;
 
 namespace punto.gui
 {
-
-
-
 	public partial class PagarDialog : Gtk.Dialog
 	{
 		private ControladorBaseDatos db;
@@ -36,7 +32,6 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -64,7 +59,6 @@ namespace punto.gui
 			labelTotal.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 			labelVuelto.Hide ();
 
-
 			this.Deletable = true;
 		}
 		protected void OnPagoEnEfectivo (object sender, EventArgs e)
@@ -77,29 +71,6 @@ namespace punto.gui
 		
 		}
 
-
-
-		/*
-
-		protected void OnEntryPagoEfectivoTextInserted (object o, TextInsertedArgs args)
-		{
-
-				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
-				label10.Text = (vuelto - Int32.Parse (label5.Text)).ToString ();
-				Console.WriteLine (vuelto);
-				Console.WriteLine (label10.Text);
-
-		}*/
-
-		/*
-
-		protected void OnEntryPagoEfectivoTextDeleted (object o, TextDeletedArgs args)
-		{
-			vuelto=Int32.Parse( entryPagoEfectivo.Text.Trim ());
-			label10.Text=(vuelto-Int32.Parse( label5.Text)).ToString();
-			Console.WriteLine(vuelto);
-			Console.WriteLine(label10.Text);
-		}*/
 
 		
 		[GLib.ConnectBefore ()] 
@@ -135,16 +106,16 @@ namespace punto.gui
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
 		{
-			PagoTarjetaDialog rcd = new PagoTarjetaDialog(this,pagototal);
+			PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog(this,pagototal);
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();	
+				PagoTarjeta.Run();
+				PagoTarjeta.Destroy();	
 
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				PagoTarjeta.Destroy();
 #if DEBUG
 				Console.WriteLine(ex.Message);
 #endif
@@ -155,19 +126,17 @@ namespace punto.gui
 
 		protected void OnButtonPagoChequeClicked (object sender, EventArgs e)
 		{
-			PagoChequeDialog rcd = new PagoChequeDialog(this, pagototal);
+			PagoChequeDialog PagoCheque = new PagoChequeDialog(this, pagototal);
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				PagoCheque.Run();
+				PagoCheque.Destroy();
 				
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				PagoCheque.Destroy();
 #if DEBUG
-
-
 				Console.WriteLine(ex.Message);
 #endif
 			}
@@ -188,13 +157,13 @@ namespace punto.gui
 				
 			}
 			if (args.Event.Key == Gdk.Key.F3) {
-				PagoTarjetaDialog rcd = new PagoTarjetaDialog (this, pagototal);
+				PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog (this, pagototal);
 				try {
-					rcd.Run ();
-					rcd.Destroy ();	
+					PagoTarjeta.Run ();
+					PagoTarjeta.Destroy ();	
 					
 				} catch (MySql.Data.MySqlClient.MySqlException ex) {
-					rcd.Destroy ();
+					PagoTarjeta.Destroy ();
 #if DEBUG
 					Console.WriteLine (ex.Message);
 #endif
@@ -205,16 +174,15 @@ namespace punto.gui
 			}
 			if (args.Event.Key == Gdk.Key.F4) {
 
-				PagoChequeDialog rcd = new PagoChequeDialog (this, pagototal);
+				PagoChequeDialog PagoCheque = new PagoChequeDialog (this, pagototal);
 				try {
-					rcd.Run ();
-					rcd.Destroy ();
+					PagoCheque.Run ();
+					PagoCheque.Destroy ();
 				
 				} catch (MySql.Data.MySqlClient.MySqlException ex) {
-					rcd.Destroy ();
+					PagoCheque.Destroy ();
+
 #if DEBUG
-				
-				
 					Console.WriteLine (ex.Message);
 #endif
 				}

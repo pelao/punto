@@ -18,11 +18,6 @@ namespace punto.gui
 		private Gtk.ListStore productosmodel;
 
 
-		
-		// The event. Note that by using the generic EventHandler<T> event type
-		// we do not need to declare a separate delegate type.
-		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
-		private bool cambiado = false;
 
 		public IngresarProductosDialog(Gtk.Window parent) : base ("Ingresar Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
@@ -39,7 +34,6 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -85,16 +79,14 @@ namespace punto.gui
 			Gtk.CellRendererText vigente_cell = new Gtk.CellRendererText();
 			vigente_column.PackStart(vigente_cell, true);
 			
-			this.treeview1.AppendColumn(nombre_column);
+			this.treeviewModificarProducto.AppendColumn(nombre_column);
 			nombre_column.AddAttribute(nombre_cell, "text", 0);
-			this.treeview1.AppendColumn(precio_column);
+			this.treeviewModificarProducto.AppendColumn(precio_column);
 			precio_column.AddAttribute(precio_cell, "text", 1);
-			this.treeview1.AppendColumn(familia_column);
+			this.treeviewModificarProducto.AppendColumn(familia_column);
 			familia_column.AddAttribute(familia_cell, "text", 2);
-			this.treeview1.AppendColumn(vigente_column);
+			this.treeviewModificarProducto.AppendColumn(vigente_column);
 			vigente_column.AddAttribute(vigente_cell, "text", 3);
-
-
 		}
 		
 		public void  Run () 
@@ -111,42 +103,30 @@ namespace punto.gui
 			this.productos = this.db.ObtenerProductosBd ();
 			this.productosmodel = new Gtk.ListStore ( typeof(string), typeof(string), typeof(string));
 			foreach (ModificarProducto bod in this.productos) {
-				this.productosmodel.AppendValues (bod.Nombre, bod.Precio,bod.Familia);
-#if DEBUG
-#endif
-			}
-			treeview1.Model = this.productosmodel;
+			this.productosmodel.AppendValues (bod.Nombre, bod.Precio,bod.Familia);
+
+		}
+			treeviewModificarProducto.Model = this.productosmodel;
 			
 		}
-	/*	public void CargarProductos()
-		{
-			this.productos = this.db.ObtenerProductosBd();
-			this.productosmodel = new Gtk.ListStore(typeof(string));
-			foreach (Producto prod in this.productos)
-			{
-				this.productosmodel.AppendValues( prod.Nombre);
-			}
-		}*/
+
 
 		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
 		{
 
-#if DEBUG
-				Console.WriteLine(e.ToString());
-#endif
-				Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
-				dialog.Modal = true;
-				dialog.Resizable = false;
-				Gtk.Label etiqueta = new Gtk.Label();
+			Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+			dialog.Modal = true;
+			dialog.Resizable = false;
+			Gtk.Label etiqueta = new Gtk.Label();
 			etiqueta.Markup = "Se ha producido un error.";
-				dialog.BorderWidth = 8;
-				dialog.VBox.BorderWidth = 8;
-				dialog.VBox.PackStart(etiqueta, false, false, 0);
-				dialog.AddButton ("Cerrar", ResponseType.Close);
-				dialog.ShowAll();
+			dialog.BorderWidth = 8;
+			dialog.VBox.BorderWidth = 8;
+			dialog.VBox.PackStart(etiqueta, false, false, 0);
+			dialog.AddButton ("Cerrar", ResponseType.Close);
+			dialog.ShowAll();
 				
-				dialog.Run ();
-				dialog.Destroy ();
+			dialog.Run ();
+			dialog.Destroy ();
 				
 		
 			
@@ -196,9 +176,6 @@ namespace punto.gui
 				Producto prod = new Producto(entryCodigoBarra.Text.Trim(),entryNombre.Text.Trim(),Int32.Parse(entryPrecioVenta.Text.Trim()),comboboxFamiliaProd.ActiveText, checkbox,checkbox2);
 
 				this.db.AgregarProductosBd(prod);
-				
-				//this.productosmodel.AppendValues(prod.Nombre);
-				//this.cambiado = true;
 
 				Console.WriteLine("agrego producto");
 
@@ -218,7 +195,7 @@ namespace punto.gui
 				}
 		
 		
-	}
+		}
 	
 		protected void OnCheckbutton7Toggled (object sender, EventArgs e)
 		{
@@ -232,7 +209,8 @@ namespace punto.gui
 			
 				checkbox=false;
 
-			}		}
+			}	
+		}
 	
 
 		protected void OnCheckbutton8Toggled (object sender, EventArgs e)
@@ -251,13 +229,12 @@ namespace punto.gui
 
 		string nomA="";
 		string fami="";
+	
 		protected void OnEditarEspecificacion ()
 		{
-#if DEBUG
-			Console.WriteLine ("Editar fila");
-#endif
+
 			Gtk.TreeIter iter;
-			if (treeview1.Selection.GetSelected (out iter)) {
+			if (treeviewModificarProducto.Selection.GetSelected (out iter)) {
 				string nombre, precio,familia;
 				nombre = productosmodel.GetValue (iter, 0).ToString ();
 				precio = productosmodel.GetValue (iter, 1).ToString ();
@@ -265,25 +242,22 @@ namespace punto.gui
 
 				nomA =nombre;
 				fami=familia;
-				//mostrar dialog de edicion
 				EditarProductoDialog esp = new EditarProductoDialog (this, nombre, precio,familia);
 				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
 				esp.Run ();
 			}
 		}
+
 		protected void OnEditarEspecificacionDialogOldChanged (object sender, EditarProductoDialogChangedEventArgs args)
 		{
 			Gtk.TreeIter iter;
-			if (treeview1.Selection.GetSelected(out iter))
+			if (treeviewModificarProducto.Selection.GetSelected(out iter))
 			{
 				productosmodel.SetValue(iter, 0, args.Nombre);
 				productosmodel.SetValue(iter, 1, args.Precio);
 				productosmodel.SetValue(iter, 2, args.Familia);
 
-				this.db.ActualizarProductoBd(nomA,args.Nombre, args.Precio,args.Familia);
-				
-				
-				
+				this.db.ActualizarProductoBd(nomA,args.Nombre, args.Precio,args.Familia);	
 			}
 		}
 
@@ -306,8 +280,8 @@ namespace punto.gui
 			this.Hide();
 			this.Dispose();
 		}
-}
 	}
+}
 
 	
 

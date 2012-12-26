@@ -32,7 +32,6 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -86,11 +85,11 @@ namespace punto.gui
 #if DEBUG
 			Console.WriteLine(e.ToString());
 #endif
-			Dialog dialog = new Dialog("OK", this, Gtk.DialogFlags.DestroyWithParent);
+			Dialog dialog = new Dialog("Excepcion", this, Gtk.DialogFlags.DestroyWithParent);
 			dialog.Modal = true;
 			dialog.Resizable = false;
 			Gtk.Label etiqueta = new Gtk.Label();
-			etiqueta.Markup = "Se ha cargado con exito.";
+			etiqueta.Markup = "Ha ocurrido un error.";
 			dialog.BorderWidth = 8;
 			dialog.VBox.BorderWidth = 8;
 			dialog.VBox.PackStart(etiqueta, false, false, 0);
@@ -320,7 +319,6 @@ namespace punto.gui
 						
 						this.actualizar_button.Sensitive = false;
 						this.FamiliaProductosTreeview.Selection.UnselectAll();
-						//Console.WriteLine("Quitado");
 						
 						this.cambiado = true;
 					}
@@ -341,8 +339,8 @@ namespace punto.gui
 					}
 				}
 				break;
-			default:
-				//no hacer nada
+		    	default:
+		
 				break;
 			}
 		}

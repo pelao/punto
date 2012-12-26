@@ -8,10 +8,10 @@ using punto.code;
 namespace punto.gui
 {
 	public partial class PagoTarjetaDialog : Gtk.Dialog
-	{		private ControladorBaseDatos db;
+	{		
+		private ControladorBaseDatos db;
 
 		public PagoTarjetaDialog (Gtk.Window parent,string monto) : base ("Pago Con Tarjeta", parent, Gtk.DialogFlags.DestroyWithParent)
-
 		{
 
 			this.Build ();
@@ -28,7 +28,6 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -43,20 +42,12 @@ namespace punto.gui
 				{
 					correcta = false;
 				}
-				
-				if(!correcta)
-				{
-					//Application.Quit();
-				}
 			}
 
 			comboboxentryTipoTarjeta.AppendText("RedCompra");
 			comboboxentryTipoTarjeta.AppendText("Visa");
 			comboboxentryTipoTarjeta.AppendText("Mastercard");
 			entryMonto.Text=monto;
-
-
-
 		}
 
 		protected void OnButtonOkClicked (object sender, EventArgs e)

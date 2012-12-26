@@ -40,7 +40,7 @@ namespace punto.gui
 		private global::Gtk.Button BotonEditar;
 		private global::Gtk.HBox hbox6;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-		private global::Gtk.TreeView treeview1;
+		private global::Gtk.TreeView treeviewModificarProducto;
 		private global::Gtk.Label GtkLabel6;
 		private global::Gtk.Label labelModificarProducto;
 		private global::Gtk.HButtonBox dialog1_ActionArea;
@@ -63,7 +63,7 @@ namespace punto.gui
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
@@ -428,10 +428,10 @@ namespace punto.gui
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.treeview1 = new global::Gtk.TreeView ();
-			this.treeview1.CanFocus = true;
-			this.treeview1.Name = "treeview1";
-			this.GtkScrolledWindow.Add (this.treeview1);
+			this.treeviewModificarProducto = new global::Gtk.TreeView ();
+			this.treeviewModificarProducto.CanFocus = true;
+			this.treeviewModificarProducto.Name = "treeviewModificarProducto";
+			this.GtkScrolledWindow.Add (this.treeviewModificarProducto);
 			this.hbox6.Add (this.GtkScrolledWindow);
 			global::Gtk.Box.BoxChild w64 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.GtkScrolledWindow]));
 			w64.Position = 0;
@@ -442,7 +442,6 @@ namespace punto.gui
 			this.frame4.Add (this.GtkAlignment2);
 			this.GtkLabel6 = new global::Gtk.Label ();
 			this.GtkLabel6.Name = "GtkLabel6";
-			this.GtkLabel6.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>GtkFrame</b>");
 			this.GtkLabel6.UseMarkup = true;
 			this.frame4.LabelWidget = this.GtkLabel6;
 			this.notebook1.Add (this.frame4);

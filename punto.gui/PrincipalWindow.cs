@@ -17,8 +17,6 @@ namespace punto.gui
 		private bool cambiado;
 		
 		public List<DetalleVenta> productoventa = new List<DetalleVenta>();
-		private Gtk.ListStore ventamodel;
-		
 		
 		public EdicionDialogChangedEventArgs(bool cam)
 		{
@@ -30,6 +28,7 @@ namespace punto.gui
 			get { return this.cambiado; }
 		}
 	}
+
 	public partial class PrincipalWindow : Gtk.Window
 	{
 		private ControladorBaseDatos db;
@@ -68,16 +67,12 @@ namespace punto.gui
 					Gtk.Application.Quit ();
 				}
 			}
-			
-			
-			
 		}
 		
 		
 		
 		protected virtual void OnConexionBaseDatosActivated (object sender, System.EventArgs e)
 		{
-			//mostrar dialog configuracion
 			basedatosdialog bdd = new basedatosdialog(this);
 			bdd.Run();
 			bdd.Destroy();
@@ -104,15 +99,15 @@ namespace punto.gui
 		
 		protected void OnIngresarModificarProductosActionActivated (object sender, EventArgs e)
 		{
-			IngresarProductosDialog rcd = new IngresarProductosDialog(this);
+			IngresarProductosDialog IngresarProductos = new IngresarProductosDialog(this);
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				IngresarProductos.Run();
+				IngresarProductos.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				IngresarProductos.Destroy();
 #if DEBUG
 				Console.WriteLine(ex.Message);
 #endif
@@ -121,15 +116,15 @@ namespace punto.gui
 		
 		protected void OnFamiliaDeProductosActionActivated (object sender, EventArgs e)
 		{
-			familiaproductosdialog rcd = new familiaproductosdialog(this);
+			familiaproductosdialog FamiliaProductos = new familiaproductosdialog(this);
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				FamiliaProductos.Run();
+				FamiliaProductos.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				FamiliaProductos.Destroy();
 #if DEBUG
 				
 				
@@ -139,15 +134,15 @@ namespace punto.gui
 		}
 		protected void OnButton27Clicked (object sender, EventArgs e)
 		{
-			VenderProductosDialog rcd = new VenderProductosDialog(this);
+			VenderProductosDialog VenderProductos = new VenderProductosDialog(this);
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				VenderProductos.Run();
+				VenderProductos.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				VenderProductos.Destroy();
 #if DEBUG
 				Console.WriteLine(ex.Message);
 #endif
@@ -158,16 +153,16 @@ namespace punto.gui
 		protected void OnIniciarSesionActionActivated (object sender, EventArgs e)
 		{
 
-			IniciarSesionDialog rcd = new IniciarSesionDialog();
+			IniciarSesionDialog IniciarSesion = new IniciarSesionDialog();
 			
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				IniciarSesion.Run();
+				IniciarSesion.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				IniciarSesion.Destroy();
 
 
 			}
@@ -175,16 +170,16 @@ namespace punto.gui
 
 		protected void OnRegistrarModificarUsuarioActionActivated (object sender, EventArgs e)
 		{
-			RegistrarUsuarioDialog rcd = new RegistrarUsuarioDialog();
+			RegistrarUsuarioDialog RegistrarUsuario = new RegistrarUsuarioDialog();
 			
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				RegistrarUsuario.Run();
+				RegistrarUsuario.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				RegistrarUsuario.Destroy();
 				
 				
 			}
@@ -194,18 +189,19 @@ namespace punto.gui
 				
 		protected void OnCerrarActionActivated (object sender, EventArgs e)
 		{
+
 			this.Destroy();
 
-			IniciarSesionDialog rcd = new IniciarSesionDialog();
+			IniciarSesionDialog IniciarSesion = new IniciarSesionDialog();
 			
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				IniciarSesion.Run();
+				IniciarSesion.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				IniciarSesion.Destroy();
 				
 				
 			}
@@ -215,19 +211,18 @@ namespace punto.gui
 
 		protected void OnConsultarPrecioActionActivated (object sender, EventArgs e)
 		{
-			ConsultaPrecioDialog rcd = new ConsultaPrecioDialog();
+			ConsultaPrecioDialog ConsultaPrecio = new ConsultaPrecioDialog();
 			
 			try 
 			{
-				rcd.Run();
-				rcd.Destroy();
+				ConsultaPrecio.Run();
+				ConsultaPrecio.Destroy();
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				rcd.Destroy();
+				ConsultaPrecio.Destroy();
 								
 			}
-		}
-
+		}
 	}
 }

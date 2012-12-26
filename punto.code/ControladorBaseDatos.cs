@@ -484,7 +484,7 @@ namespace punto.code
 			return usuarios;
 		}
 
-		public string ObtenerProductosBd (string codigoB)
+		public string ObtenerPrecioProductosBd (string codigoB)
 		{
 			string[] precio = new string[1];
 

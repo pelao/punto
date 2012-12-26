@@ -1,8 +1,6 @@
+
 using System;
 using System.Collections.Generic;
-
-
-
 using Gtk;
 using punto.code;
 
@@ -41,7 +39,8 @@ namespace punto.gui
 			this.db = new ControladorBaseDatos();
 			bool correcta = false;
 			
-			try {
+			try 
+			{
 				correcta = this.db.ConfiguracionCorrectaBd;
 			}
 			catch (Exception ex)
@@ -50,7 +49,7 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
+
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -58,18 +57,15 @@ namespace punto.gui
 				
 				correcta = false;
 				
-				try {
+				try 
+				{
 					correcta = this.db.ConfiguracionCorrectaBd;
 				}
 				catch (Exception ex)
 				{
 					correcta = false;
 				}
-				
-				if(!correcta)
-				{
-					//Application.Quit();
-				}
+
 			}
 			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn();
 			cantidad_column.Title = "Cantidad";
@@ -211,11 +207,7 @@ namespace punto.gui
 			
 			
 		}
-		
-		
-		
-		
-		
+
 		protected void TreeView2SelectionChanged (object sender, EventArgs args)
 		{	
 			Gtk.TreeIter iter;
@@ -235,9 +227,7 @@ namespace punto.gui
 		//The event-invoking method that derived classes can override.
 		protected virtual void OnEdicionDialogChanged(EdicionDialogChangedEventArgs e)
 		{
-			// Make a temporary copy of the event to avoid possibility of
-			// a race condition if the last subscriber unsubscribes
-			// immediately after the null check and before the event is raised.
+
 			EventHandler<EdicionDialogChangedEventArgs> handler = EdicionDialogChanged;
 			if (handler != null)
 			{
@@ -265,49 +255,7 @@ namespace punto.gui
 			boleta=entryNumBoleta.Text;
 		}
 		
-	/*	protected void OnEntry1KeyPressEvent (object o, Gtk.KeyPressEventArgs args)
-		{		
-			Console.WriteLine("entra al OnEntry1KeyPressEvent1 ");
-			
-			if (args.Event.Key == Gdk.Key.F2)
-			{
-				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
-				ventamodel.Clear();
-				double temp=Convert.ToDouble( this.db.ObtenerBoleta());
-				temp=temp+1;
-				Console.WriteLine("temp");
-				Console.WriteLine(temp);
-				boleta=temp.ToString();
-				Console.WriteLine(boleta);
-				
-				entryNumBoleta.Text=boleta;
-				
-				DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
-				Console.WriteLine(DateTime.Now);
-				Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
-				
-				
-				this.db.AgregarVentaDetalle(pago);
-				
-				
-				Pagar rcd = new Pagar(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
-				try 
-				{
-					rcd.Run();
-					rcd.Destroy();
-				}
-				catch (MySql.Data.MySqlClient.MySqlException ex)
-				{
-					rcd.Destroy();
-#if DEBUG
-					
-					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
-#endif
-				}
-			}
-			
-			
-		}*/
+	
 		void ScrollToItem(TreeIter iter)
 		{
 			TreePath path = ventamodel.GetPath(iter);
@@ -321,9 +269,6 @@ namespace punto.gui
 		{
 			treeviewListaProductos.Data.Clear();
 			ventamodel.Clear();
-			
-			
-			
 		}
 		
 		protected void OnButtonVentaClicked (object sender, EventArgs e)
@@ -363,13 +308,7 @@ namespace punto.gui
 			}
 			labelTotalVenta.Text="0";
 			preciototal=0;
-
-			
 		}
-		
-		
-		
-		
 
 		protected void OnEntryCodigoBarraKeyPressEvent (object o, KeyPressEventArgs args)
 		{
@@ -445,11 +384,9 @@ namespace punto.gui
 		protected void OnTreeviewListaProductosKeyPressEvent (object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.F12) {
-				Console.WriteLine("olijoselindo!xd");
 				Gtk.TreeIter iter;
 				if (this.treeviewListaProductos.Selection.GetSelected(out iter))
 				{
-					//especificacionesmodel.GetValue(iter,0).ToString();
 					Dialog dialog = new Dialog("Quitar Producto De la lista", this, Gtk.DialogFlags.DestroyWithParent);
 					dialog.Modal = true;
 					dialog.Resizable = false;

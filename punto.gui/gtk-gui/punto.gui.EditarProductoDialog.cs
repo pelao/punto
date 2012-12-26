@@ -8,20 +8,20 @@ namespace punto.gui
 		private global::Gtk.Alignment GtkAlignment2;
 		private global::Gtk.VBox vbox3;
 		private global::Gtk.HBox hbox3;
-		private global::Gtk.Label label3;
-		private global::Gtk.Entry entry4;
+		private global::Gtk.Label labelNombre;
+		private global::Gtk.Entry entryNombre;
 		private global::Gtk.HBox hbox4;
-		private global::Gtk.Label label4;
-		private global::Gtk.Entry entry5;
+		private global::Gtk.Label labelPrecio;
+		private global::Gtk.Entry entryPrecio;
 		private global::Gtk.VBox vbox2;
 		private global::Gtk.HBox hbox13;
-		private global::Gtk.Label label1;
+		private global::Gtk.Label labelFamilia;
 		private global::Gtk.HBox hbox15;
-		private global::Gtk.Entry entry2;
-		private global::Gtk.ComboBox combobox2;
+		private global::Gtk.Entry entryFamilia;
+		private global::Gtk.ComboBox comboboxFamilia;
 		private global::Gtk.Button cambiarfamilabutton;
 		private global::Gtk.HBox hbox14;
-		private global::Gtk.Label label2;
+		private global::Gtk.Label labelVigente;
 		private global::Gtk.CheckButton vigentecheckbutton;
 		private global::Gtk.Label GtkLabel3;
 		private global::Gtk.Button buttonCancel;
@@ -54,22 +54,22 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.label3 = new global::Gtk.Label ();
-			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Nombre: ");
-			this.hbox3.Add (this.label3);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label3]));
+			this.labelNombre = new global::Gtk.Label ();
+			this.labelNombre.Name = "labelNombre";
+			this.labelNombre.LabelProp = global::Mono.Unix.Catalog.GetString ("Nombre: ");
+			this.hbox3.Add (this.labelNombre);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelNombre]));
 			w2.Position = 0;
 			w2.Expand = false;
 			w2.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.entry4 = new global::Gtk.Entry ();
-			this.entry4.CanFocus = true;
-			this.entry4.Name = "entry4";
-			this.entry4.IsEditable = true;
-			this.entry4.InvisibleChar = '●';
-			this.hbox3.Add (this.entry4);
-			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.entry4]));
+			this.entryNombre = new global::Gtk.Entry ();
+			this.entryNombre.CanFocus = true;
+			this.entryNombre.Name = "entryNombre";
+			this.entryNombre.IsEditable = true;
+			this.entryNombre.InvisibleChar = '●';
+			this.hbox3.Add (this.entryNombre);
+			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.entryNombre]));
 			w3.Position = 1;
 			this.vbox3.Add (this.hbox3);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
@@ -81,22 +81,22 @@ namespace punto.gui
 			this.hbox4.Name = "hbox4";
 			this.hbox4.Spacing = 6;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.label4 = new global::Gtk.Label ();
-			this.label4.Name = "label4";
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio: ");
-			this.hbox4.Add (this.label4);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.label4]));
+			this.labelPrecio = new global::Gtk.Label ();
+			this.labelPrecio.Name = "labelPrecio";
+			this.labelPrecio.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio: ");
+			this.hbox4.Add (this.labelPrecio);
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.labelPrecio]));
 			w5.Position = 0;
 			w5.Expand = false;
 			w5.Fill = false;
 			// Container child hbox4.Gtk.Box+BoxChild
-			this.entry5 = new global::Gtk.Entry ();
-			this.entry5.CanFocus = true;
-			this.entry5.Name = "entry5";
-			this.entry5.IsEditable = true;
-			this.entry5.InvisibleChar = '●';
-			this.hbox4.Add (this.entry5);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.entry5]));
+			this.entryPrecio = new global::Gtk.Entry ();
+			this.entryPrecio.CanFocus = true;
+			this.entryPrecio.Name = "entryPrecio";
+			this.entryPrecio.IsEditable = true;
+			this.entryPrecio.InvisibleChar = '●';
+			this.hbox4.Add (this.entryPrecio);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.entryPrecio]));
 			w6.Position = 1;
 			this.vbox3.Add (this.hbox4);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox4]));
@@ -112,11 +112,11 @@ namespace punto.gui
 			this.hbox13.Name = "hbox13";
 			this.hbox13.Spacing = 6;
 			// Container child hbox13.Gtk.Box+BoxChild
-			this.label1 = new global::Gtk.Label ();
-			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Familia: ");
-			this.hbox13.Add (this.label1);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox13 [this.label1]));
+			this.labelFamilia = new global::Gtk.Label ();
+			this.labelFamilia.Name = "labelFamilia";
+			this.labelFamilia.LabelProp = global::Mono.Unix.Catalog.GetString ("Familia: ");
+			this.hbox13.Add (this.labelFamilia);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox13 [this.labelFamilia]));
 			w8.Position = 0;
 			w8.Expand = false;
 			w8.Fill = false;
@@ -125,19 +125,19 @@ namespace punto.gui
 			this.hbox15.Name = "hbox15";
 			this.hbox15.Spacing = 6;
 			// Container child hbox15.Gtk.Box+BoxChild
-			this.entry2 = new global::Gtk.Entry ();
-			this.entry2.CanFocus = true;
-			this.entry2.Name = "entry2";
-			this.entry2.IsEditable = false;
-			this.entry2.InvisibleChar = '●';
-			this.hbox15.Add (this.entry2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.entry2]));
+			this.entryFamilia = new global::Gtk.Entry ();
+			this.entryFamilia.CanFocus = true;
+			this.entryFamilia.Name = "entryFamilia";
+			this.entryFamilia.IsEditable = false;
+			this.entryFamilia.InvisibleChar = '●';
+			this.hbox15.Add (this.entryFamilia);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.entryFamilia]));
 			w9.Position = 0;
 			// Container child hbox15.Gtk.Box+BoxChild
-			this.combobox2 = global::Gtk.ComboBox.NewText ();
-			this.combobox2.Name = "combobox2";
-			this.hbox15.Add (this.combobox2);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.combobox2]));
+			this.comboboxFamilia = global::Gtk.ComboBox.NewText ();
+			this.comboboxFamilia.Name = "comboboxFamilia";
+			this.hbox15.Add (this.comboboxFamilia);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox15 [this.comboboxFamilia]));
 			w10.Position = 1;
 			w10.Expand = false;
 			w10.Fill = false;
@@ -180,11 +180,11 @@ namespace punto.gui
 			this.hbox14.Name = "hbox14";
 			this.hbox14.Spacing = 6;
 			// Container child hbox14.Gtk.Box+BoxChild
-			this.label2 = new global::Gtk.Label ();
-			this.label2.Name = "label2";
-			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Vigente: ");
-			this.hbox14.Add (this.label2);
-			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.label2]));
+			this.labelVigente = new global::Gtk.Label ();
+			this.labelVigente.Name = "labelVigente";
+			this.labelVigente.LabelProp = global::Mono.Unix.Catalog.GetString ("Vigente: ");
+			this.hbox14.Add (this.labelVigente);
+			global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox14 [this.labelVigente]));
 			w22.Position = 0;
 			w22.Expand = false;
 			w22.Fill = false;
@@ -279,7 +279,7 @@ namespace punto.gui
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 400;
+			this.DefaultWidth = 404;
 			this.DefaultHeight = 292;
 			this.Show ();
 			this.cambiarfamilabutton.Clicked += new global::System.EventHandler (this.OnCambiarfamilabuttonClicked);

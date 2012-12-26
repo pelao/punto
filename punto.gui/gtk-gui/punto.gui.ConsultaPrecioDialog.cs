@@ -48,6 +48,7 @@ namespace punto.gui
 			this.hpaned4 = new global::Gtk.HPaned ();
 			this.hpaned4.CanFocus = true;
 			this.hpaned4.Name = "hpaned4";
+			this.hpaned4.Position = 10;
 			// Container child hpaned4.Gtk.Paned+PanedChild
 			this.labelConsulta = new global::Gtk.Label ();
 			this.labelConsulta.Name = "labelConsulta";
@@ -60,10 +61,12 @@ namespace punto.gui
 			this.hpaned5 = new global::Gtk.HPaned ();
 			this.hpaned5.CanFocus = true;
 			this.hpaned5.Name = "hpaned5";
+			this.hpaned5.Position = 10;
 			// Container child hpaned5.Gtk.Paned+PanedChild
 			this.vpaned2 = new global::Gtk.VPaned ();
 			this.vpaned2.CanFocus = true;
 			this.vpaned2.Name = "vpaned2";
+			this.vpaned2.Position = 10;
 			// Container child vpaned2.Gtk.Paned+PanedChild
 			this.labelPrecioConsulta = new global::Gtk.Label ();
 			this.labelPrecioConsulta.Name = "labelPrecioConsulta";
@@ -79,10 +82,12 @@ namespace punto.gui
 			this.hpaned6 = new global::Gtk.HPaned ();
 			this.hpaned6.CanFocus = true;
 			this.hpaned6.Name = "hpaned6";
+			this.hpaned6.Position = 10;
 			// Container child hpaned6.Gtk.Paned+PanedChild
 			this.labelPrecio = new global::Gtk.Label ();
 			this.labelPrecio.Name = "labelPrecio";
-			this.labelPrecio.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio: ");
+			this.labelPrecio.Xalign = 0F;
+			this.labelPrecio.LabelProp = global::Mono.Unix.Catalog.GetString ("       Precio: ");
 			this.hpaned6.Add (this.labelPrecio);
 			this.table2.Add (this.hpaned6);
 			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table2 [this.hpaned6]));

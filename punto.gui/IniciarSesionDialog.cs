@@ -25,13 +25,11 @@ namespace punto.gui
 			
 			usuarioClave = Bd.ObtenerUsuarioContraseñaBd(entryUsuario.Text);
 			
-			if(usuarioClave[0]==entryUsuario.Text & usuarioClave[1]==entryClave.Text)
+			if(usuarioClave[0].Equals(entryUsuario.Text) & usuarioClave[1].Equals(entryClave.Text))
 			{
-				PrincipalWindow rcd = new PrincipalWindow();
-				
-
+				PrincipalWindow principal = new PrincipalWindow();
 				base.Destroy();
-				rcd.Show();
+				principal.Show();
 			}
 			else
 			{
@@ -53,7 +51,7 @@ namespace punto.gui
 	
 		protected void OnBotonSalirClicked (object sender, EventArgs e)
 		{
-			this.Destroy();
+			base.Destroy();
 		}
 	}
 }

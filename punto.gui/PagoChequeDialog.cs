@@ -27,7 +27,7 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-				//mostrar dialog configuracion
+
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -41,11 +41,6 @@ namespace punto.gui
 				catch (Exception ex)
 				{
 					correcta = false;
-				}
-				
-				if(!correcta)
-				{
-					//Application.Quit();
 				}
 			}
 			
@@ -61,8 +56,6 @@ namespace punto.gui
 			comboboxPlaza.AppendText("Concepcion");
 			comboboxPlaza.AppendText("Osorno");
 			comboboxPlaza.AppendText("Puerto Montt");
-
-
 
 			entryMonto.Text=monto;
 			
@@ -80,10 +73,7 @@ namespace punto.gui
 			Console.WriteLine(entryNroSerie.Text.Trim());
 			Console.WriteLine(entryMonto.Text.Trim());
 
-
-
-			this.db.AgregarPagoCheque(pago);
-			
+			this.db.AgregarPagoCheque(pago);		
 		}
 	}
 }
