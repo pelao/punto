@@ -21,7 +21,7 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.ConsultaPrecioDialog
 			this.Name = "punto.gui.ConsultaPrecioDialog";
-			this.Title = global::Mono.Unix.Catalog.GetString ("Consulta Precio");
+			this.Title = global::Mono.Unix.Catalog.GetString ("Consultar Precio");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			this.Gravity = ((global::Gdk.Gravity)(5));
 			// Internal child punto.gui.ConsultaPrecioDialog.VBox

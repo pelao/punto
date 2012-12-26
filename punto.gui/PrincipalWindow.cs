@@ -189,22 +189,9 @@ namespace punto.gui
 				
 			}
 		}
-			/*try 
-			{
-				rcd.Run();
-				rcd.Destroy();
-			}
-			catch (MySql.Data.MySqlClient.MySqlException ex)
-			{
-				rcd.Destroy();
-#if DEBUG
-				Console.WriteLine(ex.Message);
-#endif
-			}*/
-		 
+
 		
-		
-		
+				
 		protected void OnCerrarActionActivated (object sender, EventArgs e)
 		{
 			this.Destroy();
@@ -225,9 +212,9 @@ namespace punto.gui
 
 		}
 	
-		protected void OnButtonConsultaPrecioClicked (object sender, EventArgs e)
-		{
 
+		protected void OnConsultarPrecioActionActivated (object sender, EventArgs e)
+		{
 			ConsultaPrecioDialog rcd = new ConsultaPrecioDialog();
 			
 			try 
@@ -238,10 +225,9 @@ namespace punto.gui
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
 				rcd.Destroy();
-				
-				
+								
 			}
-		
-		}
+		}
+
 	}
 }

@@ -571,6 +571,12 @@
         <property name="ShortLabel" translatable="yes">Registrar/Modificar</property>
         <signal name="Activated" handler="OnRegistrarModificarUsuarioActionActivated" />
       </action>
+      <action id="ConsultarPrecioAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Consultar Precio</property>
+        <property name="ShortLabel" translatable="yes">Consultar Precio</property>
+        <signal name="Activated" handler="OnConsultarPrecioActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MiniMarket El Coke - Principal</property>
@@ -589,6 +595,7 @@
               <node type="Menu" action="ProductosAction">
                 <node type="Menuitem" action="AgregarFamiliaAction" />
                 <node type="Menuitem" action="RegistrarModificarAction" />
+                <node type="Menuitem" action="ConsultarPrecioAction" />
               </node>
               <node type="Menu" action="UsuariosAction">
                 <node type="Menuitem" action="RegistrarModificarAction1" />
@@ -693,6 +700,7 @@
                                   <widget class="Gtk.HPaned" id="hpaned1">
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
+                                    <property name="Position">10</property>
                                     <child>
                                       <placeholder />
                                     </child>
@@ -705,14 +713,7 @@
                                           <placeholder />
                                         </child>
                                         <child>
-                                          <widget class="Gtk.Button" id="buttonConsultaPrecio">
-                                            <property name="MemberName" />
-                                            <property name="CanFocus">True</property>
-                                            <property name="Type">TextOnly</property>
-                                            <property name="Label" translatable="yes">Consulta Precio</property>
-                                            <property name="UseUnderline">True</property>
-                                            <signal name="Clicked" handler="OnButtonConsultaPrecioClicked" />
-                                          </widget>
+                                          <placeholder />
                                         </child>
                                       </widget>
                                     </child>
@@ -4808,7 +4809,7 @@
   </widget>
   <widget class="Gtk.Dialog" id="punto.gui.ConsultaPrecioDialog" design-size="400 300">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">Consulta Precio</property>
+    <property name="Title" translatable="yes">Consultar Precio</property>
     <property name="WindowPosition">Center</property>
     <property name="Gravity">Center</property>
     <property name="Buttons">2</property>

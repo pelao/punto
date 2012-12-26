@@ -94,13 +94,7 @@ namespace punto.gui
 			}
 			else
 			{
-				Console.WriteLine(entryNombreUsuario.Text.Trim());
-				Console.WriteLine(entryNombre.Text.Trim());
-				Console.WriteLine(entryApellidos.Text.Trim());
-				Console.WriteLine(entryTelefono.Text.Trim());
-				Console.WriteLine(entryRut.Text.Trim());
-				Console.WriteLine(entryContraseña.Text.Trim());
-				Console.WriteLine(comboboxTipoUsuario.ActiveText);
+
 				
 				Usuario NuevoUsuario = new Usuario(entryNombreUsuario.Text.Trim(),
 				                                   entryContraseña.Text.Trim(),
@@ -109,9 +103,7 @@ namespace punto.gui
 				                                   entryTelefono.Text.Trim(),
 				                                   entryRut.Text.Trim(),
 				                                   comboboxTipoUsuario.ActiveText);
-				
-				
-				
+
 				db.AgregarUsuarioBd(NuevoUsuario);
 			}
 			
