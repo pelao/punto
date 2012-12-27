@@ -35,6 +35,7 @@ namespace punto.gui
 	{
 		private ControladorBaseDatos db;
 		private string usuario_;
+		private string nivelUsuario;
 		
 		public PrincipalWindow (string usuario) : base(Gtk.WindowType.Toplevel)
 		{
@@ -42,11 +43,20 @@ namespace punto.gui
 
 #if DEBUG
 			Console.WriteLine ("En debug");
-#endif
+#endif      
+		
 			
-			
+		
 			this.Build ();
 			this.db = new ControladorBaseDatos ();
+			nivelUsuario = this.db.ObtenerNivelUsuarioBd(usuario_);
+
+			if(nivelUsuario.Equals("Cajero"))
+			{
+				ProductosAction.Visible = false;
+				UsuariosAction.Visible = false;
+			}
+
 			bool correcta = false;
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
@@ -227,6 +237,22 @@ namespace punto.gui
 			{
 				ConsultaPrecio.Destroy();
 								
+			}
+		}
+
+		protected void OnButtonConsultaPrecioClicked (object sender, EventArgs e)
+		{
+			ConsultaPrecioDialog ConsultaPrecio = new ConsultaPrecioDialog();
+			
+			try 
+			{
+				ConsultaPrecio.Run();
+				ConsultaPrecio.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				ConsultaPrecio.Destroy();
+				
 			}
 		}
 	}

@@ -713,7 +713,14 @@
                                           <placeholder />
                                         </child>
                                         <child>
-                                          <placeholder />
+                                          <widget class="Gtk.Button" id="buttonConsultaPrecio">
+                                            <property name="MemberName" />
+                                            <property name="CanFocus">True</property>
+                                            <property name="Type">TextOnly</property>
+                                            <property name="Label" translatable="yes">Consultar Precio</property>
+                                            <property name="UseUnderline">True</property>
+                                            <signal name="Clicked" handler="OnButtonConsultaPrecioClicked" />
+                                          </widget>
                                         </child>
                                       </widget>
                                     </child>

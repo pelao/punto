@@ -26,6 +26,7 @@ namespace punto.gui
 		private global::Gtk.Alignment alignment9;
 		private global::Gtk.HPaned hpaned1;
 		private global::Gtk.VPaned vpaned11;
+		private global::Gtk.Button buttonConsultaPrecio;
 		private global::Gtk.HPaned hpaned7;
 		private global::Gtk.VPaned vpaned10;
 		private global::Gtk.Button buttonVender;
@@ -132,12 +133,19 @@ namespace punto.gui
 			this.vpaned11.CanFocus = true;
 			this.vpaned11.Name = "vpaned11";
 			this.vpaned11.Position = 10;
+			// Container child vpaned11.Gtk.Paned+PanedChild
+			this.buttonConsultaPrecio = new global::Gtk.Button ();
+			this.buttonConsultaPrecio.CanFocus = true;
+			this.buttonConsultaPrecio.Name = "buttonConsultaPrecio";
+			this.buttonConsultaPrecio.UseUnderline = true;
+			this.buttonConsultaPrecio.Label = global::Mono.Unix.Catalog.GetString ("Consultar Precio");
+			this.vpaned11.Add (this.buttonConsultaPrecio);
 			this.hpaned1.Add (this.vpaned11);
 			this.alignment9.Add (this.hpaned1);
 			this.table2.Add (this.alignment9);
-			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table2 [this.alignment9]));
-			w7.LeftAttach = ((uint)(1));
-			w7.RightAttach = ((uint)(2));
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table2 [this.alignment9]));
+			w8.LeftAttach = ((uint)(1));
+			w8.RightAttach = ((uint)(2));
 			// Container child table2.Gtk.Table+TableChild
 			this.hpaned7 = new global::Gtk.HPaned ();
 			this.hpaned7.CanFocus = true;
@@ -158,24 +166,24 @@ namespace punto.gui
 			this.hpaned7.Add (this.vpaned10);
 			this.table2.Add (this.hpaned7);
 			this.vbox4.Add (this.table2);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.table2]));
-			w11.Position = 0;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.table2]));
+			w12.Position = 0;
 			this.hpaned14.Add (this.vbox4);
 			this.vpaned2.Add (this.hpaned14);
 			this.hbox3.Add (this.vpaned2);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
-			w14.Position = 0;
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vpaned2]));
+			w15.Position = 0;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.hpaned15 = new global::Gtk.HPaned ();
 			this.hpaned15.CanFocus = true;
 			this.hpaned15.Name = "hpaned15";
 			this.hpaned15.Position = 1;
 			this.hbox3.Add (this.hpaned15);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
-			w15.Position = 1;
-			this.vbox3.Add (this.hbox3);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.hpaned15]));
 			w16.Position = 1;
+			this.vbox3.Add (this.hbox3);
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox3]));
+			w17.Position = 1;
 			this.Add (this.vbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -190,6 +198,7 @@ namespace punto.gui
 			this.RegistrarModificarAction1.Activated += new global::System.EventHandler (this.OnRegistrarModificarUsuarioActionActivated);
 			this.ConsultarPrecioAction.Activated += new global::System.EventHandler (this.OnConsultarPrecioActionActivated);
 			this.buttonVender.Clicked += new global::System.EventHandler (this.OnButtonVenderClicked);
+			this.buttonConsultaPrecio.Clicked += new global::System.EventHandler (this.OnButtonConsultaPrecioClicked);
 		}
 	}
 }

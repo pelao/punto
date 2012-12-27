@@ -90,7 +90,8 @@ namespace punto.gui
 				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
-				this.buttonOk.IsFocus=true;
+			
+				this.buttonPagar.IsFocus=true;
 			}	
 			if (args.Event.Key==Gdk.Key.F2) {
 				
@@ -100,7 +101,7 @@ namespace punto.gui
 				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
-				this.buttonOk.IsFocus=true;
+				this.buttonPagar.IsFocus=true;
 				
 				
 			}	
@@ -189,6 +190,8 @@ namespace punto.gui
 			{
 				Console.WriteLine("Excepcion:--->"+ex);
 			}
+
+			this.buttonOk.IsFocus=true;
 
 		}
 

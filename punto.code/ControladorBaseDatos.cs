@@ -470,6 +470,34 @@ namespace punto.code
 			return codigoBarra[0];
 		}
 
+		public string ObtenerNivelUsuarioBd (string nombreUsuario)
+		{
+			string[] nivelUsuario = new string[1];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT nivel_user " +
+					"FROM usuarios " +
+					"WHERE userlogin='"+nombreUsuario+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				nivelUsuario[0] =  (string) reader["nivel_user"];
+				
+				
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return nivelUsuario[0];
+		}
 
 		public string[] ObtenerusuarioAntiguoBd (string userlogin)
 		{

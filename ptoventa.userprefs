@@ -1,19 +1,21 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/PrincipalWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/VenderProductosDialog.cs">
     <Files>
-      <File FileName="punto.gui/PagarDialog.cs" Line="91" Column="4" />
-      <File FileName="punto.code/ControladorBaseDatos.cs" Line="662" Column="5" />
-      <File FileName="punto.code/Venta.cs" Line="14" Column="1" />
-      <File FileName="punto.gui/VenderProductosDialog.cs" Line="303" Column="10" />
-      <File FileName="punto.gui/PrincipalWindow.cs" Line="210" Column="2" />
+      <File FileName="punto.gui/VenderProductosDialog.cs" Line="51" Column="5" />
+      <File FileName="punto.gui/PagarDialog.cs" Line="72" Column="43" />
+      <File FileName="punto.code/ControladorBaseDatos.cs" Line="461" Column="1" />
+      <File FileName="punto.code/Venta.cs" Line="39" Column="1" />
+      <File FileName="punto.code/VentaDetalle.cs" Line="17" Column="3" />
+      <File FileName="punto.gui/RegistrarUsuarioDialog.cs" Line="144" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="pto" expanded="True" />
           <Node name="punto.code" expanded="True" />
           <Node name="punto.gui" expanded="True">
-            <Node name="PrincipalWindow.cs" selected="True" />
+            <Node name="VenderProductosDialog.cs" selected="True" />
           </Node>
         </State>
       </Pad>
