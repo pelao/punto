@@ -280,6 +280,16 @@ namespace punto.gui
 			this.Hide();
 			this.Dispose();
 		}
+
+		protected void OnLabelModificarProductoMoveCursor (object o, MoveCursorArgs args)
+		{
+			this.CargarProductos();
+		}
+
+		protected void OnLabelModificarProductoKeyPressEvent (object o, KeyPressEventArgs args)
+		{
+			this.CargarProductos();
+		}
 	}
 }
 

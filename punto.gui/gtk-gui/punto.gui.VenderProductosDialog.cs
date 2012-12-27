@@ -149,6 +149,7 @@ namespace punto.gui
 			this.hpaned1 = new global::Gtk.HPaned ();
 			this.hpaned1.CanFocus = true;
 			this.hpaned1.Name = "hpaned1";
+			this.hpaned1.Position = 10;
 			// Container child hpaned1.Gtk.Paned+PanedChild
 			this.frame5 = new global::Gtk.Frame ();
 			this.frame5.Name = "frame5";

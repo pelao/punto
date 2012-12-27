@@ -2,40 +2,35 @@ using System;
 
 namespace punto.code
 {
-	public class DetalleVenta
+	public class VentaDetalle
 	{
-		private int var_codigoVenta;
-		private int var_cantidad;
-		private int var_precio_venta;
-		private DateTime var_fecha;
+		private int var_numBoleta;
+		private string var_nombreProducto;
 
-		public DetalleVenta(int codigoVenta ,int cantidad, int precio_venta ,DateTime fecha)
+
+		public VentaDetalle(int boleta ,string nombreProducto)
 		{
-			this.CODIGOVENTA=codigoVenta;
-			this.CANTIDAD=cantidad;
-			this.PRECIOVENTA=precio_venta;
-			this.FECHA=fecha;
+			this.NumBoleta=boleta;
+			this.NombreProducto =nombreProducto;
+	
 		}
-		public DateTime FECHA
+
+		public int NumBoleta
 		{
-			get {return this.var_fecha;}
-			set {this.var_fecha = value;}
+			get { return var_numBoleta; }
+			set { var_numBoleta = value; }
 		}
-		public int CODIGOVENTA
+		public string NombreProducto
 		{
-			get { return var_codigoVenta; }
-			set { var_codigoVenta = value; }
+			get {return this.var_nombreProducto;}
+			set {
+				if (value.Trim().Length <= 100)
+				{
+					this.var_nombreProducto = value;
+				}
+			}
 		}
-		public int PRECIOVENTA
-		{
-			get { return var_precio_venta; }
-			set { var_precio_venta = value; }
-		}
-		public int CANTIDAD
-		{
-			get { return var_cantidad; }
-			set { var_cantidad = value; }
-		}
+
 	}
 }
 

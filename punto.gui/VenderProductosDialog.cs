@@ -28,11 +28,11 @@ namespace punto.gui
 		public	int preciototal=0;
 		private string boleta;
 		public int contador=0;
+		public string usuarioLogin;
 		
-		
-		public VenderProductosDialog (Gtk.Window parent) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
+		public VenderProductosDialog (Gtk.Window parent, string usuario) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
-			
+			this.usuarioLogin=usuario;
 			this.ventamodel = new Gtk.ListStore (typeof (int),typeof (string), typeof (string));
 			
 			this.Build ();
@@ -146,12 +146,15 @@ namespace punto.gui
 		
 		public void CargarProductos ()
 		{
-			
-			productoventa= this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim()));
+			productoventa.Add(this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim())));
+			Console.WriteLine(productoventa.Count);
 			treeviewListaProductos.Model = this.ventamodel;
 			int cantidad=0;
-			foreach (Produc bod in this.productoventa)
-			{
+
+
+			Produc bod = this.productoventa.ToArray()[productoventa.Count-1];
+			//foreach (Produc bod in this.productoventa)
+			//{
 				
 				TreeIter tmpIter = new TreeIter();
 				ventamodel.GetIterFirst(out tmpIter);
@@ -200,7 +203,7 @@ namespace punto.gui
 					}
 				}
 				
-			}
+			//}
 			
 			
 			this.treeviewListaProductos.Selection.UnselectAll();
@@ -273,6 +276,8 @@ namespace punto.gui
 		
 		protected void OnButtonVentaClicked (object sender, EventArgs e)
 		{
+		
+
 			ventamodel.Clear();
 			double temp=Convert.ToDouble( this.db.ObtenerBoleta());
 			temp=temp+1;
@@ -283,15 +288,17 @@ namespace punto.gui
 			
 			entryNumBoleta.Text=boleta;
 			Console.WriteLine(entryNumBoleta.Text);
-			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
+	//		Venta pago = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now,Int32.Parse(labelTotalVenta.Text.Trim()));
 			Console.WriteLine(DateTime.Now);
 			Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
+
+
+
+			
+	//		this.db.AgregarVentaDetalle(pago);
 			
 			
-			this.db.AgregarVentaDetalle(pago);
-			
-			
-			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
+			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(),usuarioLogin, productoventa);
 			try 
 			{
 				rcd.Run();
@@ -327,15 +334,15 @@ namespace punto.gui
 				
 				entryNumBoleta.Text=boleta;
 				
-				DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
+	//			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
 				Console.WriteLine(DateTime.Now);
 				Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
 				
 				
-				this.db.AgregarVentaDetalle(pago);
+			//	this.db.AgregarVentaDetalle(pago);
 				
 				
-				PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim());
+	/*			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(), usuarioLogin, productoventa);
 				try 
 				{
 					rcd.Run();
@@ -348,7 +355,7 @@ namespace punto.gui
 					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
 #endif
 				}
-
+*/
 				labelTotalVenta.Text="0";
 				preciototal=0;
 
@@ -357,7 +364,9 @@ namespace punto.gui
 		protected void OnEntryCodigoBarraTextInserted (object o, TextInsertedArgs args)
 		{
 			CargarProductos();
+
 			cambiado=true;
+		
 		}
 		private void OnQuitarProductoDialogResponse (object sender, ResponseArgs args)
 		{

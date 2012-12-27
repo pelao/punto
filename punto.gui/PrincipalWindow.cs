@@ -15,8 +15,9 @@ namespace punto.gui
 	public class EdicionDialogChangedEventArgs : EventArgs
 	{
 		private bool cambiado;
+
 		
-		public List<DetalleVenta> productoventa = new List<DetalleVenta>();
+	//	public List<DetalleVenta> productoventa = new List<DetalleVenta>();
 		
 		public EdicionDialogChangedEventArgs(bool cam)
 		{
@@ -27,14 +28,18 @@ namespace punto.gui
 		{
 			get { return this.cambiado; }
 		}
+
 	}
 
 	public partial class PrincipalWindow : Gtk.Window
 	{
 		private ControladorBaseDatos db;
+		private string usuario_;
 		
-		public PrincipalWindow () : base(Gtk.WindowType.Toplevel)
+		public PrincipalWindow (string usuario) : base(Gtk.WindowType.Toplevel)
 		{
+			this.usuario_ = usuario;
+
 #if DEBUG
 			Console.WriteLine ("En debug");
 #endif
@@ -132,9 +137,9 @@ namespace punto.gui
 #endif
 			}
 		}
-		protected void OnButton27Clicked (object sender, EventArgs e)
+		protected void OnButtonVenderClicked (object sender, EventArgs e)
 		{
-			VenderProductosDialog VenderProductos = new VenderProductosDialog(this);
+			VenderProductosDialog VenderProductos = new VenderProductosDialog(this, usuario_);
 			try 
 			{
 				VenderProductos.Run();

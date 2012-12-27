@@ -114,7 +114,35 @@ namespace punto.code
 			
 			return false;
 		}
-		public bool AgregarVentaDetalle (DetalleVenta registro)
+		public bool AgregarVentaBd (Venta venta)
+		{
+			
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+
+
+
+			string sql =
+				"INSERT INTO venta (idventa,fecha_venta,total,tipo_pago,cambio,usuarios_userlogin,anulada) " +
+					"VALUES ('"+venta.Idventa+"','"+venta.Var_fecha+"','"+venta.Total+"','"+venta.Tipo_pago+"','"+venta.Cambio+"','"+venta.Usuarios_userlogin+"','"+venta.Anulada+"');";
+		
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			
+			return false;
+		}
+
+
+		public bool AgregarVentaDetalleBd (int boleta, string producto)
 		{
 			
 			
@@ -122,11 +150,12 @@ namespace punto.code
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			
-			string sql =
-				"INSERT INTO venta_detalle (idventa_detalle,cantidad,precio_venta,fecha_hora) " +
-					"VALUES ("+registro.CODIGOVENTA+",'"+registro.CANTIDAD+"','"+registro.PRECIOVENTA+"','"+registro.FECHA+"');";
 			
-		
+			
+			string sql =
+				"INSERT INTO venta_detalle (idventa_detalle,idproducto) " +
+					"VALUES ('"+boleta+"','"+producto+"');";
+			
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			
@@ -390,14 +419,15 @@ namespace punto.code
 			IDbConnection dbcon = this.ConectarBd();
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
+
 			string sql =
-				"SELECT max(idventa_detalle) " +
-					"FROM venta_detalle";
+				"SELECT max(idventa) " +
+					"FROM venta";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			
 			while(reader.Read()) {
-				precio =   (int)reader["max(idventa_detalle)"];
+				precio =   (int)reader["max(idventa)"];
 
 			}
 			reader.Close();
@@ -408,6 +438,36 @@ namespace punto.code
 			this.DesconectarBd(dbcon);
 			
 			return precio;
+		}
+
+
+		public string ObtenerCodigoBarraBd (string nombreProducto)
+		{
+			string[] codigoBarra = new string[1];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT codigobarra " +
+					"FROM productos " +
+					"WHERE nombre='"+nombreProducto+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				codigoBarra[0] =  (string) reader["codigobarra"];
+				
+
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return codigoBarra[0];
 		}
 
 
@@ -543,7 +603,7 @@ namespace punto.code
 			return usuarioContraseña;
 		}
 
-		public List<Produc> ObtenerProductosVenta (string codigoB)
+		public Produc ObtenerProductosVenta (string codigoB)
 		{
 
 			IDbConnection dbcon = this.ConectarBd();
@@ -556,9 +616,9 @@ namespace punto.code
 					"ORDER BY nombre ASC";;
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
-			List<Produc> productos = new List<Produc>();
+			Produc producto = null;
 			while(reader.Read()) {
-				productos.Add(new Produc( (string) reader["nombre"],(string) reader["precio_venta"]));
+				producto = new Produc( (string) reader["nombre"],(string) reader["precio_venta"]);
 			}
 			reader.Close();
 			reader = null;
@@ -567,7 +627,7 @@ namespace punto.code
 			
 			this.DesconectarBd(dbcon);
 			
-			return productos;
+			return producto;
 		}
 
 		public List<FamiliaProducto> ObtenerFamiliasBd ()
@@ -647,14 +707,14 @@ namespace punto.code
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"SELECT precio_venta " +
-					"FROM venta_detalle " +
-					"order by idventa_detalle DESC limit 1";
+				"SELECT total " +
+					"FROM venta " +
+					"order by idventa DESC limit 1";
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			
 			while(reader.Read()) {
-				valor =   (int)reader["precio_venta"];
+				valor =   (int)reader["total"];
 				
 			}
 			reader.Close();

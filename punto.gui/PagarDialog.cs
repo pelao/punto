@@ -14,11 +14,17 @@ namespace punto.gui
 		private int vuelto;
 		private VenderProductosDialog treviewventa;
 		private string pagototal;
+		private string numBoleta;
+		private string usuario_;
+		private List<Produc> listaPago_;
+	
 
-		public PagarDialog(Gtk.Window parent,string total,string boleta) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagarDialog(Gtk.Window parent,string total,string boleta, string usuario, List<Produc> listapago) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.pagototal=total;
-			
+			this.numBoleta=boleta;
+			this.usuario_=usuario;
+			this.listaPago_=listapago;
 			this.Build ();
 			
 			this.db = new ControladorBaseDatos();
@@ -64,7 +70,6 @@ namespace punto.gui
 		protected void OnPagoEnEfectivo (object sender, EventArgs e)
 		{
 			labeltotalcompra.Text=pagototal.Trim();
-			Console.WriteLine(this.db.ObtenerPrecioVenta());
 			alignment3.Hide ();
 			hbox3.Show();
 			this.entryPagoEfectivo.IsFocus=true;
@@ -86,8 +91,6 @@ namespace punto.gui
 				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
 				this.buttonOk.IsFocus=true;
-
-
 			}	
 			if (args.Event.Key==Gdk.Key.F2) {
 				
@@ -144,13 +147,57 @@ namespace punto.gui
 
 		}
 
+		protected void OnButtonPagarClicked (object sender, EventArgs e)
+		{
+			ControladorBaseDatos db = new ControladorBaseDatos();
+
+
+
+			Console.WriteLine("*************************************************");
+			Console.WriteLine("usuario:"+usuario_);
+			Console.WriteLine("boleta:"+numBoleta);
+			Console.WriteLine("pago total:"+pagototal);
+			int vuelto = (Int32.Parse(entryPagoEfectivo.Text.Trim())-Int32.Parse(pagototal));
+
+			Console.WriteLine("vuelto:"+vuelto);
+			Console.WriteLine("tipo pago: Pago Efectivo");
+			Console.WriteLine("fecha :"+DateTime.Now);
+			Console.WriteLine("*************************************************");
+
+			Venta nuevaVenta = new Venta(Int32.Parse(numBoleta),
+			                             DateTime.Now,
+			                             pagototal,
+			                             "efectivo",
+			                             vuelto,
+			                             usuario_,
+			                             "false"); 
+			db.AgregarVentaBd(nuevaVenta);
+			try {
+				for(int i=0; i<listaPago_.Count;i++)
+				{   
+					Console.WriteLine("ANTES DE codigo barra");
+
+					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].Nombre).ToString().Trim());
+										
+					Console.WriteLine(codigoBarra);
+										
+					db.AgregarVentaDetalleBd(Int32.Parse(numBoleta),codigoBarra);
+					
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Excepcion:--->"+ex);
+			}
+
+		}
+
 
 		protected void OnKeyPressEvent (object o, KeyPressEventArgs args)
 		{
 
 			if (args.Event.Key == Gdk.Key.F2) {
 				labeltotalcompra.Text = pagototal.Trim ();
-				Console.WriteLine (this.db.ObtenerPrecioVenta ());
 				alignment3.Hide ();
 				hbox3.Show ();
 				this.entryPagoEfectivo.IsFocus = true;
@@ -165,6 +212,8 @@ namespace punto.gui
 				} catch (MySql.Data.MySqlClient.MySqlException ex) {
 					PagoTarjeta.Destroy ();
 #if DEBUG
+
+
 					Console.WriteLine (ex.Message);
 #endif
 				}

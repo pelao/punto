@@ -34,15 +34,6 @@ namespace punto.code
 			}
 		}
 		
-		//		public int CodigoDestino
-		//		{
-		//			get {return this._precio_destino;}
-		//			set {
-		//				if (value >= 0)
-		//				{
-		//					this._precio_destino = value;
-		//				}
-		//			}
-		//		}
+
 	}
 }

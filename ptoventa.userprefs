@@ -1,18 +1,20 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/gtk-gui/punto.gui.RegistrarUsuarioDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/PrincipalWindow.cs">
     <Files>
-      <File FileName="punto.gui/ConsultaPrecioDialog.cs" Line="61" Column="1" />
-      <File FileName="punto.gui/PrincipalWindow.cs" Line="1" Column="1" />
-      <File FileName="punto.gui/gtk-gui/punto.gui.RegistrarUsuarioDialog.cs" Line="622" Column="5" />
-      <File FileName="punto.gui/RegistrarUsuarioDialog.cs" Line="68" Column="7" />
+      <File FileName="punto.gui/PagarDialog.cs" Line="91" Column="4" />
+      <File FileName="punto.code/ControladorBaseDatos.cs" Line="662" Column="5" />
+      <File FileName="punto.code/Venta.cs" Line="14" Column="1" />
+      <File FileName="punto.gui/VenderProductosDialog.cs" Line="303" Column="10" />
+      <File FileName="punto.gui/PrincipalWindow.cs" Line="210" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="pto" expanded="True" />
+        <State expanded="True">
           <Node name="punto.code" expanded="True" />
-          <Node name="punto.gui" expanded="True" />
+          <Node name="punto.gui" expanded="True">
+            <Node name="PrincipalWindow.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>

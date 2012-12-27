@@ -153,6 +153,7 @@ namespace punto.gui
 			
 			for (int i = 0; i < tipos.Count; i++)
 			{
+				Console.WriteLine("lista"+i);
 				if(tipos[i].Userlogin.Equals(comboboxUsuarioModificar.ActiveText))
 				{
 					entryUsuarioEdit.Text = tipos[i].Userlogin;
@@ -263,6 +264,11 @@ namespace punto.gui
 		protected void OnBotonCancelarClicked (object sender, EventArgs e)
 		{
 			this.Destroy();
+		}
+
+		protected void OnLabelModificarUsuarioKeyPressEvent (object o, KeyPressEventArgs args)
+		{
+			throw new System.NotImplementedException ();
 		}
 	}
 }

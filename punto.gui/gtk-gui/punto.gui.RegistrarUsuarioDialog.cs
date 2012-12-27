@@ -56,7 +56,6 @@ namespace punto.gui
 		private global::Gtk.Label label2;
 		private global::Gtk.Label LabelModificarUsuario;
 		private global::Gtk.Button buttonCancel;
-		private global::Gtk.Button buttonOk;
 		
 		protected virtual void Build ()
 		{
@@ -624,30 +623,19 @@ namespace punto.gui
 			global::Gtk.ButtonBox.ButtonBoxChild w52 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w51 [this.buttonCancel]));
 			w52.Expand = false;
 			w52.Fill = false;
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonOk = new global::Gtk.Button ();
-			this.buttonOk.CanDefault = true;
-			this.buttonOk.CanFocus = true;
-			this.buttonOk.Name = "buttonOk";
-			this.buttonOk.UseStock = true;
-			this.buttonOk.UseUnderline = true;
-			this.buttonOk.Label = "gtk-ok";
-			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w53 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w51 [this.buttonOk]));
-			w53.Position = 1;
-			w53.Expand = false;
-			w53.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 432;
+			this.buttonCancel.Hide ();
 			this.Show ();
 			this.BotonAgregar.Clicked += new global::System.EventHandler (this.OnBotonAgregarClicked);
 			this.BotonCancelar.Clicked += new global::System.EventHandler (this.OnBotonCancelarClicked);
 			this.comboboxUsuarioModificar.Changed += new global::System.EventHandler (this.OnComboboxUsuarioModificarChanged);
 			this.BotonModificar.Clicked += new global::System.EventHandler (this.OnBotonModificarClicked);
 			this.BotonCancelarMod.Clicked += new global::System.EventHandler (this.OnBotonCancelarModClicked);
+			this.LabelModificarUsuario.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnLabelModificarUsuarioKeyPressEvent);
 		}
 	}
 }

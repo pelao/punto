@@ -546,6 +546,7 @@ namespace punto.gui
 			this.BotonAgregarProd.Clicked += new global::System.EventHandler (this.OnBotonAgregarPClicked);
 			this.button485.Clicked += new global::System.EventHandler (this.BotonCancelar);
 			this.BotonEditar.Clicked += new global::System.EventHandler (this.OnBotonEditarClicked);
+			this.labelModificarProducto.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnLabelModificarProductoKeyPressEvent);
 			this.buttonCancel.Clicked += new global::System.EventHandler (this.OnButtonCancelClicked);
 		}
 	}
