@@ -146,15 +146,11 @@ namespace punto.gui
 		
 		public void CargarProductos ()
 		{
-			productoventa.Add(this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim())));
-			Console.WriteLine(productoventa.Count);
+			productoventa= this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim()));
 			treeviewListaProductos.Model = this.ventamodel;
 			int cantidad=0;
-
-
-			Produc bod = this.productoventa.ToArray()[productoventa.Count-1];
-			//foreach (Produc bod in this.productoventa)
-			//{
+			foreach (Produc bod in this.productoventa)
+			{
 				
 				TreeIter tmpIter = new TreeIter();
 				ventamodel.GetIterFirst(out tmpIter);
@@ -203,13 +199,14 @@ namespace punto.gui
 					}
 				}
 				
-			//}
+			}
 			
 			
 			this.treeviewListaProductos.Selection.UnselectAll();
 			
 			
 		}
+		
 
 		protected void TreeView2SelectionChanged (object sender, EventArgs args)
 		{	
@@ -342,7 +339,7 @@ namespace punto.gui
 			//	this.db.AgregarVentaDetalle(pago);
 				
 				
-	/*			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(), usuarioLogin, productoventa);
+				PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(), usuarioLogin, productoventa);
 				try 
 				{
 					rcd.Run();
@@ -355,7 +352,7 @@ namespace punto.gui
 					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
 #endif
 				}
-*/
+
 				labelTotalVenta.Text="0";
 				preciototal=0;
 

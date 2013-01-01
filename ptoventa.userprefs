@@ -1,13 +1,15 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\VenderProductosDialog.cs">
     <Files>
-      <File FileName="punto.gui/VenderProductosDialog.cs" Line="51" Column="5" />
-      <File FileName="punto.gui/PagarDialog.cs" Line="72" Column="43" />
-      <File FileName="punto.code/ControladorBaseDatos.cs" Line="461" Column="1" />
-      <File FileName="punto.code/Venta.cs" Line="39" Column="1" />
-      <File FileName="punto.code/VentaDetalle.cs" Line="17" Column="3" />
-      <File FileName="punto.gui/RegistrarUsuarioDialog.cs" Line="144" Column="5" />
+      <File FileName="punto.gui\VenderProductosDialog.cs" Line="149" Column="48" />
+      <File FileName="punto.gui\PagarDialog.cs" Line="72" Column="43" />
+      <File FileName="punto.code\ControladorBaseDatos.cs" Line="634" Column="16" />
+      <File FileName="punto.code\Venta.cs" Line="39" Column="1" />
+      <File FileName="punto.code\VentaDetalle.cs" Line="17" Column="3" />
+      <File FileName="punto.gui\RegistrarUsuarioDialog.cs" Line="144" Column="5" />
+      <File FileName="c:\Users\jose\Documents\Projects\avance\git63\punto.gui\PrincipalWindow.cs" Line="145" Column="5" />
+      <File FileName="pto\pto.exe.config" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

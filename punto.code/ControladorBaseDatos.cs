@@ -365,6 +365,33 @@ namespace punto.code
 			
 			return existe;
 		}
+		
+		public List<Produc> ObtenerProductosVenta (string codigoB)
+		{
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT nombre,precio_venta " +
+					"FROM productos " +
+					"WHERE codigobarra='"+codigoB+"'"+
+					"ORDER BY nombre ASC";;
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			List<Produc> productos = new List<Produc>();
+			while(reader.Read()) {
+				productos.Add(new Produc( (string) reader["nombre"],(string) reader["precio_venta"]));
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return productos;
+		}
 
 	/*	public List<Producto> ObtenerProductosBd (int codigoB)
 		{
@@ -629,33 +656,6 @@ namespace punto.code
 			
 			this.DesconectarBd(dbcon);
 			return usuarioContraseña;
-		}
-
-		public Produc ObtenerProductosVenta (string codigoB)
-		{
-
-			IDbConnection dbcon = this.ConectarBd();
-			
-			IDbCommand dbcmd = dbcon.CreateCommand();
-			string sql =
-				"SELECT nombre,precio_venta " +
-					"FROM productos " +
-					"WHERE codigobarra='"+codigoB+"'"+
-					"ORDER BY nombre ASC";;
-			dbcmd.CommandText = sql;
-			IDataReader reader = dbcmd.ExecuteReader();
-			Produc producto = null;
-			while(reader.Read()) {
-				producto = new Produc( (string) reader["nombre"],(string) reader["precio_venta"]);
-			}
-			reader.Close();
-			reader = null;
-			dbcmd.Dispose();
-			dbcmd = null;
-			
-			this.DesconectarBd(dbcon);
-			
-			return producto;
 		}
 
 		public List<FamiliaProducto> ObtenerFamiliasBd ()

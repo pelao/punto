@@ -1776,8 +1776,8 @@
                     <property name="CanFocus">True</property>
                     <property name="IsEditable">True</property>
                     <property name="InvisibleChar">●</property>
-                    <signal name="TextInserted" handler="OnEntryCodigoBarraTextInserted" />
                     <signal name="KeyPressEvent" handler="OnEntryCodigoBarraKeyPressEvent" />
+                    <signal name="TextInserted" handler="OnEntryCodigoBarraTextInserted" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
