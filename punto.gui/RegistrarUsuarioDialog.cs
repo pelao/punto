@@ -35,7 +35,7 @@ namespace punto.gui
 			
 			comboboxTipoUsuario.Model = ListaCombobox;
 			
-			ListaCombobox.AppendValues ("SuperUsuario");
+			ListaCombobox.AppendValues ("Administrador");
 			ListaCombobox.AppendValues ("Cajero");
 			ListaCombobox.AppendValues ("Empleado");
 			
@@ -55,7 +55,7 @@ namespace punto.gui
 			
 			comboboxTipoUsuarioMod.Model = ListaCombobox;
 			
-			ListaCombobox.AppendValues ("SuperUsuario");
+			ListaCombobox.AppendValues ("Administrador");
 			ListaCombobox.AppendValues ("Cajero");
 			ListaCombobox.AppendValues ("Empleado");
 			
@@ -176,11 +176,11 @@ namespace punto.gui
 					
 					if(tipos[i].Nivel_user.Equals("Cajero"))
 					{
-						ListaCombobox.AppendValues ("SuperUsuario");
+						ListaCombobox.AppendValues ("Administrador");
 						ListaCombobox.AppendValues ("Empleado");
 						
 					}
-					if((tipos[i].Nivel_user.Equals("SuperUsuario")))
+					if((tipos[i].Nivel_user.Equals("Administrador")))
 					{
 						ListaCombobox.AppendValues ("Cajero");
 						ListaCombobox.AppendValues ("Empleado");
@@ -188,7 +188,7 @@ namespace punto.gui
 					}
 					if((tipos[i].Nivel_user.Equals("Empleado")))
 					{
-						ListaCombobox.AppendValues ("Superusuario");
+						ListaCombobox.AppendValues ("Administrador");
 						ListaCombobox.AppendValues ("Cajero");
 						
 					}

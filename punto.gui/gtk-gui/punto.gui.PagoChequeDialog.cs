@@ -88,6 +88,7 @@ namespace punto.gui
 			// Container child table2.Gtk.Table+TableChild
 			this.labelBanco = new global::Gtk.Label ();
 			this.labelBanco.Name = "labelBanco";
+			this.labelBanco.Xalign = 0F;
 			this.labelBanco.LabelProp = global::Mono.Unix.Catalog.GetString ("Banco:");
 			this.table2.Add (this.labelBanco);
 			global::Gtk.Table.TableChild w6 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelBanco]));
@@ -98,6 +99,7 @@ namespace punto.gui
 			// Container child table2.Gtk.Table+TableChild
 			this.labelMonto = new global::Gtk.Label ();
 			this.labelMonto.Name = "labelMonto";
+			this.labelMonto.Xalign = 0F;
 			this.labelMonto.LabelProp = global::Mono.Unix.Catalog.GetString ("Monto:");
 			this.table2.Add (this.labelMonto);
 			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelMonto]));
@@ -110,6 +112,7 @@ namespace punto.gui
 			// Container child table2.Gtk.Table+TableChild
 			this.labelNroSerie = new global::Gtk.Label ();
 			this.labelNroSerie.Name = "labelNroSerie";
+			this.labelNroSerie.Xalign = 0F;
 			this.labelNroSerie.LabelProp = global::Mono.Unix.Catalog.GetString ("Nro Serie:");
 			this.table2.Add (this.labelNroSerie);
 			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelNroSerie]));
@@ -122,6 +125,7 @@ namespace punto.gui
 			// Container child table2.Gtk.Table+TableChild
 			this.labelPlaza = new global::Gtk.Label ();
 			this.labelPlaza.Name = "labelPlaza";
+			this.labelPlaza.Xalign = 0F;
 			this.labelPlaza.LabelProp = global::Mono.Unix.Catalog.GetString ("Plaza:");
 			this.table2.Add (this.labelPlaza);
 			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table2 [this.labelPlaza]));

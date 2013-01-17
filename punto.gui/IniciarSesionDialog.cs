@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Gtk;
 using System;
 using punto.code;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace punto.gui
 {
@@ -13,14 +15,16 @@ namespace punto.gui
 		public IniciarSesionDialog ()
 		{
 			this.Build ();
+
+
 		}
 		
-		
+
 		protected void OnButtonIngresarClicked (object sender, EventArgs e)
 		{
 			
 			ControladorBaseDatos Bd = new ControladorBaseDatos();
-			
+
 			string[] usuarioClave = new string[2];
 			
 			usuarioClave = Bd.ObtenerUsuarioContraseñaBd(entryUsuario.Text);
@@ -54,6 +58,8 @@ namespace punto.gui
 		{
 			base.Destroy();
 		}
+
+
 	}
 }
 

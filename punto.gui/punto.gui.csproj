@@ -65,6 +65,9 @@
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Desktop\asdf.png" />
+    <EmbeddedResource Include="..\..\..\Documents\Ramos\TallerIngSoftware\TallerIngSoftware\iconos\Freebie_0010_3D_Icons\128x128\lock.png" />
+    <EmbeddedResource Include="..\..\..\Desktop\asdf.gif" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
@@ -99,5 +102,10 @@
       <Project>{073ACCF2-E430-4357-BFFD-2727E0A37417}</Project>
       <Name>punto.code</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="foro-de-los-de-los-usuarios-icono-8097-96.png">
+      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
+    </Content>
   </ItemGroup>
 </Project>
