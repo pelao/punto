@@ -2638,7 +2638,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="punto.gui.IniciarSesionDialog" design-size="452 417">
+  <widget class="Gtk.Dialog" id="punto.gui.IniciarSesionDialog" design-size="452 517">
     <property name="MemberName" />
     <property name="Title" translatable="yes">INICIO SESION</property>
     <property name="WindowPosition">Center</property>
@@ -2860,7 +2860,7 @@
                             <child>
                               <widget class="Gtk.Image" id="image161">
                                 <property name="MemberName" />
-                                <property name="Pixbuf">resource:punto.gui.lock.png</property>
+                                <property name="Pixbuf">resource:punto.gui.sesion.png</property>
                               </widget>
                             </child>
                           </widget>

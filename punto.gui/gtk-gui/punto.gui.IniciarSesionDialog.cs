@@ -140,7 +140,7 @@ namespace punto.gui
 			// Container child alignment6.Gtk.Container+ContainerChild
 			this.image161 = new global::Gtk.Image ();
 			this.image161.Name = "image161";
-			this.image161.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("punto.gui.lock.png");
+			this.image161.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("punto.gui.sesion.png");
 			this.alignment6.Add (this.image161);
 			this.table1.Add (this.alignment6);
 			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table1 [this.alignment6]));
