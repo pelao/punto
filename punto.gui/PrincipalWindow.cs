@@ -12,24 +12,7 @@ using punto.code;
 
 namespace punto.gui
 {
-	public class EdicionDialogChangedEventArgs : EventArgs
-	{
-		private bool cambiado;
 
-		
-	//	public List<DetalleVenta> productoventa = new List<DetalleVenta>();
-		
-		public EdicionDialogChangedEventArgs(bool cam)
-		{
-			this.cambiado = cam;
-		}	
-		
-		public bool Cambiado
-		{
-			get { return this.cambiado; }
-		}
-
-	}
 
 	public partial class PrincipalWindow : Gtk.Window
 	{
@@ -50,7 +33,7 @@ namespace punto.gui
 		private Gtk.ListStore listaventa;
 		
 		
-		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
+	//	public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 		public	int preciototal=0;
 		private string boleta;
@@ -68,7 +51,7 @@ namespace punto.gui
 			
 		
 			this.Build ();
-			ControladorBaseDatos db = new ControladorBaseDatos ();
+			this.db = new ControladorBaseDatos ();
 			nivelUsuario = db.ObtenerNivelUsuarioBd(usuario_);
 
 			if(nivelUsuario.Equals("Cajero"))

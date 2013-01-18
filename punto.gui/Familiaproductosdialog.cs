@@ -14,7 +14,7 @@ namespace punto.gui
 		private Gtk.ListStore familiaModel;
 		
 
-		public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
+	//	public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 		
 		public familiaproductosdialog (Gtk.Window parent) : base ("Administrar familia", parent, Gtk.DialogFlags.DestroyWithParent)
@@ -75,7 +75,7 @@ namespace punto.gui
 			Console.WriteLine("Destroy");
 #endif
 			GLib.ExceptionManager.UnhandledException -= ExcepcionDesconocida;
-			EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
+		//	EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
 		
 			base.Destroy();
 		}
