@@ -30,7 +30,7 @@ namespace punto.gui
 		public int contador=0;
 		public string usuarioLogin;
 		
-		public VenderProductosDialog (Gtk.Window parent, string usuario) : base ("Vender Productos", parent, Gtk.DialogFlags.DestroyWithParent)
+		public VenderProductosDialog (string usuario) 
 		{
 			this.usuarioLogin=usuario;
 			this.ventamodel = new Gtk.ListStore (typeof (int),typeof (string), typeof (string));

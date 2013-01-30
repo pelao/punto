@@ -636,7 +636,7 @@
           <widget class="Gtk.HPaned" id="hpaned2">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="Position">317</property>
+            <property name="Position">327</property>
             <child>
               <widget class="Gtk.Frame" id="frame5">
                 <property name="MemberName" />
@@ -1708,7 +1708,7 @@
   <widget class="Gtk.Dialog" id="punto.gui.VenderProductosDialog" design-size="709 432">
     <property name="MemberName" />
     <property name="Visible">False</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
     <property name="Buttons">1</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">
@@ -1723,7 +1723,7 @@
               <widget class="Gtk.HPaned" id="hpaned12">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="Position">1</property>
+                <property name="Position">8</property>
                 <child>
                   <placeholder />
                 </child>
@@ -2050,7 +2050,7 @@
                       <widget class="Gtk.VPaned" id="vpaned3">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
-                        <property name="Position">1</property>
+                        <property name="Position">142</property>
                         <child>
                           <placeholder />
                         </child>

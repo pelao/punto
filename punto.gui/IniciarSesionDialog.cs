@@ -31,8 +31,8 @@ namespace punto.gui
 			
 			if(usuarioClave[0].Equals(entryUsuario.Text) & usuarioClave[1].Equals(entryClave.Text))
 			{
-				PrincipalWindow principal = new PrincipalWindow(entryUsuario.Text);
-			
+				//PrincipalWindow principal = new PrincipalWindow(entryUsuario.Text);
+				VenderProductosDialog principal = new VenderProductosDialog(entryUsuario.Text);
 				base.Destroy();
 				principal.Show();
 			}

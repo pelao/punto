@@ -47,7 +47,7 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.VenderProductosDialog
 			this.Name = "punto.gui.VenderProductosDialog";
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.VenderProductosDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";
@@ -60,7 +60,7 @@ namespace punto.gui
 			this.hpaned12 = new global::Gtk.HPaned ();
 			this.hpaned12.CanFocus = true;
 			this.hpaned12.Name = "hpaned12";
-			this.hpaned12.Position = 1;
+			this.hpaned12.Position = 8;
 			// Container child hpaned12.Gtk.Paned+PanedChild
 			this.vbox5 = new global::Gtk.VBox ();
 			this.vbox5.Name = "vbox5";
@@ -305,7 +305,7 @@ namespace punto.gui
 			this.vpaned3 = new global::Gtk.VPaned ();
 			this.vpaned3.CanFocus = true;
 			this.vpaned3.Name = "vpaned3";
-			this.vpaned3.Position = 1;
+			this.vpaned3.Position = 142;
 			this.vbox4.Add (this.vpaned3);
 			global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.vpaned3]));
 			w46.Position = 1;
