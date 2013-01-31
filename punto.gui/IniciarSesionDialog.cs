@@ -15,16 +15,16 @@ namespace punto.gui
 		public IniciarSesionDialog ()
 		{
 			this.Build ();
-
-
+			
+			
 		}
 		
-
+		
 		protected void OnButtonIngresarClicked (object sender, EventArgs e)
 		{
 			
 			ControladorBaseDatos Bd = new ControladorBaseDatos();
-
+			
 			string[] usuarioClave = new string[2];
 			
 			usuarioClave = Bd.ObtenerUsuarioContraseñaBd(entryUsuario.Text);
@@ -33,6 +33,7 @@ namespace punto.gui
 			{
 				//PrincipalWindow principal = new PrincipalWindow(entryUsuario.Text);
 				VenderProductosDialog principal = new VenderProductosDialog(entryUsuario.Text);
+				
 				base.Destroy();
 				principal.Show();
 			}
@@ -53,13 +54,13 @@ namespace punto.gui
 				
 			}
 		}
-	
+		
 		protected void OnBotonSalirClicked (object sender, EventArgs e)
 		{
 			base.Destroy();
 		}
-
-
+		
+		
 	}
 }
 

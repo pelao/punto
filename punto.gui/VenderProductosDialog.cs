@@ -23,14 +23,14 @@ namespace punto.gui
 		private Gtk.ListStore listaventa;
 		
 		
-	//	public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
+		//	public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
 		private bool cambiado = false;
 		public	int preciototal=0;
 		private string boleta;
 		public int contador=0;
 		public string usuarioLogin;
 		
-		public VenderProductosDialog (string usuario) 
+		public VenderProductosDialog ( string usuario)
 		{
 			this.usuarioLogin=usuario;
 			this.ventamodel = new Gtk.ListStore (typeof (int),typeof (string), typeof (string));
@@ -49,7 +49,7 @@ namespace punto.gui
 			}
 			if (!correcta)
 			{
-
+				
 				basedatosdialog bdd = new basedatosdialog(this);
 				bdd.Run();
 				this.db = null;
@@ -65,7 +65,7 @@ namespace punto.gui
 				{
 					correcta = false;
 				}
-
+				
 			}
 			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn();
 			cantidad_column.Title = "Cantidad";
@@ -117,7 +117,7 @@ namespace punto.gui
 			Console.WriteLine("Destroy");
 #endif
 			GLib.ExceptionManager.UnhandledException -= ExcepcionDesconocida;
-		//	EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
+			//	EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
 			
 			base.Destroy();
 		}
@@ -147,8 +147,20 @@ namespace punto.gui
 		public void CargarProductos ()
 		{
 			productoventa= this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim()));
+			//	productoventa.Add(this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim())));
 			treeviewListaProductos.Model = this.ventamodel;
 			int cantidad=0;
+			/*	for(int i=0; i<productoventa.Count;i++)
+			{
+				Console.WriteLine("**************");
+				Console.WriteLine("nombre: "+productoventa[i].Nombre);
+				Console.WriteLine("precio: "+productoventa[i].Precio);
+				Console.WriteLine("codigoBarra: "+productoventa[i].CodigoBarra);
+				Console.WriteLine("**************");
+			}
+*/
+			Console.WriteLine("TAMAÑO LISTA: "+productoventa.Count);
+			
 			foreach (Produc bod in this.productoventa)
 			{
 				
@@ -207,7 +219,7 @@ namespace punto.gui
 			
 		}
 		
-
+		
 		protected void TreeView2SelectionChanged (object sender, EventArgs args)
 		{	
 			Gtk.TreeIter iter;
@@ -225,7 +237,7 @@ namespace punto.gui
 			}
 		}
 		//The event-invoking method that derived classes can override.
-	/*	protected virtual void OnEdicionDialogChanged(EdicionDialogChangedEventArgs e)
+		/*	protected virtual void OnEdicionDialogChanged(EdicionDialogChangedEventArgs e)
 		{
 
 			EventHandler<EdicionDialogChangedEventArgs> handler = EdicionDialogChanged;
@@ -244,7 +256,7 @@ namespace punto.gui
 		}
 		
 		
-
+		
 		protected void OnButton85Clicked (object sender, EventArgs e)
 		{
 			entryNumBoleta.IsEditable=true;
@@ -256,7 +268,7 @@ namespace punto.gui
 			boleta=entryNumBoleta.Text;
 		}
 		
-	
+		
 		void ScrollToItem(TreeIter iter)
 		{
 			TreePath path = ventamodel.GetPath(iter);
@@ -274,8 +286,8 @@ namespace punto.gui
 		
 		protected void OnButtonVentaClicked (object sender, EventArgs e)
 		{
-		
-
+			
+			
 			ventamodel.Clear();
 			double temp=Convert.ToDouble( this.db.ObtenerBoleta());
 			temp=temp+1;
@@ -286,14 +298,14 @@ namespace punto.gui
 			
 			entryNumBoleta.Text=boleta;
 			Console.WriteLine(entryNumBoleta.Text);
-	//		Venta pago = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now,Int32.Parse(labelTotalVenta.Text.Trim()));
+			//		Venta pago = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now,Int32.Parse(labelTotalVenta.Text.Trim()));
 			Console.WriteLine(DateTime.Now);
 			Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
-
-
-
 			
-	//		this.db.AgregarVentaDetalle(pago);
+			
+			
+			
+			//		this.db.AgregarVentaDetalle(pago);
 			
 			
 			PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(),usuarioLogin, productoventa);
@@ -314,11 +326,11 @@ namespace punto.gui
 			labelTotalVenta.Text="0";
 			preciototal=0;
 		}
-
+		
 		protected void OnEntryCodigoBarraKeyPressEvent (object o, KeyPressEventArgs args)
 		{
 			Console.WriteLine ("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
-		
+			
 			if (args.Event.Key == Gdk.Key.F2)
 			{
 				Console.WriteLine("entra al OnEntry1KeyPressEvent2 ");
@@ -332,12 +344,12 @@ namespace punto.gui
 				
 				entryNumBoleta.Text=boleta;
 				
-	//			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
+				//			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
 				Console.WriteLine(DateTime.Now);
 				Console.WriteLine(Int32.Parse(entryNumBoleta.Text.Trim()));
 				
 				
-			//	this.db.AgregarVentaDetalle(pago);
+				//	this.db.AgregarVentaDetalle(pago);
 				
 				
 				PagarDialog rcd = new PagarDialog(this,labelTotalVenta.Text.Trim(),entryNumBoleta.Text.Trim(), usuarioLogin, productoventa);
@@ -353,18 +365,18 @@ namespace punto.gui
 					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
 #endif
 				}
-
+				
 				labelTotalVenta.Text="0";
 				preciototal=0;
-
+				
 			}
 		}
 		protected void OnEntryCodigoBarraTextInserted (object o, TextInsertedArgs args)
 		{
 			CargarProductos();
-
+			
 			cambiado=true;
-		
+			
 		}
 		private void OnQuitarProductoDialogResponse (object sender, ResponseArgs args)
 		{
@@ -372,22 +384,22 @@ namespace punto.gui
 			{
 			case ResponseType.Accept:
 				Gtk.TreeIter iter;
-
+				
 				this.treeviewListaProductos.Selection.GetSelected(out iter);
 				string precioIter =(ventamodel.GetValue(iter,2)).ToString();
 				int valorlabel= Int32.Parse(labelTotalVenta.Text);
 				string total= (valorlabel-Int32.Parse(precioIter)).ToString();
 				labelTotalVenta.Text=total;
-
+				
 				ventamodel.Remove(ref iter);
-
+				
 				break;
 			default:
 				//no hacer nada
 				break;
 			}
 		}
-
+		
 		protected void OnTreeviewListaProductosKeyPressEvent (object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.F12) {
@@ -409,10 +421,91 @@ namespace punto.gui
 					dialog.Run ();
 					dialog.Destroy ();
 				}
-	
-			}	
 				
+			}	
+			
 		}
+		protected void OnCerrarActionActivated (object sender, EventArgs e)
+		{
+			this.Destroy();
+			
+			IniciarSesionDialog IniciarSesion = new IniciarSesionDialog();
+			
+			try 
+			{
+				IniciarSesion.Run();
+				IniciarSesion.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				IniciarSesion.Destroy();
+				
+				
+			}
+		}
+		
+		
+		
+		protected void OnIngresarEditarProductosActionActivated (object sender, EventArgs e)
+		{
+			IngresarProductosDialog IngresarProductos = new IngresarProductosDialog(this);
+			try 
+			{
+				IngresarProductos.Run();
+				IngresarProductos.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				IngresarProductos.Destroy();
+#if DEBUG
+				
+				
+				Console.WriteLine(ex.Message);
+#endif
+				
+			}
+		}
+		
+		
+		
+		protected void OnFamiliaProductosActionActivated (object sender, EventArgs e)
+		{
+			familiaproductosdialog FamiliaProductos = new familiaproductosdialog(this);
+			try 
+			{
+				FamiliaProductos.Run();
+				FamiliaProductos.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				FamiliaProductos.Destroy();
+#if DEBUG
+				
+				Console.WriteLine(ex.Message);
+#endif
+			}
+		}
+		
+		protected void OnRegistrarEditarUsuarioActionActivated (object sender, EventArgs e)
+		{
+			RegistrarUsuarioDialog RegistrarUsuario = new RegistrarUsuarioDialog();
+			
+			try 
+			{
+				RegistrarUsuario.Run();
+				RegistrarUsuario.Destroy();
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				RegistrarUsuario.Destroy();
+				
+				
+			}
+		}
+		
+		
+		
+		
 	}
 	
 }
