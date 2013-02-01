@@ -134,7 +134,6 @@ namespace punto.gui
 	
 		public void CargarProductos ()
 		{
-			productoventa= this.db.ObtenerProductosVenta((entryCodigoBarra.Text.Trim()));
 			treeviewListaProductos.Model = this.ventamodel;
 			int cantidad=0;
 			foreach (Produc bod in this.productoventa)

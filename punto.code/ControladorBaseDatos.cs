@@ -366,7 +366,7 @@ namespace punto.code
 			return existe;
 		}
 		
-		public List<Produc> ObtenerProductosVenta (string codigoB)
+		public Produc ObtenerProductosVenta (string codigoB)
 		{
 			
 			IDbConnection dbcon = this.ConectarBd();
@@ -379,9 +379,9 @@ namespace punto.code
 					"ORDER BY nombre ASC";;
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
-			List<Produc> productos = new List<Produc>();
+		    Produc producto = null;
 			while(reader.Read()) {
-				productos.Add(new Produc( (string) reader["nombre"],(string) reader["precio_venta"]));
+				producto = new Produc( (string) reader["nombre"],(string) reader["precio_venta"]);
 			}
 			reader.Close();
 			reader = null;
@@ -390,7 +390,7 @@ namespace punto.code
 			
 			this.DesconectarBd(dbcon);
 			
-			return productos;
+			return producto;
 		}
 
 	/*	public List<Producto> ObtenerProductosBd (int codigoB)
