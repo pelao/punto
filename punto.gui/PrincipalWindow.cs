@@ -132,68 +132,6 @@ namespace punto.gui
 
 
 	
-		public void CargarProductos ()
-		{
-			treeviewListaProductos.Model = this.ventamodel;
-			int cantidad=0;
-			foreach (Produc bod in this.productoventa)
-			{
-				
-				TreeIter tmpIter = new TreeIter();
-				ventamodel.GetIterFirst(out tmpIter);
-				string item = (string) ventamodel.GetValue(tmpIter,1); // este es el primer elemento
-				
-				if(item==null){
-					Console.WriteLine("ventamodelvacio");
-					ventamodel.AppendValues( 1,bod.Nombre, bod.Precio);
-					preciototal=preciototal+Int32.Parse(bod.Precio);
-					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
-					
-					Console.WriteLine(preciototal);
-					labelTotalVenta.Text=preciototal.ToString();
-					
-					
-					cantidad=1;
-				}
-				else{
-					ventamodel.GetIterFirst(out tmpIter);
-					string itema = (string) ventamodel.GetValue(tmpIter,1); // este es el primer elemento
-					if (bod.Nombre==itema){
-						cantidad=cantidad+1;
-					}
-					ventamodel.AppendValues(cantidad,bod.Nombre,bod.Precio);
-					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
-					
-					preciototal=preciototal+Int32.Parse(bod.Precio);
-					Console.WriteLine(preciototal);
-					labelTotalVenta.Text=preciototal.ToString();
-					while(ventamodel.IterNext(ref tmpIter)  ) {
-						TreeIter tmpIter1 = new TreeIter();
-						
-						item = (string) ventamodel.GetValue(tmpIter,1); // los demás elementos
-						
-						if(bod.Nombre==item){
-							
-							cantidad=cantidad+1;
-							ventamodel.SetValue(tmpIter,0,cantidad);
-							
-							
-						}else{
-							Console.WriteLine("entra aqui");		
-							
-						}
-						
-					}
-				}
-				
-			}
-			
-			
-			this.treeviewListaProductos.Selection.UnselectAll();
-			
-			
-		}
-
 
 		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
 		{

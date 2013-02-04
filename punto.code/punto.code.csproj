@@ -58,6 +58,7 @@
     <Compile Include="ModificarProducto.cs" />
     <Compile Include="PagoTarjeta.cs" />
     <Compile Include="PagoCheque.cs" />
+    <Compile Include="ListaVenta.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

@@ -178,7 +178,7 @@ namespace punto.gui
 				{   
 					Console.WriteLine("ANTES DE codigo barra");
 
-					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].Nombre).ToString().Trim());
+					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].getNombre().Trim()));
 										
 					Console.WriteLine(codigoBarra);
 										
