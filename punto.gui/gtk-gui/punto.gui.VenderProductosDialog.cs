@@ -142,6 +142,7 @@ namespace punto.gui
 			// Container child hbox4.Gtk.Box+BoxChild
 			this.entryCodigoBarra = new global::Gtk.Entry ();
 			this.entryCodigoBarra.CanFocus = true;
+			this.entryCodigoBarra.Events = ((global::Gdk.EventMask)(1024));
 			this.entryCodigoBarra.Name = "entryCodigoBarra";
 			this.entryCodigoBarra.IsEditable = true;
 			this.entryCodigoBarra.InvisibleChar = '●';
@@ -353,10 +354,8 @@ namespace punto.gui
 			this.FamiliaProductosAction.Activated += new global::System.EventHandler (this.OnFamiliaProductosActionActivated);
 			this.RegistrarEditarAction1.Activated += new global::System.EventHandler (this.OnRegistrarEditarUsuarioActionActivated);
 			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryCodigoBarraKeyPressEvent);
-			this.entryCodigoBarra.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntryCodigoBarraTextInserted);
 			this.entryNumBoleta.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry2TextInserted);
 			this.buttonEdit1.Clicked += new global::System.EventHandler (this.OnButton85Clicked);
-			this.treeviewListaProductos.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnTreeviewListaProductosKeyPressEvent);
 			this.ButtonVenta.Clicked += new global::System.EventHandler (this.OnButtonVentaClicked);
 		}
 	}

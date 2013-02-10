@@ -358,7 +358,6 @@ namespace punto.gui
 			this.DefaultHeight = 347;
 			this.Show ();
 			this.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnKeyPressEvent);
-			this.entryPagoEfectivo.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryPagoEfectivoKeyPressEvent);
 			this.buttonPagar.Clicked += new global::System.EventHandler (this.OnButtonPagarClicked);
 			this.buttonPagoEfectivo.Clicked += new global::System.EventHandler (this.OnPagoEnEfectivo);
 			this.buttonPagoTarjeta.Clicked += new global::System.EventHandler (this.OnButtonPagoTarjetaClicked);

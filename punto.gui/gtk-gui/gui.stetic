@@ -1853,10 +1853,10 @@
                                   <widget class="Gtk.Entry" id="entryCodigoBarra">
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
+                                    <property name="Events">KeyPressMask</property>
                                     <property name="IsEditable">True</property>
                                     <property name="InvisibleChar">●</property>
                                     <signal name="KeyPressEvent" handler="OnEntryCodigoBarraKeyPressEvent" />
-                                    <signal name="TextInserted" handler="OnEntryCodigoBarraTextInserted" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
@@ -1952,7 +1952,6 @@
                                             <property name="ShowScrollbars">True</property>
                                             <property name="HeadersVisible">False</property>
                                             <property name="RulesHint">True</property>
-                                            <signal name="KeyPressEvent" handler="OnTreeviewListaProductosKeyPressEvent" />
                                           </widget>
                                         </child>
                                       </widget>
@@ -2222,7 +2221,6 @@
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
                                 <property name="InvisibleChar">●</property>
-                                <signal name="KeyPressEvent" handler="OnEntryPagoEfectivoKeyPressEvent" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>

@@ -132,71 +132,7 @@ namespace punto.gui
 			
 			
 		}
-		protected void OnEntryCodigoBarraTextInserted (object o, TextInsertedArgs args)
-		{
-			productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ())));
-			foreach (Produc i in productoventa) {
-				int contador = 0;
-				String x = i.getCodigo ();
-				String nom = i.getNombre ();
-				String prec = i.getPrecio ();
-				if (!x.Equals ("")) {
-					foreach (Produc j in productoventa) {
-						if (x.Equals (j.getCodigo ())) {
-							contador++;
-							//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
-						}
-					}
-					listapago.Add (new Produc (x, nom, prec, contador));
-					//Console.WriteLine (listapago.LastIndexOf(1));
-					
-				}
-			}
-			treeviewListaProductos.Model = this.ventamodel;
-			int valor=0;
-			String nombre="" ;
-			String precio="" ;
-			foreach (Produc k in listapago) {
-				valor= Math.Max(0,k.getCantidad());
-				nombre=k.getNombre();
-				precio=k.getPrecio();
-				
-			}
-			Console.WriteLine (valor);
-			
-			//ventamodel.AppendValues(valor,nombre, precio);
-
-			Produc bod = this.productoventa.ToArray () [productoventa.Count - 1];
-			TreeIter tmpIter = new TreeIter ();
-			ventamodel.GetIterFirst (out tmpIter);
-			
-			string item = (string)ventamodel.GetValue (tmpIter, 1); // este es el primer elemento
-			
-			if (bod.Nombre == item) {
-				cantidad = cantidad + 1;
-				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
-				
-				ventamodel.SetValue (tmpIter, 0, cantidad);
-				ventamodel.Remove (ref tmpIter);
-			} 
-			preciototal = preciototal + Int32.Parse (bod.Precio);
-			labelTotalVenta.Text = preciototal.ToString ();
-			while (ventamodel.IterNext(ref tmpIter)) {
-				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
-				if (bod.Nombre == item) {
-					cantidad = cantidad + 1;
-					ventamodel.SetValue (tmpIter, 0, cantidad);
-					ventamodel.Remove (ref tmpIter);
-					
-				} else {
-					ventamodel.GetValue(tmpIter,0);
-					ventamodel.SetValue (tmpIter ,0,cantidad);
-					
-				}
-			}
-			ventamodel.AppendValues(valor,nombre, precio);
-
-		}
+	
 		
 		public void CargarProductos ()
 		{
@@ -343,48 +279,82 @@ namespace punto.gui
 			labelTotalVenta.Text = "0";
 			preciototal = 0;
 		}
-		
-		protected void OnEntryCodigoBarraKeyPressEvent (object o, KeyPressEventArgs args)
+		[GLib.ConnectBefore ()] 
+
+		protected void OnEntryCodigoBarraKeyPressEvent (object o, Gtk.KeyPressEventArgs args)
 		{
 			Console.WriteLine ("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
-			
-			if (args.Event.Key == Gdk.Key.F2) {
-				Console.WriteLine ("entra al OnEntry1KeyPressEvent2 ");
-				ventamodel.Clear ();
-				double temp = Convert.ToDouble (this.db.ObtenerBoleta ());
-				temp = temp + 1;
-				Console.WriteLine ("temp");
-				Console.WriteLine (temp);
-				boleta = temp.ToString ();
-				Console.WriteLine (boleta);
-				
-				entryNumBoleta.Text = boleta;
-				
-				//			DetalleVenta pago = new DetalleVenta(Int32.Parse(entryNumBoleta.Text.Trim()),1,Int32.Parse(labelTotalVenta.Text.Trim()),DateTime.Now);
-				Console.WriteLine (DateTime.Now);
-				Console.WriteLine (Int32.Parse (entryNumBoleta.Text.Trim ()));
-				
-				
-				//	this.db.AgregarVentaDetalle(pago);
-				
-				
-				PagarDialog rcd = new PagarDialog (this, labelTotalVenta.Text.Trim (), entryNumBoleta.Text.Trim (), usuarioLogin, productoventa);
-				try {
-					rcd.Run ();
-					rcd.Destroy ();
-				} catch (MySql.Data.MySqlClient.MySqlException ex) {
-					rcd.Destroy ();
-#if DEBUG
-					Console.WriteLine("entra al OnEntry1KeyPressEvent ");
-#endif
-				}
-				
-				labelTotalVenta.Text = "0";
-				preciototal = 0;
-				
-			}
-		}
+			Console.WriteLine("DEBUG: KeyValue: " + args.Event.KeyValue);
 
+			if ( args.Event.Key ==Gdk.Key.Return) {
+				productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ())));
+				foreach (Produc i in productoventa) {
+					int contador = 0;
+					String x = i.getCodigo ();
+					String nom = i.getNombre ();
+					String prec = i.getPrecio ();
+					if (!x.Equals ("")) {
+						foreach (Produc j in productoventa) {
+							if (x.Equals (j.getCodigo ())) {
+								contador++;
+								//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
+							}
+						}
+						listapago.Add (new Produc (x, nom, prec, contador));
+						//Console.WriteLine (listapago.LastIndexOf(1));
+						
+					}
+				}
+				treeviewListaProductos.Model = this.ventamodel;
+				int valor=0;
+				String nombre="" ;
+				String precio="" ;
+				foreach (Produc k in listapago) {
+					valor= Math.Max(0,k.getCantidad());
+					nombre=k.getNombre();
+					precio=k.getPrecio();
+					
+				}
+				Console.WriteLine (valor);
+				
+				//ventamodel.AppendValues(valor,nombre, precio);
+				
+				Produc bod = this.productoventa.ToArray () [productoventa.Count - 1];
+				TreeIter tmpIter = new TreeIter ();
+				ventamodel.GetIterFirst (out tmpIter);
+				
+				string item = (string)ventamodel.GetValue (tmpIter, 1); // este es el primer elemento
+				
+				if (bod.Nombre == item) {
+					cantidad = cantidad + 1;
+					Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
+					
+					ventamodel.SetValue (tmpIter, 0, cantidad);
+					ventamodel.Remove (ref tmpIter);
+				} 
+				preciototal = preciototal + Int32.Parse (bod.Precio);
+				labelTotalVenta.Text = preciototal.ToString ();
+				while (ventamodel.IterNext(ref tmpIter)) {
+					item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
+					if (bod.Nombre == item) {
+						cantidad = cantidad + 1;
+						ventamodel.SetValue (tmpIter, 0, cantidad);
+						ventamodel.Remove (ref tmpIter);
+						
+					} else {
+						ventamodel.GetValue(tmpIter,0);
+						ventamodel.SetValue (tmpIter ,0,cantidad);
+						
+					}
+				}
+				ventamodel.AppendValues(valor,nombre, precio);
+				
+				
+				entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
+
+
+		}
+		}
 
 		private void OnQuitarProductoDialogResponse (object sender, ResponseArgs args)
 		{
@@ -497,6 +467,12 @@ namespace punto.gui
 		
 		
 		
+		protected void OnEntryCodigoBarraRealized (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+
 	}
 	
 }

@@ -1,12 +1,8 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\jose\Documents\Projects\avance\git71\punto.gui\gtk-gui\punto.gui.VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\VenderProductosDialog.cs">
     <Files>
-      <File FileName="punto.gui\PrincipalWindow.cs" Line="13" Column="20" />
-      <File FileName="punto.gui\Familiaproductosdialog.cs" Line="78" Column="5" />
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="440" Column="5" />
-      <File FileName="pto\pto.exe.config" Line="5" Column="35" />
-      <File FileName="c:\Users\jose\Documents\Projects\avance\git71\punto.gui\gtk-gui\punto.gui.VenderProductosDialog.cs" Line="344" Column="82" />
+      <File FileName="punto.gui\VenderProductosDialog.cs" Line="288" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

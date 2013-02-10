@@ -78,11 +78,11 @@ namespace punto.gui
 
 
 		
-		[GLib.ConnectBefore ()] 
+		/*	[GLib.ConnectBefore ()] 
 
 		protected void OnEntryPagoEfectivoKeyPressEvent (object o, KeyPressEventArgs args)
 		{
-			if (args.Event.Key==Gdk.Key.Return) {
+		if (args.Event.Key==Gdk.Key.Return) {
 				
 				labelVuelto.Show();
 				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
@@ -105,7 +105,7 @@ namespace punto.gui
 				
 				
 			}	
-		}
+		}*/
 
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace punto.gui
 			Console.WriteLine("tipo pago: Pago Efectivo");
 			Console.WriteLine("fecha :"+DateTime.Now);
 			Console.WriteLine("*************************************************");
-
+		
 			Venta nuevaVenta = new Venta(Int32.Parse(numBoleta),
 			                             DateTime.Now,
 			                             pagototal,
