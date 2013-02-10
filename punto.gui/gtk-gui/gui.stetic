@@ -1950,7 +1950,6 @@
                                             <property name="HeightRequest">0</property>
                                             <property name="ExtensionEvents">All</property>
                                             <property name="ShowScrollbars">True</property>
-                                            <property name="HeadersVisible">False</property>
                                             <property name="RulesHint">True</property>
                                           </widget>
                                         </child>

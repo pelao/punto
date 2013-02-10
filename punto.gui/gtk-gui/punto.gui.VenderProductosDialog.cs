@@ -229,7 +229,6 @@ namespace punto.gui
 			this.treeviewListaProductos.HeightRequest = 0;
 			this.treeviewListaProductos.ExtensionEvents = ((global::Gdk.ExtensionMode)(1));
 			this.treeviewListaProductos.Name = "treeviewListaProductos";
-			this.treeviewListaProductos.HeadersVisible = false;
 			this.treeviewListaProductos.RulesHint = true;
 			this.GtkScrolledWindow1.Add (this.treeviewListaProductos);
 			this.GtkAlignment4.Add (this.GtkScrolledWindow1);

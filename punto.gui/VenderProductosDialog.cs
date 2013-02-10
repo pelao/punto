@@ -72,11 +72,17 @@ namespace punto.gui
 			nombre_column.PackStart (nombre_cell, true);
 			
 			this.treeviewListaProductos.AppendColumn (cantidad_column);
+			cantidad_column.Title = "Cantidad";
+
 			cantidad_column.AddAttribute (cantidad_cell, "text", 0);
 			this.treeviewListaProductos.AppendColumn (nombre_column);
 			nombre_column.AddAttribute (nombre_cell, "text", 1);
+			precio_column.Title = "Precio";
+
 			this.treeviewListaProductos.AppendColumn (precio_column);
 			precio_column.AddAttribute (precio_cell, "text", 2);
+			nombre_column.Title = "Nombre";
+
 #if DEBUG
 			
 			Console.WriteLine(this.db.ObtenerBoleta());
@@ -344,16 +350,12 @@ namespace punto.gui
 					} else {
 						ventamodel.GetValue(tmpIter,0);
 						ventamodel.SetValue (tmpIter ,0,cantidad);
-						
 					}
 				}
 				ventamodel.AppendValues(valor,nombre, precio);
-				
-				
 				entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
-
-		}
+			}
 		}
 
 		private void OnQuitarProductoDialogResponse (object sender, ResponseArgs args)
