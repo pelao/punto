@@ -65,25 +65,8 @@ namespace punto.gui
 				correcta = this.db.ConfiguracionCorrectaBd;
 			} catch (Exception ex) {
 				correcta = false;
-			}
-			if (!correcta) {
-				//mostrar dialog configuracion
-				basedatosdialog bdd = new basedatosdialog (this);
-				bdd.Run ();
-				this.db = null;
-				this.db = new ControladorBaseDatos ();
-				
-				correcta = false;
-				
-				try {
-					correcta = this.db.ConfiguracionCorrectaBd;
-				} catch (Exception ex) {
-					correcta = false;
-				}
-				
-				if (!correcta) {
-					Gtk.Application.Quit ();
-				}
+			
+
 			}
 			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn();
 			cantidad_column.Title = "Cantidad";
@@ -158,9 +141,7 @@ namespace punto.gui
 		
 		protected virtual void OnConexionBaseDatosActivated (object sender, System.EventArgs e)
 		{
-			basedatosdialog bdd = new basedatosdialog(this);
-			bdd.Run();
-			bdd.Destroy();
+
 			this.db = null;
 			this.db = new ControladorBaseDatos();
 			

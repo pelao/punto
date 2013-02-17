@@ -1,8 +1,15 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui\VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/VenderProductosDialog.cs">
     <Files>
-      <File FileName="punto.gui\VenderProductosDialog.cs" Line="288" Column="24" />
+      <File FileName="punto.gui/Familiaproductosdialog.cs" Line="33" Column="2" />
+      <File FileName="punto.gui/PrincipalWindow.cs" Line="144" Column="1" />
+      <File FileName="punto.gui/IngresarProductosDialog.cs" Line="37" Column="5" />
+      <File FileName="punto.gui/VenderProductosDialog.cs" Line="8" Column="2" />
+      <File FileName="punto.gui/PagoChequeDialog.cs" Line="31" Column="5" />
+      <File FileName="punto.gui/ConsultaPrecioDialog.cs" Line="25" Column="3" />
+      <File FileName="punto.gui/PagarDialog.cs" Line="1" Column="1" />
+      <File FileName="punto.gui/PagoTarjetaDialog.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

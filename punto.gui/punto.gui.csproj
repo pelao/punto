@@ -66,11 +66,10 @@
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\pto\sesion.png" />
+    <EmbeddedResource Include="..\pto\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
-    <Compile Include="basedatosdialog.cs" />
-    <Compile Include="gtk-gui\punto.gui.basedatosdialog.cs" />
     <Compile Include="gtk-gui\punto.gui.familiaproductosdialog.cs" />
     <Compile Include="PrincipalWindow.cs" />
     <Compile Include="gtk-gui\punto.gui.PrincipalWindow.cs" />

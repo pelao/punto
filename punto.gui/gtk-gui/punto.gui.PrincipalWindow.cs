@@ -105,7 +105,7 @@ namespace punto.gui
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
 			// Container child vbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction2' action='SesionAction2'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction1' action='ProductosAction1'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuariosAction1' action='UsuariosAction1'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction2' action='SesionAction2'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction1' action='ProductosAction1'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuariosAction1' action='UsuariosAction1'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox3.Add (this.menubar1);

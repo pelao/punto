@@ -19,12 +19,13 @@ namespace punto.gui
 		private Gtk.ListStore listaventa;
 		
 		
-		//	public event EventHandler<EdicionDialogChangedEventArgs> EdicionDialogChanged;
+	
 		private bool cambiado = false;
 		public	int preciototal = 0;
 		private string boleta;
 		public int cantidad = 1 ;
 		public string usuarioLogin;
+		private string nivelUsuario;
 		
 		public VenderProductosDialog (string usuario)
 		{
@@ -34,7 +35,21 @@ namespace punto.gui
 			this.Build ();
 			this.db = new ControladorBaseDatos ();
 			bool correcta = false;
+
+			nivelUsuario = db.ObtenerNivelUsuarioBd(usuarioLogin);
 			
+			if(nivelUsuario.Equals("Cajero"))
+			{
+				ProductosAction.Visible = false;
+				UsuarioAction.Visible = false;
+			}
+
+			labelNombreCajero.Text = usuarioLogin.ToString();
+			labelFecha.ModifyFont (Pango.FontDescription.FromString ("Courier bold 15"));
+			labelFecha.Text = "Fecha: "+DateTime.Now.ToShortDateString();
+
+		
+
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
 			} catch (Exception ex) {
@@ -42,8 +57,7 @@ namespace punto.gui
 			}
 			if (!correcta) {
 				
-				basedatosdialog bdd = new basedatosdialog (this);
-				bdd.Run ();
+
 				this.db = null;
 				this.db = new ControladorBaseDatos ();
 				
@@ -475,6 +489,12 @@ namespace punto.gui
 		}
 
 
+		protected void OnLabelHoraWidgetEvent (object o, WidgetEventArgs args)
+		{
+			labelHora.ModifyFont (Pango.FontDescription.FromString ("Courier bold 20"));
+			labelHora.Text = "Hora: "+DateTime.Now.ToLongTimeString();
+
+		}
 	}
 	
 }

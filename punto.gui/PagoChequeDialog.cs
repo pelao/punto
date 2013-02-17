@@ -28,8 +28,7 @@ namespace punto.gui
 			if (!correcta)
 			{
 
-				basedatosdialog bdd = new basedatosdialog(this);
-				bdd.Run();
+
 				this.db = null;
 				this.db = new ControladorBaseDatos();
 				

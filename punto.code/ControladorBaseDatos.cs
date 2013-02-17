@@ -9,21 +9,53 @@ namespace punto.code
 {
 	public class ControladorBaseDatos
 	{
-		private string _server;
-		private string _database;
-		private string _user;
-		private string _password;
+		private string servidor;
+		private string basedatos;
+		private string usuario;
+		private string contraseña;
 
 		public ControladorBaseDatos ()
 		{
+			/*
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
 			this.Server = config.AppSettings.Settings["BdServer"].Value;
 			this.Database = config.AppSettings.Settings["BdDatabase"].Value;
 			this.User = config.AppSettings.Settings["BdUser"].Value;
 			this.Password = config.AppSettings.Settings["BdPassword"].Value;
+			*/
+
+			this.Servidor = "127.0.0.1";
+			this.BaseDatos = "punto";
+			this.Usuario = "root";
+			this.Contraseña = "";
 
 		}
+
+		public string Servidor
+		{
+			get {return this.servidor;}
+			set {this.servidor = value;}
+		}
+		public string BaseDatos
+		{
+			get {return this.basedatos;}
+			set {this.basedatos = value;}
+		}
+		
+		public string Usuario
+		{
+			get {return this.usuario;}
+			set {this.usuario = value;}
+		}
+		
+		public string Contraseña
+		{
+			get {return this.contraseña;}
+			set {this.contraseña = value;}
+		}
+
+
 		public bool AgregarFamiliaBd (FamiliaProducto familia)
 		{
 			if (!this.ExisteFamiliaBd(familia))
@@ -755,7 +787,7 @@ namespace punto.code
 			return valor;
 		}
 
-		public void GuardarConfiguracionBd ()
+/*		public void GuardarConfiguracionBd ()
 		{	
 			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 			config.AppSettings.Settings["BdServer"].Value = this.Server;
@@ -764,13 +796,14 @@ namespace punto.code
 			config.AppSettings.Settings["BdPassword"].Value = this.Password;
 			config.Save(ConfigurationSaveMode.Modified);
 		}
+*/
 		private IDbConnection ConectarBd ()
 		{
 			string connectionString =
-				"Server="+this.Server+";" +
-					"Database="+this.Database+";" +
-					"User ID="+this.User+";" +
-					"Password="+this.Password+";" +
+				"Server="+this.Servidor+";" +
+					"Database="+this.BaseDatos+";" +
+					"User ID="+this.Usuario+";" +
+					"Password="+this.Contraseña+";" +
 					"Pooling=false;" +
 					"Allow Zero Datetime=true;";
 			
@@ -792,27 +825,6 @@ namespace punto.code
 			return true;
 		}
 		
-		public string Server
-		{
-			get {return this._server;}
-			set {this._server = value;}
-		}
-		public string Database
-		{
-			get {return this._database;}
-			set {this._database = value;}
-		}
-		
-		public string User
-		{
-			get {return this._user;}
-			set {this._user = value;}
-		}
-		
-		public string Password
-		{
-			get {return this._password;}
-			set {this._password = value;}
-		}
+	
 	}
 }

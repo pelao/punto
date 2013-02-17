@@ -211,7 +211,6 @@ namespace punto.gui
 			this.frame3.Add (this.GtkAlignment2);
 			this.GtkLabel3 = new global::Gtk.Label ();
 			this.GtkLabel3.Name = "GtkLabel3";
-			this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>GtkFrame</b>");
 			this.GtkLabel3.UseMarkup = true;
 			this.frame3.LabelWidget = this.GtkLabel3;
 			w1.Add (this.frame3);
@@ -281,6 +280,7 @@ namespace punto.gui
 			}
 			this.DefaultWidth = 404;
 			this.DefaultHeight = 292;
+			this.buttonCancel.Hide ();
 			this.Show ();
 			this.cambiarfamilabutton.Clicked += new global::System.EventHandler (this.OnCambiarfamilabuttonClicked);
 			this.buttonOk.Clicked += new global::System.EventHandler (this.OnButtonOkClicked);

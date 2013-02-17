@@ -30,28 +30,7 @@ namespace punto.gui
 			{
 				correcta = false;
 			}
-			if (!correcta)
-			{
-				basedatosdialog bdd = new basedatosdialog(this);
-				bdd.Run();
-				this.db = null;
-				this.db = new ControladorBaseDatos();
-				
-				correcta = false;
-				
-				try {
-					correcta = this.db.ConfiguracionCorrectaBd;
-				}
-				catch (Exception ex)
-				{
-					correcta = false;
-				}
-				
-				if(!correcta)
-				{
-					Application.Quit();
-				}
-			}
+	
 			
 		
 			
