@@ -309,38 +309,69 @@ namespace punto.gui
 
 			if ( args.Event.Key ==Gdk.Key.Return) {
 				productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ()))); /*se agrega a una lista del tipo Produc el precio,nombre de un producto ingresado por codigo de barra*/
+				Console.WriteLine("lista:"+productoventa.Count);
 				foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
 					int contador = 0;
 					String x = i.getCodigo ();
 					String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
 					String prec = i.getPrecio ();
-					if (!x.Equals ("")) {
-						foreach (Produc j in productoventa) {/*se hace un segundo for para hacer la comparacion*/
-							if (x.Equals (j.getCodigo ())) {
-								contador++;					/*si se repite el la cantidad de productos se agumenta*/
+			//		if (!x.Equals ("")) {
+			//			foreach (Produc j in productoventa) {/*se hace un segundo for para hacer la comparacion*/
+			//				if (x.Equals (j.getCodigo ())) {
+			//					contador++;					/*si se repite el la cantidad de productos se agumenta*/
 								//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
-							}
-						}
+			//				}
+			//			}
 						listapago.Add (new Produc (x, nom, prec, contador)); /*se agrega a otra lista el codigo de barra,nombre,precio,cantidad de productos*/
 				
 						
-					}
+			//		}
 				}
-				int valor=0;
-				String nombre="" ;
-				String precio="" ;
-				foreach (Produc k in listapago) {  		/*recorro la lista en la cual se agregaron productos para sacar el valor de la ultima iteracion, seria como hacer un isChild() para recorrer un arbol y sacar el ultimo valor de la cantidad de productos repetidos*/
-					valor= Math.Max(0,k.getCantidad());	/*saco la cantidad total para agregar al liststore*/
-					nombre=k.getNombre();						  /*nombre*/
-					precio=k.getPrecio();						 /*precio*/
-				}
-				TreeIter tmpIter = new TreeIter ();
 
 				treeviewListaProductos.Model = this.ventamodel;
+				int valor=1;
+				String nombre="" ;
+				String precio="" ;
+				foreach (Produc k in listapago) {
+					valor= Math.Max(0,k.getCantidad());
+					nombre=k.getNombre();
+					precio=k.getPrecio();
+					
+				}
+				Console.WriteLine (valor);
 				
-				listaventa.AppendValues(valor,nombre, precio);
-				ventamodel.AppendValues(valor,nombre, precio);
+				//ventamodel.AppendValues(valor,nombre, precio);
+				
+				Produc bod = this.productoventa.ToArray () [productoventa.Count - 1];
+				TreeIter tmpIter = new TreeIter ();
+				ventamodel.GetIterFirst (out tmpIter);
+				
+				string item = (string)ventamodel.GetValue (tmpIter, 1); // este es el primer elemento
+				
+	//			if (bod.Nombre == item) {
+	//				cantidad = cantidad + 1;
+	//				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
+					
+					ventamodel.SetValue (tmpIter, 0, 1);
+					//ventamodel.Remove (ref tmpIter);
+	//			} 
+				preciototal = preciototal + Int32.Parse (bod.Precio);
+				labelTotalVenta.Text = preciototal.ToString ();
+	//			while (ventamodel.IterNext(ref tmpIter)) {
+	//				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
+	//				if (bod.Nombre == item) {
+	//					cantidad = cantidad + 1;
+	//					ventamodel.SetValue (tmpIter, 0, cantidad);
+				//		ventamodel.Remove (ref tmpIter);
+						
+	//				} else {
+	//					ventamodel.GetValue(tmpIter,0);
+	//					ventamodel.SetValue (tmpIter ,0,cantidad);
+	//				}
+	//			}
+				ventamodel.AppendValues(1,nombre, precio);
 				entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
+
 
 			}
 		}
