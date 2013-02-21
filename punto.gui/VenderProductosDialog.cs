@@ -113,7 +113,7 @@ namespace punto.gui
 			entryNumBoleta.Text = boleta;
 			Console.WriteLine (entryNumBoleta.Text);
 			
-			this.treeviewListaProductos.Selection.Changed += TreeView2SelectionChanged;
+		//	this.treeviewListaProductos.Selection.Changed += TreeView2SelectionChanged;
 			
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
@@ -155,80 +155,8 @@ namespace punto.gui
 		}
 	
 		
-		public void CargarProductos ()
-		{
-			productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ())));
-			foreach (Produc i in productoventa) {
-				int contador = 0;
-				String x = i.getCodigo ();
-				String nom = i.getNombre ();
-				String prec = i.getPrecio ();
-				foreach (Produc j in productoventa) {
-					if (x.Equals (j.getCodigo ())) {
-						contador++;
-						//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
-					}
-					listapago.Add (new Produc (x, nom, prec, contador));
-					Console.WriteLine ((x + " se repite " + contador));
-				}
-			}
-			treeviewListaProductos.Model = this.ventamodel;
+	
 
-
-			/*
-			if (bod.Nombre == item) {
-				cantidad = cantidad + 1;
-				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
-
-				ventamodel.SetValue (tmpIter, 0, cantidad);
-				ventamodel.Remove (ref tmpIter);
-			} 
-			preciototal = preciototal + Int32.Parse (bod.Precio);
-			labelTotalVenta.Text = preciototal.ToString ();
-			while (ventamodel.IterNext(ref tmpIter)) {
-				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
-				if (bod.Nombre == item) {
-
-					cantidad = cantidad + 1;
-					ventamodel.SetValue (tmpIter, 0, cantidad);
-					ventamodel.Remove (ref tmpIter);
-
-				} else {
-					ventamodel.GetValue(tmpIter,0);
-					ventamodel.SetValue (tmpIter ,0,cantidad);
-
-				}
-			}
-			ventamodel.AppendValues (cantidad, bod.Nombre, bod.Precio);
-			treeviewListaProductos.Model = this.ventamodel;
-*/
-		}
-
-		protected void TreeView2SelectionChanged (object sender, EventArgs args)
-		{	
-			Gtk.TreeIter iter;
-			TreeModel model;
-			if (this.treeviewListaProductos.Selection.GetSelected (out model, out iter)) {
-				//model.SetValue(iter, 0, 1);
-				//model.SetValue(iter, 1, "New Value");
-				
-				//this.entry1.Text = this.ventamodel.GetValue(iter, 0).ToString();
-				
-			} else {
-			}
-		}
-		//The event-invoking method that derived classes can override.
-		/*	protected virtual void OnEdicionDialogChanged(EdicionDialogChangedEventArgs e)
-		{
-
-			EventHandler<EdicionDialogChangedEventArgs> handler = EdicionDialogChanged;
-			if (handler != null)
-			{
-				
-				handler(this, e);
-			}
-		}
-	*/
 		public void  Run ()
 		{
 			base.Run ();
@@ -333,7 +261,8 @@ namespace punto.gui
 				String nombre="" ;
 				String precio="" ;
 				foreach (Produc k in listapago) {
-					valor= Math.Max(0,k.getCantidad());
+					//valor= Math.Max(0,k.getCantidad());
+					valor= 1;
 					nombre=k.getNombre();
 					precio=k.getPrecio();
 					
@@ -342,24 +271,24 @@ namespace punto.gui
 				
 				//ventamodel.AppendValues(valor,nombre, precio);
 				
-				Produc bod = this.productoventa.ToArray () [productoventa.Count - 1];
+				Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
 				TreeIter tmpIter = new TreeIter ();
 				ventamodel.GetIterFirst (out tmpIter);
 				
 				string item = (string)ventamodel.GetValue (tmpIter, 1); // este es el primer elemento
 				
-	//			if (bod.Nombre == item) {
+	//			if (prod.Nombre == item) {
 	//				cantidad = cantidad + 1;
 	//				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
 					
 					ventamodel.SetValue (tmpIter, 0, 1);
 					//ventamodel.Remove (ref tmpIter);
 	//			} 
-				preciototal = preciototal + Int32.Parse (bod.Precio);
+				preciototal = preciototal + Int32.Parse (prod.Precio);
 				labelTotalVenta.Text = preciototal.ToString ();
 	//			while (ventamodel.IterNext(ref tmpIter)) {
 	//				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
-	//				if (bod.Nombre == item) {
+	//				if (prod.Nombre == item) {
 	//					cantidad = cantidad + 1;
 	//					ventamodel.SetValue (tmpIter, 0, cantidad);
 				//		ventamodel.Remove (ref tmpIter);
@@ -369,7 +298,7 @@ namespace punto.gui
 	//					ventamodel.SetValue (tmpIter ,0,cantidad);
 	//				}
 	//			}
-				ventamodel.AppendValues(1,nombre, precio);
+				ventamodel.AppendValues(valor,nombre, precio);
 				entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
 
