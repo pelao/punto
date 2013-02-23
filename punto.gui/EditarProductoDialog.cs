@@ -47,7 +47,7 @@ namespace punto.gui
 		public event EventHandler<EditarProductoDialogChangedEventArgs> EditarProductoDialogdChanged;
 		
 		
-		public EditarProductoDialog (Gtk.Window parent, string nombre, string precio,string familia) : base ("Editar Especificación", parent, Gtk.DialogFlags.DestroyWithParent)
+		public EditarProductoDialog (Gtk.Window parent, string nombre, string precio,string familia) : base ("Editar producto", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.Build ();
 			this.db = new ControladorBaseDatos();

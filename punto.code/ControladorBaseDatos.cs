@@ -158,7 +158,7 @@ namespace punto.code
 
 			string sql =
 				"INSERT INTO venta (idventa,fecha_venta,total,tipo_pago,cambio,usuarios_userlogin,anulada) " +
-					"VALUES ('"+venta.Idventa+"','"+venta.Var_fecha+"','"+venta.Total+"','"+venta.Tipo_pago+"','"+venta.Cambio+"','"+venta.Usuarios_userlogin+"','"+venta.Anulada+"');";
+					"VALUES ('"+venta.Idventa+"',now(),'"+venta.Total+"','"+venta.Tipo_pago+"','"+venta.Cambio+"','"+venta.Usuarios_userlogin+"','"+venta.Anulada+"');commit;";
 		
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();

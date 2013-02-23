@@ -236,7 +236,7 @@ namespace punto.gui
 			Gtk.TreeIter iter;
 			if (this.FamiliaProductosTreeview.Selection.GetSelected(out iter))
 			{
-				//especificacionesmodel.GetValue(iter,0).ToString();
+
 				Dialog dialog = new Dialog("Quitar familia", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;

@@ -39,7 +39,7 @@ namespace punto.gui
 			ListaCombobox.AppendValues ("Cajero");
 			ListaCombobox.AppendValues ("Empleado");
 			
-			
+			this.comboboxTipoUsuario.Active = 0;
 		}
 		
 		
@@ -53,11 +53,12 @@ namespace punto.gui
 			
 			ListStore ListaCombobox = new ListStore(typeof (string));
 			
-			comboboxTipoUsuarioMod.Model = ListaCombobox;
-			
+
 			ListaCombobox.AppendValues ("Administrador");
 			ListaCombobox.AppendValues ("Cajero");
 			ListaCombobox.AppendValues ("Empleado");
+
+			this.comboboxTipoUsuarioMod.Active = 0;
 			
 			
 		}
@@ -110,6 +111,8 @@ namespace punto.gui
 				dialog.ShowAll();		
 				dialog.Run ();
 				dialog.Destroy ();
+
+				this.CargarUsuariosModificarCombobox();
 			}
 		}
 		
@@ -157,12 +160,17 @@ namespace punto.gui
 				if(tipos[i].Userlogin.Equals(comboboxUsuarioModificar.ActiveText))
 				{
 					entryUsuarioEdit.Text = tipos[i].Userlogin;
+					entryUsuarioEdit.QueueDraw();
 					entryNombreEdit.Text = tipos[i].Nombre;
+					entryNombreEdit.QueueDraw();
 					entryApellidosEdit.Text = tipos[i].Apellidos;
+					entryApellidosEdit.QueueDraw();
 					entryTelefonoEdit.Text = tipos[i].Telefono;
+					entryTelefonoEdit.QueueDraw();
 					entryRutEdit.Text = tipos[i].Rut;
+					entryRutEdit.QueueDraw();
 					entryContraseñaEdit.Text = tipos[i].Userpass;
-					
+					entryContraseñaEdit.QueueDraw();
 					comboboxTipoUsuarioMod.Clear();
 					CellRendererText cell = new CellRendererText();
 					comboboxTipoUsuarioMod.PackStart(cell, false);
@@ -192,6 +200,8 @@ namespace punto.gui
 						ListaCombobox.AppendValues ("Cajero");
 						
 					}
+					this.comboboxTipoUsuarioMod.Active = 0;
+			//		ListaCombobox.GetIterFirst(out it);
 				}		
 			}
 		}

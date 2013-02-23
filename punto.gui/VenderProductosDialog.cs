@@ -8,19 +8,15 @@ namespace punto.gui
 {
 	public partial class VenderProductosDialog : Gtk.Dialog
 	{
-		public event EventHandler TimeChanged;
-
-		public int CurrentTime;
+	
 		private ControladorBaseDatos db;
 		public List<Produc> productoventa = new List<Produc> ();
 		public List<Produc> productos = new List<Produc> ();
 		private Gtk.ListStore ventamodel;
 		public List<Produc> listapago = new List<Produc> ();
-		private Gtk.ListStore listaventa;
-		
+
 		
 	
-		private bool cambiado = false;
 		public	int preciototal = 0;
 		private string boleta;
 		public int cantidad = 1 ;
@@ -31,7 +27,6 @@ namespace punto.gui
 		{
 			this.usuarioLogin = usuario;
 			this.ventamodel = new Gtk.ListStore (typeof(int), typeof(string), typeof(string));
-			this.listaventa = new Gtk.ListStore (typeof(int), typeof(string), typeof(string));
 
 			this.Build ();
 			this.db = new ControladorBaseDatos ();
@@ -121,16 +116,7 @@ namespace punto.gui
 			
 		}
 		
-		public void Destroy ()
-		{
-#if DEBUG
-			Console.WriteLine("Destroy");
-#endif
-			GLib.ExceptionManager.UnhandledException -= ExcepcionDesconocida;
-			//	EdicionDialogChangedEventArgs args = new EdicionDialogChangedEventArgs(this.cambiado);
-			
-			base.Destroy ();
-		}
+
 		
 		private void ExcepcionDesconocida (GLib.UnhandledExceptionArgs e)
 		{
@@ -155,14 +141,7 @@ namespace punto.gui
 		}
 	
 		
-	
 
-		public void  Run ()
-		{
-			base.Run ();
-			Console.WriteLine ("entra aqui");
-			
-		}
 		
 		protected void OnButton85Clicked (object sender, EventArgs e)
 		{
@@ -228,78 +207,167 @@ namespace punto.gui
 			labelTotalVenta.Text = "0";
 			preciototal = 0;
 		}
+
 		[GLib.ConnectBefore ()] 
 
 		protected void OnEntryCodigoBarraKeyPressEvent (object o, Gtk.KeyPressEventArgs args)
 		{
+			string codigoBarra = "";
+			string asterisco = "";
+
+
+			string cant = "";
+
 			Console.WriteLine ("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
 			Console.WriteLine("DEBUG: KeyValue: " + args.Event.KeyValue);
 
 			if ( args.Event.Key ==Gdk.Key.Return) {
-				productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ()))); /*se agrega a una lista del tipo Produc el precio,nombre de un producto ingresado por codigo de barra*/
-				Console.WriteLine("lista:"+productoventa.Count);
-				foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
-					int contador = 0;
-					String x = i.getCodigo ();
-					String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
-					String prec = i.getPrecio ();
-			//		if (!x.Equals ("")) {
-			//			foreach (Produc j in productoventa) {/*se hace un segundo for para hacer la comparacion*/
-			//				if (x.Equals (j.getCodigo ())) {
-			//					contador++;					/*si se repite el la cantidad de productos se agumenta*/
-								//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
-			//				}
-			//			}
+
+				// caso 1: se ingresa la cantidad de productos
+				// luego un * y seguido el codigo de barra
+				// del producto, la cantidad sera el numero
+				// que antecede al signo *
+
+				int posAsterisco = 0;
+				if(entryCodigoBarra.Text.Trim().Length > 13){
+
+					codigoBarra = entryCodigoBarra.Text.Trim ();
+					posAsterisco = codigoBarra.IndexOf('*');
+					asterisco = codigoBarra.Substring(posAsterisco,posAsterisco);
+					cant = codigoBarra.Substring (0,posAsterisco);
+				    if(cant.Length < 1)
+					{
+						cant = "1";
+					}
+					Console.WriteLine("Cantidad: "+cant);
+					Console.WriteLine("posAsterisco: "+posAsterisco);
+					Console.WriteLine("asterisco: "+asterisco);
+					Console.WriteLine("Largo codigo barra: "+codigoBarra.Length);
+
+					Console.WriteLine("Codigo Barra: "+codigoBarra.Substring(posAsterisco+1,13));
+
+					Produc n_prod = this.db.ObtenerProductosVenta ((codigoBarra.Substring(posAsterisco+1,13)));
+					n_prod.setCantidad( Int32.Parse(cant));
+					productoventa.Add (n_prod);
+
+					//**************
+
+					Console.WriteLine("lista:"+productoventa.Count);
+					foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
+						int contador = 0;
+						String x = i.getCodigo ();
+						String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
+						String prec = i.getPrecio ();
+			
 						listapago.Add (new Produc (x, nom, prec, contador)); /*se agrega a otra lista el codigo de barra,nombre,precio,cantidad de productos*/
-				
+					}
+					
+					treeviewListaProductos.Model = this.ventamodel;
+					// valor es la cantidad de producto que lleva el cliente
+					int valor=0;
+					String nombre="" ;
+					String precio="" ;
+					valor= Int32.Parse(cant);
+					foreach (Produc k in listapago) {
+						//valor= Int32.Parse(cant);
+						nombre=k.getNombre();
+						precio=k.getPrecio();
 						
-			//		}
+					}
+					Console.WriteLine (valor);
+
+					Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
+					TreeIter tmpIter = new TreeIter ();
+					ventamodel.GetIterFirst (out tmpIter);
+					
+					string item = (string)ventamodel.GetValue (tmpIter, 1); 
+	
+					//ventamodel.SetValue (tmpIter, 0, 1);
+
+					preciototal = preciototal + (Int32.Parse (prod.Precio)*prod.getCantidad());
+					labelTotalVenta.Text = preciototal.ToString ();
+					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
+					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
+
+
+					//**************
+
+
+				}
+				else{
+
+					// caso2: se listan los productos con cantidad 1
+					Produc n_prod = this.db.ObtenerProductosVenta (entryCodigoBarra.Text.Trim ());
+					n_prod.setCantidad(1);
+					productoventa.Add (n_prod);
+				//	productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ()))); /*se agrega a una lista del tipo Produc el precio,nombre de un producto ingresado por codigo de barra*/
+					Console.WriteLine("lista:"+productoventa.Count);
+					foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
+						int contador = 0;
+						String x = i.getCodigo ();
+						String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
+						String prec = i.getPrecio ();
+						//		if (!x.Equals ("")) {
+						//			foreach (Produc j in productoventa) {/*se hace un segundo for para hacer la comparacion*/
+						//				if (x.Equals (j.getCodigo ())) {
+						//					contador++;					/*si se repite el la cantidad de productos se agumenta*/
+						//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
+						//				}
+						//			}
+						listapago.Add (new Produc (x, nom, prec, contador)); /*se agrega a otra lista el codigo de barra,nombre,precio,cantidad de productos*/
+						
+						
+						//		}
+					}
+					
+					treeviewListaProductos.Model = this.ventamodel;
+					int valor=1;
+					String nombre="" ;
+					String precio="" ;
+					foreach (Produc k in listapago) {
+						//valor= Math.Max(0,k.getCantidad());
+						valor= 1;
+						nombre=k.getNombre();
+						precio=k.getPrecio();
+						
+					}
+					Console.WriteLine (valor);
+					
+					//ventamodel.AppendValues(valor,nombre, precio);
+					
+					Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
+					TreeIter tmpIter = new TreeIter ();
+					ventamodel.GetIterFirst (out tmpIter);
+					
+					string item = (string)ventamodel.GetValue (tmpIter, 1);
+					
+					//			if (prod.Nombre == item) {
+					//				cantidad = cantidad + 1;
+					//				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
+					
+					//ventamodel.SetValue (tmpIter, 0, 1);
+					//ventamodel.Remove (ref tmpIter);
+					//			} 
+					preciototal = preciototal + Int32.Parse (prod.Precio);
+					labelTotalVenta.Text = preciototal.ToString ();
+					//			while (ventamodel.IterNext(ref tmpIter)) {
+					//				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
+					//				if (prod.Nombre == item) {
+					//					cantidad = cantidad + 1;
+					//					ventamodel.SetValue (tmpIter, 0, cantidad);
+					//		ventamodel.Remove (ref tmpIter);
+					
+					//				} else {
+					//					ventamodel.GetValue(tmpIter,0);
+					//					ventamodel.SetValue (tmpIter ,0,cantidad);
+					//				}
+					//			}
+					ventamodel.AppendValues(valor,nombre, precio);
+					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
+
+
 				}
 
-				treeviewListaProductos.Model = this.ventamodel;
-				int valor=1;
-				String nombre="" ;
-				String precio="" ;
-				foreach (Produc k in listapago) {
-					//valor= Math.Max(0,k.getCantidad());
-					valor= 1;
-					nombre=k.getNombre();
-					precio=k.getPrecio();
-					
-				}
-				Console.WriteLine (valor);
-				
-				//ventamodel.AppendValues(valor,nombre, precio);
-				
-				Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
-				TreeIter tmpIter = new TreeIter ();
-				ventamodel.GetIterFirst (out tmpIter);
-				
-				string item = (string)ventamodel.GetValue (tmpIter, 1); // este es el primer elemento
-				
-	//			if (prod.Nombre == item) {
-	//				cantidad = cantidad + 1;
-	//				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
-					
-					ventamodel.SetValue (tmpIter, 0, 1);
-					//ventamodel.Remove (ref tmpIter);
-	//			} 
-				preciototal = preciototal + Int32.Parse (prod.Precio);
-				labelTotalVenta.Text = preciototal.ToString ();
-	//			while (ventamodel.IterNext(ref tmpIter)) {
-	//				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
-	//				if (prod.Nombre == item) {
-	//					cantidad = cantidad + 1;
-	//					ventamodel.SetValue (tmpIter, 0, cantidad);
-				//		ventamodel.Remove (ref tmpIter);
-						
-	//				} else {
-	//					ventamodel.GetValue(tmpIter,0);
-	//					ventamodel.SetValue (tmpIter ,0,cantidad);
-	//				}
-	//			}
-				ventamodel.AppendValues(valor,nombre, precio);
-				entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
 
 			}

@@ -229,7 +229,7 @@ namespace punto.gui
 		string nomA="";
 		string fami="";
 	
-		protected void OnEditarEspecificacion ()
+		protected void OnEditarProducto ()
 		{
 
 			Gtk.TreeIter iter;
@@ -242,12 +242,12 @@ namespace punto.gui
 				nomA =nombre;
 				fami=familia;
 				EditarProductoDialog esp = new EditarProductoDialog (this, nombre, precio,familia);
-				esp.EditarProductoDialogdChanged += OnEditarEspecificacionDialogOldChanged;
+				esp.EditarProductoDialogdChanged += OnEditarProductoDialogOldChanged;
 				esp.Run ();
 			}
 		}
 
-		protected void OnEditarEspecificacionDialogOldChanged (object sender, EditarProductoDialogChangedEventArgs args)
+		protected void OnEditarProductoDialogOldChanged (object sender, EditarProductoDialogChangedEventArgs args)
 		{
 			Gtk.TreeIter iter;
 			if (treeviewModificarProducto.Selection.GetSelected(out iter))
@@ -262,7 +262,7 @@ namespace punto.gui
 
 		protected void OnBotonEditarClicked (object sender, EventArgs e)
 		{
-			this.OnEditarEspecificacion();
+			this.OnEditarProducto();
 		}
 
 	

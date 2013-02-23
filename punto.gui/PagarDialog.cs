@@ -180,8 +180,10 @@ namespace punto.gui
 					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].getNombre().Trim()));
 										
 					Console.WriteLine(codigoBarra);
-										
-					db.AgregarVentaDetalleBd(Int32.Parse(numBoleta),codigoBarra);
+					for(int j=0; j<listaPago_[i].getCantidad(); j++){ 	
+						db.AgregarVentaDetalleBd(Int32.Parse(numBoleta),codigoBarra);
+					}
+
 					
 				}
 			}
@@ -189,7 +191,7 @@ namespace punto.gui
 			{
 				Console.WriteLine("Excepcion:--->"+ex);
 			}
-
+			buttonPagar.Sensitive = false;
 			this.buttonOk.IsFocus=true;
 
 		}
@@ -215,6 +217,9 @@ namespace punto.gui
 					PagoTarjeta.Destroy ();
 #if DEBUG
 
+	
+
+	
 
 					Console.WriteLine (ex.Message);
 #endif
