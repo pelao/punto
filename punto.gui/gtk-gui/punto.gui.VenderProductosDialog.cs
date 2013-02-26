@@ -456,7 +456,6 @@ namespace punto.gui
 			this.RegistrarEditarAction.Activated += new global::System.EventHandler (this.OnIngresarEditarProductosActionActivated);
 			this.FamiliaProductosAction.Activated += new global::System.EventHandler (this.OnFamiliaProductosActionActivated);
 			this.RegistrarEditarAction1.Activated += new global::System.EventHandler (this.OnRegistrarEditarUsuarioActionActivated);
-			this.labelHora.WidgetEvent += new global::Gtk.WidgetEventHandler (this.OnLabelHoraWidgetEvent);
 			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryCodigoBarraKeyPressEvent);
 			this.entryNumBoleta.TextInserted += new global::Gtk.TextInsertedHandler (this.OnEntry2TextInserted);
 			this.buttonEdit1.Clicked += new global::System.EventHandler (this.OnButton85Clicked);

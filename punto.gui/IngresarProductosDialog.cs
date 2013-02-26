@@ -190,7 +190,8 @@ namespace punto.gui
 				dialog.ShowAll();
 				dialog.Run ();
 				dialog.Destroy ();
-				
+
+				this.CargarProductos();
 				}
 		
 		

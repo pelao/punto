@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Gtk;
 using punto.code;
+using GLib;
 
 namespace punto.gui
 {
@@ -44,7 +45,7 @@ namespace punto.gui
 			labelFecha.ModifyFont (Pango.FontDescription.FromString ("Courier bold 15"));
 			labelFecha.Text = "Fecha: "+DateTime.Now.ToShortDateString();
 
-		
+
 
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
@@ -229,13 +230,16 @@ namespace punto.gui
 				// que antecede al signo *
 
 				int posAsterisco = 0;
-				if(entryCodigoBarra.Text.Trim().Length > 13){
-
+				if(entryCodigoBarra.Text.Trim().Length > 13 ||
+				   entryCodigoBarra.Text.Trim().Length == 10 ||
+				   entryCodigoBarra.Text.Trim().Length == 11){
+					
 					codigoBarra = entryCodigoBarra.Text.Trim ();
+					
 					posAsterisco = codigoBarra.IndexOf('*');
 					asterisco = codigoBarra.Substring(posAsterisco,posAsterisco);
 					cant = codigoBarra.Substring (0,posAsterisco);
-				    if(cant.Length < 1)
+					if(cant.Length < 1)
 					{
 						cant = "1";
 					}
@@ -243,10 +247,11 @@ namespace punto.gui
 					Console.WriteLine("posAsterisco: "+posAsterisco);
 					Console.WriteLine("asterisco: "+asterisco);
 					Console.WriteLine("Largo codigo barra: "+codigoBarra.Length);
-
-					Console.WriteLine("Codigo Barra: "+codigoBarra.Substring(posAsterisco+1,13));
-
-					Produc n_prod = this.db.ObtenerProductosVenta ((codigoBarra.Substring(posAsterisco+1,13)));
+					Console.WriteLine("Codigo Barra: "+codigoBarra.Substring(posAsterisco+1,(entryCodigoBarra.Text.Trim().Length-(cant.Length+1)) ));
+					Console.WriteLine("largo desconocido"+posAsterisco+codigoBarra.Length);
+					Console.WriteLine("resultado"+(entryCodigoBarra.Text.Trim().Length-(cant.Length+1)));
+					
+					Produc n_prod = this.db.ObtenerProductosVenta ((codigoBarra.Substring(posAsterisco+1,(entryCodigoBarra.Text.Trim().Length-(cant.Length+1)))));
 					n_prod.setCantidad( Int32.Parse(cant));
 					productoventa.Add (n_prod);
 
@@ -269,7 +274,7 @@ namespace punto.gui
 					String precio="" ;
 					valor= Int32.Parse(cant);
 					foreach (Produc k in listapago) {
-						//valor= Int32.Parse(cant);
+						//= Int32.Parse(cant);
 						nombre=k.getNombre();
 						precio=k.getPrecio();
 						
@@ -282,7 +287,6 @@ namespace punto.gui
 					
 					string item = (string)ventamodel.GetValue (tmpIter, 1); 
 	
-					//ventamodel.SetValue (tmpIter, 0, 1);
 
 					preciototal = preciototal + (Int32.Parse (prod.Precio)*prod.getCantidad());
 					labelTotalVenta.Text = preciototal.ToString ();
@@ -300,24 +304,14 @@ namespace punto.gui
 					Produc n_prod = this.db.ObtenerProductosVenta (entryCodigoBarra.Text.Trim ());
 					n_prod.setCantidad(1);
 					productoventa.Add (n_prod);
-				//	productoventa.Add (this.db.ObtenerProductosVenta ((entryCodigoBarra.Text.Trim ()))); /*se agrega a una lista del tipo Produc el precio,nombre de un producto ingresado por codigo de barra*/
 					Console.WriteLine("lista:"+productoventa.Count);
 					foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
 						int contador = 0;
 						String x = i.getCodigo ();
 						String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
 						String prec = i.getPrecio ();
-						//		if (!x.Equals ("")) {
-						//			foreach (Produc j in productoventa) {/*se hace un segundo for para hacer la comparacion*/
-						//				if (x.Equals (j.getCodigo ())) {
-						//					contador++;					/*si se repite el la cantidad de productos se agumenta*/
-						//ventamodel.AppendValues(contador, j.getNombre(), j.getPrecio());
-						//				}
-						//			}
 						listapago.Add (new Produc (x, nom, prec, contador)); /*se agrega a otra lista el codigo de barra,nombre,precio,cantidad de productos*/
 						
-						
-						//		}
 					}
 					
 					treeviewListaProductos.Model = this.ventamodel;
@@ -325,15 +319,11 @@ namespace punto.gui
 					String nombre="" ;
 					String precio="" ;
 					foreach (Produc k in listapago) {
-						//valor= Math.Max(0,k.getCantidad());
 						valor= 1;
 						nombre=k.getNombre();
 						precio=k.getPrecio();
 						
 					}
-					Console.WriteLine (valor);
-					
-					//ventamodel.AppendValues(valor,nombre, precio);
 					
 					Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
 					TreeIter tmpIter = new TreeIter ();
@@ -341,28 +331,11 @@ namespace punto.gui
 					
 					string item = (string)ventamodel.GetValue (tmpIter, 1);
 					
-					//			if (prod.Nombre == item) {
-					//				cantidad = cantidad + 1;
-					//				Console.WriteLine(ventamodel.GetValue (tmpIter, 0));
-					
-					//ventamodel.SetValue (tmpIter, 0, 1);
-					//ventamodel.Remove (ref tmpIter);
-					//			} 
+		
 					preciototal = preciototal + Int32.Parse (prod.Precio);
 					labelTotalVenta.Text = preciototal.ToString ();
-					//			while (ventamodel.IterNext(ref tmpIter)) {
-					//				item = (string)ventamodel.GetValue (tmpIter, 1); // los demás elementos
-					//				if (prod.Nombre == item) {
-					//					cantidad = cantidad + 1;
-					//					ventamodel.SetValue (tmpIter, 0, cantidad);
-					//		ventamodel.Remove (ref tmpIter);
-					
-					//				} else {
-					//					ventamodel.GetValue(tmpIter,0);
-					//					ventamodel.SetValue (tmpIter ,0,cantidad);
-					//				}
-					//			}
-					ventamodel.AppendValues(valor,nombre, precio);
+			
+					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
 					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
 
@@ -490,12 +463,21 @@ namespace punto.gui
 		}
 
 
-		protected void OnLabelHoraWidgetEvent (object o, WidgetEventArgs args)
+		protected void OnLabelHoraEvent (object o, WidgetEventArgs args)
 		{
 			labelHora.ModifyFont (Pango.FontDescription.FromString ("Courier bold 20"));
 			labelHora.Text = "Hora: "+DateTime.Now.ToLongTimeString();
 
 		}
+
+
+		protected void OnLabelHora (object sender, EventArgs e)
+		{
+			labelHora.ModifyFont (Pango.FontDescription.FromString ("Courier bold 20"));
+			labelHora.Text = "Hora: "+DateTime.Now.ToLongTimeString();
+		}
+
+	
 	}
 	
 }
