@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Gtk;
 using punto.code;
 using GLib;
+using System.IO;
 
 namespace punto.gui
 {
@@ -215,10 +216,11 @@ namespace punto.gui
 		{
 			string codigoBarra = "";
 			string asterisco = "";
-
-
+			string recoPesa ="";
+			string tipoProd ="";
 			string cant = "";
-
+			string precioprod = "";
+			string codigobarracorto="";
 			Console.WriteLine ("entra al OnEntry1KeyPressEvent1 de OnEntryCodigoBarraKeyPressEvent ");
 			Console.WriteLine("DEBUG: KeyValue: " + args.Event.KeyValue);
 
@@ -230,10 +232,67 @@ namespace punto.gui
 				// que antecede al signo *
 
 				int posAsterisco = 0;
-				if(entryCodigoBarra.Text.Trim().Length > 13 ||
+					if(Int32.Parse(entryCodigoBarra.Text.Trim().Substring(0,1))==2 &&
+				  		 entryCodigoBarra.Text.Trim().Substring(0,2)!="2*"){
+						
+						codigoBarra = entryCodigoBarra.Text.Trim ();
+						
+						
+						recoPesa=codigoBarra.Substring(0,2);
+						Console.WriteLine("codigoPesa: "+recoPesa);
+						codigobarracorto=codigoBarra.Substring(0,7);
+						Console.WriteLine("codigobarracorto: "+codigobarracorto);
+						precioprod=codigoBarra.Substring(7,5);
+						Console.WriteLine("precioprod: "+precioprod);
+
+						// caso2: se listan los productos con cantidad 1
+					Produc n_prod = this.db.ObtenerProductosVenta (codigobarracorto);
+						n_prod.setCantidad(1);
+						productoventa.Add (n_prod);
+						Console.WriteLine("lista:"+productoventa.Count);
+						foreach (Produc i in productoventa) {/*se recorre esta lista con un foreach*/
+							int contador = 0;
+							String x = i.getCodigo ();
+							String nom = i.getNombre ();/*se guarda un registro para luego hacer la comparacion*/
+						String prec = precioprod ;
+						listapago.Add (new Produc (x, nom, precioprod, contador)); /*se agrega a otra lista el codigo de barra,nombre,precio,cantidad de productos*/
+							
+						}
+						
+						treeviewListaProductos.Model = this.ventamodel;
+						int valor=1;
+						String nombre="" ;
+						String precio="" ;
+						foreach (Produc k in listapago) {
+							valor= 1;
+							nombre=k.getNombre();
+							precio=precioprod;
+							
+						}
+						
+						Produc prod = this.productoventa.ToArray () [productoventa.Count - 1];
+						TreeIter tmpIter = new TreeIter ();
+						ventamodel.GetIterFirst (out tmpIter);
+						
+						string item = (string)ventamodel.GetValue (tmpIter, 1);
+						
+						
+					preciototal = preciototal + Int32.Parse (precioprod);
+						labelTotalVenta.Text = preciototal.ToString ();
+						
+					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), precioprod);
+						entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
+						
+						
+						
+						
+
+
+				}else{
+				if((entryCodigoBarra.Text.Trim().Length > 13 ||
 				   entryCodigoBarra.Text.Trim().Length == 10 ||
-				   entryCodigoBarra.Text.Trim().Length == 11){
-					
+				   entryCodigoBarra.Text.Trim().Length == 11)){
+					//y falta para que si se ingresa
 					codigoBarra = entryCodigoBarra.Text.Trim ();
 					
 					posAsterisco = codigoBarra.IndexOf('*');
@@ -341,7 +400,7 @@ namespace punto.gui
 
 				}
 
-
+				}
 
 			}
 		}
