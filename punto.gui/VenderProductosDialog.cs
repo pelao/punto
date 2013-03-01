@@ -243,7 +243,6 @@ namespace punto.gui
 						codigobarracorto=codigoBarra.Substring(0,7);
 						Console.WriteLine("codigobarracorto: "+codigobarracorto);
 						precioprod=Int32.Parse(codigoBarra.Substring(7,5))+"";
-						string precioEntero = Int32.Parse(precioprod)+"";
 					//	Console.WriteLine("precioEntero: "+precioEntero);
 
 						// caso2: se listan los productos con cantidad 1
