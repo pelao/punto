@@ -7,20 +7,25 @@ namespace punto.code
 		private string var_tarjeta;
 		private string var_transaccion;
 		private string var_monto;
-		private DateTime var_fecha;
+		private int var_boleta;
 
 
-		public PagoTarjeta(string tarjetaNom ,string transaccionNum, string monto, DateTime fecha)
+		public PagoTarjeta(int numBoleta,string tarjetaNom ,string serie, string monto)
 		{
 			this.Tarjeta=tarjetaNom;
-			this.Transaccion=transaccionNum;
+			this.Transaccion=serie;
 			this.Monto=monto;
-			this.FECHA=fecha;
+			this.numBOLETA=numBoleta;
 		}
-		public DateTime FECHA
+		public int numBOLETA
 		{
-			get {return this.var_fecha;}
-			set {this.var_fecha = value;}
+			get {return this.var_boleta;}
+			set {
+				if (value >= 0)
+				{
+					this.var_boleta = value;
+				}
+			}
 		}
 
 		public string Tarjeta

@@ -10,21 +10,27 @@ namespace punto.code
 		private string var_plaza;
 		private string var_serie;
 		private string var_monto;
-		private DateTime var_fecha;
+		private int var_boleta;
 
-		public PagoCheque(string nomBanco ,string nombPlaza, string numSerie, string monto, DateTime fecha)
+		public PagoCheque(string nomBanco ,string nombPlaza, string monto, int numBoleta,string numSerie)
 		{
 			this.NombreBanco=nomBanco;
 			this.NombrePlaza=nombPlaza;
 			this.NumSerie=numSerie;
 			this.Monto=monto;
-			this.FECHA=fecha;
+			this.numBOLETA=numBoleta;
 
 		}
-		public DateTime FECHA
+	
+		public int numBOLETA
 		{
-			get {return this.var_fecha;}
-			set {this.var_fecha = value;}
+			get {return this.var_boleta;}
+			set {
+				if (value >= 0)
+				{
+					this.var_boleta = value;
+				}
+			}
 		}
 		public string NombreBanco
 		{

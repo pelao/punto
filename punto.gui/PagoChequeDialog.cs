@@ -7,12 +7,19 @@ using punto.code;
 namespace punto.gui
 {
 	public partial class PagoChequeDialog : Gtk.Dialog
-	{		private ControladorBaseDatos db;
+	{	private ControladorBaseDatos db;
+		private int numBoleta;
+		private List<Produc> listaPago_;
+		private string usuario_;
+		private string pagototal;
 		
-		public PagoChequeDialog (Gtk.Window parent,string monto) : base ("Pago Con Cheque", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagoChequeDialog (Gtk.Window parent,string monto, List<Produc> listapago,string usuario) : base ("Pago Con Cheque", parent, Gtk.DialogFlags.DestroyWithParent)
 			
 		{
-			
+
+			this.listaPago_ = listapago;
+			this.usuario_ = usuario;
+			this.pagototal = monto;
 			this.Build ();
 			this.db = new ControladorBaseDatos();
 			
@@ -65,8 +72,31 @@ namespace punto.gui
 		protected void OnButtonOkClicked (object sender, EventArgs e)
 		{
 			this.db = new ControladorBaseDatos();
-			
-			PagoCheque pago = new PagoCheque(comboboxBanco.ActiveText.Trim(),comboboxPlaza.ActiveText.Trim(),entryNroSerie.Text.Trim(),entryMonto.Text.Trim(),DateTime.Now);
+			numBoleta = db.ObtenerBoleta();
+			PagoCheque pago = new PagoCheque(comboboxBanco.ActiveText.Trim(),comboboxPlaza.ActiveText.Trim(),entryMonto.Text.Trim(),numBoleta,entryNroSerie.Text.Trim());
+
+			Venta nuevaVenta = new Venta(numBoleta, DateTime.Now, pagototal, "cheque", Int32.Parse("0"), usuario_, "false"); 
+			db.AgregarVentaBd(nuevaVenta);
+			try {
+				for(int i=0; i<listaPago_.Count;i++)
+				{   
+					Console.WriteLine("ANTES DE codigo barra");
+					
+					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].getNombre().Trim()));
+					
+					Console.WriteLine(codigoBarra);
+					for(int j=0; j<listaPago_[i].getCantidad(); j++){ 	
+						db.AgregarVentaDetalleBd(numBoleta,codigoBarra);
+					}
+					
+					
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Excepcion:--->"+ex);
+			}
+
 			Console.WriteLine(comboboxBanco.ActiveText.Trim());
 			Console.WriteLine(comboboxPlaza.ActiveText.Trim());
 			Console.WriteLine(entryNroSerie.Text.Trim());

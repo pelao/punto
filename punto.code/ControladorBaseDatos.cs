@@ -85,8 +85,8 @@ namespace punto.code
 			IDbConnection dbcon = this.ConectarBd();
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"INSERT INTO cheque (nomBanco,nomPlaza,numSerie,monto,fechaHora) " +
-					"VALUES ('"+registro.NombreBanco+"','"+registro.NombrePlaza+"','"+registro.NumSerie+"','"+registro.Monto+"','"+registro.FECHA+"');";
+				"INSERT INTO cheque (nombreBanco,plaza,monto,id_cheque_boleta,nroserie) " +
+					"VALUES ('"+registro.NombreBanco+"','"+registro.NombrePlaza+"','"+registro.Monto+"','"+registro.numBOLETA+"','"+registro.NumSerie+"');";
 			
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
@@ -108,8 +108,8 @@ namespace punto.code
 			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
-				"INSERT INTO tarjeta (tipoT,nroTran,monto, fechaHora) " +
-					"VALUES ('"+registro.Tarjeta+"','"+registro.Transaccion+"','"+registro.Monto+"','"+registro.FECHA+"');";
+				"INSERT INTO tarjeta (idventa,nomTarjeta,serie, monto) " +
+					"VALUES ('"+registro.numBOLETA+"','"+registro.Tarjeta+"','"+registro.Transaccion+"','"+registro.Monto+"');";
 			
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
@@ -473,7 +473,7 @@ namespace punto.code
 		}
 		public int ObtenerBoleta ()
 		{
-			int precio=0;
+			int boleta=0;
 			
 			IDbConnection dbcon = this.ConectarBd();
 			
@@ -486,7 +486,7 @@ namespace punto.code
 			IDataReader reader = dbcmd.ExecuteReader();
 			
 			while(reader.Read()) {
-				precio =   (int)reader["max(idventa)"];
+				boleta =   (int)reader["max(idventa)"]+1;
 
 			}
 			reader.Close();
@@ -496,7 +496,7 @@ namespace punto.code
 			
 			this.DesconectarBd(dbcon);
 			
-			return precio;
+			return boleta;
 		}
 
 

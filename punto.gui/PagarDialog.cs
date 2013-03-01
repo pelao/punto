@@ -14,20 +14,21 @@ namespace punto.gui
 		private int vuelto;
 		private VenderProductosDialog treviewventa;
 		private string pagototal;
-		private string numBoleta;
+		private int numBoleta;
 		private string usuario_;
 		private List<Produc> listaPago_;
 	
 
-		public PagarDialog(Gtk.Window parent,string total,string boleta, string usuario, List<Produc> listapago) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagarDialog(Gtk.Window parent,string total, string usuario, List<Produc> listapago) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
+			this.db = new ControladorBaseDatos();
 			this.pagototal=total;
-			this.numBoleta=boleta;
+
 			this.usuario_=usuario;
 			this.listaPago_=listapago;
 			this.Build ();
 			
-			this.db = new ControladorBaseDatos();
+
 			bool correcta = false;
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
@@ -109,7 +110,7 @@ namespace punto.gui
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
 		{
-			PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog(this,pagototal);
+			PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog(this,pagototal, listaPago_,usuario_);
 			try 
 			{
 				PagoTarjeta.Run();
@@ -129,7 +130,7 @@ namespace punto.gui
 
 		protected void OnButtonPagoChequeClicked (object sender, EventArgs e)
 		{
-			PagoChequeDialog PagoCheque = new PagoChequeDialog(this, pagototal);
+			PagoChequeDialog PagoCheque = new PagoChequeDialog(this, pagototal, listaPago_, usuario_);
 			try 
 			{
 				PagoCheque.Run();
@@ -150,7 +151,7 @@ namespace punto.gui
 		protected void OnButtonPagarClicked (object sender, EventArgs e)
 		{
 			ControladorBaseDatos db = new ControladorBaseDatos();
-
+			numBoleta = db.ObtenerBoleta();
 
 
 			Console.WriteLine("*************************************************");
@@ -164,7 +165,7 @@ namespace punto.gui
 			Console.WriteLine("fecha :"+DateTime.Now);
 			Console.WriteLine("*************************************************");
 		
-			Venta nuevaVenta = new Venta(Int32.Parse(numBoleta),
+			Venta nuevaVenta = new Venta(numBoleta,
 			                             DateTime.Now,
 			                             pagototal,
 			                             "efectivo",
@@ -181,7 +182,7 @@ namespace punto.gui
 										
 					Console.WriteLine(codigoBarra);
 					for(int j=0; j<listaPago_[i].getCantidad(); j++){ 	
-						db.AgregarVentaDetalleBd(Int32.Parse(numBoleta),codigoBarra);
+						db.AgregarVentaDetalleBd(numBoleta,codigoBarra);
 					}
 
 					
@@ -208,7 +209,7 @@ namespace punto.gui
 				
 			}
 			if (args.Event.Key == Gdk.Key.F3) {
-				PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog (this, pagototal);
+				PagoTarjetaDialog PagoTarjeta = new PagoTarjetaDialog (this, pagototal,listaPago_,usuario_);
 				try {
 					PagoTarjeta.Run ();
 					PagoTarjeta.Destroy ();	
@@ -230,7 +231,7 @@ namespace punto.gui
 			}
 			if (args.Event.Key == Gdk.Key.F4) {
 
-				PagoChequeDialog PagoCheque = new PagoChequeDialog (this, pagototal);
+				PagoChequeDialog PagoCheque = new PagoChequeDialog (this, pagototal, listaPago_, usuario_);
 				try {
 					PagoCheque.Run ();
 					PagoCheque.Destroy ();

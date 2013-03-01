@@ -194,7 +194,7 @@ namespace punto.gui
 			//		this.db.AgregarVentaDetalle(pago);
 			
 			
-			PagarDialog rcd = new PagarDialog (this, labelTotalVenta.Text.Trim (), entryNumBoleta.Text.Trim (), usuarioLogin, productoventa);
+			PagarDialog rcd = new PagarDialog (this, labelTotalVenta.Text.Trim (), usuarioLogin, productoventa);
 			try {
 				rcd.Run ();
 				rcd.Destroy ();
