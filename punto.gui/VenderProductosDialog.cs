@@ -107,8 +107,7 @@ namespace punto.gui
 			boleta = temp.ToString ();
 			Console.WriteLine (boleta);
 			
-			entryNumBoleta.Text = boleta;
-			Console.WriteLine (entryNumBoleta.Text);
+		
 			
 		//	this.treeviewListaProductos.Selection.Changed += TreeView2SelectionChanged;
 			
@@ -145,16 +144,7 @@ namespace punto.gui
 		
 
 		
-		protected void OnButton85Clicked (object sender, EventArgs e)
-		{
-			entryNumBoleta.IsEditable = true;
-		}
-		
-		protected void OnEntry2TextInserted (object o, TextInsertedArgs args)
-		{
-			//que hace si apreta guardar boleta
-			boleta = entryNumBoleta.Text;
-		}
+	
 		
 		void ScrollToItem (TreeIter iter)
 		{
@@ -182,12 +172,9 @@ namespace punto.gui
 			boleta = temp.ToString ();
 			Console.WriteLine (boleta);
 			
-			entryNumBoleta.Text = boleta;
-			Console.WriteLine (entryNumBoleta.Text);
 			//		Venta pago = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now,Int32.Parse(labelTotalVenta.Text.Trim()));
 			Console.WriteLine (DateTime.Now);
-			Console.WriteLine (Int32.Parse (entryNumBoleta.Text.Trim ()));
-			
+
 			
 			
 			
