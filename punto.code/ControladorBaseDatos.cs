@@ -80,6 +80,9 @@ namespace punto.code
 			}
 			return false;
 		}
+
+
+
 		public bool AgregarPagoCheque (PagoCheque registro)
 		{
 			IDbConnection dbcon = this.ConectarBd();

@@ -71,8 +71,6 @@
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="gtk-gui\punto.gui.familiaproductosdialog.cs" />
-    <Compile Include="PrincipalWindow.cs" />
-    <Compile Include="gtk-gui\punto.gui.PrincipalWindow.cs" />
     <Compile Include="IngresarProductosDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.ingresarproductosdialog.cs" />
     <Compile Include="VenderProductosDialog.cs" />
@@ -93,6 +91,8 @@
     <Compile Include="PagoTarjetaDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.PagarDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.PagoTarjetaDialog.cs" />
+    <Compile Include="EditarNumBoletaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.EditarNumBoletaDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

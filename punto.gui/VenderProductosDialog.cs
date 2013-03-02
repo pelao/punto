@@ -69,10 +69,11 @@ namespace punto.gui
 				
 			}
 			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn ();
+
 			cantidad_column.Title = "Cantidad";
 			Gtk.CellRendererText cantidad_cell = new Gtk.CellRendererText ();
 			cantidad_column.PackStart (cantidad_cell, true);
-			
+		//	cantidad_column.Width{};
 			Gtk.TreeViewColumn precio_column = new Gtk.TreeViewColumn ();
 			precio_column.Title = "Precio";
 			Gtk.CellRendererText precio_cell = new Gtk.CellRendererText ();
@@ -523,6 +524,21 @@ namespace punto.gui
 			labelHora.Text = "Hora: "+DateTime.Now.ToLongTimeString();
 		}
 
+	
+		protected void OnEditarNmeroBoletaActionActivated (object sender, EventArgs e)
+		{
+			EditarNumBoletaDialog numeroBoleta = new EditarNumBoletaDialog (usuarioLogin);
+			try {
+				numeroBoleta.Run ();
+				numeroBoleta.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				numeroBoleta.Destroy ();
+	
+				Console.WriteLine(ex.Message);
+
+				
+			}		
+		}
 	
 	}
 	

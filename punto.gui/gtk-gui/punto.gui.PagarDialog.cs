@@ -226,6 +226,7 @@ namespace punto.gui
 			this.frame2 = new global::Gtk.Frame ();
 			this.frame2.Name = "frame2";
 			this.frame2.ShadowType = ((global::Gtk.ShadowType)(0));
+			this.frame2.BorderWidth = ((uint)(3));
 			// Container child frame2.Gtk.Container+ContainerChild
 			this.GtkAlignment2 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
 			this.GtkAlignment2.Name = "GtkAlignment2";
