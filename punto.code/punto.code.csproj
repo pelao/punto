@@ -68,6 +68,7 @@
     <Compile Include="PagoTarjeta.cs" />
     <Compile Include="PagoCheque.cs" />
     <Compile Include="ListaVenta.cs" />
+    <Compile Include="AnularBoleta.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

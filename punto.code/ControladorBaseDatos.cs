@@ -26,9 +26,9 @@ namespace punto.code
 			*/
 
 			this.Servidor = "127.0.0.1";
-			this.BaseDatos = "punto";
+			this.BaseDatos = "pto";
 			this.Usuario = "root";
-			this.Contraseña = "";
+			this.Contraseña = "root";
 
 		}
 
@@ -80,7 +80,81 @@ namespace punto.code
 			}
 			return false;
 		}
-
+		public string[] ObtenerDatosAnularBoletaBD (string codigoB)
+		{
+			string[] usuario = new string[5];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT fecha_venta,total,tipo_pago,usuarios_userlogin,anulada	" +
+					"FROM venta " +
+					"WHERE idventa='"+codigoB+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				
+				usuario[0] = (string) reader["fecha_venta"];
+				usuario[1] = (string) reader["total"];
+				usuario[2] = (string) reader["tipo_pago"];
+				usuario[3] = (string) reader["usuarios_userlogin"];
+				usuario[4] = (string) reader["anulada"];
+				
+				
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return usuario;
+		}
+		public bool Anularboletabd (AnularBoleta boleta)
+		{
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			
+			string sql =
+				"INSERT INTO boletaanulada (id,fecha,user_log)" +
+					"VALUES ('"+boleta.IdBoleta+"','"+boleta.Fecha+"','"+boleta.Cajero+"')";
+			
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return true;
+		}
+		public bool ActualizarCampoAnuladoBD (string codigoboleta)
+		{
+			
+			IDbConnection dbcon = this.ConectarBd();
+			string estrue = "true";
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"UPDATE venta " +
+					"SET anulada='"+estrue+"'"+ 
+					"WHERE idventa='"+codigoboleta+"'";
+			dbcmd.CommandText = sql;
+			
+			int res = dbcmd.ExecuteNonQuery();
+			
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return true;
+		}
 
 
 		public bool AgregarPagoCheque (PagoCheque registro)

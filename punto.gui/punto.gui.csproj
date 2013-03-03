@@ -61,13 +61,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Mono.Posix" />
     <Reference Include="itextsharp">
-      <HintPath>..\pto\bin\Debug\itextsharp.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\pto\bin\Debug\itextsharp.pdfa.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
-      <HintPath>..\pto\bin\Debug\itextsharp.xtra.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.xtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,7 +107,8 @@
     <Compile Include="gtk-gui\punto.gui.SalidaDineroCajaDialog.cs" />
     <Compile Include="GenerarReportesDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.GenerarReportesDialog.cs" />
-    <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
+    <Compile Include="AnularBoletaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.AnularBoletaDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">
