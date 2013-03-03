@@ -26,9 +26,9 @@ namespace punto.code
 			*/
 
 			this.Servidor = "127.0.0.1";
-			this.BaseDatos = "pto";
+			this.BaseDatos = "punto";
 			this.Usuario = "root";
-			this.Contraseña = "root";
+			this.Contraseña = "";
 
 		}
 
@@ -483,7 +483,7 @@ namespace punto.code
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
 				"SELECT fecha_venta " +
-					"FROM venta ";
+					"FROM venta ORDER BY fecha_venta  ASC";
 
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
@@ -501,9 +501,34 @@ namespace punto.code
 			return fecha;
 		}
 
+		public void ordenarFecha ()
+		{
+	
+
+			IDbConnection dbcon = this.ConectarBd();
+
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT fecha_venta " +
+					"FROM venta " +
+					"ORDER BY fecha_venta ASC";
+			
+			
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+
+		}
+
 		public List<Venta> ObtenerIntervaloFechasBd (string fechaInicial, string fechaFinal)
 		{
-			
+
 			IDbConnection dbcon = this.ConectarBd();
 		//	string formato = "yyyy-MM-dd hh:mm:ss";
 

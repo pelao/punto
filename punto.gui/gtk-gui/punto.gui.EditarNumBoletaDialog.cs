@@ -130,7 +130,7 @@ namespace punto.gui
 			this.frame2.Add (this.vbox3);
 			this.GtkLabel3 = new global::Gtk.Label ();
 			this.GtkLabel3.Name = "GtkLabel3";
-			this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("Ingrese nuevo número de boleta");
+			this.GtkLabel3.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Ingrese nuevo número de boleta</b>");
 			this.GtkLabel3.UseMarkup = true;
 			this.frame2.LabelWidget = this.GtkLabel3;
 			this.vbox2.Add (this.frame2);

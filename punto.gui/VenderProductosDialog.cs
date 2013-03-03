@@ -559,16 +559,47 @@ namespace punto.gui
 	
 		protected void OnAnularBoletaActionActivated (object sender, EventArgs e){
 			AnularBoletaDialog asd = new AnularBoletaDialog ();
-		try {
-			asd.Run ();
-			asd.Destroy ();
-		} catch (MySql.Data.MySqlClient.MySqlException ex) {
-			asd.Destroy ();
-			
-			Console.WriteLine(ex.Message);
-			
-			
-		}		}
+			try {
+				asd.Run ();
+				asd.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				asd.Destroy ();
+				
+				Console.WriteLine(ex.Message);
+				
+				
+			}		
+		}
+
+		protected void OnIngresoDineroCajaActionActivated (object sender, EventArgs e)
+		{
+			IngresoDineroCajaDialog iDinero = new IngresoDineroCajaDialog (usuarioLogin);
+			try {
+				iDinero.Run ();
+				iDinero.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				iDinero.Destroy ();
+				
+				Console.WriteLine(ex.Message);
+				
+				
+			}	
+		}
+
+		protected void OnSalidaDineroCajaActionActivated (object sender, EventArgs e)
+		{
+			RetirarDineroCajaDialog retirar = new RetirarDineroCajaDialog (usuarioLogin);
+			try {
+				retirar.Run ();
+				retirar.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				retirar.Destroy ();
+				
+				Console.WriteLine(ex.Message);
+				
+				
+			}
+		}
 
 	}
 	

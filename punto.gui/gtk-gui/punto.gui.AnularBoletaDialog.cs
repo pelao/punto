@@ -43,7 +43,8 @@ namespace punto.gui
 			global::Stetic.Gui.Initialize (this);
 			// Widget punto.gui.AnularBoletaDialog
 			this.Name = "punto.gui.AnularBoletaDialog";
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.Title = global::Mono.Unix.Catalog.GetString ("Anular Boletas");
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 			// Internal child punto.gui.AnularBoletaDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";
@@ -77,6 +78,7 @@ namespace punto.gui
 			this.entry1.CanFocus = true;
 			this.entry1.Name = "entry1";
 			this.entry1.IsEditable = true;
+			this.entry1.InvisibleChar = '●';
 			this.hbox1.Add (this.entry1);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.entry1]));
 			w3.Position = 1;
@@ -350,7 +352,7 @@ namespace punto.gui
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 408;
+			this.DefaultWidth = 421;
 			this.DefaultHeight = 312;
 			this.frame1.Hide ();
 			this.Show ();
