@@ -5,7 +5,7 @@ namespace punto.code
 	public class Venta
 	{
 		private int  idventa_;
-		private DateTime fecha_venta_;
+		private string fecha_venta_;
 		private string total_;
 		private string tipo_pago_;
 		private int cambio_;
@@ -13,7 +13,7 @@ namespace punto.code
 		private string anulada_;
 
 
-		public Venta(int codigoVenta,DateTime fecha, string total, string tipo_pago, int cambio, string usuarios_userlogin, string anulada)
+		public Venta(int codigoVenta,string fecha, string total, string tipo_pago, int cambio, string usuarios_userlogin, string anulada)
 		{
 			this.Idventa = codigoVenta;
 			this.Var_fecha = fecha;
@@ -30,7 +30,7 @@ namespace punto.code
 			set { idventa_ = value; }
 		}
 
-		public DateTime Var_fecha
+		public string Var_fecha
 		{
 			get {return this.fecha_venta_;}
 			set {this.fecha_venta_ = value;}

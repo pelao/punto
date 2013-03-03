@@ -166,7 +166,7 @@ namespace punto.gui
 			Console.WriteLine("*************************************************");
 		
 			Venta nuevaVenta = new Venta(numBoleta,
-			                             DateTime.Now,
+			                             Convert.ToString(DateTime.Now),
 			                             pagototal,
 			                             "efectivo",
 			                             vuelto,

@@ -47,13 +47,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Mono.Posix" />
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\Documents\Ramos\TallerIngSoftware\TallerIngSoftware\itextsharp-all-5.3.4\itextsharp.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\..\..\Documents\Ramos\TallerIngSoftware\TallerIngSoftware\itextsharp-all-5.3.4\itextsharp.pdfa.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
-      <HintPath>..\..\..\Documents\Ramos\TallerIngSoftware\TallerIngSoftware\itextsharp-all-5.3.4\itextsharp.xtra.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.xtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -235,6 +235,7 @@ namespace punto.gui
 
 						// caso2: se listan los productos con cantidad 1
 					Produc n_prod = this.db.ObtenerProductosVenta (codigobarracorto);
+			
 						n_prod.setCantidad(1);
 						productoventa.Add (n_prod);
 						Console.WriteLine("lista:"+productoventa.Count);

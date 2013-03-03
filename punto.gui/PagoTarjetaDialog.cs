@@ -61,7 +61,7 @@ namespace punto.gui
 
 			PagoTarjeta pago = new PagoTarjeta(numBoleta,comboboxentryTipoTarjeta.ActiveText.Trim(),entryNroTransaccion.Text.Trim(),entryMonto.Text.Trim());
 
-			Venta nuevaVenta = new Venta(numBoleta, DateTime.Now, pagototal, "Tarjeta", Int32.Parse("0"), usuario_, "false"); 
+			Venta nuevaVenta = new Venta(numBoleta, Convert.ToString(DateTime.Now), pagototal, "Tarjeta", Int32.Parse("0"), usuario_, "false"); 
 			db.AgregarVentaBd(nuevaVenta);
 			try {
 				for(int i=0; i<listaPago_.Count;i++)
