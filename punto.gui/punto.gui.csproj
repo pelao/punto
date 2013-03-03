@@ -60,6 +60,15 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Mono.Posix" />
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\Desktop\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\..\..\Desktop\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>..\..\..\Desktop\itextsharp.xtra.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -77,7 +86,6 @@
     <Compile Include="gtk-gui\punto.gui.VenderProductosDialog.cs" />
     <Compile Include="IniciarSesionDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.IniciarSesionDialog.cs" />
-    <Compile Include="gtk-gui\punto.gui.InicioSesionDialog.cs" />
     <Compile Include="RegistrarUsuarioDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.RegistrarUsuarioDialog.cs" />
     <Compile Include="EditarProductoDialog.cs" />
@@ -93,6 +101,12 @@
     <Compile Include="gtk-gui\punto.gui.PagoTarjetaDialog.cs" />
     <Compile Include="EditarNumBoletaDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.EditarNumBoletaDialog.cs" />
+    <Compile Include="IngresoDineroCajaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.IngresoDineroCajaDialog.cs" />
+    <Compile Include="SalidaDineroCajaDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.SalidaDineroCajaDialog.cs" />
+    <Compile Include="GenerarReportesDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.GenerarReportesDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

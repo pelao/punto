@@ -540,6 +540,21 @@ namespace punto.gui
 			}		
 		}
 	
+		protected void OnGenerarReportesActionActivated (object sender, EventArgs e)
+		{
+			GenerarReportesDialog reporte = new GenerarReportesDialog ();
+			try {
+				reporte.Run ();
+				reporte.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				reporte.Destroy ();
+				
+				Console.WriteLine(ex.Message);
+				
+				
+			}
+		}
+
 	}
 	
 }

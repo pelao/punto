@@ -1,9 +1,10 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/PagarDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/GenerarReportesDialog.cs">
     <Files>
-      <File FileName="punto.gui/VenderProductosDialog.cs" Line="242" Column="6" />
-      <File FileName="punto.gui/PagarDialog.cs" Line="1" Column="1" />
+      <File FileName="punto.gui/VenderProductosDialog.cs" Line="47" Column="22" />
+      <File FileName="punto.gui/GenerarReportesDialog.cs" Line="76" Column="6" />
+      <File FileName="punto.code/ControladorBaseDatos.cs" Line="404" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +12,7 @@
           <Node name="pto" expanded="True" />
           <Node name="punto.code" expanded="True" />
           <Node name="punto.gui" expanded="True">
-            <Node name="PagarDialog.cs" selected="True" />
+            <Node name="GenerarReportesDialog.cs" selected="True" />
           </Node>
         </State>
       </Pad>
