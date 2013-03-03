@@ -1121,6 +1121,12 @@
         <property name="Label" translatable="yes">Salida Dinero Caja</property>
         <property name="ShortLabel" translatable="yes">Salida Dinero Caja</property>
       </action>
+      <action id="AnularBoletaAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Anular Boleta</property>
+        <property name="ShortLabel" translatable="yes">Anular Boleta</property>
+        <signal name="Activated" handler="OnAnularBoletaActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Visible">False</property>
@@ -1159,6 +1165,7 @@
                         <node type="Menuitem" action="EditarNmeroBoletaAction" />
                         <node type="Menuitem" action="IngresoDineroCajaAction" />
                         <node type="Menuitem" action="SalidaDineroCajaAction" />
+                        <node type="Menuitem" action="AnularBoletaAction" />
                       </node>
                       <node type="Menu" action="AyudaAction">
                         <node type="Menuitem" action="AcercaDeAction" />

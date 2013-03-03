@@ -556,6 +556,20 @@ namespace punto.gui
 			}
 		}
 
+	
+		protected void OnAnularBoletaActionActivated (object sender, EventArgs e){
+			AnularBoletaDialog asd = new AnularBoletaDialog ();
+		try {
+			asd.Run ();
+			asd.Destroy ();
+		} catch (MySql.Data.MySqlClient.MySqlException ex) {
+			asd.Destroy ();
+			
+			Console.WriteLine(ex.Message);
+			
+			
+		}		}
+
 	}
 	
 }
