@@ -78,7 +78,7 @@ namespace punto.gui
 
 
 		
-		/*	[GLib.ConnectBefore ()] 
+			[GLib.ConnectBefore ()] 
 
 		protected void OnEntryPagoEfectivoKeyPressEvent (object o, KeyPressEventArgs args)
 		{
@@ -105,7 +105,7 @@ namespace punto.gui
 				
 				
 			}	
-		}*/
+		}
 
 
 		protected void OnButtonPagoTarjetaClicked (object sender, EventArgs e)
