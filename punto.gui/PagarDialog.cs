@@ -58,11 +58,12 @@ namespace punto.gui
 					Application.Quit();
 				}
 			}
-			alignment3.Show();
-			hbox3.Hide();
+			frame1.Hide ();
+			frame2.Show ();
 			this.buttonPagoEfectivo.IsFocus=true;
-			labeltotalcompra.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
-			labelTotal.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+			labeltotalcompra.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
+			labelEfectivo.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
+			labelTotal.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
 			labelVuelto.Hide ();
 
 			this.Deletable = true;
@@ -70,16 +71,77 @@ namespace punto.gui
 		protected void OnPagoEnEfectivo (object sender, EventArgs e)
 		{
 			labeltotalcompra.Text=pagototal.Trim();
-			alignment3.Hide ();
-			hbox3.Show();
+			frame1.Show ();
+			frame2.Hide ();
 			this.entryPagoEfectivo.IsFocus=true;
-		
+			//
+			ControladorBaseDatos db = new ControladorBaseDatos();
+			double temp = Convert.ToDouble (this.db.ObtenerBoleta ());
+			temp = temp -1;
+			Console.WriteLine ("temp");
+			Console.WriteLine (temp);
+			Console.WriteLine ("Boletapago"+temp);
+			Console.WriteLine("pagoconcheu"+db.ExistePagoChequeBoolBD(temp.ToString()));
+			string condicion = this.db.ExistePagoChequeBoolBD (temp.ToString ()).ToString();
+			if(condicion==("True")){
+
+				int totalcompra=int.Parse(labeltotalcompra.Text);
+				int total=int.Parse(db.ExistePagoChequeBD(temp.ToString()));
+				int debe=totalcompra-total;
+				
+				
+				Console.WriteLine("pagoconcheu"+db.ExistePagoChequeBD(temp.ToString()));
+				Dialog dialog = new Dialog("PAGO CHEQUE Y EFECTIVO", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "Ha pagado: "+db.ExistePagoChequeBD(temp.ToString())+" con cheque y debe: "+debe;
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+				labeltotalcompra.Text=debe.ToString();
+
+
+
+			}
+			string condicionTarjeta = this.db.ExistePagoTarjetaBoolBD (temp.ToString ()).ToString();
+
+			if(condicionTarjeta==("True")){
+				
+				int totalcompra=int.Parse(labeltotalcompra.Text);
+				int total=int.Parse(db.ExistePagoTarjetaBD(temp.ToString()));
+				int debe=totalcompra-total;
+				
+				
+				Console.WriteLine("pagoconcheu"+db.ExistePagoTarjetaBD(temp.ToString()));
+				Dialog dialog = new Dialog("PAGO TARJETA Y EFECTIVO", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "Ha pagado: "+db.ExistePagoTarjetaBD(temp.ToString())+" con tarjeta y debe: "+debe;
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+				labeltotalcompra.Text=debe.ToString();
+				
+				
+				
+			}
+
 		}
 
 
 		
 			[GLib.ConnectBefore ()] 
-
+	
 		protected void OnEntryPagoEfectivoKeyPressEvent (object o, KeyPressEventArgs args)
 		{
 		if (args.Event.Key==Gdk.Key.Return) {
@@ -87,21 +149,22 @@ namespace punto.gui
 				labelVuelto.Show();
 				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
 				labelvueltopago.Text = (vuelto - Int32.Parse (labeltotalcompra.Text)).ToString ();
-				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
-				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
+				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
 			
-				this.buttonPagar.IsFocus=true;
+			//	this.buttonPagar.IsFocus=true;
 			}	
 			if (args.Event.Key==Gdk.Key.F2) {
 				
 				labelVuelto.Show();
 				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
 				labelvueltopago.Text = (vuelto - Int32.Parse (labeltotalcompra.Text)).ToString ();
-				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
-				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier bold 32"));
+				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
+				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
+
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
-				this.buttonPagar.IsFocus=true;
+				//this.buttonPagar.IsFocus=true;
 				
 				
 			}	
@@ -192,7 +255,7 @@ namespace punto.gui
 			{
 				Console.WriteLine("Excepcion:--->"+ex);
 			}
-			buttonPagar.Sensitive = false;
+			//buttonPagar.Sensitive = false;
 			this.buttonOk.IsFocus=true;
 
 		}
@@ -203,8 +266,7 @@ namespace punto.gui
 
 			if (args.Event.Key == Gdk.Key.F2) {
 				labeltotalcompra.Text = pagototal.Trim ();
-				alignment3.Hide ();
-				hbox3.Show ();
+				frame1.Hide();
 				this.entryPagoEfectivo.IsFocus = true;
 				
 			}

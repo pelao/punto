@@ -74,7 +74,7 @@ namespace punto.gui
 			this.db = new ControladorBaseDatos();
 			numBoleta = db.ObtenerBoleta();
 			PagoCheque pago = new PagoCheque(comboboxBanco.ActiveText.Trim(),comboboxPlaza.ActiveText.Trim(),entryMonto.Text.Trim(),numBoleta,entryNroSerie.Text.Trim());
-
+			Console.WriteLine ("BoletaCheque"+numBoleta);
 			Venta nuevaVenta = new Venta(numBoleta, Convert.ToString(DateTime.Now), pagototal, "cheque", Int32.Parse("0"), usuario_, "false"); 
 			db.AgregarVentaBd(nuevaVenta);
 			try {

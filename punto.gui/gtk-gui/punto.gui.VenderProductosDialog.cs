@@ -7,14 +7,14 @@ namespace punto.gui
 		private global::Gtk.UIManager UIManager;
 		private global::Gtk.Action Action;
 		private global::Gtk.Action SesionAction;
-		private global::Gtk.Action CerrarAction;
+		private global::Gtk.Action quitAction;
 		private global::Gtk.Action ProductosAction;
 		private global::Gtk.Action RegistrarEditarAction;
 		private global::Gtk.Action FamiliaProductosAction;
 		private global::Gtk.Action UsuarioAction;
 		private global::Gtk.Action RegistrarEditarAction1;
 		private global::Gtk.Action OpcionesAction;
-		private global::Gtk.Action GenerarReportesAction;
+		private global::Gtk.Action stopAction;
 		private global::Gtk.Action EditarNmeroBoletaAction;
 		private global::Gtk.Action AyudaAction;
 		private global::Gtk.Action AcercaDeAction;
@@ -74,9 +74,9 @@ namespace punto.gui
 			this.SesionAction = new global::Gtk.Action ("SesionAction", global::Mono.Unix.Catalog.GetString ("Sesion"), null, null);
 			this.SesionAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Sesion");
 			w1.Add (this.SesionAction, null);
-			this.CerrarAction = new global::Gtk.Action ("CerrarAction", global::Mono.Unix.Catalog.GetString ("Cerrar"), null, null);
-			this.CerrarAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cerrar");
-			w1.Add (this.CerrarAction, null);
+			this.quitAction = new global::Gtk.Action ("quitAction", global::Mono.Unix.Catalog.GetString ("Cerrar"), null, "gtk-quit");
+			this.quitAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Cerrar");
+			w1.Add (this.quitAction, null);
 			this.ProductosAction = new global::Gtk.Action ("ProductosAction", global::Mono.Unix.Catalog.GetString ("Productos"), null, null);
 			this.ProductosAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Productos");
 			w1.Add (this.ProductosAction, null);
@@ -95,9 +95,9 @@ namespace punto.gui
 			this.OpcionesAction = new global::Gtk.Action ("OpcionesAction", global::Mono.Unix.Catalog.GetString ("Opciones"), null, null);
 			this.OpcionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Opciones");
 			w1.Add (this.OpcionesAction, null);
-			this.GenerarReportesAction = new global::Gtk.Action ("GenerarReportesAction", global::Mono.Unix.Catalog.GetString ("Generar Reportes"), null, null);
-			this.GenerarReportesAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Reporte");
-			w1.Add (this.GenerarReportesAction, null);
+			this.stopAction = new global::Gtk.Action ("stopAction", global::Mono.Unix.Catalog.GetString ("Generar Reportes"), null, "gtk-stop");
+			this.stopAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Reporte");
+			w1.Add (this.stopAction, null);
 			this.EditarNmeroBoletaAction = new global::Gtk.Action ("EditarNmeroBoletaAction", global::Mono.Unix.Catalog.GetString ("Editar Número Boleta"), null, null);
 			this.EditarNmeroBoletaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Editar Boleta");
 			w1.Add (this.EditarNmeroBoletaAction, null);
@@ -134,7 +134,7 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='CerrarAction' action='CerrarAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='GenerarReportesAction' action='GenerarReportesAction'/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.hbox3.Add (this.menubar1);
@@ -148,7 +148,8 @@ namespace punto.gui
 			// Container child alignment18.Gtk.Container+ContainerChild
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
-			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                       ");
+			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                 " +
+				"      ");
 			this.alignment18.Add (this.label7);
 			this.hbox3.Add (this.alignment18);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment18]));
@@ -465,11 +466,11 @@ namespace punto.gui
 			this.DefaultHeight = 546;
 			w49.Hide ();
 			this.Hide ();
-			this.CerrarAction.Activated += new global::System.EventHandler (this.OnCerrarActionActivated);
+			this.quitAction.Activated += new global::System.EventHandler (this.OnCerrarActionActivated);
 			this.RegistrarEditarAction.Activated += new global::System.EventHandler (this.OnIngresarEditarProductosActionActivated);
 			this.FamiliaProductosAction.Activated += new global::System.EventHandler (this.OnFamiliaProductosActionActivated);
 			this.RegistrarEditarAction1.Activated += new global::System.EventHandler (this.OnRegistrarEditarUsuarioActionActivated);
-			this.GenerarReportesAction.Activated += new global::System.EventHandler (this.OnGenerarReportesActionActivated);
+			this.stopAction.Activated += new global::System.EventHandler (this.OnGenerarReportesActionActivated);
 			this.EditarNmeroBoletaAction.Activated += new global::System.EventHandler (this.OnEditarNmeroBoletaActionActivated);
 			this.IngresoDineroCajaAction.Activated += new global::System.EventHandler (this.OnIngresoDineroCajaActionActivated);
 			this.SalidaDineroCajaAction.Activated += new global::System.EventHandler (this.OnSalidaDineroCajaActionActivated);

@@ -133,6 +133,100 @@ namespace punto.code
 			this.DesconectarBd(dbcon);
 			
 			return true;
+		}		
+		public bool ExistePagoChequeBoolBD (string boleta)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+			sql =
+				"SELECT monto " +
+					"FROM cheque " +
+					"WHERE id_cheque_boleta='"+boleta+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
+		public string ExistePagoChequeBD (string boleta)
+		{
+			string[] pagocheque = new string[1];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT monto " +
+					"FROM cheque " +
+					"WHERE id_cheque_boleta='"+boleta+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				pagocheque[0] =  (string) reader["monto"];
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return pagocheque[0];
+		
+	}
+		public bool ExistePagoTarjetaBoolBD (string boleta)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+			sql =
+				"SELECT monto " +
+					"FROM tarjeta " +
+					"WHERE idventa='"+boleta+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
+		public string ExistePagoTarjetaBD (string boleta)
+		{
+			string[] pagoTarjeta = new string[1];
+			
+			IDbConnection dbcon = this.ConectarBd();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand();
+			string sql =
+				"SELECT monto " +
+					"FROM tarjeta " +
+					"WHERE idventa='"+boleta+"'";
+			dbcmd.CommandText = sql;
+			IDataReader reader = dbcmd.ExecuteReader();
+			
+			while(reader.Read()) {
+				pagoTarjeta[0] =  (string) reader["monto"];
+			}
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return pagoTarjeta[0];
+			
 		}
 		public bool ActualizarCampoAnuladoBD (string codigoboleta)
 		{
