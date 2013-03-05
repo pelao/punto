@@ -221,8 +221,8 @@ namespace punto.gui
 
 				int posAsterisco = 0;
 					if(Int32.Parse(entryCodigoBarra.Text.Trim().Substring(0,1))==2 &&
-				  		 entryCodigoBarra.Text.Trim().Substring(0,2)!="2*"){
-						
+				  		entryCodigoBarra.Text.Trim().Substring(0,2)!="2*"){
+
 						codigoBarra = entryCodigoBarra.Text.Trim ();
 						
 						
@@ -234,7 +234,7 @@ namespace punto.gui
 					//	Console.WriteLine("precioEntero: "+precioEntero);
 
 						// caso2: se listan los productos con cantidad 1
-					Produc n_prod = this.db.ObtenerProductosVenta (codigobarracorto);
+						Produc n_prod = this.db.ObtenerProductosVenta (codigobarracorto);
 			
 						n_prod.setCantidad(1);
 						productoventa.Add (n_prod);
@@ -266,10 +266,10 @@ namespace punto.gui
 						string item = (string)ventamodel.GetValue (tmpIter, 1);
 						
 						
-					preciototal = preciototal + Int32.Parse (precioprod);
-						labelTotalVenta.Text = preciototal.ToString ();
+						preciototal = preciototal + Int32.Parse (precioprod);
+						labelTotalVenta.Text = "$"+preciototal.ToString ();
 						
-					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), precioprod);
+						ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), precioprod);
 						entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 						
 						
@@ -337,7 +337,7 @@ namespace punto.gui
 	
 
 					preciototal = preciototal + (Int32.Parse (prod.Precio)*prod.getCantidad());
-					labelTotalVenta.Text = preciototal.ToString ();
+					labelTotalVenta.Text = "$"+preciototal.ToString ();
 					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
 					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
@@ -381,7 +381,7 @@ namespace punto.gui
 					
 		
 					preciototal = preciototal + Int32.Parse (prod.Precio);
-					labelTotalVenta.Text = preciototal.ToString ();
+					labelTotalVenta.Text ="$"+ preciototal.ToString ();
 			
 					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
 					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);

@@ -14,8 +14,7 @@ namespace punto.gui
 		private global::Gtk.VBox vbox2;
 		private global::Gtk.Button actualizar_button;
 		private global::Gtk.Button quitar_button;
-		private global::Gtk.Button buttonCancel;
-		private global::Gtk.Button buttonOk;
+		private global::Gtk.Button buttonCerrar;
 		
 		protected virtual void Build ()
 		{
@@ -172,63 +171,37 @@ namespace punto.gui
 			w36.BorderWidth = ((uint)(5));
 			w36.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonCancel = new global::Gtk.Button ();
-			this.buttonCancel.CanDefault = true;
-			this.buttonCancel.CanFocus = true;
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.UseUnderline = true;
-			// Container child buttonCancel.Gtk.Container+ContainerChild
+			this.buttonCerrar = new global::Gtk.Button ();
+			this.buttonCerrar.CanDefault = true;
+			this.buttonCerrar.CanFocus = true;
+			this.buttonCerrar.Name = "buttonCerrar";
+			this.buttonCerrar.UseUnderline = true;
+			// Container child buttonCerrar.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w37 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w38 = new global::Gtk.HBox ();
 			w38.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w39 = new global::Gtk.Image ();
-			w39.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-cancel", global::Gtk.IconSize.Menu);
+			w39.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
 			w38.Add (w39);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w41 = new global::Gtk.Label ();
-			w41.LabelProp = global::Mono.Unix.Catalog.GetString ("_Cancel");
+			w41.LabelProp = global::Mono.Unix.Catalog.GetString ("_Cerrar");
 			w41.UseUnderline = true;
 			w38.Add (w41);
 			w37.Add (w38);
-			this.buttonCancel.Add (w37);
-			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w36 [this.buttonCancel]));
+			this.buttonCerrar.Add (w37);
+			this.AddActionWidget (this.buttonCerrar, -7);
+			global::Gtk.ButtonBox.ButtonBoxChild w45 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w36 [this.buttonCerrar]));
 			w45.Expand = false;
 			w45.Fill = false;
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonOk = new global::Gtk.Button ();
-			this.buttonOk.CanDefault = true;
-			this.buttonOk.CanFocus = true;
-			this.buttonOk.Name = "buttonOk";
-			this.buttonOk.UseUnderline = true;
-			// Container child buttonOk.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w46 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w47 = new global::Gtk.HBox ();
-			w47.Spacing = 2;
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w48 = new global::Gtk.Image ();
-			w48.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-apply", global::Gtk.IconSize.Menu);
-			w47.Add (w48);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w50 = new global::Gtk.Label ();
-			w50.LabelProp = global::Mono.Unix.Catalog.GetString ("_OK");
-			w50.UseUnderline = true;
-			w47.Add (w50);
-			w46.Add (w47);
-			this.buttonOk.Add (w46);
-			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w54 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w36 [this.buttonOk]));
-			w54.Position = 1;
-			w54.Expand = false;
-			w54.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 300;
+			this.actualizar_button.Hide ();
 			this.Show ();
 			this.actualizar_button.Clicked += new global::System.EventHandler (this.OnActualizarButtonClicked);
 			this.quitar_button.Clicked += new global::System.EventHandler (this.OnQuitarButtonClicked);

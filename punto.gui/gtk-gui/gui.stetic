@@ -12,7 +12,7 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">Agregar Familias de Productos</property>
     <property name="WindowPosition">Center</property>
-    <property name="Buttons">2</property>
+    <property name="Buttons">1</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">
       <widget class="Gtk.VBox" id="dialog1_VBox">
@@ -121,6 +121,7 @@
                 <child>
                   <widget class="Gtk.Button" id="actualizar_button">
                     <property name="MemberName" />
+                    <property name="Visible">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Type">TextAndIcon</property>
                     <property name="Icon">stock:gtk-refresh Menu</property>
@@ -184,37 +185,20 @@
         <property name="MemberName" />
         <property name="Spacing">10</property>
         <property name="BorderWidth">5</property>
-        <property name="Size">2</property>
+        <property name="Size">1</property>
         <property name="LayoutStyle">End</property>
         <child>
-          <widget class="Gtk.Button" id="buttonCancel">
+          <widget class="Gtk.Button" id="buttonCerrar">
             <property name="MemberName" />
             <property name="CanDefault">True</property>
             <property name="CanFocus">True</property>
             <property name="Type">TextAndIcon</property>
-            <property name="Icon">stock:gtk-cancel Menu</property>
-            <property name="Label" translatable="yes">_Cancel</property>
+            <property name="Icon">stock:gtk-ok Menu</property>
+            <property name="Label" translatable="yes">_Cerrar</property>
             <property name="UseUnderline">True</property>
-            <property name="ResponseId">-6</property>
+            <property name="ResponseId">-7</property>
           </widget>
           <packing>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Button" id="buttonOk">
-            <property name="MemberName" />
-            <property name="CanDefault">True</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextAndIcon</property>
-            <property name="Icon">stock:gtk-apply Menu</property>
-            <property name="Label" translatable="yes">_OK</property>
-            <property name="UseUnderline">True</property>
-            <property name="ResponseId">-5</property>
-          </widget>
-          <packing>
-            <property name="Position">1</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>
@@ -429,7 +413,7 @@
           <widget class="Gtk.Notebook" id="notebook1">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">0</property>
+            <property name="CurrentPage">1</property>
             <child>
               <widget class="Gtk.VBox" id="vbox3">
                 <property name="MemberName" />
@@ -595,6 +579,7 @@
                                     <property name="MemberName" />
                                     <property name="IsTextCombo">True</property>
                                     <property name="Items" translatable="yes" />
+                                    <signal name="FocusChildSet" handler="OnComboboxFamiliaProdFocusChildSet" />
                                   </widget>
                                   <packing>
                                     <property name="Position">0</property>
@@ -604,13 +589,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <widget class="Gtk.Button" id="button334">
+                                  <widget class="Gtk.Button" id="buttonAgregarFamilia">
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextAndIcon</property>
                                     <property name="Icon">stock:gtk-edit Menu</property>
                                     <property name="Label" translatable="yes">Agregar Familia</property>
                                     <property name="UseUnderline">True</property>
+                                    <signal name="Clicked" handler="OnButtonAgregarFamiliaClicked" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
@@ -1159,6 +1145,7 @@
                       </node>
                       <node type="Menu" action="ProductosAction">
                         <node type="Menuitem" action="RegistrarEditarAction" />
+                        <node type="Separator" />
                         <node type="Menuitem" action="FamiliaProductosAction" />
                       </node>
                       <node type="Menu" action="UsuarioAction">
@@ -1166,9 +1153,12 @@
                       </node>
                       <node type="Menu" action="OpcionesAction">
                         <node type="Menuitem" action="stopAction" />
+                        <node type="Separator" />
                         <node type="Menuitem" action="EditarNmeroBoletaAction" />
+                        <node type="Separator" />
                         <node type="Menuitem" action="IngresoDineroCajaAction" />
                         <node type="Menuitem" action="SalidaDineroCajaAction" />
+                        <node type="Separator" />
                         <node type="Menuitem" action="AnularBoletaAction" />
                       </node>
                       <node type="Menu" action="AyudaAction">
@@ -1292,7 +1282,7 @@
                                         <child>
                                           <widget class="Gtk.Image" id="imageLogo">
                                             <property name="MemberName" />
-                                            <property name="Pixbuf">resource:punto.gui.logo.png</property>
+                                            <property name="Pixbuf">resource:punto.gui.imagen.png</property>
                                           </widget>
                                         </child>
                                       </widget>
@@ -1328,7 +1318,7 @@
                               </widget>
                             </child>
                             <child>
-                              <widget class="Gtk.Label" id="GtkLabel4">
+                              <widget class="Gtk.Label" id="GtkLabel5">
                                 <property name="MemberName" />
                                 <property name="UseMarkup">True</property>
                               </widget>
@@ -1482,7 +1472,7 @@
                                 <child>
                                   <widget class="Gtk.Label" id="labelTotal1">
                                     <property name="MemberName" />
-                                    <property name="LabelProp" translatable="yes">Total:</property>
+                                    <property name="LabelProp" translatable="yes">																                                                                   Total:</property>
                                   </widget>
                                   <packing>
                                     <property name="Position">0</property>
@@ -1532,7 +1522,7 @@
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextAndIcon</property>
-                                    <property name="Icon">stock:gtk-index Menu</property>
+                                    <property name="Icon">resource:punto.gui.dinero.png</property>
                                     <property name="Label" translatable="yes">Venta</property>
                                     <property name="UseUnderline">True</property>
                                     <signal name="Clicked" handler="OnButtonVentaClicked" />
@@ -3657,7 +3647,7 @@
   <widget class="Gtk.Dialog" id="punto.gui.EditarProductoDialog" design-size="404 292">
     <property name="MemberName" />
     <property name="WindowPosition">CenterOnParent</property>
-    <property name="Buttons">2</property>
+    <property name="Buttons">1</property>
     <property name="HelpButton">False</property>
     <child internal-child="VBox">
       <widget class="Gtk.VBox" id="dialog1_VBox">
@@ -3912,25 +3902,8 @@
         <property name="MemberName" />
         <property name="Spacing">10</property>
         <property name="BorderWidth">5</property>
-        <property name="Size">2</property>
+        <property name="Size">1</property>
         <property name="LayoutStyle">End</property>
-        <child>
-          <widget class="Gtk.Button" id="buttonCancel">
-            <property name="MemberName" />
-            <property name="Visible">False</property>
-            <property name="CanDefault">True</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextAndIcon</property>
-            <property name="Icon">stock:gtk-cancel Menu</property>
-            <property name="Label" translatable="yes">_Cancel</property>
-            <property name="UseUnderline">True</property>
-            <property name="ResponseId">-6</property>
-          </widget>
-          <packing>
-            <property name="Expand">False</property>
-            <property name="Fill">False</property>
-          </packing>
-        </child>
         <child>
           <widget class="Gtk.Button" id="buttonOk">
             <property name="MemberName" />
@@ -3944,7 +3917,6 @@
             <signal name="Clicked" handler="OnButtonOkClicked" />
           </widget>
           <packing>
-            <property name="Position">1</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>
@@ -5604,7 +5576,8 @@
                               <widget class="Gtk.Button" id="buttonGuardarReporte">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="Type">TextOnly</property>
+                                <property name="Type">TextAndIcon</property>
+                                <property name="Icon">resource:punto.gui.stock_save-pdf.png</property>
                                 <property name="Label" translatable="yes">Guardar Reporte</property>
                                 <property name="UseUnderline">True</property>
                                 <signal name="Clicked" handler="OnButtonGuardarReporteClicked" />
@@ -5688,11 +5661,11 @@
             <property name="MemberName" />
             <property name="CanDefault">True</property>
             <property name="CanFocus">True</property>
-            <property name="UseStock">True</property>
-            <property name="Type">StockItem</property>
-            <property name="StockId">gtk-cancel</property>
+            <property name="Type">TextAndIcon</property>
+            <property name="Icon">stock:gtk-cancel Menu</property>
+            <property name="Label" translatable="yes">_Cancelar</property>
+            <property name="UseUnderline">True</property>
             <property name="ResponseId">-6</property>
-            <property name="label">gtk-cancel</property>
           </widget>
           <packing>
             <property name="Expand">False</property>
@@ -5704,11 +5677,11 @@
             <property name="MemberName" />
             <property name="CanDefault">True</property>
             <property name="CanFocus">True</property>
-            <property name="UseStock">True</property>
-            <property name="Type">StockItem</property>
-            <property name="StockId">gtk-ok</property>
+            <property name="Type">TextAndIcon</property>
+            <property name="Icon">stock:gtk-apply Menu</property>
+            <property name="Label" translatable="yes">_Aceptar</property>
+            <property name="UseUnderline">True</property>
             <property name="ResponseId">-5</property>
-            <property name="label">gtk-ok</property>
           </widget>
           <packing>
             <property name="Position">1</property>
@@ -5773,13 +5746,13 @@
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.Button" id="button724">
+                              <widget class="Gtk.Button" id="buttonBuscar">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Buscar</property>
                                 <property name="UseUnderline">True</property>
-                                <signal name="Clicked" handler="OnButton724Clicked" />
+                                <signal name="Clicked" handler="OnbuttonBuscarClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
@@ -5789,14 +5762,14 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Button" id="button19">
+                              <widget class="Gtk.Button" id="buttonLimpiarCampos">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="Type">TextAndIcon</property>
                                 <property name="Icon">stock:gtk-clear Menu</property>
                                 <property name="Label" translatable="yes"> </property>
                                 <property name="UseUnderline">True</property>
-                                <signal name="Clicked" handler="OnButton19Clicked" />
+                                <signal name="Clicked" handler="OnbuttonLimpiarCamposClicked" />
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
@@ -6022,13 +5995,13 @@
                                         <property name="MemberName" />
                                         <property name="Spacing">6</property>
                                         <child>
-                                          <widget class="Gtk.Button" id="button551">
+                                          <widget class="Gtk.Button" id="buttonSi">
                                             <property name="MemberName" />
                                             <property name="CanFocus">True</property>
                                             <property name="Type">TextOnly</property>
                                             <property name="Label" translatable="yes">Si</property>
                                             <property name="UseUnderline">True</property>
-                                            <signal name="Clicked" handler="OnButton551Clicked" />
+                                            <signal name="Clicked" handler="OnbuttonSiClicked" />
                                           </widget>
                                           <packing>
                                             <property name="Position">0</property>

@@ -40,7 +40,7 @@ namespace punto.gui
 		private global::Gtk.Image imageLogo;
 		private global::Gtk.HSeparator hseparator1;
 		private global::Gtk.Label labelFecha;
-		private global::Gtk.Label GtkLabel4;
+		private global::Gtk.Label GtkLabel5;
 		private global::Gtk.VBox vbox5;
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.Label labelNumProducto;
@@ -134,7 +134,7 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><separator/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><separator/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><separator/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><separator/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.hbox3.Add (this.menubar1);
@@ -148,8 +148,7 @@ namespace punto.gui
 			// Container child alignment18.Gtk.Container+ContainerChild
 			this.label7 = new global::Gtk.Label ();
 			this.label7.Name = "label7";
-			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                 " +
-				"      ");
+			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                       ");
 			this.alignment18.Add (this.label7);
 			this.hbox3.Add (this.alignment18);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment18]));
@@ -231,7 +230,7 @@ namespace punto.gui
 			// Container child alignment1.Gtk.Container+ContainerChild
 			this.imageLogo = new global::Gtk.Image ();
 			this.imageLogo.Name = "imageLogo";
-			this.imageLogo.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("punto.gui.logo.png");
+			this.imageLogo.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("punto.gui.imagen.png");
 			this.alignment1.Add (this.imageLogo);
 			this.vbox2.Add (this.alignment1);
 			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.alignment1]));
@@ -254,10 +253,10 @@ namespace punto.gui
 			w14.Fill = false;
 			this.GtkAlignment2.Add (this.vbox2);
 			this.frame1.Add (this.GtkAlignment2);
-			this.GtkLabel4 = new global::Gtk.Label ();
-			this.GtkLabel4.Name = "GtkLabel4";
-			this.GtkLabel4.UseMarkup = true;
-			this.frame1.LabelWidget = this.GtkLabel4;
+			this.GtkLabel5 = new global::Gtk.Label ();
+			this.GtkLabel5.Name = "GtkLabel5";
+			this.GtkLabel5.UseMarkup = true;
+			this.frame1.LabelWidget = this.GtkLabel5;
 			this.hpaned3.Add (this.frame1);
 			global::Gtk.Paned.PanedChild w17 = ((global::Gtk.Paned.PanedChild)(this.hpaned3 [this.frame1]));
 			w17.Resize = false;
@@ -366,7 +365,7 @@ namespace punto.gui
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.labelTotal1 = new global::Gtk.Label ();
 			this.labelTotal1.Name = "labelTotal1";
-			this.labelTotal1.LabelProp = global::Mono.Unix.Catalog.GetString ("Total:");
+			this.labelTotal1.LabelProp = global::Mono.Unix.Catalog.GetString ("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                   Total:");
 			this.hbox6.Add (this.labelTotal1);
 			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.labelTotal1]));
 			w29.Position = 0;
@@ -408,7 +407,7 @@ namespace punto.gui
 			w34.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w35 = new global::Gtk.Image ();
-			w35.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-index", global::Gtk.IconSize.Menu);
+			w35.Pixbuf = global::Gdk.Pixbuf.LoadFromResource ("punto.gui.dinero.png");
 			w34.Add (w35);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w37 = new global::Gtk.Label ();

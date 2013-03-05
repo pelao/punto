@@ -11,8 +11,8 @@ namespace punto.gui
 		private global::Gtk.Label label1;
 		private global::Gtk.Entry entry1;
 		private global::Gtk.HBox hbox3;
-		private global::Gtk.Button button724;
-		private global::Gtk.Button button19;
+		private global::Gtk.Button buttonBuscar;
+		private global::Gtk.Button buttonLimpiarCampos;
 		private global::Gtk.Frame frame1;
 		private global::Gtk.Alignment GtkAlignment3;
 		private global::Gtk.HBox hbox2;
@@ -33,7 +33,7 @@ namespace punto.gui
 		private global::Gtk.Label label10;
 		private global::Gtk.Label label11;
 		private global::Gtk.VBox vbox10;
-		private global::Gtk.Button button551;
+		private global::Gtk.Button buttonSi;
 		private global::Gtk.Label GtkLabel5;
 		private global::Gtk.Button buttonCancel;
 		private global::Gtk.Button buttonOk;
@@ -87,22 +87,22 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.button724 = new global::Gtk.Button ();
-			this.button724.CanFocus = true;
-			this.button724.Name = "button724";
-			this.button724.UseUnderline = true;
-			this.button724.Label = global::Mono.Unix.Catalog.GetString ("Buscar");
-			this.hbox3.Add (this.button724);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.button724]));
+			this.buttonBuscar = new global::Gtk.Button ();
+			this.buttonBuscar.CanFocus = true;
+			this.buttonBuscar.Name = "buttonBuscar";
+			this.buttonBuscar.UseUnderline = true;
+			this.buttonBuscar.Label = global::Mono.Unix.Catalog.GetString ("Buscar");
+			this.hbox3.Add (this.buttonBuscar);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.buttonBuscar]));
 			w4.Position = 0;
 			w4.Expand = false;
 			w4.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.button19 = new global::Gtk.Button ();
-			this.button19.CanFocus = true;
-			this.button19.Name = "button19";
-			this.button19.UseUnderline = true;
-			// Container child button19.Gtk.Container+ContainerChild
+			this.buttonLimpiarCampos = new global::Gtk.Button ();
+			this.buttonLimpiarCampos.CanFocus = true;
+			this.buttonLimpiarCampos.Name = "buttonLimpiarCampos";
+			this.buttonLimpiarCampos.UseUnderline = true;
+			// Container child buttonLimpiarCampos.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w5 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w6 = new global::Gtk.HBox ();
@@ -117,9 +117,9 @@ namespace punto.gui
 			w9.UseUnderline = true;
 			w6.Add (w9);
 			w5.Add (w6);
-			this.button19.Add (w5);
-			this.hbox3.Add (this.button19);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.button19]));
+			this.buttonLimpiarCampos.Add (w5);
+			this.hbox3.Add (this.buttonLimpiarCampos);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.buttonLimpiarCampos]));
 			w13.Position = 1;
 			w13.Expand = false;
 			w13.Fill = false;
@@ -283,13 +283,13 @@ namespace punto.gui
 			this.vbox10.Name = "vbox10";
 			this.vbox10.Spacing = 6;
 			// Container child vbox10.Gtk.Box+BoxChild
-			this.button551 = new global::Gtk.Button ();
-			this.button551.CanFocus = true;
-			this.button551.Name = "button551";
-			this.button551.UseUnderline = true;
-			this.button551.Label = global::Mono.Unix.Catalog.GetString ("Si");
-			this.vbox10.Add (this.button551);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox10 [this.button551]));
+			this.buttonSi = new global::Gtk.Button ();
+			this.buttonSi.CanFocus = true;
+			this.buttonSi.Name = "buttonSi";
+			this.buttonSi.UseUnderline = true;
+			this.buttonSi.Label = global::Mono.Unix.Catalog.GetString ("Si");
+			this.vbox10.Add (this.buttonSi);
+			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox10 [this.buttonSi]));
 			w31.Position = 0;
 			w31.Expand = false;
 			w31.Fill = false;
@@ -356,9 +356,9 @@ namespace punto.gui
 			this.DefaultHeight = 312;
 			this.frame1.Hide ();
 			this.Show ();
-			this.button724.Clicked += new global::System.EventHandler (this.OnButton724Clicked);
-			this.button19.Clicked += new global::System.EventHandler (this.OnButton19Clicked);
-			this.button551.Clicked += new global::System.EventHandler (this.OnButton551Clicked);
+			this.buttonBuscar.Clicked += new global::System.EventHandler (this.OnbuttonBuscarClicked);
+			this.buttonLimpiarCampos.Clicked += new global::System.EventHandler (this.OnbuttonLimpiarCamposClicked);
+			this.buttonSi.Clicked += new global::System.EventHandler (this.OnbuttonSiClicked);
 		}
 	}
 }

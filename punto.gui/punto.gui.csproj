@@ -61,13 +61,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Mono.Posix" />
     <Reference Include="itextsharp">
-      <HintPath>..\lib\itextsharp.dll</HintPath>
+      <HintPath>dllPDF\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\lib\itextsharp.pdfa.dll</HintPath>
+      <HintPath>dllPDF\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
-      <HintPath>..\lib\itextsharp.xtra.dll</HintPath>
+      <HintPath>dllPDF\itextsharp.xtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +75,9 @@
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\pto\sesion.png" />
-    <EmbeddedResource Include="..\pto\logo.png" />
+    <EmbeddedResource Include="..\..\git42\iconos\stock_save-pdf.png" />
+    <EmbeddedResource Include="..\..\git42\iconos\imagen.png" />
+    <EmbeddedResource Include="..\..\git42\iconos\dinero.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
@@ -120,5 +122,19 @@
     <Content Include="foro-de-los-de-los-usuarios-icono-8097-96.png">
       <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dllPDF\" />
+    <Folder Include="iconos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dllPDF\itextsharp.dll" />
+    <None Include="dllPDF\itextsharp.pdfa.dll" />
+    <None Include="dllPDF\itextsharp.xtra.dll" />
+    <None Include="iconos\Cash-register-icon.png" />
+    <None Include="iconos\dinero.png" />
+    <None Include="iconos\imagen.png" />
+    <None Include="iconos\stock_save-pdf.png" />
+    <None Include="iconos\visa.png" />
   </ItemGroup>
 </Project>

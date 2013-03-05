@@ -127,6 +127,7 @@ namespace punto.gui
 		}
 		protected void OnButtonOkClicked (object sender, EventArgs e)
 		{
+
 			string nombre = "", precio = "",familia="";
 			
 			if (entryNombre.Text.Trim().Length == 0)
@@ -159,8 +160,8 @@ namespace punto.gui
 
 			EditarProductoDialogChangedEventArgs args = new EditarProductoDialogChangedEventArgs(nombre,precio,familia);
 			this.OnEditarProductoDialogChanged(args);
-
-			this.Destroy();			
+			this.Destroy();
+						
 		}
 	}
 }

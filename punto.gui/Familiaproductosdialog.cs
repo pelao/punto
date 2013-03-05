@@ -258,6 +258,9 @@ namespace punto.gui
 			}
 		
 		}
+
+
+
 		private void OnQuitarFamiliaDialogResponse (object sender, ResponseArgs args)
 		{
 			switch (args.ResponseId)
@@ -287,13 +290,10 @@ namespace punto.gui
 				{
 					if (this.db.QuitarFamilia(bod))
 					{
-#if DEBUG
 						Console.WriteLine(this.familias.Count);	
-#endif
+
 						this.familias.RemoveAt(this.familiaModel.GetPath(iter).Indices[0]);
-#if DEBUG
-						Console.WriteLine(this.familias.Count);	
-#endif				
+						Console.WriteLine(this.familias.Count);					
 						this.familiaModel.Remove(ref iter);
 						
 						this.actualizar_button.Sensitive = false;
@@ -323,6 +323,12 @@ namespace punto.gui
 				break;
 			}
 		}
-}
+
+		protected void OnButtonOkClicked (object sender, EventArgs e)
+		{
+			this.Destroy ();
+		}
+	
+	}
 }
 

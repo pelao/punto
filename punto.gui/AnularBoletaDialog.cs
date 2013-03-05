@@ -48,7 +48,7 @@ namespace punto.gui
 		
 		
 		
-		protected void OnButton724Clicked (object sender, EventArgs e)
+		protected void OnbuttonBuscarClicked (object sender, EventArgs e)
 		{
 			frame1.Show ();
 			string [] aux = this.db.ObtenerDatosAnularBoletaBD(entry1.Text.Trim());
@@ -61,7 +61,7 @@ namespace punto.gui
 			
 		}
 		
-		protected void OnButton551Clicked (object sender, EventArgs e)
+		protected void OnbuttonSiClicked (object sender, EventArgs e)
 		{	
 			try {
 				Console.WriteLine (entry1.Text.Trim());
@@ -115,7 +115,7 @@ namespace punto.gui
 			}
 		}
 		
-		protected void OnButton19Clicked (object sender, EventArgs e)
+		protected void OnbuttonLimpiarCamposClicked (object sender, EventArgs e)
 		{
 			entry1.Text = "";
 			label8.Text = "";

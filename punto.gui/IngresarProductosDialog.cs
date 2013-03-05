@@ -290,6 +290,26 @@ namespace punto.gui
 		{
 			this.CargarProductos();
 		}
+
+		protected void OnComboboxFamiliaProdFocusChildSet (object o, FocusChildSetArgs args)
+		{
+			this.CargarTiposFamiliaCombobox();
+		}
+
+		protected void OnButtonAgregarFamiliaClicked (object sender, EventArgs e)
+		{
+			familiaproductosdialog familia = new familiaproductosdialog(this);
+			try {
+				familia.Run ();
+				familia.Destroy ();
+			} catch (MySql.Data.MySqlClient.MySqlException ex) {
+				familia.Destroy ();
+				
+				Console.WriteLine(ex.Message);
+				
+				
+			}
+		}
 	}
 }
 

@@ -17,7 +17,7 @@ namespace punto.gui
 		private global::Gtk.Entry entryPrecioVenta;
 		private global::Gtk.HBox hbox3;
 		private global::Gtk.ComboBox comboboxFamiliaProd;
-		private global::Gtk.Button button334;
+		private global::Gtk.Button buttonAgregarFamilia;
 		private global::Gtk.Label labelCodigoBarra;
 		private global::Gtk.Label labelFamilia;
 		private global::Gtk.Label labelNombre;
@@ -63,7 +63,7 @@ namespace punto.gui
 			this.notebook1 = new global::Gtk.Notebook ();
 			this.notebook1.CanFocus = true;
 			this.notebook1.Name = "notebook1";
-			this.notebook1.CurrentPage = 0;
+			this.notebook1.CurrentPage = 1;
 			// Container child notebook1.Gtk.Notebook+NotebookChild
 			this.vbox3 = new global::Gtk.VBox ();
 			this.vbox3.Name = "vbox3";
@@ -172,11 +172,11 @@ namespace punto.gui
 			w8.Expand = false;
 			w8.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.button334 = new global::Gtk.Button ();
-			this.button334.CanFocus = true;
-			this.button334.Name = "button334";
-			this.button334.UseUnderline = true;
-			// Container child button334.Gtk.Container+ContainerChild
+			this.buttonAgregarFamilia = new global::Gtk.Button ();
+			this.buttonAgregarFamilia.CanFocus = true;
+			this.buttonAgregarFamilia.Name = "buttonAgregarFamilia";
+			this.buttonAgregarFamilia.UseUnderline = true;
+			// Container child buttonAgregarFamilia.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w9 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w10 = new global::Gtk.HBox ();
@@ -191,9 +191,9 @@ namespace punto.gui
 			w13.UseUnderline = true;
 			w10.Add (w13);
 			w9.Add (w10);
-			this.button334.Add (w9);
-			this.hbox3.Add (this.button334);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.button334]));
+			this.buttonAgregarFamilia.Add (w9);
+			this.hbox3.Add (this.buttonAgregarFamilia);
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.buttonAgregarFamilia]));
 			w17.Position = 1;
 			w17.Expand = false;
 			w17.Fill = false;
@@ -541,6 +541,8 @@ namespace punto.gui
 			this.DefaultHeight = 437;
 			this.button3322.Hide ();
 			this.Show ();
+			this.comboboxFamiliaProd.FocusChildSet += new global::Gtk.FocusChildSetHandler (this.OnComboboxFamiliaProdFocusChildSet);
+			this.buttonAgregarFamilia.Clicked += new global::System.EventHandler (this.OnButtonAgregarFamiliaClicked);
 			this.checkbuttonVigente.Toggled += new global::System.EventHandler (this.OnCheckbutton8Toggled);
 			this.checkbuttonPesable.Toggled += new global::System.EventHandler (this.OnCheckbutton7Toggled);
 			this.BotonAgregarProd.Clicked += new global::System.EventHandler (this.OnBotonAgregarPClicked);
