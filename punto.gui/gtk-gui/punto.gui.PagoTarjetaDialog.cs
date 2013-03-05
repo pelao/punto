@@ -5,6 +5,8 @@ namespace punto.gui
 	public partial class PagoTarjetaDialog
 	{
 		private global::Gtk.VBox vbox2;
+		private global::Gtk.Frame frame1;
+		private global::Gtk.Alignment GtkAlignment1;
 		private global::Gtk.Table table1;
 		private global::Gtk.ComboBoxEntry comboboxentryTipoTarjeta;
 		private global::Gtk.Entry entryMonto;
@@ -12,7 +14,7 @@ namespace punto.gui
 		private global::Gtk.Label labelMonto;
 		private global::Gtk.Label labelNroTransacción;
 		private global::Gtk.Label labelTipoTarjeta;
-		private global::Gtk.Button buttonCancel;
+		private global::Gtk.Label GtkLabel1;
 		private global::Gtk.Button buttonOk;
 		
 		protected virtual void Build ()
@@ -22,6 +24,7 @@ namespace punto.gui
 			this.Name = "punto.gui.PagoTarjetaDialog";
 			this.Title = global::Mono.Unix.Catalog.GetString ("Pago Tarjeta");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+			this.Resizable = false;
 			// Internal child punto.gui.PagoTarjetaDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";
@@ -31,6 +34,14 @@ namespace punto.gui
 			this.vbox2.Name = "vbox2";
 			this.vbox2.Spacing = 6;
 			// Container child vbox2.Gtk.Box+BoxChild
+			this.frame1 = new global::Gtk.Frame ();
+			this.frame1.Name = "frame1";
+			this.frame1.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child frame1.Gtk.Container+ContainerChild
+			this.GtkAlignment1 = new global::Gtk.Alignment (0F, 0F, 1F, 1F);
+			this.GtkAlignment1.Name = "GtkAlignment1";
+			this.GtkAlignment1.LeftPadding = ((uint)(12));
+			// Container child GtkAlignment1.Gtk.Container+ContainerChild
 			this.table1 = new global::Gtk.Table (((uint)(3)), ((uint)(4)), false);
 			this.table1.Name = "table1";
 			this.table1.RowSpacing = ((uint)(6));
@@ -109,32 +120,27 @@ namespace punto.gui
 			w7.RightAttach = ((uint)(2));
 			w7.XOptions = ((global::Gtk.AttachOptions)(4));
 			w7.YOptions = ((global::Gtk.AttachOptions)(4));
-			this.vbox2.Add (this.table1);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.table1]));
-			w8.Position = 1;
-			w8.Expand = false;
-			w8.Fill = false;
+			this.GtkAlignment1.Add (this.table1);
+			this.frame1.Add (this.GtkAlignment1);
+			this.GtkLabel1 = new global::Gtk.Label ();
+			this.GtkLabel1.Name = "GtkLabel1";
+			this.GtkLabel1.LabelProp = global::Mono.Unix.Catalog.GetString ("Pago con Tarjeta");
+			this.GtkLabel1.UseMarkup = true;
+			this.frame1.LabelWidget = this.GtkLabel1;
+			this.vbox2.Add (this.frame1);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.frame1]));
+			w10.Position = 1;
+			w10.Expand = false;
+			w10.Fill = false;
 			w1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox2]));
-			w9.Position = 0;
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(w1 [this.vbox2]));
+			w11.Position = 0;
 			// Internal child punto.gui.PagoTarjetaDialog.ActionArea
-			global::Gtk.HButtonBox w10 = this.ActionArea;
-			w10.Name = "dialog1_ActionArea";
-			w10.Spacing = 10;
-			w10.BorderWidth = ((uint)(5));
-			w10.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
-			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
-			this.buttonCancel = new global::Gtk.Button ();
-			this.buttonCancel.CanDefault = true;
-			this.buttonCancel.CanFocus = true;
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.UseStock = true;
-			this.buttonCancel.UseUnderline = true;
-			this.buttonCancel.Label = "gtk-cancel";
-			this.AddActionWidget (this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w11 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w10 [this.buttonCancel]));
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.HButtonBox w12 = this.ActionArea;
+			w12.Name = "dialog1_ActionArea";
+			w12.Spacing = 10;
+			w12.BorderWidth = ((uint)(5));
+			w12.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
@@ -144,10 +150,9 @@ namespace punto.gui
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w12 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w10 [this.buttonOk]));
-			w12.Position = 1;
-			w12.Expand = false;
-			w12.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w13 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w12 [this.buttonOk]));
+			w13.Expand = false;
+			w13.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

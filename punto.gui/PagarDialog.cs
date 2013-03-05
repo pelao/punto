@@ -61,10 +61,11 @@ namespace punto.gui
 			frame1.Hide ();
 			frame2.Show ();
 			this.buttonPagoEfectivo.IsFocus=true;
-			labeltotalcompra.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
-			labelEfectivo.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
-			labelTotal.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
-			labelVuelto.Hide ();
+			labeltotalcompra.ModifyFont(Pango.FontDescription.FromString("Arial  20"));
+			labelEfectivo.ModifyFont(Pango.FontDescription.FromString("Arial  20"));
+			labelTotal.ModifyFont(Pango.FontDescription.FromString("Arial  20"));
+			labelVuelto.ModifyFont(Pango.FontDescription.FromString("Arial  20"));
+		//	labelVuelto.Hide ();
 
 			this.Deletable = true;
 		}
@@ -146,7 +147,7 @@ namespace punto.gui
 		{
 		if (args.Event.Key==Gdk.Key.Return) {
 				
-				labelVuelto.Show();
+				//labelVuelto.Show();
 				vuelto = Int32.Parse (entryPagoEfectivo.Text.Trim ());
 				labelvueltopago.Text = (vuelto - Int32.Parse (labeltotalcompra.Text)).ToString ();
 				labelvueltopago.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
