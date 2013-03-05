@@ -596,6 +596,35 @@ namespace punto.code
 			return existe;
 		}
 
+
+		public bool ExisteCodigoBd (string codigoB)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+		
+			sql =
+				"SELECT codigobarra " +
+					"FROM productos " +
+					"WHERE codigobarra ='"+ codigoB + "';";
+			dbcmd.CommandText = sql;
+			
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+			
+			
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
+
+
 		public List<string> ObtenerFechaBd ()
 		{
 

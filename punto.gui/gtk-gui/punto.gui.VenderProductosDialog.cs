@@ -180,6 +180,7 @@ namespace punto.gui
 			w7.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment2.Name = "alignment2";
 			// Container child alignment2.Gtk.Container+ContainerChild
 			this.label2 = new global::Gtk.Label ();
 			this.label2.Name = "label2";
