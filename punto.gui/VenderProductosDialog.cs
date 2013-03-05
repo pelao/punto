@@ -43,10 +43,14 @@ namespace punto.gui
 			}
 
 			labelNombreCajero.Text = usuarioLogin.ToString();
-			labelFecha.ModifyFont (Pango.FontDescription.FromString ("Courier bold 15"));
+			labelFecha.ModifyFont (Pango.FontDescription.FromString ("Arial 15"));
 			labelFecha.Text = "Fecha: "+DateTime.Now.ToShortDateString();
 
+			labelCajero.ModifyFont (Pango.FontDescription.FromString ("Arial 14"));
+			labelNombreCajero.ModifyFont (Pango.FontDescription.FromString ("Arial 14"));
 
+			labelTotal1.ModifyFont (Pango.FontDescription.FromString ("Arial 15"));
+			labelTotalVenta.ModifyFont (Pango.FontDescription.FromString ("Arial 32"));
 
 			try {
 				correcta = this.db.ConfiguracionCorrectaBd;
@@ -70,7 +74,7 @@ namespace punto.gui
 			}
 			Gtk.TreeViewColumn cantidad_column = new Gtk.TreeViewColumn ();
 
-			cantidad_column.Title = "Cantidad";
+			cantidad_column.Title = "   Cantidad";
 			Gtk.CellRendererText cantidad_cell = new Gtk.CellRendererText ();
 			cantidad_column.PackStart (cantidad_cell, true);
 		//	cantidad_column.Width{};
@@ -79,22 +83,22 @@ namespace punto.gui
 			Gtk.CellRendererText precio_cell = new Gtk.CellRendererText ();
 			precio_column.PackStart (precio_cell, true);
 			
-			Gtk.TreeViewColumn nombre_column = new Gtk.TreeViewColumn ();
-			nombre_column.Title = "Nombre";
-			Gtk.CellRendererText nombre_cell = new Gtk.CellRendererText ();
-			nombre_column.PackStart (nombre_cell, true);
-			
+			Gtk.TreeViewColumn descArticulo_column = new Gtk.TreeViewColumn ();
+			descArticulo_column.Title = "   Descripcion Articulo";
+			Gtk.CellRendererText descArticulo_cell = new Gtk.CellRendererText ();
+			descArticulo_column.PackStart (descArticulo_cell, true);
+
 			this.treeviewListaProductos.AppendColumn (cantidad_column);
 			cantidad_column.Title = "Cantidad";
 
 			cantidad_column.AddAttribute (cantidad_cell, "text", 0);
-			this.treeviewListaProductos.AppendColumn (nombre_column);
-			nombre_column.AddAttribute (nombre_cell, "text", 1);
+			this.treeviewListaProductos.AppendColumn (descArticulo_column);
+			descArticulo_column.AddAttribute (descArticulo_cell, "text", 1);
 			precio_column.Title = "Precio";
 
 			this.treeviewListaProductos.AppendColumn (precio_column);
 			precio_column.AddAttribute (precio_cell, "text", 2);
-			nombre_column.Title = "Nombre";
+			descArticulo_column.Title = "Descripcion Articulo";
 
 #if DEBUG
 			
@@ -114,7 +118,7 @@ namespace punto.gui
 			
 			GLib.ExceptionManager.UnhandledException += ExcepcionDesconocida;
 			this.Deletable = true;
-			labelTotalVenta.ModifyFont (Pango.FontDescription.FromString ("Courier bold 32"));
+
 			
 		}
 		
@@ -267,7 +271,7 @@ namespace punto.gui
 						
 						
 						preciototal = preciototal + Int32.Parse (precioprod);
-						labelTotalVenta.Text = "$"+preciototal.ToString ();
+						labelTotalVenta.Text = preciototal.ToString ();
 						
 						ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), precioprod);
 						entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
@@ -337,7 +341,7 @@ namespace punto.gui
 	
 
 					preciototal = preciototal + (Int32.Parse (prod.Precio)*prod.getCantidad());
-					labelTotalVenta.Text = "$"+preciototal.ToString ();
+					labelTotalVenta.Text = preciototal.ToString ();
 					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
 					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
 
@@ -381,7 +385,7 @@ namespace punto.gui
 					
 		
 					preciototal = preciototal + Int32.Parse (prod.Precio);
-					labelTotalVenta.Text ="$"+ preciototal.ToString ();
+					labelTotalVenta.Text =preciototal.ToString ();
 			
 					ventamodel.AppendValues(prod.getCantidad(),prod.getNombre(), prod.getPrecio());
 					entryCodigoBarra.DeleteText(0, entryCodigoBarra.Text.Length);
@@ -510,13 +514,6 @@ namespace punto.gui
 			throw new System.NotImplementedException ();
 		}
 
-
-		protected void OnLabelHoraEvent (object o, WidgetEventArgs args)
-		{
-			labelHora.ModifyFont (Pango.FontDescription.FromString ("Courier bold 20"));
-			labelHora.Text = "Hora: "+DateTime.Now.ToLongTimeString();
-
-		}
 
 
 		protected void OnLabelHora (object sender, EventArgs e)

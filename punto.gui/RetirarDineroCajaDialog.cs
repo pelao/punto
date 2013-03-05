@@ -23,7 +23,7 @@ namespace punto.gui
 				
 				int boleta = baseDatos.ObtenerBoleta();
 				Venta nVenta = new Venta(boleta,
-				                         Convert.ToString(DateTime.Now), 
+				                         DateTime.Now.ToString("yyyy-MM-dd"), 
 				                         entryRetirarDinero.Text.Trim(), 
 				                         "SalidaDineroCaja", 
 				                         Int32.Parse("0"), 

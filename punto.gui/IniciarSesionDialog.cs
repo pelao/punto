@@ -59,8 +59,7 @@ namespace punto.gui
 		{
 			base.Destroy();
 		}
-		
-		
+
 	}
 }
 

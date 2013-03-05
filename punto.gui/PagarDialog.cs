@@ -153,7 +153,7 @@ namespace punto.gui
 				labelVuelto.ModifyFont(Pango.FontDescription.FromString("Courier  20"));
 				labelvueltopago.ModifyBg(Gtk.StateType.Normal, new Gdk.Color (255, 0, 0));
 			
-			//	this.buttonPagar.IsFocus=true;
+				this.buttonPagar.IsFocus=true;
 			}	
 			if (args.Event.Key==Gdk.Key.F2) {
 				
@@ -229,7 +229,7 @@ namespace punto.gui
 			Console.WriteLine("*************************************************");
 		
 			Venta nuevaVenta = new Venta(numBoleta,
-			                             Convert.ToString(DateTime.Now),
+			                             DateTime.Now.ToString("yyyy-MM-dd"),
 			                             pagototal,
 			                             "efectivo",
 			                             vuelto,
@@ -255,8 +255,9 @@ namespace punto.gui
 			{
 				Console.WriteLine("Excepcion:--->"+ex);
 			}
-			//buttonPagar.Sensitive = false;
 			this.buttonOk.IsFocus=true;
+			buttonPagar.Sensitive = false;
+
 
 		}
 

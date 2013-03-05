@@ -29,9 +29,12 @@ namespace punto.gui
 			this.Build ();
 			this.CargarFechaInicial();
 			this.CargarFechaFinal();
-			
+			comboboxFechasInicial.Active = 0;
+			comboboxFechasFinal.Active = 0;
+
+
 		}
-		
+
 		private void SeleccionarRuta( )
 		{ 
 			
@@ -302,6 +305,11 @@ namespace punto.gui
 			}
 			
 			
+		}
+
+		protected void OnCalendarFInicialDaySelected (object sender, EventArgs e)
+		{
+			Console.WriteLine("fecha seleccionada: "+calendarFInicial.GetDate ().ToString());
 		}
 	}
 }

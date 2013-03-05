@@ -24,12 +24,12 @@ namespace punto.gui
 		private global::Gtk.VBox dialog1_VBox1;
 		private global::Gtk.HBox hbox3;
 		private global::Gtk.MenuBar menubar1;
-		private global::Gtk.Alignment alignment18;
-		private global::Gtk.Label label7;
+		private global::Gtk.Label label1;
 		private global::Gtk.Label labelHora;
-		private global::Gtk.Label labelNombreCajero1;
-		private global::Gtk.Label labelNombreCajero;
 		private global::Gtk.Label labelCajero;
+		private global::Gtk.Label labelNombreCajero;
+		private global::Gtk.Alignment alignment2;
+		private global::Gtk.Label label2;
 		private global::Gtk.HBox hbox1;
 		private global::Gtk.HBox hbox2;
 		private global::Gtk.HPaned hpaned3;
@@ -143,53 +143,50 @@ namespace punto.gui
 			w3.Expand = false;
 			w3.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.alignment18 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment18.Name = "alignment18";
-			// Container child alignment18.Gtk.Container+ContainerChild
-			this.label7 = new global::Gtk.Label ();
-			this.label7.Name = "label7";
-			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                       ");
-			this.alignment18.Add (this.label7);
-			this.hbox3.Add (this.alignment18);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment18]));
-			w5.Position = 1;
-			w5.Expand = false;
-			w5.Fill = false;
+			this.label1 = new global::Gtk.Label ();
+			this.label1.Name = "label1";
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                                                                                                        ");
+			this.hbox3.Add (this.label1);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label1]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.labelHora = new global::Gtk.Label ();
 			this.labelHora.Name = "labelHora";
-			this.labelHora.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                              ");
+			this.labelHora.LabelProp = global::Mono.Unix.Catalog.GetString (" ");
 			this.hbox3.Add (this.labelHora);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelHora]));
-			w6.Position = 2;
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelHora]));
+			w5.Position = 2;
+			w5.Expand = false;
+			w5.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.labelCajero = new global::Gtk.Label ();
+			this.labelCajero.Name = "labelCajero";
+			this.labelCajero.LabelProp = global::Mono.Unix.Catalog.GetString ("                          Cajero: ");
+			this.hbox3.Add (this.labelCajero);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelCajero]));
+			w6.Position = 3;
 			w6.Expand = false;
 			w6.Fill = false;
-			// Container child hbox3.Gtk.Box+BoxChild
-			this.labelNombreCajero1 = new global::Gtk.Label ();
-			this.labelNombreCajero1.Name = "labelNombreCajero1";
-			this.labelNombreCajero1.LabelProp = global::Mono.Unix.Catalog.GetString ("     ");
-			this.hbox3.Add (this.labelNombreCajero1);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelNombreCajero1]));
-			w7.PackType = ((global::Gtk.PackType)(1));
-			w7.Position = 3;
-			w7.Expand = false;
-			w7.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.labelNombreCajero = new global::Gtk.Label ();
 			this.labelNombreCajero.Name = "labelNombreCajero";
 			this.labelNombreCajero.LabelProp = global::Mono.Unix.Catalog.GetString ("   ");
 			this.hbox3.Add (this.labelNombreCajero);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelNombreCajero]));
-			w8.PackType = ((global::Gtk.PackType)(1));
-			w8.Position = 4;
-			w8.Expand = false;
-			w8.Fill = false;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelNombreCajero]));
+			w7.Position = 4;
+			w7.Expand = false;
+			w7.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.labelCajero = new global::Gtk.Label ();
-			this.labelCajero.Name = "labelCajero";
-			this.labelCajero.LabelProp = global::Mono.Unix.Catalog.GetString ("Cajero: ");
-			this.hbox3.Add (this.labelCajero);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labelCajero]));
+			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			// Container child alignment2.Gtk.Container+ContainerChild
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("              ");
+			this.alignment2.Add (this.label2);
+			this.hbox3.Add (this.alignment2);
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment2]));
 			w9.PackType = ((global::Gtk.PackType)(1));
 			w9.Position = 5;
 			w9.Expand = false;
@@ -365,7 +362,7 @@ namespace punto.gui
 			// Container child hbox6.Gtk.Box+BoxChild
 			this.labelTotal1 = new global::Gtk.Label ();
 			this.labelTotal1.Name = "labelTotal1";
-			this.labelTotal1.LabelProp = global::Mono.Unix.Catalog.GetString ("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                                                   Total:");
+			this.labelTotal1.LabelProp = global::Mono.Unix.Catalog.GetString ("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                              Total: $");
 			this.hbox6.Add (this.labelTotal1);
 			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox6 [this.labelTotal1]));
 			w29.Position = 0;
