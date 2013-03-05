@@ -21,7 +21,7 @@ namespace punto.gui
 			ControladorBaseDatos db = new ControladorBaseDatos();
 
 			try {
-				Venta nuevaVenta = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now.ToString("yyyy-MM-dd"), "inicioBoletaNueva", "inicioBoletaNueva", Int32.Parse("0"), usuario_, "false"); 
+				Venta nuevaVenta = new Venta(Int32.Parse(entryNumBoleta.Text.Trim()),DateTime.Now.ToString("yyyy-MM-dd"), "0", "inicioBoletaNueva", Int32.Parse("0"), usuario_, "false"); 
 				db.AgregarVentaBd(nuevaVenta);
 
 				entryNumBoleta.Text = "";

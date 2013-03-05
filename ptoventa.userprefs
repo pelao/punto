@@ -1,18 +1,15 @@
 ﻿<Properties GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/VenderProductosDialog.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="punto.gui/GenerarReportesDialog.cs">
     <Files>
-      <File FileName="punto.gui/GenerarReportesDialog.cs" Line="288" Column="6" />
-      <File FileName="punto.gui/VenderProductosDialog.cs" Line="527" Column="3" />
-      <File FileName="punto.code/ControladorBaseDatos.cs" Line="328" Column="4" />
+      <File FileName="punto.gui/GenerarReportesDialog.cs" Line="1" Column="1" />
+      <File FileName="punto.code/ControladorBaseDatos.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="pto" expanded="True" />
-          <Node name="punto.code" expanded="True" />
           <Node name="punto.gui" expanded="True">
-            <Node name="VenderProductosDialog.cs" selected="True" />
+            <Node name="GenerarReportesDialog.cs" selected="True" />
           </Node>
         </State>
       </Pad>

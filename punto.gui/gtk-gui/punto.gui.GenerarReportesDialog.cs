@@ -17,13 +17,13 @@ namespace punto.gui
 		private global::Gtk.Label labelFechaFinal;
 		private global::Gtk.Alignment alignment6;
 		private global::Gtk.HBox hbox3;
-		private global::Gtk.Alignment alignment7;
-		private global::Gtk.ComboBox comboboxFechasInicial;
+		private global::Gtk.Alignment alignment2;
 		private global::Gtk.Alignment alignment8;
 		private global::Gtk.Calendar calendarFInicial;
-		private global::Gtk.ComboBox comboboxFechasFinal;
+		private global::Gtk.VSeparator vseparator1;
 		private global::Gtk.Alignment alignment9;
 		private global::Gtk.Calendar calendarFFinal;
+		private global::Gtk.Alignment alignment1;
 		private global::Gtk.Alignment alignment10;
 		private global::Gtk.HBox hbox4;
 		private global::Gtk.Alignment alignment12;
@@ -123,19 +123,11 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.alignment7 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
-			this.alignment7.Name = "alignment7";
-			this.hbox3.Add (this.alignment7);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment7]));
+			this.alignment2 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment2.Name = "alignment2";
+			this.hbox3.Add (this.alignment2);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment2]));
 			w10.Position = 0;
-			// Container child hbox3.Gtk.Box+BoxChild
-			this.comboboxFechasInicial = global::Gtk.ComboBox.NewText ();
-			this.comboboxFechasInicial.Name = "comboboxFechasInicial";
-			this.hbox3.Add (this.comboboxFechasInicial);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.comboboxFechasInicial]));
-			w11.Position = 1;
-			w11.Expand = false;
-			w11.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.alignment8 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment8.Name = "alignment8";
@@ -146,18 +138,18 @@ namespace punto.gui
 			this.calendarFInicial.DisplayOptions = ((global::Gtk.CalendarDisplayOptions)(35));
 			this.alignment8.Add (this.calendarFInicial);
 			this.hbox3.Add (this.alignment8);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment8]));
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment8]));
+			w12.Position = 1;
+			w12.Expand = false;
+			w12.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.vseparator1 = new global::Gtk.VSeparator ();
+			this.vseparator1.Name = "vseparator1";
+			this.hbox3.Add (this.vseparator1);
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.vseparator1]));
 			w13.Position = 2;
 			w13.Expand = false;
 			w13.Fill = false;
-			// Container child hbox3.Gtk.Box+BoxChild
-			this.comboboxFechasFinal = global::Gtk.ComboBox.NewText ();
-			this.comboboxFechasFinal.Name = "comboboxFechasFinal";
-			this.hbox3.Add (this.comboboxFechasFinal);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.comboboxFechasFinal]));
-			w14.Position = 3;
-			w14.Expand = false;
-			w14.Fill = false;
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.alignment9 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment9.Name = "alignment9";
@@ -168,10 +160,17 @@ namespace punto.gui
 			this.calendarFFinal.DisplayOptions = ((global::Gtk.CalendarDisplayOptions)(35));
 			this.alignment9.Add (this.calendarFFinal);
 			this.hbox3.Add (this.alignment9);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment9]));
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment9]));
+			w15.Position = 3;
+			w15.Expand = false;
+			w15.Fill = false;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.alignment1 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
+			this.alignment1.Name = "alignment1";
+			this.hbox3.Add (this.alignment1);
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.alignment1]));
+			w16.PackType = ((global::Gtk.PackType)(1));
 			w16.Position = 4;
-			w16.Expand = false;
-			w16.Fill = false;
 			this.vbox2.Add (this.hbox3);
 			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.hbox3]));
 			w17.Position = 2;
@@ -311,10 +310,11 @@ namespace punto.gui
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 552;
+			this.DefaultWidth = 562;
 			this.DefaultHeight = 361;
 			this.Show ();
 			this.calendarFInicial.DaySelected += new global::System.EventHandler (this.OnCalendarFInicialDaySelected);
+			this.calendarFFinal.DaySelected += new global::System.EventHandler (this.OnCalendarFFinalDaySelected);
 			this.buttonGuardarReporte.Clicked += new global::System.EventHandler (this.OnButtonGuardarReporteClicked);
 		}
 	}

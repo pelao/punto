@@ -569,6 +569,33 @@ namespace punto.code
 			return existe;
 		}
 
+		public bool ExisteFechaBd (string fecha)
+		{
+			IDbConnection dbcon = this.ConectarBd ();
+			
+			IDbCommand dbcmd = dbcon.CreateCommand ();
+			string sql;
+
+			sql =
+				"SELECT fecha_venta " +
+					"FROM venta " +
+					"WHERE fecha_venta ='"+ fecha + "';";
+			dbcmd.CommandText = sql;
+
+			IDataReader reader = dbcmd.ExecuteReader();
+			bool existe = reader.Read();
+
+
+			reader.Close();
+			reader = null;
+			dbcmd.Dispose();
+			dbcmd = null;
+			
+			this.DesconectarBd(dbcon);
+			
+			return existe;
+		}
+
 		public List<string> ObtenerFechaBd ()
 		{
 

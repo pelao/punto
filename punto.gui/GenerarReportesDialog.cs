@@ -27,10 +27,10 @@ namespace punto.gui
 			
 			
 			this.Build ();
-			this.CargarFechaInicial();
-			this.CargarFechaFinal();
-			comboboxFechasInicial.Active = 0;
-			comboboxFechasFinal.Active = 0;
+		//	this.CargarFechaInicial();
+		//	this.CargarFechaFinal();
+		//	comboboxFechasInicial.Active = 0;
+		//	comboboxFechasFinal.Active = 0;
 
 
 		}
@@ -49,7 +49,7 @@ namespace punto.gui
 		}
 		
 		
-		public void CargarFechaInicial()
+		/*	public void CargarFechaInicial()
 		{
 			ControladorBaseDatos db = new ControladorBaseDatos();
 
@@ -110,17 +110,23 @@ namespace punto.gui
 			}
 		}
 		
-		
+*/
+
 		protected void OnButtonGuardarReporteClicked (object sender, EventArgs e)
 		{
-			if(comboboxFechasInicial.Active.CompareTo(comboboxFechasFinal.Active)==1 || 
-			   comboboxFechasInicial.Active.CompareTo(comboboxFechasFinal.Active)==0){
+			string fechaInicial = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+			string fechaFinal = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+
+			this.OnCalendarFInicialDaySelected(sender,e);
+			this.OnCalendarFFinalDaySelected(sender,e);
+
+			if(fechaInicial.CompareTo(fechaFinal)==1){
 				
 				Dialog dialog = new Dialog("ADVERTENCIA", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
 				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "fecha inicial no puede ser mayor o igual que la fecha final";
+				etiqueta.Markup = "fecha final no puede ser anterior a fecha inicial";
 				dialog.BorderWidth = 8;
 				dialog.VBox.BorderWidth = 8;
 				dialog.VBox.PackStart(etiqueta, false, false, 0);
@@ -131,8 +137,8 @@ namespace punto.gui
 			}
 			else{
 				
-				string fechaInicial = comboboxFechasInicial.ActiveText;
-				string fechaFinal = comboboxFechasFinal.ActiveText;
+			//	string fechaInicial = comboboxFechasInicial.ActiveText;
+			//	string fechaFinal = comboboxFechasFinal.ActiveText;
 				
 				Document myDocument;
 				
@@ -197,7 +203,7 @@ namespace punto.gui
 	
 				// AQUI VA EL LOGO DEL MINIMARKET
 
-						iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/git42/pto/logo.png");
+						iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/Git43Felo/punto.gui/iconos/imagen.png");
 						imgP.ScalePercent(40, 40);
 						imgP.Alignment = Element.ALIGN_CENTER;
 						myDocument.Add(imgP);
@@ -300,6 +306,8 @@ namespace punto.gui
 					dialog2.ShowAll();
 					dialog2.Run ();
 					dialog2.Destroy ();
+
+
 					
 				}
 			}
@@ -307,9 +315,65 @@ namespace punto.gui
 			
 		}
 
+
 		protected void OnCalendarFInicialDaySelected (object sender, EventArgs e)
 		{
-			Console.WriteLine("fecha seleccionada: "+calendarFInicial.GetDate ().ToString());
+			ControladorBaseDatos db = new ControladorBaseDatos ();
+			string fechaI="";
+
+			//DateTime.Now.ToString("yyyy-MM-dd")
+			fechaI = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+			Console.WriteLine("fecha seleccionada I: "+fechaI);
+
+			if (!db.ExisteFechaBd (fechaI)) {
+				Console.WriteLine ("NO existe venta");
+
+				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "No existen ventas en el día seleccionado";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+			} else {
+				Console.WriteLine ("existe venta");
+
+			
+			}
+		}
+
+		protected void OnCalendarFFinalDaySelected (object sender, EventArgs e)
+		{
+			ControladorBaseDatos db = new ControladorBaseDatos ();
+			string fechaF="";
+			
+			//DateTime.Now.ToString("yyyy-MM-dd")
+			fechaF = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+			Console.WriteLine("fecha seleccionada F: "+fechaF);
+			
+			if (!db.ExisteFechaBd (fechaF)) {
+				Console.WriteLine ("NO existe venta");
+
+				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
+				dialog.Modal = true;
+				dialog.Resizable = false;
+				Gtk.Label etiqueta = new Gtk.Label();
+				etiqueta.Markup = "No existen ventas en el día seleccionado";
+				dialog.BorderWidth = 8;
+				dialog.VBox.BorderWidth = 8;
+				dialog.VBox.PackStart(etiqueta, false, false, 0);
+				dialog.AddButton ("Cerrar", ResponseType.Close);
+				dialog.ShowAll();
+				dialog.Run ();
+				dialog.Destroy ();
+			} else {
+				Console.WriteLine ("existe venta");
+			}
 		}
 	}
 }
