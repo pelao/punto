@@ -5549,8 +5549,7 @@
                               <widget class="Gtk.Button" id="buttonGuardarReporte">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="Type">TextAndIcon</property>
-                                <property name="Icon">resource:punto.gui.stock_save-pdf.png</property>
+                                <property name="Type">TextOnly</property>
                                 <property name="Label" translatable="yes">Guardar Reporte</property>
                                 <property name="UseUnderline">True</property>
                                 <signal name="Clicked" handler="OnButtonGuardarReporteClicked" />

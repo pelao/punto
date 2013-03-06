@@ -168,7 +168,7 @@ namespace punto.gui
 		protected void OnButtonVentaClicked (object sender, EventArgs e)
 		{
 			
-			
+
 			ventamodel.Clear ();
 			double temp = Convert.ToDouble (this.db.ObtenerBoleta ());
 			temp = temp + 1;
@@ -410,6 +410,7 @@ namespace punto.gui
 					dialog2.ShowAll();
 					dialog2.Run ();
 					dialog2.Destroy ();
+
 				}
 			}
 		}

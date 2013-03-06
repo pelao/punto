@@ -27,10 +27,27 @@ namespace punto.gui
 			
 			
 			this.Build ();
-		//	this.CargarFechaInicial();
-		//	this.CargarFechaFinal();
-		//	comboboxFechasInicial.Active = 0;
-		//	comboboxFechasFinal.Active = 0;
+			ControladorBaseDatos db = new ControladorBaseDatos ();
+			string fechaInicial = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+			string fechaFinal = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
+			//	this.CargarFechaInicial();
+			//	this.CargarFechaFinal();
+			//	comboboxFechasInicial.Active = 0;
+			//	comboboxFechasFinal.Active = 0;
+			
+			if (db.ExisteFechaBd (fechaInicial) == false || db.ExisteFechaBd (fechaFinal) == false) {
+				buttonGuardarReporte.Sensitive = false;
+			}
+			if (db.ExisteFechaBd (fechaInicial) == false && db.ExisteFechaBd (fechaFinal) == true){
+				buttonGuardarReporte.Sensitive = false;
+
+			}
+			if (db.ExisteFechaBd (fechaInicial) == true && db.ExisteFechaBd (fechaFinal) == false){
+				buttonGuardarReporte.Sensitive = false;
+			}
+				
+				
+		
 
 
 		}
@@ -114,14 +131,18 @@ namespace punto.gui
 
 		protected void OnButtonGuardarReporteClicked (object sender, EventArgs e)
 		{
+			ControladorBaseDatos db = new ControladorBaseDatos ();
+
 			string fechaInicial = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 			string fechaFinal = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 
-			this.OnCalendarFInicialDaySelected(sender,e);
-			this.OnCalendarFFinalDaySelected(sender,e);
+			this.OnCalendarFInicialDaySelected (sender, e);
+			this.OnCalendarFFinalDaySelected (sender, e);
 
 			if(fechaInicial.CompareTo(fechaFinal)==1){
-				
+
+				buttonGuardarReporte.Sensitive = false;
+
 				Dialog dialog = new Dialog("ADVERTENCIA", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
@@ -203,10 +224,10 @@ namespace punto.gui
 	
 				// AQUI VA EL LOGO DEL MINIMARKET
 
-						iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/Git43Felo/punto.gui/iconos/imagen.png");
-						imgP.ScalePercent(40, 40);
-						imgP.Alignment = Element.ALIGN_CENTER;
-						myDocument.Add(imgP);
+						//iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/Git43Felo/punto.gui/iconos/imagen.png");
+						//imgP.ScalePercent(40, 40);
+						//imgP.Alignment = Element.ALIGN_CENTER;
+						//myDocument.Add(imgP);
 
 						myDocument.Add(new Paragraph(" "));
 						myDocument.Add(new Paragraph("                                              Ventas realizadas entre "+fechaInicial+" y "+fechaFinal,
@@ -293,7 +314,7 @@ namespace punto.gui
 					// step 5: Remember to close the documnet
 					
 					myDocument.Close();
-					
+			/*		
 					Dialog dialog2 = new Dialog("MENSAJE", this, Gtk.DialogFlags.DestroyWithParent);
 					dialog2.Modal = true;
 					dialog2.Resizable = false;
@@ -306,7 +327,7 @@ namespace punto.gui
 					dialog2.ShowAll();
 					dialog2.Run ();
 					dialog2.Destroy ();
-
+*/
 
 					
 				}
@@ -325,7 +346,8 @@ namespace punto.gui
 			fechaI = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 			Console.WriteLine("fecha seleccionada I: "+fechaI);
 
-			if (!db.ExisteFechaBd (fechaI)) {
+			if (!db.ExisteFechaBd (fechaI) ) {
+				this.buttonGuardarReporte.Sensitive = false;
 				Console.WriteLine ("NO existe venta");
 
 				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
@@ -342,7 +364,7 @@ namespace punto.gui
 				dialog.Destroy ();
 			} else {
 				Console.WriteLine ("existe venta");
-
+				this.buttonGuardarReporte.Sensitive = true;
 			
 			}
 		}
@@ -357,6 +379,8 @@ namespace punto.gui
 			Console.WriteLine("fecha seleccionada F: "+fechaF);
 			
 			if (!db.ExisteFechaBd (fechaF)) {
+
+				this.buttonGuardarReporte.Sensitive = false;
 				Console.WriteLine ("NO existe venta");
 
 				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
@@ -373,6 +397,7 @@ namespace punto.gui
 				dialog.Destroy ();
 			} else {
 				Console.WriteLine ("existe venta");
+				this.buttonGuardarReporte.Sensitive=true;
 			}
 		}
 	}
