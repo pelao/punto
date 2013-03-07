@@ -92,7 +92,6 @@ namespace punto.gui
 			this.hbox1.Add (this.entryNumBoleta);
 			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.entryNumBoleta]));
 			w7.Position = 2;
-			w7.Expand = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.buttonEditarNumBoleta = new global::Gtk.Button ();
 			this.buttonEditarNumBoleta.CanFocus = true;

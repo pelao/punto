@@ -17,9 +17,10 @@ namespace punto.gui
 		private int numBoleta;
 		private string usuario_;
 		private List<Produc> listaPago_;
+		public ControladorBaseDatos a;
 	
 
-		public PagarDialog(Gtk.Window parent,string total, string usuario, List<Produc> listapago) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagarDialog(Gtk.Window parent,string total, string usuario, List<Produc> listapago) : base ("Pagar ", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.db = new ControladorBaseDatos();
 			this.pagototal=total;

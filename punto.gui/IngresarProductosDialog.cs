@@ -310,6 +310,11 @@ namespace punto.gui
 				
 			}
 		}
+
+		protected void OnButtonOkClicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
 	}
 }
 
