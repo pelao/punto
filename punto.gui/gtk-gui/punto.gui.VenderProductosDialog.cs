@@ -134,7 +134,7 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><separator/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><separator/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><separator/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><separator/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><separator/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><separator/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><separator/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><separator/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.hbox3.Add (this.menubar1);
@@ -145,7 +145,9 @@ namespace punto.gui
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                                                                                                        ");
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("                                                                                 " +
+				"                                                                                " +
+				"       ");
 			this.hbox3.Add (this.label1);
 			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.label1]));
 			w4.Position = 1;

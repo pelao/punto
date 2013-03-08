@@ -233,6 +233,7 @@ namespace punto.gui
 		protected void OnEditarProducto ()
 		{
 
+
 			Gtk.TreeIter iter;
 			if (treeviewModificarProducto.Selection.GetSelected (out iter)) {
 				string nombre, precio,familia;

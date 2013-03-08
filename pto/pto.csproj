@@ -68,13 +68,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\punto.code\punto.code.csproj">
-      <Project>{073ACCF2-E430-4357-BFFD-2727E0A37417}</Project>
-      <Name>punto.code</Name>
-    </ProjectReference>
     <ProjectReference Include="..\punto.gui\punto.gui.csproj">
       <Project>{8A5901FC-9C38-45B5-B628-9FBE64649F43}</Project>
       <Name>punto.gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\punto.code\punto.code.csproj">
+      <Project>{073ACCF2-E430-4357-BFFD-2727E0A37417}</Project>
+      <Name>punto.code</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
