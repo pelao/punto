@@ -28,7 +28,7 @@ namespace punto.code
 			this.Servidor = "127.0.0.1";
 			this.BaseDatos = "punto";
 			this.Usuario = "root";
-			this.Contraseña = "";
+			this.Contraseña = "root";
 
 		}
 
