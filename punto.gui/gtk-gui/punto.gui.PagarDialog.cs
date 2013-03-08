@@ -36,6 +36,9 @@ namespace punto.gui
 		private global::Gtk.VBox vbox5;
 		private global::Gtk.HPaned hpaned3;
 		private global::Gtk.Button buttonPagoCheque;
+		private global::Gtk.VBox vbox6;
+		private global::Gtk.HPaned hpaned4;
+		private global::Gtk.Button buttonPagoParcial;
 		private global::Gtk.Label GtkLabel5;
 		private global::Gtk.Alignment alignment41;
 		private global::Gtk.Fixed fixed7;
@@ -96,7 +99,6 @@ namespace punto.gui
 			// Container child hbox3.Gtk.Box+BoxChild
 			this.labeltotalcompra = new global::Gtk.Label ();
 			this.labeltotalcompra.Name = "labeltotalcompra";
-			this.labeltotalcompra.LabelProp = "";
 			this.hbox3.Add (this.labeltotalcompra);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.labeltotalcompra]));
 			w3.Position = 1;
@@ -151,7 +153,6 @@ namespace punto.gui
 			// Container child hbox5.Gtk.Box+BoxChild
 			this.labelvueltopago = new global::Gtk.Label ();
 			this.labelvueltopago.Name = "labelvueltopago";
-			this.labelvueltopago.LabelProp = "";
 			this.hbox5.Add (this.labelvueltopago);
 			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox5 [this.labelvueltopago]));
 			w9.Position = 1;
@@ -283,25 +284,48 @@ namespace punto.gui
 			this.hbox2.Add (this.vbox5);
 			global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.vbox5]));
 			w26.Position = 2;
+			// Container child hbox2.Gtk.Box+BoxChild
+			this.vbox6 = new global::Gtk.VBox ();
+			this.vbox6.Name = "vbox6";
+			this.vbox6.Spacing = 6;
+			// Container child vbox6.Gtk.Box+BoxChild
+			this.hpaned4 = new global::Gtk.HPaned ();
+			this.hpaned4.CanFocus = true;
+			this.hpaned4.Name = "hpaned4";
+			this.hpaned4.Position = 1;
+			// Container child hpaned4.Gtk.Paned+PanedChild
+			this.buttonPagoParcial = new global::Gtk.Button ();
+			this.buttonPagoParcial.CanFocus = true;
+			this.buttonPagoParcial.Name = "buttonPagoParcial";
+			this.buttonPagoParcial.UseUnderline = true;
+			this.buttonPagoParcial.Label = global::Mono.Unix.Catalog.GetString ("Pago Parcial  \n (teclear F5)");
+			this.hpaned4.Add (this.buttonPagoParcial);
+			this.vbox6.Add (this.hpaned4);
+			global::Gtk.Box.BoxChild w28 = ((global::Gtk.Box.BoxChild)(this.vbox6 [this.hpaned4]));
+			w28.Position = 1;
+			this.hbox2.Add (this.vbox6);
+			global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.vbox6]));
+			w29.PackType = ((global::Gtk.PackType)(1));
+			w29.Position = 3;
 			this.GtkAlignment2.Add (this.hbox2);
 			this.frame2.Add (this.GtkAlignment2);
 			this.GtkLabel5 = new global::Gtk.Label ();
 			this.GtkLabel5.Name = "GtkLabel5";
-			this.GtkLabel5.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Forma De Pago</b>");
+			this.GtkLabel5.LabelProp = global::Mono.Unix.Catalog.GetString ("<b>Elija Forma De Pago</b>");
 			this.GtkLabel5.UseMarkup = true;
 			this.frame2.LabelWidget = this.GtkLabel5;
 			this.alignment3.Add (this.frame2);
 			this.vbox8.Add (this.alignment3);
-			global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.vbox8 [this.alignment3]));
-			w30.Position = 1;
+			global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.vbox8 [this.alignment3]));
+			w33.Position = 1;
 			this.hbox25.Add (this.vbox8);
-			global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.hbox25 [this.vbox8]));
-			w31.Position = 0;
-			w31.Expand = false;
-			w31.Fill = false;
+			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox25 [this.vbox8]));
+			w34.Position = 0;
+			w34.Expand = false;
+			w34.Fill = false;
 			w1.Add (this.hbox25);
-			global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox25]));
-			w32.Position = 0;
+			global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox25]));
+			w35.Position = 0;
 			// Container child dialog1_VBox.Gtk.Box+BoxChild
 			this.alignment41 = new global::Gtk.Alignment (0.5F, 0.5F, 1F, 1F);
 			this.alignment41.Name = "alignment41";
@@ -311,16 +335,16 @@ namespace punto.gui
 			this.fixed7.HasWindow = false;
 			this.alignment41.Add (this.fixed7);
 			w1.Add (this.alignment41);
-			global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(w1 [this.alignment41]));
-			w34.Position = 1;
-			w34.Expand = false;
-			w34.Fill = false;
+			global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(w1 [this.alignment41]));
+			w37.Position = 1;
+			w37.Expand = false;
+			w37.Fill = false;
 			// Internal child punto.gui.PagarDialog.ActionArea
-			global::Gtk.HButtonBox w35 = this.ActionArea;
-			w35.Name = "dialog1_ActionArea";
-			w35.Spacing = 10;
-			w35.BorderWidth = ((uint)(5));
-			w35.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w38 = this.ActionArea;
+			w38.Name = "dialog1_ActionArea";
+			w38.Spacing = 10;
+			w38.BorderWidth = ((uint)(5));
+			w38.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button ();
 			this.buttonOk.CanDefault = true;
@@ -330,13 +354,13 @@ namespace punto.gui
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget (this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w36 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w35 [this.buttonOk]));
-			w36.Expand = false;
-			w36.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w39 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w38 [this.buttonOk]));
+			w39.Expand = false;
+			w39.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 369;
+			this.DefaultWidth = 543;
 			this.DefaultHeight = 347;
 			this.Show ();
 			this.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnKeyPressEvent);
@@ -345,6 +369,7 @@ namespace punto.gui
 			this.buttonPagoEfectivo.Clicked += new global::System.EventHandler (this.OnPagoEnEfectivo);
 			this.buttonPagoTarjeta.Clicked += new global::System.EventHandler (this.OnButtonPagoTarjetaClicked);
 			this.buttonPagoCheque.Clicked += new global::System.EventHandler (this.OnButtonPagoChequeClicked);
+			this.buttonPagoParcial.Clicked += new global::System.EventHandler (this.OnButtonPagoParcialClicked);
 		}
 	}
 }

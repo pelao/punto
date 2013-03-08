@@ -186,12 +186,12 @@ namespace punto.gui
 			//		this.db.AgregarVentaDetalle(pago);
 			
 			
-			PagarDialog rcd = new PagarDialog (this, labelTotalVenta.Text.Trim (), usuarioLogin, productoventa);
+			PagarDialog pagar = new PagarDialog (this, labelTotalVenta.Text.Trim (), usuarioLogin, productoventa);
 			try {
-				rcd.Run ();
-				rcd.Destroy ();
+				pagar.Run ();
+				pagar.Destroy ();
 			} catch (MySql.Data.MySqlClient.MySqlException ex) {
-				rcd.Destroy ();
+				pagar.Destroy ();
 #if DEBUG
 				
 				

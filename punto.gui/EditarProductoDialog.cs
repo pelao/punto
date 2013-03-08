@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using Gtk;
@@ -45,38 +46,27 @@ namespace punto.gui
 		private Gtk.ListStore ventamodel;
 		
 		public event EventHandler<EditarProductoDialogChangedEventArgs> EditarProductoDialogdChanged;
-		
+		string familiaActual="";
 		
 		public EditarProductoDialog (Gtk.Window parent, string nombre, string precio,string familia) : base ("Editar producto", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.Build ();
 			this.db = new ControladorBaseDatos();
-			this.comboboxFamilia.Hide ();
 
-			if (nombre.Trim().Length == 0)
-			{
-				entryNombre.Sensitive = false;
-			}
-			else
-			{
+	
 				entryNombre.Text = nombre.Trim();
-			}
-			if (precio.Trim().Length == 0)
-			{
-				entryPrecio.Sensitive = false;
-			}
-			else
-			{
+
+	
 				entryPrecio.Text = precio.Trim();
-			}
-			if (familia.Trim().Length == 0)
-			{
-				entryFamilia.Sensitive = false;
-			}
-			else
-			{
-				entryFamilia.Text = familia.Trim();
-			}
+	
+	
+			//	entryFamilia.Text = familia.Trim();
+				//familiaActual=entryFamilia.Text.Trim();
+			//comboboxFamilia.ActiveText=familia.Trim();
+			//ventamodel.AppendValues(comboboxFamilia.ActiveText);
+			comboboxFamilia.AppendText(familia.Trim());
+			comboboxFamilia.Active =0;
+
 		}
 		protected void OnButtonCancelClicked (object sender, EventArgs e)
 		{
@@ -86,7 +76,7 @@ namespace punto.gui
 		
 		protected void OnCambiarfamilabuttonClicked (object sender, EventArgs e)
 		{			
-			this.entryFamilia.Hide();
+		//	this.entryFamilia.Hide();
 			this.comboboxFamilia.Show();
 			this.CargarTiposFamiliaComboboxa();
 		}
@@ -101,10 +91,7 @@ namespace punto.gui
 			}
 		}
 		
-		protected virtual void OnEditarButtonClicked (object sender, System.EventArgs e)
-		{
-
-		}
+	
 		public void CargarTiposFamiliaComboboxa ()
 		{
 			
@@ -125,38 +112,24 @@ namespace punto.gui
 				this.comboboxFamilia.Active = 0;
 			}
 		}
+		
+		protected void OnButton3128Clicked (object sender, EventArgs e)
+		{
+			this.Destroy();
+		}
 		protected void OnButtonOkClicked (object sender, EventArgs e)
 		{
 
-			string nombre = "", precio = "",familia="";
-			
-			if (entryNombre.Text.Trim().Length == 0)
-			{
-			
-				return;
-			}
-			else
-			{
-				nombre = entryNombre.Text.Trim();
-			}
-			if (entryPrecio.Text.Trim().Length == 0)
-			{
+			string nombre = "", precio = "", familia = "";
+
+			nombre = entryNombre.Text.Trim ();
+
+			precio = entryPrecio.Text.Trim ();
+		
+		//	familia = entryFamilia.Text.Trim ();
+		 familia=comboboxFamilia.ActiveText;
+			//ventamodel.AppendValues(comboboxFamilia.ActiveText);
 	
-				return;
-			}
-			else
-			{
-				precio = entryPrecio.Text.Trim();
-			}
-			if (entryFamilia.Text.Trim().Length == 0)
-			{
-	
-				return;
-			}
-			else
-			{
-				familia = comboboxFamilia.ActiveText;
-			}
 
 			EditarProductoDialogChangedEventArgs args = new EditarProductoDialogChangedEventArgs(nombre,precio,familia);
 			this.OnEditarProductoDialogChanged(args);

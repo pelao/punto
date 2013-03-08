@@ -111,6 +111,12 @@
     <Compile Include="IngresarDineroCajaDialog.cs" />
     <Compile Include="RetirarDineroCajaDialog.cs" />
     <Compile Include="gtk-gui\punto.gui.RetirarDineroCajaDialog.cs" />
+    <Compile Include="PagoParcialDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.PagoParcialDialog.cs" />
+    <Compile Include="ChequeEfectivoDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.ChequeEfectivoDialog.cs" />
+    <Compile Include="TarjetaEfectivoDialog.cs" />
+    <Compile Include="gtk-gui\punto.gui.TarjetaEfectivoDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punto.code\punto.code.csproj">

@@ -17,9 +17,10 @@ namespace punto.gui
 		private int numBoleta;
 		private string usuario_;
 		private List<Produc> listaPago_;
+		public ControladorBaseDatos a;
 	
 
-		public PagarDialog(Gtk.Window parent,string total, string usuario, List<Produc> listapago) : base ("Pagar", parent, Gtk.DialogFlags.DestroyWithParent)
+		public PagarDialog(Gtk.Window parent,string total, string usuario, List<Produc> listapago) : base ("Medios de Pago ", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			this.db = new ControladorBaseDatos();
 			this.pagototal=total;
@@ -262,6 +263,24 @@ namespace punto.gui
 
 		}
 
+		protected void OnButtonPagoParcialClicked (object sender, EventArgs e)
+		{
+			PagoParcialDialog Pago = new PagoParcialDialog(this,pagototal, listaPago_, usuario_);
+			try 
+			{
+				Pago.Run();
+				Pago.Destroy();
+				
+			}
+			catch (MySql.Data.MySqlClient.MySqlException ex)
+			{
+				Pago.Destroy();
+#if DEBUG
+				Console.WriteLine(ex.Message);
+#endif
+			}
+		}
+
 
 		protected void OnKeyPressEvent (object o, KeyPressEventArgs args)
 		{
@@ -281,12 +300,8 @@ namespace punto.gui
 				} catch (MySql.Data.MySqlClient.MySqlException ex) {
 					PagoTarjeta.Destroy ();
 #if DEBUG
-
 	
-
-	
-
-					Console.WriteLine (ex.Message);
+				Console.WriteLine (ex.Message);
 #endif
 				}
 				this.buttonOk.IsFocus = true;
