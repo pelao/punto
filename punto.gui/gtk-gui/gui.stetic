@@ -6961,6 +6961,7 @@
                             <property name="Icon">stock:gtk-save-as Menu</property>
                             <property name="Label" translatable="yes">Guardar Venta</property>
                             <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnButtonPagarClicked" />
                           </widget>
                           <packing>
                             <property name="Position">1</property>

@@ -420,6 +420,7 @@ namespace punto.gui
 			this.DefaultWidth = 400;
 			this.DefaultHeight = 379;
 			this.Show ();
+			this.buttonPagar.Clicked += new global::System.EventHandler (this.OnButtonPagarClicked);
 		}
 	}
 }

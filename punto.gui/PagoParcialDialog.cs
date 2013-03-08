@@ -24,17 +24,17 @@ namespace punto.gui
 
 		protected void OnButtonChequeEfectivoClicked (object sender, EventArgs e)
 		{
-			ChequeEfectivoDialog Pago = new ChequeEfectivoDialog(this,pagototal, listaPago_, usuario_);
+			ChequeEfectivoDialog PagoCheque = new ChequeEfectivoDialog(this,pagototal, listaPago_, usuario_);
 			try 
 			{
-				Pago.Run();
+				PagoCheque.Run();
 
-				Pago.Destroy();
+				PagoCheque.Destroy();
 				
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				Pago.Destroy();
+				PagoCheque.Destroy();
 #if DEBUG
 
 				Console.WriteLine(ex.Message);
@@ -46,17 +46,17 @@ namespace punto.gui
 		
 		protected void OnButtonTarjetaEfectivoClicked (object sender, EventArgs e)
 		{
-			TarjetaEfectivoDialog Pago = new TarjetaEfectivoDialog(this,pagototal, listaPago_, usuario_);
+			TarjetaEfectivoDialog PagoTarjeta = new TarjetaEfectivoDialog(this,pagototal, listaPago_, usuario_);
 			try 
 			{
-				Pago.Run();
+				PagoTarjeta.Run();
 			
-				Pago.Destroy();
+				PagoTarjeta.Destroy();
 				
 			}
 			catch (MySql.Data.MySqlClient.MySqlException ex)
 			{
-				Pago.Destroy();
+				PagoTarjeta.Destroy();
 #if DEBUG
 				
 				Console.WriteLine(ex.Message);
