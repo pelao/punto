@@ -64,13 +64,13 @@
       <HintPath>bin\Debug\punto.code.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\dllPDF\itextsharp.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\dllPDF\itextsharp.pdfa.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
-      <HintPath>..\dllPDF\itextsharp.xtra.dll</HintPath>
+      <HintPath>bin\Debug\itextsharp.xtra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

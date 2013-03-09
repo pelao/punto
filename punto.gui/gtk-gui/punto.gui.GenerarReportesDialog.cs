@@ -298,8 +298,6 @@ namespace punto.gui
 			this.DefaultWidth = 562;
 			this.DefaultHeight = 361;
 			this.Show ();
-			this.calendarFInicial.DaySelected += new global::System.EventHandler (this.OnCalendarFInicialDaySelected);
-			this.calendarFFinal.DaySelected += new global::System.EventHandler (this.OnCalendarFFinalDaySelected);
 			this.buttonGuardarReporte.Clicked += new global::System.EventHandler (this.OnButtonGuardarReporteClicked);
 		}
 	}

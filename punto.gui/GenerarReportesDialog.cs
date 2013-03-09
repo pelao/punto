@@ -27,31 +27,14 @@ namespace punto.gui
 			
 			
 			this.Build ();
-			ControladorBaseDatos db = new ControladorBaseDatos ();
-			string fechaInicial = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
-			string fechaFinal = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 			//	this.CargarFechaInicial();
 			//	this.CargarFechaFinal();
 			//	comboboxFechasInicial.Active = 0;
 			//	comboboxFechasFinal.Active = 0;
 			
-			if (db.ExisteFechaBd (fechaInicial) == false || db.ExisteFechaBd (fechaFinal) == false) {
-				buttonGuardarReporte.Sensitive = false;
-			}
-			if (db.ExisteFechaBd (fechaInicial) == false && db.ExisteFechaBd (fechaFinal) == true){
-				buttonGuardarReporte.Sensitive = false;
-
-			}
-			if (db.ExisteFechaBd (fechaInicial) == true && db.ExisteFechaBd (fechaFinal) == false){
-				buttonGuardarReporte.Sensitive = false;
-			}
-				
-				
-		
-
-
+			
 		}
-
+		
 		private void SeleccionarRuta( )
 		{ 
 			
@@ -128,21 +111,17 @@ namespace punto.gui
 		}
 		
 */
-
+		
 		protected void OnButtonGuardarReporteClicked (object sender, EventArgs e)
 		{
-			ControladorBaseDatos db = new ControladorBaseDatos ();
-
 			string fechaInicial = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 			string fechaFinal = calendarFFinal.GetDate ().ToString ("yyyy-MM-dd").Trim ();
-
-			this.OnCalendarFInicialDaySelected (sender, e);
-			this.OnCalendarFFinalDaySelected (sender, e);
-
+			
+			this.OnCalendarFInicialDaySelected(sender,e);
+			this.OnCalendarFFinalDaySelected(sender,e);
+			
 			if(fechaInicial.CompareTo(fechaFinal)==1){
-
-				buttonGuardarReporte.Sensitive = false;
-
+				
 				Dialog dialog = new Dialog("ADVERTENCIA", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
@@ -158,8 +137,8 @@ namespace punto.gui
 			}
 			else{
 				
-			//	string fechaInicial = comboboxFechasInicial.ActiveText;
-			//	string fechaFinal = comboboxFechasFinal.ActiveText;
+				//	string fechaInicial = comboboxFechasInicial.ActiveText;
+				//	string fechaFinal = comboboxFechasFinal.ActiveText;
 				
 				Document myDocument;
 				
@@ -195,7 +174,7 @@ namespace punto.gui
 					tabla.AddCell("Fecha " );
 					tabla.AddCell("Total Venta " );
 					tabla.AddCell("Cajero ");
-
+					
 					foreach (PdfPCell celda in tabla.Rows[0].GetCells())
 					{
 						celda.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -208,8 +187,8 @@ namespace punto.gui
 						//List<string> listaVentas = objeto.ObtenerIntervaloFechasBd(fechaInicial,fechaFinal);
 						List<Venta> listaVentas = objeto.ObtenerIntervaloFechasBd(fechaInicial,fechaFinal);
 						Console.WriteLine("tamaño listaVentas"+listaVentas.Count);
-
-					
+						
+						
 						myDocument.Add(new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                                                 Emitido el: "+DateTime.Now.ToShortDateString()+ " a las: "+DateTime.Now.ToShortTimeString()+" Horas",
 						                             FontFactory.GetFont("arial",   // fuente
 						                    8,                            // tamaño
@@ -221,22 +200,22 @@ namespace punto.gui
 						                    18,                            // tamaño
 						                    Font.NORMAL,                   // estilo
 						                    BaseColor.BLACK)));
-	
-				// AQUI VA EL LOGO DEL MINIMARKET
-
-						//iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/Git43Felo/punto.gui/iconos/imagen.png");
-						//imgP.ScalePercent(40, 40);
-						//imgP.Alignment = Element.ALIGN_CENTER;
-						//myDocument.Add(imgP);
-
+						
+						// AQUI VA EL LOGO DEL MINIMARKET
+						
+						iTextSharp.text.Image imgP = iTextSharp.text.Image.GetInstance("/Users/Esteban/Projects/Git43Felo/punto.gui/iconos/imagen.png");
+						imgP.ScalePercent(40, 40);
+						imgP.Alignment = Element.ALIGN_CENTER;
+						myDocument.Add(imgP);
+						
 						myDocument.Add(new Paragraph(" "));
 						myDocument.Add(new Paragraph("                                              Ventas realizadas entre "+fechaInicial+" y "+fechaFinal,
-						                            FontFactory.GetFont("arial",   // fuente
+						                             FontFactory.GetFont("arial",   // fuente
 						                    10,                            // tamaño
 						                    Font.NORMAL,                   // estilo
 						                    BaseColor.BLACK)));
 						int tamanio = listaVentas.Count;
-
+						
 						string[,] arreglo = new string[tamanio,4];
 						
 						for(int i=0; i<tamanio; i++){
@@ -271,18 +250,18 @@ namespace punto.gui
 							}
 							Console.WriteLine("\n");
 						}
-
+						
 						for (int i = 0; i < (tamanio*4); i++){
 							tabla.AddCell(lista2[i]);
 						}
-
+						
 						int total = 0;
 						for(int aux=0; aux<listaVentas.Count; aux++){
-
+							
 							total+=Int32.Parse(listaVentas[aux].Total);
 						}
 						Console.WriteLine("Total: "+total);
-
+						
 						myDocument.Add(new Paragraph(" "));
 						myDocument.Add(tabla);
 						myDocument.Add(new Paragraph(" "));
@@ -291,7 +270,7 @@ namespace punto.gui
 						                    22,                            // tamaño
 						                    Font.NORMAL,                   // estilo
 						                    BaseColor.RED)));
-					/*	for(int aux=0; aux<listaVentas.Count; aux++){
+						/*	for(int aux=0; aux<listaVentas.Count; aux++){
 							Console.WriteLine("Numero Boleta: "+listaVentas[aux].Tipo_pago);
 							myDocument.Add(new Paragraph("Numero Boleta: "+Convert.ToString(listaVentas[aux].Idventa)));
 							myDocument.Add(new Paragraph("Fecha: "+listaVentas[aux].Var_fecha));
@@ -314,7 +293,7 @@ namespace punto.gui
 					// step 5: Remember to close the documnet
 					
 					myDocument.Close();
-			/*		
+					
 					Dialog dialog2 = new Dialog("MENSAJE", this, Gtk.DialogFlags.DestroyWithParent);
 					dialog2.Modal = true;
 					dialog2.Resizable = false;
@@ -327,29 +306,28 @@ namespace punto.gui
 					dialog2.ShowAll();
 					dialog2.Run ();
 					dialog2.Destroy ();
-*/
-
+					
+					
 					
 				}
 			}
 			
 			
 		}
-
-
+		
+		
 		protected void OnCalendarFInicialDaySelected (object sender, EventArgs e)
 		{
 			ControladorBaseDatos db = new ControladorBaseDatos ();
 			string fechaI="";
-
+			
 			//DateTime.Now.ToString("yyyy-MM-dd")
 			fechaI = calendarFInicial.GetDate ().ToString ("yyyy-MM-dd").Trim ();
 			Console.WriteLine("fecha seleccionada I: "+fechaI);
-
-			if (!db.ExisteFechaBd (fechaI) ) {
-				this.buttonGuardarReporte.Sensitive = false;
+			
+			if (!db.ExisteFechaBd (fechaI)) {
 				Console.WriteLine ("NO existe venta");
-
+				
 				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
@@ -364,11 +342,11 @@ namespace punto.gui
 				dialog.Destroy ();
 			} else {
 				Console.WriteLine ("existe venta");
-				this.buttonGuardarReporte.Sensitive = true;
-			
+				
+				
 			}
 		}
-
+		
 		protected void OnCalendarFFinalDaySelected (object sender, EventArgs e)
 		{
 			ControladorBaseDatos db = new ControladorBaseDatos ();
@@ -379,10 +357,8 @@ namespace punto.gui
 			Console.WriteLine("fecha seleccionada F: "+fechaF);
 			
 			if (!db.ExisteFechaBd (fechaF)) {
-
-				this.buttonGuardarReporte.Sensitive = false;
 				Console.WriteLine ("NO existe venta");
-
+				
 				Dialog dialog = new Dialog("Advertencia", this, Gtk.DialogFlags.DestroyWithParent);
 				dialog.Modal = true;
 				dialog.Resizable = false;
@@ -397,9 +373,7 @@ namespace punto.gui
 				dialog.Destroy ();
 			} else {
 				Console.WriteLine ("existe venta");
-				this.buttonGuardarReporte.Sensitive=true;
 			}
 		}
 	}
 }
-

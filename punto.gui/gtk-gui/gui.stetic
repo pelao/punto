@@ -1118,6 +1118,12 @@
         <property name="ShortLabel" translatable="yes">Anular Boleta</property>
         <signal name="Activated" handler="OnAnularBoletaActionActivated" />
       </action>
+      <action id="FinalizarDiaAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Finalizar Dia</property>
+        <property name="ShortLabel" translatable="yes">Finalizar Dia</property>
+        <signal name="Activated" handler="OnFinalizarDiaActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Visible">False</property>
@@ -1161,6 +1167,7 @@
                         <node type="Menuitem" action="SalidaDineroCajaAction" />
                         <node type="Separator" />
                         <node type="Menuitem" action="AnularBoletaAction" />
+                        <node type="Menuitem" action="FinalizarDiaAction" />
                       </node>
                       <node type="Menu" action="AyudaAction">
                         <node type="Menuitem" action="AcercaDeAction" />
@@ -5505,7 +5512,6 @@
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
                                     <property name="DisplayOptions">35</property>
-                                    <signal name="DaySelected" handler="OnCalendarFInicialDaySelected" />
                                   </widget>
                                 </child>
                               </widget>
@@ -5535,7 +5541,6 @@
                                     <property name="MemberName" />
                                     <property name="CanFocus">True</property>
                                     <property name="DisplayOptions">35</property>
-                                    <signal name="DaySelected" handler="OnCalendarFFinalDaySelected" />
                                   </widget>
                                 </child>
                               </widget>

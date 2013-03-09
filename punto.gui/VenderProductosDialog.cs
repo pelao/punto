@@ -5,6 +5,9 @@ using Gtk;
 using punto.code;
 using GLib;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Diagnostics;
 
 namespace punto.gui
 {
@@ -614,7 +617,26 @@ namespace punto.gui
 				
 			}
 		}
+		[STAThread]
+		protected void OnFinalizarDiaActionActivated (object sender, EventArgs e)
+		{
+			try
+			{   
+				ProcessStartInfo PInfo = new ProcessStartInfo("C:\\SSQL\\exec.bat");
+				PInfo.WorkingDirectory="C:\\SSQL";
+				System.Diagnostics.Process objPrcess = new System.Diagnostics.Process();
+				objPrcess.StartInfo = PInfo;
+				objPrcess.Start();      
+				
+				Console.ReadLine();
 
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Exception Occurred :{0},{1}", ex.Message,ex.StackTrace.ToString());
+			}
+		}
+	
 	}
 	
 }

@@ -80,7 +80,7 @@ namespace punto.gui
 			try {
 				for(int i=0; i<listaPago_.Count;i++)
 				{   
-					Console.WriteLine("ANTES DE codigo barra");
+					Console.WriteLine("largo de listapago "+listaPago_.Count);
 					
 					string codigoBarra = db.ObtenerCodigoBarraBd((listaPago_[i].getNombre().Trim()));
 					

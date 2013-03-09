@@ -62,7 +62,7 @@ namespace punto.gui
 			
 			PagoTarjeta pago = new PagoTarjeta(numBoleta,comboboxentryTipoTarjeta.ActiveText.Trim(),entryNroTransaccion.Text.Trim(),entryMonto.Text.Trim());
 			
-			Venta nuevaVenta = new Venta(numBoleta, DateTime.Now.ToString("yyyy-MM-dd"), entryPagoEfectivo.Text.Trim(), "TarjetaEfectivo", Int32.Parse("0"), usuario_, "false"); 
+			Venta nuevaVenta = new Venta(numBoleta, DateTime.Now.ToString("yyyy-MM-dd"), pagototal, "TarjetaEfectivo", Int32.Parse("0"), usuario_, "false"); 
 			BD.AgregarVentaBd(nuevaVenta);
 			try {
 				for(int i=0; i<listaPago_.Count;i++)
@@ -88,6 +88,7 @@ namespace punto.gui
 			Console.WriteLine(entryNroTransaccion.Text.Trim());
 			Console.WriteLine(entryMonto.Text.Trim());
 			BD.AgregarPagoTarjeta(pago);
+			buttonPagar.Sensitive = false;
 		}
 	}
 }

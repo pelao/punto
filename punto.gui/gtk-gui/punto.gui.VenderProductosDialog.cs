@@ -21,6 +21,7 @@ namespace punto.gui
 		private global::Gtk.Action IngresoDineroCajaAction;
 		private global::Gtk.Action SalidaDineroCajaAction;
 		private global::Gtk.Action AnularBoletaAction;
+		private global::Gtk.Action FinalizarDiaAction;
 		private global::Gtk.VBox dialog1_VBox1;
 		private global::Gtk.HBox hbox3;
 		private global::Gtk.MenuBar menubar1;
@@ -116,6 +117,9 @@ namespace punto.gui
 			this.AnularBoletaAction = new global::Gtk.Action ("AnularBoletaAction", global::Mono.Unix.Catalog.GetString ("Anular Boleta"), null, null);
 			this.AnularBoletaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Anular Boleta");
 			w1.Add (this.AnularBoletaAction, null);
+			this.FinalizarDiaAction = new global::Gtk.Action ("FinalizarDiaAction", global::Mono.Unix.Catalog.GetString ("Finalizar Dia"), null, null);
+			this.FinalizarDiaAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Finalizar Dia");
+			w1.Add (this.FinalizarDiaAction, null);
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "punto.gui.VenderProductosDialog";
@@ -134,7 +138,7 @@ namespace punto.gui
 			this.hbox3.Name = "hbox3";
 			this.hbox3.Spacing = 6;
 			// Container child hbox3.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><separator/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><separator/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><separator/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><separator/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
+			this.UIManager.AddUiFromString (@"<ui><menubar name='menubar1'><menu name='SesionAction' action='SesionAction'><menuitem name='quitAction' action='quitAction'/></menu><menu name='ProductosAction' action='ProductosAction'><menuitem name='RegistrarEditarAction' action='RegistrarEditarAction'/><separator/><menuitem name='FamiliaProductosAction' action='FamiliaProductosAction'/></menu><menu name='UsuarioAction' action='UsuarioAction'><menuitem name='RegistrarEditarAction1' action='RegistrarEditarAction1'/></menu><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='stopAction' action='stopAction'/><separator/><menuitem name='EditarNmeroBoletaAction' action='EditarNmeroBoletaAction'/><separator/><menuitem name='IngresoDineroCajaAction' action='IngresoDineroCajaAction'/><menuitem name='SalidaDineroCajaAction' action='SalidaDineroCajaAction'/><separator/><menuitem name='AnularBoletaAction' action='AnularBoletaAction'/><menuitem name='FinalizarDiaAction' action='FinalizarDiaAction'/></menu><menu name='AyudaAction' action='AyudaAction'><menuitem name='AcercaDeAction' action='AcercaDeAction'/></menu></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.hbox3.Add (this.menubar1);
@@ -474,6 +478,7 @@ namespace punto.gui
 			this.IngresoDineroCajaAction.Activated += new global::System.EventHandler (this.OnIngresoDineroCajaActionActivated);
 			this.SalidaDineroCajaAction.Activated += new global::System.EventHandler (this.OnSalidaDineroCajaActionActivated);
 			this.AnularBoletaAction.Activated += new global::System.EventHandler (this.OnAnularBoletaActionActivated);
+			this.FinalizarDiaAction.Activated += new global::System.EventHandler (this.OnFinalizarDiaActionActivated);
 			this.entryCodigoBarra.KeyPressEvent += new global::Gtk.KeyPressEventHandler (this.OnEntryCodigoBarraKeyPressEvent);
 			this.ButtonVenta.Clicked += new global::System.EventHandler (this.OnButtonVentaClicked);
 		}

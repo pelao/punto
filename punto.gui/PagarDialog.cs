@@ -76,67 +76,9 @@ namespace punto.gui
 			frame1.Show ();
 			frame2.Hide ();
 			this.entryPagoEfectivo.IsFocus=true;
+
 			//
-			ControladorBaseDatos db = new ControladorBaseDatos();
-			double temp = Convert.ToDouble (this.db.ObtenerBoleta ());
-			temp = temp -1;
-			Console.WriteLine ("temp");
-			Console.WriteLine (temp);
-			Console.WriteLine ("Boletapago"+temp);
-			Console.WriteLine("pagoconcheu"+db.ExistePagoChequeBoolBD(temp.ToString()));
-			string condicion = this.db.ExistePagoChequeBoolBD (temp.ToString ()).ToString();
-			if(condicion==("True")){
 
-				int totalcompra=int.Parse(labeltotalcompra.Text);
-				int total=int.Parse(db.ExistePagoChequeBD(temp.ToString()));
-				int debe=totalcompra-total;
-				
-				
-				Console.WriteLine("pagoconcheu"+db.ExistePagoChequeBD(temp.ToString()));
-				Dialog dialog = new Dialog("PAGO CHEQUE Y EFECTIVO", this, Gtk.DialogFlags.DestroyWithParent);
-				dialog.Modal = true;
-				dialog.Resizable = false;
-				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "Ha pagado: "+db.ExistePagoChequeBD(temp.ToString())+" con cheque y debe: "+debe;
-				dialog.BorderWidth = 8;
-				dialog.VBox.BorderWidth = 8;
-				dialog.VBox.PackStart(etiqueta, false, false, 0);
-				dialog.AddButton ("Cerrar", ResponseType.Close);
-				dialog.ShowAll();
-				dialog.Run ();
-				dialog.Destroy ();
-				labeltotalcompra.Text=debe.ToString();
-
-
-
-			}
-			string condicionTarjeta = this.db.ExistePagoTarjetaBoolBD (temp.ToString ()).ToString();
-
-			if(condicionTarjeta==("True")){
-				
-				int totalcompra=int.Parse(labeltotalcompra.Text);
-				int total=int.Parse(db.ExistePagoTarjetaBD(temp.ToString()));
-				int debe=totalcompra-total;
-				
-				
-				Console.WriteLine("pagoconcheu"+db.ExistePagoTarjetaBD(temp.ToString()));
-				Dialog dialog = new Dialog("PAGO TARJETA Y EFECTIVO", this, Gtk.DialogFlags.DestroyWithParent);
-				dialog.Modal = true;
-				dialog.Resizable = false;
-				Gtk.Label etiqueta = new Gtk.Label();
-				etiqueta.Markup = "Ha pagado: "+db.ExistePagoTarjetaBD(temp.ToString())+" con tarjeta y debe: "+debe;
-				dialog.BorderWidth = 8;
-				dialog.VBox.BorderWidth = 8;
-				dialog.VBox.PackStart(etiqueta, false, false, 0);
-				dialog.AddButton ("Cerrar", ResponseType.Close);
-				dialog.ShowAll();
-				dialog.Run ();
-				dialog.Destroy ();
-				labeltotalcompra.Text=debe.ToString();
-				
-				
-				
-			}
 
 		}
 

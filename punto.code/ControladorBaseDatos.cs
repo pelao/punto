@@ -678,25 +678,25 @@ namespace punto.code
 
 		public List<Venta> ObtenerIntervaloFechasBd (string fechaInicial, string fechaFinal)
 		{
-
+			
 			IDbConnection dbcon = this.ConectarBd();
-		//	string formato = "yyyy-MM-dd hh:mm:ss";
-
+			//	string formato = "yyyy-MM-dd hh:mm:ss";
+			
 			IDbCommand dbcmd = dbcon.CreateCommand();
 			string sql =
 				"SELECT * " +
 					"FROM venta " +
 					"WHERE fecha_venta BETWEEN '"+ fechaInicial + "' and  '"+ fechaFinal + "'";
-
-
+			
+			
 			dbcmd.CommandText = sql;
 			IDataReader reader = dbcmd.ExecuteReader();
 			List<Venta> intervaloFecha = new List<Venta>();  
 			//List<string> intervaloFecha = new List<string>();  
 			while(reader.Read()) {
 				intervaloFecha.Add( new Venta((int) reader["idventa"], (string) reader["fecha_venta"],(string) reader["total"], (string) reader["tipo_pago"], (int) reader["cambio"], (string) reader["usuarios_userlogin"], (string) reader["anulada"]));
-			//	intervaloFecha.Add((string) reader["fecha_venta"] ,(string) reader["total"], (string) reader["tipo_pago"]);
-
+				//	intervaloFecha.Add((string) reader["fecha_venta"] ,(string) reader["total"], (string) reader["tipo_pago"]);
+				
 			}
 			reader.Close();
 			reader = null;
@@ -707,6 +707,7 @@ namespace punto.code
 			
 			return intervaloFecha;
 		}
+
 
 
 		public Produc ObtenerProductosVenta (string codigoB)
